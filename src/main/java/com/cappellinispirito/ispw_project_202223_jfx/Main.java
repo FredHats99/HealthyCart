@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Main extends Application{
 
-    //TODO check for better solution then create those Main attributes
+    //TODO check for better solution then create those Main attributes used to communicate with controller (maybe all the logic in controller?)
     public static int additiveAtRun;
     public static int nutriscoreAtRun;
     public static int nutriscore60AtRun;
