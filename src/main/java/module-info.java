@@ -9,6 +9,7 @@ module com.cappellinispirito.ispw_project_202223_jfx {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires javafx.graphics;
 
     opens com.cappellinispirito.ispw_project_202223_jfx to javafx.fxml;
     exports com.cappellinispirito.ispw_project_202223_jfx;

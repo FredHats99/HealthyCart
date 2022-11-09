@@ -26,12 +26,11 @@ public class Main extends Application{
 
     public static void main(String[] args) {
 
-        Item pringles = new Item(false,2180, 25f, 41, 9f,0.35f,6.6f,12f,0,0,0,1, false);
-        additiveAtRun = pringles.getFinalScore().getAdditivesScore();
-        nutriscoreAtRun = pringles.getNutriscore().getNutriscoreValue();
-        nutriscore60AtRun = pringles.getFinalScore().getNutriscore60();
-        finalScoreAtRun = pringles.getFinalScore().getFinalScoreValue();
+        Item food = new Item(true,191, 8.3f, 100, 0.05f,0.01f,0.5f,0.5f,0,0,0,0, true);
+        additiveAtRun = food.getFinalScore().getAdditivesScore();
+        nutriscoreAtRun = food.getNutriscore().getNutriscoreValue();
+        finalScoreAtRun = food.getFinalScore().getFinalScoreValue();
 
-        launch();
+       launch();
     }
 }

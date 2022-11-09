@@ -10,7 +10,7 @@ public class Item {
     public Item(boolean isLiquid, int calories, float sugars, int otherPercentages, float saturatedFattyAcids, float salt, float fibers, float proteins, int B_additives,int C_additives, int D_additives, int E_additives, boolean isBio){
 
         if (isLiquid) {
-            nutriscore = new LiquidNutriscore(calories, sugars, otherPercentages);
+            nutriscore = new LiquidNutriscore(calories, sugars, otherPercentages, saturatedFattyAcids, salt, fibers, proteins);
 
         }
         else {
