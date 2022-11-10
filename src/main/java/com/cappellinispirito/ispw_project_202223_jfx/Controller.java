@@ -16,9 +16,6 @@ public class Controller {
 
     @FXML
     public void showFinalScore(ActionEvent actionEvent) {
-        showResultsButton.setVisible(false);
-        finalScoreLabel.setText("FS is "+String.valueOf(Main.finalScoreAtRun)+ "/100");
-        nutriscoreLabel.setText("NS is "+String.valueOf(Main.nutriscoreAtRun));
         //TODO check for better solution
     }
 }

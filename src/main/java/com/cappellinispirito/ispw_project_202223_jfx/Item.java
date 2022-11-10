@@ -8,11 +8,13 @@ import com.cappellinispirito.ispw_project_202223_jfx.scores.SolidNutriscore;
 public class Item {
 
     //attributes
+    private final float price;
     private final Nutriscore nutriscore;
     private final FinalScore finalScore;
+    private final String name;
 
     //construction method
-    public Item(boolean isLiquid, int calories, float sugars, int otherPercentages, float saturatedFattyAcids, float salt, float fibers, float proteins, int B_additives,int C_additives, int D_additives, int E_additives, boolean isBio){
+    public Item(boolean isLiquid, int calories, float sugars, int otherPercentages, float saturatedFattyAcids, float salt, float fibers, float proteins, int B_additives,int C_additives, int D_additives, int E_additives, boolean isBio, float price, String name){
 
         if (isLiquid) {
             nutriscore = new LiquidNutriscore(calories, sugars, otherPercentages, saturatedFattyAcids, salt, fibers, proteins);
@@ -23,10 +25,14 @@ public class Item {
         }
         finalScore = new FinalScore(this.nutriscore, B_additives, C_additives,  D_additives,  E_additives, isBio);
 
+        this.price = price;
+        this.name = name;
+
     }
 
     //methods
     public Nutriscore getNutriscore(){return this.nutriscore;}
     public FinalScore getFinalScore(){return this.finalScore;}
-
+    public float getPrice() {return price;}
+    public String getName() {return name;}
 }

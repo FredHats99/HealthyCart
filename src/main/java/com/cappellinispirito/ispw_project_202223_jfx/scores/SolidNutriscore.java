@@ -24,7 +24,7 @@ public class SolidNutriscore extends Nutriscore {
         else {otherPercentagesScore5=5;}
         setPositiveScore(getProteinsScore5() + fibersScore5 + otherPercentagesScore5);
         if (otherPercentagesScore5!=5) this.checkOtherPercentages = !this.checkOtherPercentages;
-        System.out.format("proteins %d,fibers %d,others %d\n", getProteinsScore5(), fibersScore5, otherPercentagesScore5);//debugging
+        //System.out.format("proteins %d,fibers %d,others %d\n", getProteinsScore5(), fibersScore5, otherPercentagesScore5);//debugging
 
     }
     @Override
@@ -38,7 +38,7 @@ public class SolidNutriscore extends Nutriscore {
         int sodiumScore10 = (int)Math.floor(this.getSaltValue()/90);
         if (sodiumScore10>10) sodiumScore10 = 10;
         setNegativeScore(energyScore10+sugarScore10+saturatedFattyAcidsScore10+sodiumScore10);
-        System.out.format("energy %d,sugars %d,fattyacids %d, sodium %d\n", energyScore10, sugarScore10, saturatedFattyAcidsScore10, sodiumScore10); //debugging
+        //System.out.format("energy %d,sugars %d,fattyacids %d, sodium %d\n", energyScore10, sugarScore10, saturatedFattyAcidsScore10, sodiumScore10); //debugging
     }
 
 }

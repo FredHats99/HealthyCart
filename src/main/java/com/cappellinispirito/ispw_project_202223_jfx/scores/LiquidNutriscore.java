@@ -26,20 +26,20 @@ public class LiquidNutriscore extends Nutriscore{
         else {otherPercentagesScore5=10;}
         setPositiveScore(getProteinsScore5() + fibersScore5 + otherPercentagesScore5);
         if (otherPercentagesScore5!=10) this.checkOtherPercentages = !this.checkOtherPercentages;
-        System.out.format("proteins %d,fibers %d,others %d\n", getProteinsScore5(), fibersScore5, otherPercentagesScore5);//debugging
+        //System.out.format("proteins %d,fibers %d,others %d\n", getProteinsScore5(), fibersScore5, otherPercentagesScore5);//debugging
     }
     @Override
     public void generateNegativeScore() {
         int energyScore10 = (int)Math.floor((float)this.getCaloriesValue()/30) +1;
         if (energyScore10>10) energyScore10 = 10;
-        int sugarScore10 = (int)Math.floor(this.getSugarsValue()/1.5)+1;
+        int sugarScore10 = (int)Math.floor(this.getSugarsValue()/1.5);
         if (sugarScore10>10) sugarScore10 = 10;
         int saturatedFattyAcidsScore10 = (int)Math.floor(this.getSaturatedFattyAcidsValue());
         if (saturatedFattyAcidsScore10>10) saturatedFattyAcidsScore10 = 10;
         int sodiumScore10 = (int)Math.floor(this.getSaltValue()/90);
         if (sodiumScore10>10) sodiumScore10 = 10;
         setNegativeScore(energyScore10+sugarScore10+saturatedFattyAcidsScore10+sodiumScore10);
-        System.out.format("energy %d,sugars %d,fattyacids %d, sodium %d\n", energyScore10, sugarScore10, saturatedFattyAcidsScore10, sodiumScore10); //debugging
+        //System.out.format("energy %d,sugars %d,fattyacids %d, sodium %d\n", energyScore10, sugarScore10, saturatedFattyAcidsScore10, sodiumScore10); //debugging
     }
 
 }
