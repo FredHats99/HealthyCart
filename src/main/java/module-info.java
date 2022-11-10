@@ -13,4 +13,6 @@ module com.cappellinispirito.ispw_project_202223_jfx {
 
     opens com.cappellinispirito.ispw_project_202223_jfx to javafx.fxml;
     exports com.cappellinispirito.ispw_project_202223_jfx;
+    exports com.cappellinispirito.ispw_project_202223_jfx.scores;
+    opens com.cappellinispirito.ispw_project_202223_jfx.scores to javafx.fxml;
 }

@@ -1,4 +1,4 @@
-package com.cappellinispirito.ispw_project_202223_jfx;
+package com.cappellinispirito.ispw_project_202223_jfx.scores;
 
 public class FinalScore {
 
@@ -9,7 +9,7 @@ public class FinalScore {
     private int additivesScore;
 
     //constructor method
-    public FinalScore(Nutriscore nutriscore,int B_additives,int C_additives, int D_additives, int E_additives, boolean isBio){
+    public FinalScore(Nutriscore nutriscore, int B_additives, int C_additives, int D_additives, int E_additives, boolean isBio){
         generateNutriscoreTo60(nutriscore, E_additives);
         generateAdditivesScore(B_additives, C_additives,  D_additives,  E_additives);
         generateFinalScore();

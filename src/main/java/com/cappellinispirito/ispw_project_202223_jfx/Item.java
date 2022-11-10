@@ -1,5 +1,10 @@
 package com.cappellinispirito.ispw_project_202223_jfx;
 
+import com.cappellinispirito.ispw_project_202223_jfx.scores.FinalScore;
+import com.cappellinispirito.ispw_project_202223_jfx.scores.LiquidNutriscore;
+import com.cappellinispirito.ispw_project_202223_jfx.scores.Nutriscore;
+import com.cappellinispirito.ispw_project_202223_jfx.scores.SolidNutriscore;
+
 public class Item {
 
     //attributes

@@ -1,4 +1,4 @@
-package com.cappellinispirito.ispw_project_202223_jfx;
+package com.cappellinispirito.ispw_project_202223_jfx.scores;
 
 public abstract class Nutriscore {
 
