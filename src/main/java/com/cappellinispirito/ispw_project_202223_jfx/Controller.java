@@ -7,15 +7,5 @@ import javafx.scene.control.Label;
 
 public class Controller {
 
-    @FXML
-    public Label finalScoreLabel;
-    @FXML
-    public Button showResultsButton;
-    @FXML
-    public Label nutriscoreLabel;
 
-    @FXML
-    public void showFinalScore(ActionEvent actionEvent) {
-        //TODO check for better solution
-    }
 }

@@ -34,12 +34,11 @@ public class FinalScore {
     private void generateFinalScore(){
         this.finalScoreValue = this.nutriscore60 + this.additivesScore;
     }
+
+
+    //getters & setters
     public int getFinalScoreValue(){
         return this.finalScoreValue;
     }
-
-    public int getAdditivesScore(){return this.additivesScore;} //debugging
-    public int getNutriscore60(){return this.nutriscore60;} //debugging
-
 
 }
