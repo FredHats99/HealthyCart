@@ -1,0 +1,11 @@
+
+
+
+#rootAnchorPane{
+    -fx-background-color: linear-gradient(from 50% 15% to 50% 0%, #CFF5E7 35%, black 90%);
+}
+
+
+#topPane{
+    -fx-background-color: #CFF5E7;
+}

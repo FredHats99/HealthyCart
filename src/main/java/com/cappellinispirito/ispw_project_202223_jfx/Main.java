@@ -18,12 +18,14 @@ public class Main extends Application{
     public void start(Stage myStage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/gui.fxml")));
         Scene myScene = new Scene(root);
-        Image myIcon = new Image(String.valueOf(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/icons/icon.png")));
 
+        myScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/MyStylesheet.css")).toExternalForm());
+        Image myIcon = new Image(String.valueOf(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/icons/icon.png")));
         myStage.getIcons().add(myIcon);
         myStage.setTitle("B T Y");
-        myStage.setScene(myScene);
         myStage.setResizable(true);
+
+        myStage.setScene(myScene);
         myStage.show();
     }
 
