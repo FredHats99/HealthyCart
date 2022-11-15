@@ -20,7 +20,7 @@ public class Main extends Application{
         Scene myScene = new Scene(root);
 
         myScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/MyStylesheet.css")).toExternalForm());
-        Image myIcon = new Image(String.valueOf(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/icons/icon.png")));
+        Image myIcon = new Image(String.valueOf(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/icons/apple.png")));
         myStage.getIcons().add(myIcon);
         myStage.setTitle("B T Y");
         myStage.setResizable(true);
