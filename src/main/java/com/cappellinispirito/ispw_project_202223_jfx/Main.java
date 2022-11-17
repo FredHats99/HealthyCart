@@ -16,12 +16,13 @@ public class Main extends Application{
 
     @Override
     public void start(Stage myStage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/gui.fxml")));
-        Scene myScene = new Scene(root);
-
+        //some resources
+        Parent rootNode = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/gui.fxml")));
+        Scene myScene = new Scene(rootNode);
         myScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/MyStylesheet.css")).toExternalForm());
         Image myIcon = new Image(String.valueOf(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/icons/apple.png")));
         myStage.getIcons().add(myIcon);
+
         myStage.setTitle("B T Y");
         myStage.setResizable(true);
 
@@ -33,6 +34,7 @@ public class Main extends Application{
 
         launch(args);
         System.exit(0);
+
         /*
         for (Item i: myCart.getItemsList()) {
             System.out.format("Product Name: %s\nFinal Score: %d\nPrice: %f\nNutriscore: %d\n\n", i.getName(), i.getFinalScore().getFinalScoreValue(), i.getPrice(), i.getNutriscore().getNutriscoreValue());

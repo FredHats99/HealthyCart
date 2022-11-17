@@ -2,12 +2,11 @@
 
 
 #rootAnchorPane{
-   /* -fx-background-color: linear-gradient(from 50% 15% to 50% 0%, #CFF5E7 35%, black 90%); */
    -fx-background-color: #CFF5E7;
 }
 
 
-#topPane{
+#topBar{
     -fx-background-color: #CFF5E7;
     -fx-border-color: linear-gradient(to top, #CFF5E7, #a9c7bc );
     -fx-border-width: 0 0 4 0;
