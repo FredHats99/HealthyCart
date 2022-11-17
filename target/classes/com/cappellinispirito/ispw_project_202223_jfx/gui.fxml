@@ -9,21 +9,18 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="rootAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@MyStylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.Controller">
-   <HBox fx:id="topPane" alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-         <Label alignment="CENTER" prefHeight="37.0" prefWidth="61.0" text="B T Y" textFill="#282828">
-            <font>
-               <Font name="Arial" size="24.0" />
-            </font>
-         </Label>
-         <ImageView fitHeight="23.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@icons/apple.png" />
-            </image>
-            <HBox.margin>
-               <Insets left="10.0" />
-            </HBox.margin>
-         </ImageView>
-      </children>
+   <HBox fx:id="topPane" alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+         AnchorPane.topAnchor="0.0">
+      <Label alignment="CENTER" prefHeight="37.0" prefWidth="61.0" text="B T Y" textFill="#282828">
+         <font>
+            <Font name="Arial" size="24.0"/>
+         </font>
+      </Label>
+      <ImageView fitHeight="23.0" fitWidth="24.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+         <HBox.margin>
+            <Insets left="10.0"/>
+         </HBox.margin>
+         <Image url="@icons/apple.png"/>
+      </ImageView>
    </HBox>
 </AnchorPane>
