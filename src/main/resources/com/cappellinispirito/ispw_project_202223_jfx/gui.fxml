@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="rootAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@MyStylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.Controller">
-   <HBox fx:id="topBar" alignment="CENTER" stylesheets="@MyStylesheet.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <Label fx:id="appTitle" alignment="CENTER" stylesheets="@MyStylesheet.css" text="B T Y" textFill="#282828">
-         <font>
-            <Font name="Arial" size="24.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="logo" fitHeight="33.0" fitWidth="38.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+<VBox fx:id="rootVbox" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" stylesheets="@MyStylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.Controller">
+   <HBox fx:id="topbarHbox" alignment="CENTER" stylesheets="@MyStylesheet.css" VBox.vgrow="NEVER">
+      <ImageView fx:id="logo" blendMode="OVERLAY" fitHeight="33.0" fitWidth="134.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <HBox.margin>
-            <Insets bottom="10.0" left="10.0" top="10.0" />
+            <Insets bottom="5.0" left="5.0" top="5.0" />
          </HBox.margin>
          <Image url="@icons/apple.png" />
       </ImageView>
    </HBox>
-</AnchorPane>
+   <Pane fx:id="centerbgPane" stylesheets="@MyStylesheet.css" VBox.vgrow="ALWAYS" />
+</VBox>

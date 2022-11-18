@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class Controller {
 
@@ -16,4 +17,8 @@ public class Controller {
     public Label appTitle;
     public HBox topBar;
     public ImageView logo;
+    public Pane bgPane;
+    public VBox rootVbox;
+    public HBox topbarHbox;
+    public Pane centerbgPane;
 }
