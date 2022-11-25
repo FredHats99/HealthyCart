@@ -1,0 +1,12 @@
+
+
+#centerbgPane{
+   -fx-background-color: linear-gradient(#41d8a0, #6be1b5);
+}
+
+
+#topbarHbox{
+    -fx-background-color :#41d8a0;
+    -fx-border-color : #27be87;
+    -fx-border-width : 0 0 2 0;
+    }

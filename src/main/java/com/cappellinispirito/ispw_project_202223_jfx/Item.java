@@ -14,14 +14,13 @@ public class Item {
     private final String name;
 
     //construction method
-    public Item(boolean isLiquid, int calories, float sugars, int otherPercentages, float saturatedFattyAcids, float salt, float fibers, float proteins, int B_additives,int C_additives, int D_additives, int E_additives, boolean isBio, float price, String name){
+    public Item(int calories, float sugars, float saturatedFattyAcids, float salt, int otherPercentages, float fibers, float proteins, int B_additives,int C_additives, int D_additives, int E_additives, boolean isBio, boolean isLiquid,  float price, String name){
 
         if (isLiquid) {
-            nutriscore = new LiquidNutriscore(calories, sugars, otherPercentages, saturatedFattyAcids, salt, fibers, proteins);
-
+            nutriscore = new LiquidNutriscore(calories, sugars, saturatedFattyAcids, salt, otherPercentages, fibers, proteins);
         }
         else {
-            nutriscore = new SolidNutriscore(calories, sugars, otherPercentages, saturatedFattyAcids, salt, fibers, proteins);
+            nutriscore = new SolidNutriscore(calories, sugars, saturatedFattyAcids, salt, otherPercentages, fibers, proteins);
         }
         finalScore = new FinalScore(this.nutriscore, B_additives, C_additives,  D_additives,  E_additives, isBio);
 
@@ -30,7 +29,7 @@ public class Item {
 
     }
 
-    //methods
+    //getters & setters
     public Nutriscore getNutriscore(){return this.nutriscore;}
     public FinalScore getFinalScore(){return this.finalScore;}
     public float getPrice() {return price;}

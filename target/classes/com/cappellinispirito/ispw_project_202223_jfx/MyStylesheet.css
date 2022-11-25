@@ -1,0 +1,13 @@
+
+
+
+#rootAnchorPane{
+   -fx-background-color: #CFF5E7;
+}
+
+
+#topBar{
+    -fx-background-color: #CFF5E7;
+    -fx-border-color: linear-gradient(to top, #CFF5E7, #a9c7bc );
+    -fx-border-width: 0 0 4 0;
+}
