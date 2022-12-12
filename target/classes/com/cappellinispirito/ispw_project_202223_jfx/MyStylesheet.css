@@ -1,13 +1,12 @@
 
 
-
-#rootAnchorPane{
-   -fx-background-color: #CFF5E7;
+#centerbgPane{
+   -fx-background-color: linear-gradient(#41d8a0, #6be1b5);
 }
 
 
-#topBar{
-    -fx-background-color: #CFF5E7;
-    -fx-border-color: linear-gradient(to top, #CFF5E7, #a9c7bc );
-    -fx-border-width: 0 0 4 0;
-}
+#topbarHbox{
+    -fx-background-color :#41d8a0;
+    -fx-border-color : #27be87;
+    -fx-border-width : 0 0 2 0;
+    }

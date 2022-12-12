@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.SVGPath;
 
 public class Controller {
 
@@ -21,4 +22,5 @@ public class Controller {
     public VBox rootVbox;
     public HBox topbarHbox;
     public Pane centerbgPane;
+    public SVGPath gearSvg;
 }
