@@ -14,7 +14,25 @@ public class Item {
     private final String name;
 
     //construction method
-    public Item(int calories, float sugars, float saturatedFattyAcids, float salt, int otherPercentages, float fibers, float proteins, int B_additives,int C_additives, int D_additives, int E_additives, boolean isBio, boolean isLiquid,  float price, String name){
+    public Item(
+                //basics for nutriscore
+                int calories,
+                float sugars,
+                float saturatedFattyAcids,
+                float salt,
+                int otherPercentages,
+                float fibers,
+                float proteins,
+                //additives
+                int B_additives,
+                int C_additives,
+                int D_additives,
+                int E_additives,
+                //misc
+                boolean isBio,
+                boolean isLiquid,
+                float price,
+                String name){
 
         if (isLiquid) {
             nutriscore = new LiquidNutriscore(calories, sugars, saturatedFattyAcids, salt, otherPercentages, fibers, proteins);

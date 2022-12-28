@@ -11,8 +11,5 @@ public class Supermarket {
         this.address = address;
         this.addressNumber = addressNumber;
     }
-    //methods
-    //public getCoordinateFrom(String address){}
 
-    //public calculateDistance(float userX, float userY, float marketX, float marketY){}
 }

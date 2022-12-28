@@ -20,7 +20,6 @@ public class ShoppingCart {
 
     //getters & setters
     public List<Item> getItemsList() {return itemsList;}
-
     public float getTotalPrice() {
         return totalPrice;
     }
