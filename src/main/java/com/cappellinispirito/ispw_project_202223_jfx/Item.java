@@ -5,13 +5,17 @@ import com.cappellinispirito.ispw_project_202223_jfx.scores.LiquidNutriscore;
 import com.cappellinispirito.ispw_project_202223_jfx.scores.Nutriscore;
 import com.cappellinispirito.ispw_project_202223_jfx.scores.SolidNutriscore;
 
+import java.util.List;
+
 public class Item {
 
     //attributes
     private final float price;
     private final Nutriscore nutriscore;
     private final FinalScore finalScore;
-    private final String name;
+    private String name;
+    private String imageUrl;
+    private String ingredients;
 
     //construction method
     public Item(
@@ -24,10 +28,7 @@ public class Item {
                 float fibers,
                 float proteins,
                 //additives
-                int B_additives,
-                int C_additives,
-                int D_additives,
-                int E_additives,
+                List<String> additivesList,
                 //misc
                 boolean isBio,
                 boolean isLiquid,
@@ -40,7 +41,7 @@ public class Item {
         else {
             nutriscore = new SolidNutriscore(calories, sugars, saturatedFattyAcids, salt, otherPercentages, fibers, proteins);
         }
-        finalScore = new FinalScore(this.nutriscore, B_additives, C_additives,  D_additives,  E_additives, isBio);
+        finalScore = new FinalScore(this.nutriscore,additivesList, isBio);
 
         this.price = price;
         this.name = name;
@@ -52,4 +53,16 @@ public class Item {
     public FinalScore getFinalScore(){return this.finalScore;}
     public float getPrice() {return price;}
     public String getName() {return name;}
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
 }

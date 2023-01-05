@@ -2,31 +2,24 @@ package com.cappellinispirito.ispw_project_202223_jfx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.json.simple.parser.ParseException;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Objects;
-import java.net.HttpURLConnection;
-
 
 
 public class Main extends Application{
+    Stage applicationStage;
 
     @Override
     public void start(Stage myStage) throws IOException {
 
         //node
-        Parent rootNode = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/gui.fxml")));
+        Parent rootNode = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/Main_menu.fxml")));
         //scene
         Scene myScene = new Scene(rootNode);
         //stylesheet
@@ -38,19 +31,21 @@ public class Main extends Application{
         myStage.setTitle("B T Y");
         //miscellaneous
         myStage.setResizable(true);
-
+        //initializing variables
+        this.applicationStage = myStage;
         //setting up the Node -> Scene -> Stage
         myStage.setScene(myScene);
         myStage.show();
     }
 
-    public static void main(String[] args) throws IOException {
-
+    public static void main(String[] args) throws IOException, ParseException {
+        //testing
+        String barcode = "3017620422003"; //it's the barcode of nutella
+        productDAO communicator = new ProductDAOImpl();
+        Item Nutella = communicator.getProductByBarcode(barcode);
+        System.out.println(Nutella.getNutriscore().getNutriscoreValue());
         //launch(args);
         //System.exit(0);
-
-
-
         /*
         for (Item i: myCart.getItemsList()) {
             System.out.format("Product Name: %s\nFinal Score: %d\nPrice: %f\nNutriscore: %d\n\n", i.getName(), i.getFinalScore().getFinalScoreValue(), i.getPrice(), i.getNutriscore().getNutriscoreValue());

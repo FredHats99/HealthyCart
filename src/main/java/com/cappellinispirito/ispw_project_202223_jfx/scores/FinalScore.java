@@ -1,5 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx.scores;
 
+import java.util.List;
+
 public class FinalScore {
 
     //attributes
@@ -7,13 +9,21 @@ public class FinalScore {
     private int nutriscore60;
     private int finalScoreValue;
     private int additivesScore;
+    private int B_additives;
+    private int C_additives;
+    private int D_additives;
+    private int E_additives;
 
     //constructor method
-    public FinalScore(Nutriscore nutriscore, int B_additives, int C_additives, int D_additives, int E_additives, boolean isBio){
+    public FinalScore(Nutriscore nutriscore, List<String> additivesList, boolean isBio){
+        assignLetterToAdditives(additivesList);
         generateNutriscoreTo60(nutriscore, E_additives);
         generateAdditivesScore(B_additives, C_additives,  D_additives,  E_additives);
         generateFinalScore();
         if (isBio) this.finalScoreValue+=10;
+    }
+
+    private void assignLetterToAdditives(List<String> additivesList) {
     }
 
     //methods
