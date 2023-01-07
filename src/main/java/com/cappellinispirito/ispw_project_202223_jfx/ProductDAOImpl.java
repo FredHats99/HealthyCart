@@ -38,27 +38,37 @@ public class ProductDAOImpl implements productDAO {
 
         // Extract the product data
         String name = (String) product.get("product_name");
+        System.out.println(name);
         String imageUrl = (String) product.get("image_url");
         String ingredients = (String) product.get("ingredients_text");
-        int fruitPercentage;
-        try{
-            fruitPercentage = (int) product.get("fruits_vegetables_nuts_100g");
-        } catch (NullPointerException e){
-            fruitPercentage = 0;
-        }
-        int energy = (int) product.get("energy");
-        float sugars = (float) product.get("sugars");
-        float protein = (float) product.get("proteins");
-        float saturated_fat = (float) product.get("saturated-fat");
-        float fiber = (float) product.get("fiber");
-        float salt = (float) product.get("salt");
-        JSONArray additives = (JSONArray) product.get("additives");
 
+        JSONObject nutritionalValues = (JSONObject) product.get("nutriments");
+        JSONObject alternativeNutritionalValues = (JSONObject) product.get("nutriscore_data");
+
+        int fruitPercentage = Math.toIntExact((Long) nutritionalValues.get("fruits-vegetables-nuts-estimate-from-ingredients_100g"));
+        System.out.println(fruitPercentage);
+        float energy = Float.parseFloat(String.valueOf(nutritionalValues.get("energy")));
+        System.out.println(energy);
+        float sugars = Float.parseFloat(String.valueOf(nutritionalValues.get("sugars")));
+        System.out.println(sugars);
+        float protein = Float.parseFloat(String.valueOf(nutritionalValues.get("proteins")));
+        System.out.println(protein);
+        float saturated_fat = Float.parseFloat(String.valueOf(nutritionalValues.get("saturated-fat")));
+        System.out.println(saturated_fat);
+        float fiber = Float.parseFloat(String.valueOf(alternativeNutritionalValues.get("fiber")));
+        System.out.println(fiber);
+        float salt = Float.parseFloat(String.valueOf(nutritionalValues.get("salt")));
+        System.out.println(salt);
+
+        JSONArray additives = (JSONArray) product.get("additives");
         // Convert the additives array to a list of strings
+
         List<String> additivesList = new ArrayList<>();
-        for (Object additive : additives) {
-            additivesList.add((String) additive);
-        }
+        try{
+            for (Object additive : additives) {
+                additivesList.add((String) additive);
+            }
+        } catch(NullPointerException ignored){}
 
 
         // Check if the "organic" label is present in the labels array
@@ -67,7 +77,7 @@ public class ProductDAOImpl implements productDAO {
         boolean isBeverage = isBeverage(product);
 
         // Create a Product object
-        Item p = new Item(energy, sugars, saturated_fat, salt, fruitPercentage, fiber, protein, additivesList,isBio,isBeverage,0, name);
+        Item p = new Item(energy,sugars,saturated_fat,salt,fruitPercentage,fiber,protein, additivesList,isBio,isBeverage,0, name);
         p.setImageUrl(imageUrl);
         p.setIngredients(ingredients);
 
@@ -104,33 +114,21 @@ public class ProductDAOImpl implements productDAO {
     public boolean isBeverage(JSONObject product) {
 
         // Get the categories array
-        JSONArray categories = (JSONArray) product.get("categories");
-
-        // Check if the product is a beverage
-        for (Object o : categories) {
-            String category = (String) o;
-            if (category.contains("beverages") || category.contains("drinks")) {
+        JSONArray keywords = (JSONArray) product.get("_keywords");
+        for (Object keyword : keywords) {
+            if (keyword == "beverage") {
                 return true;
             }
         }
-
         return false;
     }
 
     @Override
     public boolean isOrganic(JSONObject product) {
-        // Get the labels array
-        JSONArray labels = (JSONArray) product.get("labels");
-
-        // Check if the "organic" label is present in the labels array
-        for (Object label : labels) {
-            if (label.equals("organic")) {
-                return true;
-            }
-        }
-
-        return false;
+        String labels = (String) product.get("labels");
+        return labels.contains("organic");
     }
+
 }
 
 

@@ -3,7 +3,7 @@ package com.cappellinispirito.ispw_project_202223_jfx.scores;
 public class LiquidNutriscore extends Nutriscore{
 
     //constructor method
-    public LiquidNutriscore(int calories, float sugars, float saturatedFattyAcids, float salt,  int otherPercentages, float fibers, float proteins) {
+    public LiquidNutriscore(float calories, float sugars, float saturatedFattyAcids, float salt,  int otherPercentages, float fibers, float proteins) {
         super(calories, sugars, saturatedFattyAcids, salt, otherPercentages, fibers, proteins);
     }
 

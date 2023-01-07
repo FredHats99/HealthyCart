@@ -20,7 +20,7 @@ public class Item {
     //construction method
     public Item(
                 //basics for nutriscore
-                int calories,
+                float calories,
                 float sugars,
                 float saturatedFattyAcids,
                 float salt,

@@ -40,6 +40,8 @@ public class Main extends Application{
 
     public static void main(String[] args) throws IOException, ParseException {
         //testing
+        //Coca-cola 1 lt: 5449000133328
+        //Nutella: 3017620422003
         String barcode = "3017620422003"; //it's the barcode of nutella
         productDAO communicator = new ProductDAOImpl();
         Item Nutella = communicator.getProductByBarcode(barcode);

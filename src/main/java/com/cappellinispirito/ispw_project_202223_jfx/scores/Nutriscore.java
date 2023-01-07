@@ -5,7 +5,7 @@ public abstract class Nutriscore {
     //attributes
     private int nutriscoreValue;
 
-    private final int caloriesValue;
+    private final float caloriesValue;
     private final float sugarsValue;
     private final float saturatedFattyAcidsValue;
     private final float saltValue;
@@ -25,7 +25,7 @@ public abstract class Nutriscore {
 
 
     //constructor method
-    public Nutriscore(int calories, float sugars, float saturatedFattyAcids, float salt, int otherPercentages, float fibers, float proteins){
+    public Nutriscore(float calories, float sugars, float saturatedFattyAcids, float salt, int otherPercentages, float fibers, float proteins){
 
         this.caloriesValue=calories;
         this.sugarsValue=sugars;
@@ -59,7 +59,7 @@ public abstract class Nutriscore {
 
 
     //getters & setters bad
-    public int getCaloriesValue(){return this.caloriesValue;}
+    public float getCaloriesValue(){return this.caloriesValue;}
 
     public float getSugarsValue(){return this.sugarsValue;}
 
