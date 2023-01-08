@@ -74,7 +74,7 @@
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Pane>
-                              <Label prefHeight="34.0" prefWidth="146.0" text="I miei acquisti" textAlignment="CENTER" wrapText="true">
+                              <Label prefHeight="30.0" prefWidth="122.0" text="I miei acquisti" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font name="System Italic" size="20.0" />
                                  </font>

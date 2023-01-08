@@ -46,7 +46,7 @@ public class Main extends Application{
         productDAO communicator = new ProductDAOImpl();
         Item Nutella = communicator.getProductByBarcode(barcode);
         System.out.println(Nutella.getNutriscore().getNutriscoreValue());
-        //launch(args);
+        launch(args);
         //System.exit(0);
         /*
         for (Item i: myCart.getItemsList()) {
