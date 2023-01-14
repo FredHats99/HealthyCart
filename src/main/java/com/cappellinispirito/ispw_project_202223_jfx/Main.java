@@ -30,7 +30,7 @@ public class Main extends Application{
         //name
         myStage.setTitle("B T Y");
         //miscellaneous
-        myStage.setResizable(true);
+        myStage.setResizable(false);
         //initializing variables
         this.applicationStage = myStage;
         //setting up the Node -> Scene -> Stage
