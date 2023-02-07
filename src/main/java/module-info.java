@@ -20,4 +20,6 @@ module com.cappellinispirito.ispw_project_202223_jfx {
     opens com.cappellinispirito.ispw_project_202223_jfx.scores to javafx.fxml;
     exports com.cappellinispirito.ispw_project_202223_jfx.Model;
     opens com.cappellinispirito.ispw_project_202223_jfx.Model to javafx.fxml;
+    exports com.cappellinispirito.ispw_project_202223_jfx.View;
+    opens com.cappellinispirito.ispw_project_202223_jfx.View to javafx.fxml;
 }

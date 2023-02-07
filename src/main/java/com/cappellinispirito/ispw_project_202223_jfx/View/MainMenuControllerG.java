@@ -1,4 +1,4 @@
-package com.cappellinispirito.ispw_project_202223_jfx;
+package com.cappellinispirito.ispw_project_202223_jfx.View;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class MainMenuController {
+public class MainMenuControllerG {
 
     private Stage applicationStage;
     @FXML
@@ -31,14 +31,14 @@ public class MainMenuController {
     public SVGPath gearSvg;
     public Pane NewGroceryButton;
 
-    public MainMenuController(){
+    public MainMenuControllerG(){
     }
 
     public void onNewGroceryButtonClick() throws IOException {
         //initialize new scene
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/NewGrocery.fxml")));
         Parent rootNode = loader.load();
-        NewGroceryController controller = loader.getController();
+        NewGroceryControllerG controller = loader.getController();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) rootVbox.getScene().getWindow();
         stage.setScene(myScene);
