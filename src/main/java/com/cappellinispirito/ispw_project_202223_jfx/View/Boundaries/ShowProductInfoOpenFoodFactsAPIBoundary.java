@@ -1,32 +1,25 @@
-package com.cappellinispirito.ispw_project_202223_jfx;
+package com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
+import com.cappellinispirito.ispw_project_202223_jfx.Controller.SingletonInstance;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.barcodeBean;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class ProductDAOImpl implements productDAO {
+import java.io.IOException;
+
+public class ShowProductInfoOpenFoodFactsAPIBoundary implements SingletonInstance {
     private CloseableHttpClient httpClient;
     private JSONParser parser;
+    private SingletonInstance instance;
 
-    public ProductDAOImpl() {
-        httpClient = HttpClients.createDefault();
-        parser = new JSONParser();
-    }
-
-    @Override
-    public Item getProductByBarcode(String barcode) throws IOException, ParseException {
+    public void findProductInfoByBarcode(barcodeBean bean) throws IOException, ParseException {
+        String barcode = bean.getBarcode();
         // Send a GET request to the API
         HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json");
         CloseableHttpResponse response = httpClient.execute(request);
@@ -62,31 +55,28 @@ public class ProductDAOImpl implements productDAO {
         float salt = Float.parseFloat(String.valueOf(nutritionalValues.get("salt")));
         System.out.println(salt);
 
-        JSONArray additives = (JSONArray) product.get("additives");
-        // Convert the additives array to a list of strings
-
-        List<String> additivesList = new ArrayList<>();
-        try{
-            for (Object additive : additives) {
-                additivesList.add((String) additive);
-            }
-        } catch(NullPointerException ignored){}
-
+        String additives = String.valueOf(product.get("additives"));
 
         // Check if the "organic" label is present in the labels array
 
         boolean isBio = isOrganic(product);
         boolean isBeverage = isBeverage(product);
 
-        // Create a Product object
-        Item p = new Item(energy,sugars,saturated_fat,salt,fruitPercentage,fiber,protein, additivesList,isBio,isBeverage,0, name);
-        p.setImageUrl(imageUrl);
-        p.setIngredients(ingredients);
-
-        return p;
+        bean.setFruitPercentage(fruitPercentage);
+        bean.setEnergy(energy);
+        bean.setSugars(sugars);
+        bean.setProtein(protein);
+        bean.setSaturatedFats(saturated_fat);
+        bean.setFibers(fiber);
+        bean.setSalt(salt);
+        bean.setIsBio(isBio);
+        bean.setIsBeverage(isBeverage);
+        bean.setName(name);
+        bean.setImageUrl(imageUrl);
+        bean.setIngredients(ingredients);
+        bean.setAdditives(additives);
     }
 
-    @Override
     public boolean isBeverage(JSONObject product) {
 
         // Get the categories array
@@ -99,12 +89,16 @@ public class ProductDAOImpl implements productDAO {
         return false;
     }
 
-    @Override
     public boolean isOrganic(JSONObject product) {
         String labels = (String) product.get("labels");
         return labels.contains("organic");
     }
 
+    @Override
+    public SingletonInstance getInstance() {
+        if(instance == null){
+            instance = new ShowProductInfoOpenFoodFactsAPIBoundary();
+        }
+        return instance;
+    }
 }
-
-

@@ -8,12 +8,14 @@ import com.cappellinispirito.ispw_project_202223_jfx.View.beans.productJSONBeanC
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 
 public class SearchProductController implements SingletonInstance{
     //attributes
     private SingletonInstance instance;
     private UserAccount account;
+    private HashMap<String, String> barcodeMap;
 
 
     //methods
@@ -44,6 +46,11 @@ public class SearchProductController implements SingletonInstance{
         productJSONBean bean2 = new productJSONBeanClass();
         SearchProductOpenFoodFactsAPIBoundary apiBoundary = new SearchProductOpenFoodFactsAPIBoundary();
         apiBoundary.findProductByName(searchName, bean2);
-        bean.setNameToBarcode(bean2.getMap());
+        this.barcodeMap = bean2.getMap();
+        bean.setNameToBarcode(barcodeMap);
+    }
+
+    public String getBarcodeByIndex(String name) {
+        return barcodeMap.get(name);
     }
 }

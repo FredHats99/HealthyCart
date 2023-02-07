@@ -46,7 +46,7 @@ public class Main extends Application{
         String barcode = "3017620422003"; //it's the barcode of nutella
         productDAO communicator = new ProductDAOImpl();
         Item Nutella = communicator.getProductByBarcode(barcode);
-        System.out.println(Nutella.getNutriscore().getNutriscoreValue());
+        //System.out.println(Nutella.getNutriscore().getNutriscoreValue());
         launch(args);
         //System.exit(0);
         /*

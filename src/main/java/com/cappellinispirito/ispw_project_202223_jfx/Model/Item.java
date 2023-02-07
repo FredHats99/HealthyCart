@@ -54,6 +54,14 @@ public class Item {
         this.name = name;
         this.imageUrl = imageUrl;
         this.ingredients = ingredients;
+        this.additives = additives;
+        this.calories = calories;
+        this.proteins = proteins;
+        this.sugars = sugars;
+        this.saturatedFats = saturatedFats;
+        this.fruitPercentage = fruitPercentage;
+        this.salt = salt;
+        this.fibers = fibers;
 
     }
     //methods
