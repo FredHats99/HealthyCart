@@ -1,5 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx;
 
+import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -1,5 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx;
 
+import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 

@@ -1,4 +1,4 @@
-package com.cappellinispirito.ispw_project_202223_jfx;
+package com.cappellinispirito.ispw_project_202223_jfx.Model;
 
 import com.cappellinispirito.ispw_project_202223_jfx.scores.FinalScore;
 import com.cappellinispirito.ispw_project_202223_jfx.scores.LiquidNutriscore;
@@ -10,12 +10,19 @@ import java.util.List;
 public class Item {
 
     //attributes
-    private final float price;
-    private final Nutriscore nutriscore;
-    private final FinalScore finalScore;
+    private String barcode;
     private String name;
+    private float price;
     private String imageUrl;
     private String ingredients;
+    private final FinalScore finalScore;
+    private float calories;
+    private float sugars;
+    private float saturatedFats;
+    private float salt;
+
+
+
 
     //construction method
     public Item(
