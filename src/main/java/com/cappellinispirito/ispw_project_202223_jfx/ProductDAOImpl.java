@@ -2,6 +2,7 @@ package com.cappellinispirito.ispw_project_202223_jfx;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
@@ -84,32 +85,6 @@ public class ProductDAOImpl implements productDAO {
 
         return p;
     }
-
-    @Override
-    public List<String> searchProducts(String name) throws IOException, ParseException {
-        // Send a GET request to the API
-        HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/search.json?search_terms=" + name);
-        CloseableHttpResponse response = httpClient.execute(request);
-
-        // Read the response
-        String json = EntityUtils.toString(response.getEntity());
-
-        // Parse the JSON response
-        JSONObject obj = (JSONObject) parser.parse(json);
-        JSONArray products = (JSONArray) obj.get("products");
-
-        // Convert the products array to a list of Product objects
-        List<String> productList = new ArrayList<>();
-        for (Object product : products) {
-            JSONObject productData = (JSONObject) product;
-            //String barcode = (String) productData.get("code");
-            String productName = (String) productData.get("product_name");
-            productList.add(productName);
-        }
-
-        return productList;
-    }
-
 
     @Override
     public boolean isBeverage(JSONObject product) {
