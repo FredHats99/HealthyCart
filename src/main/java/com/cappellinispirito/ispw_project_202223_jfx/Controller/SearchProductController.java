@@ -43,6 +43,7 @@ public class SearchProductController{
     }
 
     public void findProductByName(nameAndHashmapBeanInterface bean) throws IOException, ParseException {
+
         String searchName = bean.getNameToSearch();
         productJSONBean bean2 = new productJSONBeanClass();
         bean2.setName(searchName);

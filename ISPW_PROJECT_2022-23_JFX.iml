@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_16">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_19">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -20,13 +20,13 @@
     <orderEntry type="library" name="Maven: junit:junit:4.10" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:19" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:19" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:linux:19" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:19" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:19" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:linux:19" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-web:19" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:win:19" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-web:linux:19" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-media:19" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:win:19" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-media:linux:19" level="project" />
     <orderEntry type="library" name="Maven: org.controlsfx:controlsfx:11.1.2" level="project" />
     <orderEntry type="library" name="Maven: com.dlsc.formsfx:formsfx-core:11.5.0" level="project" />
     <orderEntry type="library" name="Maven: net.synedra:validatorfx:0.4.0" level="project" />
@@ -40,9 +40,9 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.9.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.9.0" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:19" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:19" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:linux:19" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-base:19" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:19" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:linux:19" level="project" />
     <orderEntry type="library" name="Maven: org.mortbay.jetty:jetty:6.1.25" level="project" />
     <orderEntry type="library" name="Maven: org.mortbay.jetty:jetty-util:6.1.25" level="project" />
     <orderEntry type="library" name="Maven: org.mortbay.jetty:servlet-api:2.5-20081211" level="project" />

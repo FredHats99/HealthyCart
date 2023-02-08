@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ISPW_PROJECT_2022-23_JFX" target="0" />
+      <module name="ISPW_PROJECT_2022-23_JFX" target="19" />
     </bytecodeTargetLevel>
   </component>
 </project>
