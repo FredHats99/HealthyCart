@@ -13,6 +13,7 @@ module com.cappellinispirito.ispw_project_202223_jfx {
     requires org.apache.httpcomponents.httpclient;
     requires org.apache.httpcomponents.httpcore;
     requires json.simple;
+    requires java.sql;
 
     opens com.cappellinispirito.ispw_project_202223_jfx to javafx.fxml;
     exports com.cappellinispirito.ispw_project_202223_jfx;

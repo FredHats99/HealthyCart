@@ -5,5 +5,5 @@ public interface positionBean {
     void setAddress(String address);
 
     //output data
-    String
+
 }
