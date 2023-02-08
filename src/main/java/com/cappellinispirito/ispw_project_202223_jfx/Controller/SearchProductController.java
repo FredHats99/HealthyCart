@@ -11,26 +11,26 @@ import java.io.IOException;
 import java.util.HashMap;
 
 
-public class SearchProductController implements SingletonInterface {
+public class SearchProductController{
     //attributes
-    private SingletonInterface instance;
+    private static SearchProductController instance;
     private UserAccount account;
     private HashMap<String, String> barcodeMap;
 
 
     //methods
-    public SearchProductController(){
-        //from db, retrieve info about account...
+    private SearchProductController(){
+        //retrieve account... (new one as placeholder)
         account = new UserAccount();
     }
 
-    @Override
-    public SingletonInterface getInstance() {
-        if(instance==null){
+    public static SearchProductController getInstance(){
+        if (instance == null){
             instance = new SearchProductController();
         }
         return instance;
     }
+
     public void SearchProduct(nameAndHashmapBeanInterface bean) throws IOException, ParseException {
         if(checkPremium(this.account)){
             findProductByName(bean);

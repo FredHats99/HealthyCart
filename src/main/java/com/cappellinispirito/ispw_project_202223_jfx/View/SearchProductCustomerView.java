@@ -13,7 +13,7 @@ public class SearchProductCustomerView {
     private void searchProduct() throws IOException, ParseException {
         String productNameFromUser = "";
         //This one should be obtained from user input
-        SearchProductController searchProductControllerInstance = new SearchProductController();
+        SearchProductController searchProductControllerInstance =SearchProductController.getInstance();
         nameAndHashmapBeanInterface bean = new nameAndHashmapBeanClass();
         bean.setNameToSearch(productNameFromUser);
         searchProductControllerInstance.SearchProduct(bean);

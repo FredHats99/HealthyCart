@@ -1,7 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Controller.SearchProductController;
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.SingletonInterface;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.productJSONBean;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
