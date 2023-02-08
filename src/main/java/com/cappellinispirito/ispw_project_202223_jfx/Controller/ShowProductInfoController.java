@@ -39,7 +39,7 @@ public class ShowProductInfoController implements SingletonInterface {
 
     private void getBarcodeFromName(String name){
         SearchProductController searchProductController = new SearchProductController();
-        this.barcode = searchProductController.getBarcodeByIndex(name);
+        this.barcode = searchProductController.getBarcodeByName(name);
     }
 
     private void createItem(){

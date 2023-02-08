@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Controller.SearchProductController;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.productJSONBean;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nameAndHashmapBeanInterface;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -26,7 +26,7 @@ public class SearchProductOpenFoodFactsAPIBoundary implements SingletonInterface
         return instance;
     }
 
-    public void findProductByName(productJSONBean bean2) throws IOException, ParseException {
+    public void findProductByName(nameAndHashmapBeanInterface bean2) throws IOException, ParseException {
         HashMap<String, String> nameToBarcode = new HashMap<>();
 
         CloseableHttpClient httpClient = HttpClients.createDefault();

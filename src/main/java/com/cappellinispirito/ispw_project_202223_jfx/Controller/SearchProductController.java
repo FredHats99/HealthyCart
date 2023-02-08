@@ -1,10 +1,9 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Controller;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.UserAccount;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.productJSONBean;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nameAndHashmapBeanInterface;
 import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.SearchProductOpenFoodFactsAPIBoundary;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.productJSONBeanClass;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.nameAndHashmapBeanClass;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -24,7 +23,7 @@ public class SearchProductController{
         account = new UserAccount();
     }
 
-    public static SearchProductController getInstance(){
+    public static SearchProductController getInstance(){ //Singleton
         if (instance == null){
             instance = new SearchProductController();
         }
@@ -45,15 +44,15 @@ public class SearchProductController{
     public void findProductByName(nameAndHashmapBeanInterface bean) throws IOException, ParseException {
 
         String searchName = bean.getNameToSearch();
-        productJSONBean bean2 = new productJSONBeanClass();
-        bean2.setName(searchName);
+        nameAndHashmapBeanInterface bean2 = new nameAndHashmapBeanClass();
+        bean2.setNameToSearch(searchName);
         SearchProductOpenFoodFactsAPIBoundary apiBoundary = new SearchProductOpenFoodFactsAPIBoundary();
         apiBoundary.findProductByName(bean2);
-        this.barcodeMap = bean2.getMap();
+        this.barcodeMap = bean2.getHmNameAndBarcode();
         bean.setHmNameAndBarcode(barcodeMap);
     }
 
-    public String getBarcodeByIndex(String name) {
+    public String getBarcodeByName(String name) {
         return barcodeMap.get(name);
     }
 }
