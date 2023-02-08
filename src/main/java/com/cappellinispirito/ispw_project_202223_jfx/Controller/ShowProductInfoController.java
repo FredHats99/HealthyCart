@@ -9,9 +9,9 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
-public class ShowProductInfoController implements SingletonInstance{
+public class ShowProductInfoController implements SingletonInterface {
 
-    private SingletonInstance instance;
+    private SingletonInterface instance;
     private String barcode;
     private float FruitPercentage;
     private float energy;
@@ -30,7 +30,7 @@ public class ShowProductInfoController implements SingletonInstance{
     private Item newItem;
 
     @Override
-    public SingletonInstance getInstance() {
+    public SingletonInterface getInstance() {
         if(instance == null){
             instance = new ShowProductInfoController();
         }

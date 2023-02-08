@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Controller.SearchProductController;
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.SingletonInstance;
+import com.cappellinispirito.ispw_project_202223_jfx.Controller.SingletonInterface;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.productJSONBean;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -16,11 +16,11 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class SearchProductOpenFoodFactsAPIBoundary implements SingletonInstance {
-    private SingletonInstance instance;
+public class SearchProductOpenFoodFactsAPIBoundary implements SingletonInterface {
+    private SingletonInterface instance;
 
     @Override
-    public SingletonInstance getInstance() {
+    public SingletonInterface getInstance() {
         if(instance==null){
             instance = new SearchProductController();
         }

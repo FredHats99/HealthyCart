@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.SingletonInstance;
+import com.cappellinispirito.ispw_project_202223_jfx.Controller.SingletonInterface;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.barcodeBean;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -13,10 +13,10 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
-public class ShowProductInfoOpenFoodFactsAPIBoundary implements SingletonInstance {
+public class ShowProductInfoOpenFoodFactsAPIBoundary implements SingletonInterface {
     private CloseableHttpClient httpClient;
     private JSONParser parser;
-    private SingletonInstance instance;
+    private SingletonInterface instance;
 
     public void findProductInfoByBarcode(barcodeBean bean) throws IOException, ParseException {
         String barcode = bean.getBarcode();
@@ -95,7 +95,7 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary implements SingletonInstanc
     }
 
     @Override
-    public SingletonInstance getInstance() {
+    public SingletonInterface getInstance() {
         if(instance == null){
             instance = new ShowProductInfoOpenFoodFactsAPIBoundary();
         }
