@@ -35,6 +35,7 @@ public class SearchProductController implements SingletonInstance{
         if(checkPremium(this.account)){
             findProductByName(bean);
         }
+        //else error
     }
 
     private boolean checkPremium(UserAccount account){
@@ -44,8 +45,9 @@ public class SearchProductController implements SingletonInstance{
     public void findProductByName(productNameBean bean) throws IOException, ParseException {
         String searchName = bean.getName();
         productJSONBean bean2 = new productJSONBeanClass();
+        bean2.setName(searchName);
         SearchProductOpenFoodFactsAPIBoundary apiBoundary = new SearchProductOpenFoodFactsAPIBoundary();
-        apiBoundary.findProductByName(searchName, bean2);
+        apiBoundary.findProductByName(bean2);
         this.barcodeMap = bean2.getMap();
         bean.setNameToBarcode(barcodeMap);
     }

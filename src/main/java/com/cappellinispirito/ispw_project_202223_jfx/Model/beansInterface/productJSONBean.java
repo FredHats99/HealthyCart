@@ -5,4 +5,6 @@ import java.util.HashMap;
 public interface productJSONBean {
     HashMap<String, String> getMap();
     void setMap(HashMap<String, String> map);
+    String getName();
+    void setName(String name);
 }

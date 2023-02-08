@@ -27,13 +27,13 @@ public class SearchProductOpenFoodFactsAPIBoundary implements SingletonInstance 
         return instance;
     }
 
-    public void findProductByName(String searchName, productJSONBean bean2) throws IOException, ParseException {
+    public void findProductByName(productJSONBean bean2) throws IOException, ParseException {
         HashMap<String, String> nameToBarcode = new HashMap<>();
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
         JSONParser parser = new JSONParser();
         // Send a GET request to the API
-        HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/search.json?search_terms=" + searchName);
+        HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/search.json?search_terms=" + bean2.getName());
         CloseableHttpResponse response = httpClient.execute(request);
 
         // Read the response
