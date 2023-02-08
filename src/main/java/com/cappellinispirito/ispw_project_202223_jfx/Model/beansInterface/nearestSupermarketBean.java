@@ -7,6 +7,12 @@ public interface nearestSupermarketBean {
     String getSearch();
     void setSearch(String search);
 
-    HashMap<String, String> getSupermarketList();
-    void setSupermarketList(HashMap<String, String> map);
+    List<String> getSupermarketsNamesList();
+    void setSupermarketsNamesList(List<String> list);
+
+    List<String> getSupermarketsAddressesList();
+    void setSupermarketsNamesAddresses(List<String> list);
+
+    List<Float> getSupermarketsNamesDistances();
+    void setSupermarketsNamesDistances(List<Float> list);
 }
