@@ -23,7 +23,7 @@ public class UserAccountDAO {
                 throw new FailedLoginException("Username or Password not valid!");
             }
             rs.first();
-            return rs.getBoolean("isPremium");
+            return true;
 
         } catch (SQLException | FailedLoginException e) {
             throw new RuntimeException(e);
@@ -79,6 +79,31 @@ public class UserAccountDAO {
             Queries.updateToPremium(stmt, username);
         } catch (SQLException e){
             throw new RuntimeException();
+        } finally {
+            if(stmt != null){
+                stmt.close();
+            }
+        }
+    }
+
+    public boolean getPremium(String username) throws SQLException {
+        Statement stmt = null;
+        Connection conn;
+
+        try{
+            conn = DBConnector.getInstance().getConnection();
+            stmt = conn.createStatement();
+            ResultSet rs = Queries.getPremium(stmt, username);
+
+            assert rs != null;
+            if(!rs.first()){
+                throw new FailedLoginException("Username or Password not valid!");
+            }
+            rs.first();
+            return rs.getBoolean("isPremium");
+
+        } catch (SQLException | FailedLoginException e) {
+            throw new RuntimeException(e);
         } finally {
             if(stmt != null){
                 stmt.close();

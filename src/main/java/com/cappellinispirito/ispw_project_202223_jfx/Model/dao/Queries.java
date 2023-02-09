@@ -45,5 +45,9 @@ public class Queries {
         stmt.execute(insertStatement);
     }
 
-
+    public static ResultSet getPremium(Statement stmt, String username) throws SQLException {
+        String selectStatement = String.format("SELECT isPremium FROM Users WHERE Username = '%s';",username);
+        stmt.execute(selectStatement);
+        return stmt.getResultSet();
+    }
 }
