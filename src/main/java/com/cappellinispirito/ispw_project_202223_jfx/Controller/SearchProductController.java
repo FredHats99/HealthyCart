@@ -13,13 +13,13 @@ import java.util.HashMap;
 public class SearchProductController{
     //attributes
     private static SearchProductController instance;
-    private UserAccount account;
+    private final UserAccount account;
     private HashMap<String, String> barcodeMap;
 
 
     //methods
     private SearchProductController(){
-        //retrieve account... (new one as placeholder)
+        account = LogInController.instance.getUserAccountInstance();
     }
 
     public static SearchProductController getInstance(){ //Singleton

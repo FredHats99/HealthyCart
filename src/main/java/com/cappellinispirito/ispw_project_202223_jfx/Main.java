@@ -1,6 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.DBConnector;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,11 +48,9 @@ public class Main extends Application{
         //System.out.println(Nutella.getNutriscore().getNutriscoreValue());
         launch(args);
         //System.exit(0);
-        /*
-        for (Item i: myCart.getItemsList()) {
-            System.out.format("Product Name: %s\nFinal Score: %d\nPrice: %f\nNutriscore: %d\n\n", i.getName(), i.getFinalScore().getFinalScoreValue(), i.getPrice(), i.getNutriscore().getNutriscoreValue());
-        }
-        System.out.format("Total Products: %d\nTotal Price: %f\nAverage Final Score: %d\n\n",myCart.getItemsList().size(), myCart.getTotalPrice(), myCart.getAverageFinalScore());
-        */
+
+        //Testing for db connection...
+        // System.out.println(DBConnector.getInstance().getConnection());
+
     }
 }

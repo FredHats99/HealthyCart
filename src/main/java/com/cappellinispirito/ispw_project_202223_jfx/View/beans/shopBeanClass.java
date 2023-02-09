@@ -1,12 +1,13 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.beans;
 
+import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.shopBean;
 
 public class shopBeanClass implements shopBean {
     private String supermarketName;
     private String supermarketAddress;
-    private String itemToAdd;
-    private String itemToRemove;
+    private int indexOfItemToAdd;
+    private int indexOfItemToRemove;
     private int cartHealthScore;
 
     @Override
@@ -30,23 +31,23 @@ public class shopBeanClass implements shopBean {
     }
 
     @Override
-    public String getItemToAdd() {
-        return itemToAdd;
+    public int getItemToAdd() {
+        return indexOfItemToAdd;
     }
 
     @Override
-    public void setItemToAdd(String item) {
-        itemToAdd = item;
+    public void setItemToAdd(int item) {
+        indexOfItemToAdd = item;
     }
 
     @Override
-    public String getItemToRemove() {
-        return itemToRemove;
+    public int getItemToRemove() {
+        return indexOfItemToRemove;
     }
 
     @Override
-    public void setItemToRemove(String item) {
-        itemToRemove = item;
+    public void setItemToRemove(int item) {
+        indexOfItemToRemove = item;
     }
 
     @Override

@@ -10,6 +10,7 @@ import com.cappellinispirito.ispw_project_202223_jfx.View.beans.positionBeanClas
 
 public class ShowNearestSupermarketsController {
     public static ShowNearestSupermarketsController instance;
+    private Supermarket chosenSupermarket;
 
     private ShowNearestSupermarketsController(){}
 
@@ -35,6 +36,10 @@ public class ShowNearestSupermarketsController {
     }
 
     public void createSupermarket(String name, String address) {
-        Supermarket supermarket = new Supermarket(name, address);
+        chosenSupermarket = new Supermarket(name, address);
+    }
+
+    public Supermarket getChosenSupermarket(){
+        return chosenSupermarket;
     }
 }

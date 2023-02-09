@@ -1,8 +1,8 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class ShoppingCart {
@@ -27,7 +27,7 @@ public class ShoppingCart {
         return totalPrice;
     }
 
-    public int getAverageFinalScore() {
+    public int getAverageScore() {
         return averageFinalScore;
     }
 
@@ -37,10 +37,12 @@ public class ShoppingCart {
 
     public void addItem(Item newItem){
         itemsList.add(newItem);
+        setAverageScore();
     }
 
     public void removeItem(Item trashItem){
         itemsList.remove(trashItem);
+        setAverageScore();
     }
 
     public void setTotalPrice(){
@@ -51,12 +53,12 @@ public class ShoppingCart {
         this.totalPrice=tmpPrice;
     }
 
-    public void setAverageFinalScore(){
-        /*int tmp=0;
+    public void setAverageScore(){
+        int tmp=0;
         for (Item item:this.itemsList) {
-            tmp+=item.getFinalScore().getFinalScoreValue();
+            tmp+=item.getHealthScore();
         }
-        this.averageFinalScore= tmp/itemsList.size();*/
+        this.averageFinalScore= tmp/itemsList.size();
     }
 
     public void setDate(Date date) {

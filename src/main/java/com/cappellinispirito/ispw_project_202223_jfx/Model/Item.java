@@ -46,14 +46,8 @@ public class Item {
                 float price,
                 String name) throws SQLException {
 
-        /*
-        private void generateAdditivesScore(int B_additives,int C_additives, int D_additives, int E_additives){
-        this.additivesScore = 30-(B_additives*5+C_additives*15+D_additives*25+E_additives*30);
-        if (this.additivesScore<0) this.additivesScore=0;
-           }*/
 
         this.healthScore = calculateScore(isBeverage, proteins, fibers, fruitPercentage, calories, sugars, saturatedFats, salt, additives, isBiological);
-        //By now this method does not count the additives. A controller class will do it separately.
         this.barcode = barcode;
         this.price = price;
         this.name = name;
