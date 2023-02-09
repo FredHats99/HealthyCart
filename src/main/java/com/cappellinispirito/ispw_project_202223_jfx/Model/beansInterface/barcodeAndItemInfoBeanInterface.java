@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface;
 
-public interface barcodeBean {
+public interface barcodeAndItemInfoBeanInterface {
     String getBarcode();
     void setBarcode(String barcode);
 

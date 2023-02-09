@@ -1,17 +1,17 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Controller;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.barcodeBean;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nameBean;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.barcodeAndItemInfoBeanInterface;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nameBeanInterface;
 import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.ShowProductInfoOpenFoodFactsAPIBoundary;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.barcodeBeanClass;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.barcodeAndItemInfoBeanClass;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
-public class ShowProductInfoController implements SingletonInterface {
+public class ShowProductInfoController{
 
-    private SingletonInterface instance;
+    private static ShowProductInfoController instance;
     private String barcode;
     private float FruitPercentage;
     private float energy;
@@ -29,8 +29,9 @@ public class ShowProductInfoController implements SingletonInterface {
 
     private Item newItem;
 
-    @Override
-    public SingletonInterface getInstance() {
+    private ShowProductInfoController(){}
+
+    public static ShowProductInfoController getInstance() {
         if(instance == null){
             instance = new ShowProductInfoController();
         }
@@ -38,21 +39,21 @@ public class ShowProductInfoController implements SingletonInterface {
     }
 
     private void getBarcodeFromName(String name){
-        SearchProductController searchProductController = new SearchProductController();
-        this.barcode = searchProductController.getBarcodeByName(name);
+        SearchProductController searchProductController = SearchProductController.getInstance();
+        this.barcode = searchProductController.getBarcodeByName(name); //non è detto che abbia sempre un hashmap pronta
     }
 
     private void createItem(){
         newItem = new Item(barcode, imageUrl, ingredients, energy, sugars, saturatedFats, salt, FruitPercentage, fibers, proteins, additives, isBiological, isBeverage,0,name);
     }
 
-    public void findProductInfo(nameBean bean) throws IOException, ParseException {
+    public void findProductInfo(nameBeanInterface bean) throws IOException, ParseException {
         String name = bean.getName();
         getBarcodeFromName(name);
-        barcodeBean bean2 = new barcodeBeanClass();
+        barcodeAndItemInfoBeanInterface bean2 = new barcodeAndItemInfoBeanClass();
         bean2.setBarcode(this.barcode);
-        ShowProductInfoOpenFoodFactsAPIBoundary showProductInfoOpenFoodFactsAPIBoundary = new ShowProductInfoOpenFoodFactsAPIBoundary();
-        showProductInfoOpenFoodFactsAPIBoundary.findProductInfoByBarcode(bean2);
+        ShowProductInfoOpenFoodFactsAPIBoundary showProductInfoOpenFoodFactsAPIBoundaryInstance = ShowProductInfoOpenFoodFactsAPIBoundary.getInstance();
+        showProductInfoOpenFoodFactsAPIBoundaryInstance.findProductInfoByBarcode(bean2);
         FruitPercentage = bean2.getFruitPercentage();
         energy = bean2.getEnergy();
         sugars = bean2.getSugars();
@@ -66,6 +67,6 @@ public class ShowProductInfoController implements SingletonInterface {
         imageUrl = bean2.getImageUrl();
         ingredients = bean2.getIngredients();
         additives = bean2.getAdditives();
-        createItem();
+        createItem();  //questo item non viene rimandato alla view, e nemmeno le sue informazioni che andrebbero visualizzate
     }
 }

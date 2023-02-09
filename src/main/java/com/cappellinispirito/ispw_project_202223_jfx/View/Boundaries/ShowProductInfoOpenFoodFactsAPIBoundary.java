@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.barcodeBean;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.barcodeAndItemInfoBeanInterface;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -12,12 +12,12 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 
-public class ShowProductInfoOpenFoodFactsAPIBoundary implements SingletonInterface {
+public class ShowProductInfoOpenFoodFactsAPIBoundary{
     private CloseableHttpClient httpClient;
     private JSONParser parser;
-    private SingletonInterface instance;
+    private static ShowProductInfoOpenFoodFactsAPIBoundary instance;
 
-    public void findProductInfoByBarcode(barcodeBean bean) throws IOException, ParseException {
+    public void findProductInfoByBarcode(barcodeAndItemInfoBeanInterface bean) throws IOException, ParseException {
         String barcode = bean.getBarcode();
         // Send a GET request to the API
         HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json");
@@ -93,8 +93,9 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary implements SingletonInterfa
         return labels.contains("organic");
     }
 
-    @Override
-    public SingletonInterface getInstance() {
+    private ShowProductInfoOpenFoodFactsAPIBoundary(){}
+
+    public static ShowProductInfoOpenFoodFactsAPIBoundary getInstance() {
         if(instance == null){
             instance = new ShowProductInfoOpenFoodFactsAPIBoundary();
         }

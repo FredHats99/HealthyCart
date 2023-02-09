@@ -1,8 +1,8 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.beans;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.barcodeBean;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.barcodeAndItemInfoBeanInterface;
 
-public class barcodeBeanClass implements barcodeBean {
+public class barcodeAndItemInfoBeanClass implements barcodeAndItemInfoBeanInterface {
     private String barcode;
     private float FruitPercentage;
     private float energy;
