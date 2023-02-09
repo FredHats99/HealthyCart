@@ -15,7 +15,7 @@ public class CacheProxy implements APIProxyBoundary{
     }
 
     @Override
-    public void getNearestSupermarkets(positionBean bean) {
+    public void getNearestSupermarkets(positionBean bean) throws Exception {
         String searchAddress = bean.getAddress();
         //proxy will check if the search results are already been searched. If yes, return them.
         if(searchToSupermarketsNameCache.containsKey(searchAddress)){

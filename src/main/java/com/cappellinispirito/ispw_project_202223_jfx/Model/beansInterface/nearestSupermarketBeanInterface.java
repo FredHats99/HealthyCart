@@ -1,9 +1,9 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface;
 
-import java.util.HashMap;
 import java.util.List;
 
-public interface nearestSupermarketBean {
+public interface nearestSupermarketBeanInterface {
+
     String getSearch();
     void setSearch(String search);
 

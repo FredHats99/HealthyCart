@@ -1,12 +1,11 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.beans;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nearestSupermarketBean;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nearestSupermarketBeanInterface;
 
-import java.util.HashMap;
 import java.util.List;
 
 
-public class nearestSupermarketBeanClass implements nearestSupermarketBean {
+public class nearestSupermarketBeanClass implements nearestSupermarketBeanInterface {
     private String search;
     private List<String> supermarketsNamesList;
     private List<String> supermarketsAddressesList;
