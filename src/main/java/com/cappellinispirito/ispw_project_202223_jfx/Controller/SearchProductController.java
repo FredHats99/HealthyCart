@@ -46,7 +46,7 @@ public class SearchProductController{
         String searchName = bean.getNameToSearch();
         nameAndHashmapBeanInterface bean2 = new nameAndHashmapBeanClass();
         bean2.setNameToSearch(searchName);
-        SearchProductOpenFoodFactsAPIBoundary apiBoundary = new SearchProductOpenFoodFactsAPIBoundary();
+        SearchProductOpenFoodFactsAPIBoundary apiBoundary = SearchProductOpenFoodFactsAPIBoundary.getInstance();
         apiBoundary.findProductByName(bean2);
         this.barcodeMap = bean2.getHmNameAndBarcode();
         bean.setHmNameAndBarcode(barcodeMap);

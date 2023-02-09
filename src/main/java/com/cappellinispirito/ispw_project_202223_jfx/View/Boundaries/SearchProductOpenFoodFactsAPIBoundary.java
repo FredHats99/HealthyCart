@@ -15,24 +15,26 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class SearchProductOpenFoodFactsAPIBoundary implements SingletonInterface {
-    private SingletonInterface instance;
+public class SearchProductOpenFoodFactsAPIBoundary {
+    private static SearchProductOpenFoodFactsAPIBoundary instance;
 
-    @Override
-    public SingletonInterface getInstance() {
+    private SearchProductOpenFoodFactsAPIBoundary(){}
+
+    public static SearchProductOpenFoodFactsAPIBoundary getInstance() {
         if(instance==null){
-            instance = new SearchProductController();
+            instance = new SearchProductOpenFoodFactsAPIBoundary();
         }
         return instance;
     }
 
     public void findProductByName(nameAndHashmapBeanInterface bean2) throws IOException, ParseException {
-        HashMap<String, String> nameToBarcode = new HashMap<>();
 
+        HashMap<String, String> hmNameAndBarcode = new HashMap<>();
         CloseableHttpClient httpClient = HttpClients.createDefault();
         JSONParser parser = new JSONParser();
+
         // Send a GET request to the API
-        HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/search.json?search_terms=" + bean2.getName());
+        HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/search.json?search_terms=" + bean2.getNameToSearch());
         CloseableHttpResponse response = httpClient.execute(request);
 
         // Read the response
@@ -47,9 +49,9 @@ public class SearchProductOpenFoodFactsAPIBoundary implements SingletonInterface
             JSONObject productData = (JSONObject) product;
             String barcode = (String) productData.get("code");
             String productName = (String) productData.get("product_name");
-            nameToBarcode.put(productName,barcode);
+            hmNameAndBarcode.put(productName,barcode);
         }
 
-        bean2.setMap(nameToBarcode);
+        bean2.setHmNameAndBarcode(hmNameAndBarcode);
     }
 }
