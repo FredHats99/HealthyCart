@@ -18,7 +18,7 @@ public class NameBarcodeAndItemInfoBeanClass implements nameBarcodeAndItemInfoBe
     private boolean isBeverage;
     private String imageUrl;
     private String ingredients;
-    private String additives;
+    private List<String> additives;
     private int price;
     private int score;
 

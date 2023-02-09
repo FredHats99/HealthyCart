@@ -52,11 +52,11 @@ public class ShoppingCart {
     }
 
     public void setAverageFinalScore(){
-        int tmp=0;
+        /*int tmp=0;
         for (Item item:this.itemsList) {
             tmp+=item.getFinalScore().getFinalScoreValue();
         }
-        this.averageFinalScore= tmp/itemsList.size();
+        this.averageFinalScore= tmp/itemsList.size();*/
     }
 
     public void setDate(Date date) {

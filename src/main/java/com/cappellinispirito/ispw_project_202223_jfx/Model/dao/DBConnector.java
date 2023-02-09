@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model.dao;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.SingletonInterface;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;

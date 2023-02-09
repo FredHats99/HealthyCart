@@ -20,7 +20,6 @@ public class SearchProductController{
     //methods
     private SearchProductController(){
         //retrieve account... (new one as placeholder)
-        account = new UserAccount();
     }
 
     public static SearchProductController getInstance(){ //Singleton
