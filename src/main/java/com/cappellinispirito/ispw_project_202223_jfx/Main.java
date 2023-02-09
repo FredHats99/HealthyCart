@@ -20,16 +20,16 @@ public class Main extends Application{
     public void start(Stage myStage) throws IOException {
 
         //node
-        Parent rootNode = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/Main_menu.fxml")));
+        Parent rootNode = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/Main_menu2.fxml")));
         //scene
         Scene myScene = new Scene(rootNode);
         //stylesheet
-        myScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/MyStylesheet.css")).toExternalForm());
+        myScene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/MyStylesheet2.css")).toExternalForm());
         //windows icon
-        Image myIcon = new Image(String.valueOf(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/icons/apple.png")));
+        Image myIcon = new Image(String.valueOf(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/icons/logo.png")));
         myStage.getIcons().add(myIcon);
         //name
-        myStage.setTitle("B T Y");
+        myStage.setTitle("HealthyCart");
         //miscellaneous
         myStage.setResizable(false);
         //initializing variables

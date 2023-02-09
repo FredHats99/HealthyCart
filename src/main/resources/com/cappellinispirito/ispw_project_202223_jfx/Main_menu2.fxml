@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@MyStylesheet2.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox fx:id="top_bar" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="800.0" stylesheets="@MyStylesheet2.css">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" scaleX="0.4" scaleY="0.4" translateX="76.0" translateY="-23.0">
+               <image>
+                  <Image url="@icons/logo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" opacity="0.6" pickOnBounds="true" preserveRatio="true" scaleX="0.15" scaleY="0.15" translateX="270.0" translateY="-25.0">
+               <image>
+                  <Image url="@icons/tune_FILL0_wght400_GRAD0_opsz48.png" />
+               </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
+      <StackPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/Group%201.png" />
+               </image>
+               <StackPane.margin>
+                  <Insets top="20.0" />
+               </StackPane.margin>
+            </ImageView>
+            <TextField fx:id="search_text" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="150.0" promptText="search product!">
+               <StackPane.margin>
+                  <Insets left="40.0" top="22.0" />
+               </StackPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TextField>
+         </children>
+      </StackPane>
+   </children>
+</VBox>
