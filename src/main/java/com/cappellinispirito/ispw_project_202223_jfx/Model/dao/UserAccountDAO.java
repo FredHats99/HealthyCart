@@ -110,4 +110,22 @@ public class UserAccountDAO {
             }
         }
     }
+
+    public boolean checkIfUserExists(String username) throws SQLException {
+        Statement stmt = null;
+        Connection conn;
+
+        try{
+            conn = DBConnector.getInstance().getConnection();
+            stmt = conn.createStatement();
+            ResultSet rs = Queries.checkIfUserExists(stmt, username);
+            return rs.first();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if(stmt != null){
+                stmt.close();
+            }
+        }
+    }
 }

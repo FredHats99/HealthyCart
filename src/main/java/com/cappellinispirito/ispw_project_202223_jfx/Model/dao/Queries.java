@@ -50,4 +50,10 @@ public class Queries {
         stmt.execute(selectStatement);
         return stmt.getResultSet();
     }
+
+    public static ResultSet checkIfUserExists(Statement stmt, String username) throws SQLException {
+        String selectStatement = String.format("SELECT * FROM Users WHERE Username = '%s';", username);
+        stmt.execute(selectStatement);
+        return stmt.getResultSet();
+    }
 }
