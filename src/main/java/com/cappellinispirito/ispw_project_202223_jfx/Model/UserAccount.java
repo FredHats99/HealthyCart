@@ -32,6 +32,6 @@ public class UserAccount {
     }
 
     public void switchPremium(){
-        this.isPremium = !this.isPremium;
+        this.isPremium = true;
     }
 }
