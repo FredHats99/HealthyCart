@@ -1,0 +1,12 @@
+
+#root{
+    -fx-background-color: radial-gradient(focus-distance 0% , center 50% 50% , radius 55% , #C6FFD5, #B1FFC6);
+}
+
+#search_text{
+    -fx-padding: 0px;
+    -fx-background-color: #fafafa;
+    /*-fx-background-insets: 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;*/
+}
