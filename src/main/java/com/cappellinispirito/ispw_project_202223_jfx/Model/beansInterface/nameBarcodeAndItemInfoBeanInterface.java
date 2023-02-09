@@ -1,6 +1,9 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface;
 
-public interface barcodeAndItemInfoBeanInterface {
+public interface nameBarcodeAndItemInfoBeanInterface {
+    String getName();
+    void setName(String name);
+
     String getBarcode();
     void setBarcode(String barcode);
 
@@ -30,9 +33,6 @@ public interface barcodeAndItemInfoBeanInterface {
 
     boolean getIsBeverage();
     void setIsBeverage(boolean isBeverage);
-
-    String getName();
-    void setName(String name);
 
     String getImageUrl();
     void setImageUrl(String imageUrl);

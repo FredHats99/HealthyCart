@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.barcodeAndItemInfoBeanInterface;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nameBarcodeAndItemInfoBeanInterface;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -17,7 +17,7 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
     private JSONParser parser;
     private static ShowProductInfoOpenFoodFactsAPIBoundary instance;
 
-    public void findProductInfoByBarcode(barcodeAndItemInfoBeanInterface bean) throws IOException, ParseException {
+    public void findProductInfoByBarcode(nameBarcodeAndItemInfoBeanInterface bean) throws IOException, ParseException {
         String barcode = bean.getBarcode();
         // Send a GET request to the API
         HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json");

@@ -1,8 +1,9 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.beans;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.barcodeAndItemInfoBeanInterface;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nameBarcodeAndItemInfoBeanInterface;
 
-public class barcodeAndItemInfoBeanClass implements barcodeAndItemInfoBeanInterface {
+public class NameBarcodeAndItemInfoBeanClass implements nameBarcodeAndItemInfoBeanInterface {
+    private String name;
     private String barcode;
     private float FruitPercentage;
     private float energy;
@@ -13,10 +14,19 @@ public class barcodeAndItemInfoBeanClass implements barcodeAndItemInfoBeanInterf
     private float salt;
     private boolean isBiological;
     private boolean isBeverage;
-    private String name;
     private String imageUrl;
     private String ingredients;
     private String additives;
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public String getBarcode() {
@@ -119,16 +129,6 @@ public class barcodeAndItemInfoBeanClass implements barcodeAndItemInfoBeanInterf
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
     public String getImageUrl() {
         return imageUrl;
     }
@@ -157,4 +157,5 @@ public class barcodeAndItemInfoBeanClass implements barcodeAndItemInfoBeanInterf
     public void setAdditives(String additives) {
         this.additives = additives;
     }
+
 }

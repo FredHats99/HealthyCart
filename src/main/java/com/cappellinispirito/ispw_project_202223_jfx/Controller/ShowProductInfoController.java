@@ -1,10 +1,9 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Controller;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.barcodeAndItemInfoBeanInterface;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nameBeanInterface;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nameBarcodeAndItemInfoBeanInterface;
 import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.ShowProductInfoOpenFoodFactsAPIBoundary;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.barcodeAndItemInfoBeanClass;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBarcodeAndItemInfoBeanClass;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -27,7 +26,7 @@ public class ShowProductInfoController{
     private String ingredients;
     private String additives;
 
-    private Item newItem;
+    private Item newItem; // creiamo un item invece di tenere solo le info ricevute perchè l'item ci permette di calcolare dei valori come gli Score.
 
     private ShowProductInfoController(){}
 
@@ -47,10 +46,10 @@ public class ShowProductInfoController{
         newItem = new Item(barcode, imageUrl, ingredients, energy, sugars, saturatedFats, salt, FruitPercentage, fibers, proteins, additives, isBiological, isBeverage,0,name);
     }
 
-    public void findProductInfo(nameBeanInterface bean) throws IOException, ParseException {
+    public void findProductInfo(nameBarcodeAndItemInfoBeanInterface bean) throws IOException, ParseException {
         String name = bean.getName();
         getBarcodeFromName(name);
-        barcodeAndItemInfoBeanInterface bean2 = new barcodeAndItemInfoBeanClass();
+        nameBarcodeAndItemInfoBeanInterface bean2 = new NameBarcodeAndItemInfoBeanClass();
         bean2.setBarcode(this.barcode);
         ShowProductInfoOpenFoodFactsAPIBoundary showProductInfoOpenFoodFactsAPIBoundaryInstance = ShowProductInfoOpenFoodFactsAPIBoundary.getInstance();
         showProductInfoOpenFoodFactsAPIBoundaryInstance.findProductInfoByBarcode(bean2);
