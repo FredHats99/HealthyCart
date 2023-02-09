@@ -43,7 +43,7 @@ public class ShowProductInfoController{
     }
 
     private void createItem(){
-        newItem = new Item(barcode, imageUrl, ingredients, energy, sugars, saturatedFats, salt, FruitPercentage, fibers, proteins, additives, isBiological, isBeverage,0,name);
+        newItem = new Item(barcode, imageUrl, ingredients, energy, sugars, saturatedFats, salt, FruitPercentage, fibers, proteins, additives, isBiological, isBeverage,0,name); //must implement price
     }
 
     public void findProductInfo(nameBarcodeAndItemInfoBeanInterface bean) throws IOException, ParseException {
@@ -67,5 +67,23 @@ public class ShowProductInfoController{
         ingredients = bean2.getIngredients();
         additives = bean2.getAdditives();
         createItem();  //questo item non viene rimandato alla view, e nemmeno le sue informazioni che andrebbero visualizzate
+
+        bean2.setScore(newItem.getHealthScore());
+        bean2.setBarcode(this.barcode);
+        bean2.setName(this.name);
+        bean2.setImageUrl(this.imageUrl);
+        bean2.setIngredients(this.ingredients);
+        bean2.setEnergy(this.energy);
+        bean2.setSugars(this.sugars);
+        bean2.setSaturatedFats(this.saturatedFats);
+        bean2.setSalt(this.salt);
+        bean2.setFruitPercentage(this.FruitPercentage);
+        bean2.setFibers(this.fibers);
+        bean2.setProtein(this.proteins);
+        bean2.setAdditives(this.additives);
+        bean2.setIsBeverage(this.isBeverage);
+        bean2.setIsBio(this.isBiological);
+        //can't pass price
+        //maybe some are redundant
     }
 }

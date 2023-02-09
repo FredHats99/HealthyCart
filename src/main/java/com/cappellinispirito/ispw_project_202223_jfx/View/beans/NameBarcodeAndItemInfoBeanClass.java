@@ -17,6 +17,31 @@ public class NameBarcodeAndItemInfoBeanClass implements nameBarcodeAndItemInfoBe
     private String imageUrl;
     private String ingredients;
     private String additives;
+    private int price;
+    private int score;
+
+
+
+
+
+    @Override
+    public int getScore() {
+        return score;
+    }
+
+    @Override
+    public void setScore(int score) { this.score = score;
+    }
+
+    @Override
+    public int getPrice() {
+        return price;
+    }
+
+    @Override
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     @Override
     public String getName() {
@@ -44,7 +69,7 @@ public class NameBarcodeAndItemInfoBeanClass implements nameBarcodeAndItemInfoBe
     }
 
     @Override
-    public void setFruitPercentage(int fruitPercentage) {
+    public void setFruitPercentage(float fruitPercentage) {
         this.FruitPercentage = fruitPercentage;
     }
 

@@ -169,6 +169,10 @@ public class Item {
         return name;
     }
 
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public float getPrice() {
         return price;
     }

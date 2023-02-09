@@ -17,6 +17,23 @@ public class ShowProductInfoCustomerView {
         nameBarcodeAndItemInfoBeanInterface bean = new NameBarcodeAndItemInfoBeanClass();
         bean.setName(name);
         showProductInfoController.findProductInfo(bean);
+
+        bean.getScore();
+        bean.getBarcode();
+        bean.getName();
+        bean.getImageUrl();
+        bean.getIngredients();
+        bean.getEnergy();
+        bean.getSugars();
+        bean.getSaturatedFats();
+        bean.getSalt();
+        bean.getFruitPercentage();
+        bean.getFibers();
+        bean.getProteins();
+        bean.getAdditives();
+        bean.getIsBeverage();
+        bean.getIsBio();
+
         //display item info
     }
 }

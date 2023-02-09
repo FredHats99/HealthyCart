@@ -7,8 +7,14 @@ public interface nameBarcodeAndItemInfoBeanInterface {
     String getBarcode();
     void setBarcode(String barcode);
 
+    int getPrice();
+    void setPrice(int price);
+
+    int getScore();
+    void setScore(int score);
+
     float getFruitPercentage();
-    void setFruitPercentage(int fruitPercentage);
+    void setFruitPercentage(float fruitPercentage);
 
     float getEnergy();
     void setEnergy(float energy);
