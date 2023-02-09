@@ -1,5 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface;
 
+import java.util.List;
+
 public interface nameBarcodeAndItemInfoBeanInterface {
     String getName();
     void setName(String name);
@@ -46,6 +48,6 @@ public interface nameBarcodeAndItemInfoBeanInterface {
     String getIngredients();
     void setIngredients(String ingredients);
 
-    String getAdditives();
-    void setAdditives(String additives);
+    List<String> getAdditives();
+    void setAdditives(List<String> additives);
 }

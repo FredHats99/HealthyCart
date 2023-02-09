@@ -7,10 +7,14 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShowProductInfoOpenFoodFactsAPIBoundary{
     private CloseableHttpClient httpClient;
@@ -54,8 +58,12 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
         float salt = Float.parseFloat(String.valueOf(nutritionalValues.get("salt")));
         System.out.println(salt);
 
-        String additives = String.valueOf(product.get("additives"));
-
+        JSONArray additivesArray = (JSONArray) JSONValue.parse((Reader) product.get("additives"));
+        List<String> additivesList = new ArrayList<>();
+        int i;
+        for(i=0;i< additivesArray.size();i++){
+            additivesList.add((String) additivesArray.get(i));
+        }
         // Check if the "organic" label is present in the labels array
 
         boolean isBio = isOrganic(product);
@@ -73,7 +81,7 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
         bean.setName(name);
         bean.setImageUrl(imageUrl);
         bean.setIngredients(ingredients);
-        bean.setAdditives(additives);
+        bean.setAdditives(additivesList);
     }
 
     public boolean isBeverage(JSONObject product) {

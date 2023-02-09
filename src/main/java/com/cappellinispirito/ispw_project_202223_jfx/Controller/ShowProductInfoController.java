@@ -7,6 +7,8 @@ import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBarcodeAndIt
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class ShowProductInfoController{
 
@@ -24,7 +26,7 @@ public class ShowProductInfoController{
     private String name;
     private String imageUrl;
     private String ingredients;
-    private String additives;
+    private List<String> additives;
 
     private Item newItem; // creiamo un item invece di tenere solo le info ricevute perchè l'item ci permette di calcolare dei valori come gli Score.
 
@@ -42,11 +44,11 @@ public class ShowProductInfoController{
         this.barcode = searchProductController.getBarcodeByName(name); //non è detto che abbia sempre un hashmap pronta
     }
 
-    private void createItem(){
+    private void createItem() throws SQLException {
         newItem = new Item(barcode, imageUrl, ingredients, energy, sugars, saturatedFats, salt, FruitPercentage, fibers, proteins, additives, isBiological, isBeverage,0,name); //must implement price
     }
 
-    public void findProductInfo(nameBarcodeAndItemInfoBeanInterface bean) throws IOException, ParseException {
+    public void findProductInfo(nameBarcodeAndItemInfoBeanInterface bean) throws IOException, ParseException, SQLException {
         String name = bean.getName();
         getBarcodeFromName(name);
         nameBarcodeAndItemInfoBeanInterface bean2 = new NameBarcodeAndItemInfoBeanClass();
@@ -67,23 +69,23 @@ public class ShowProductInfoController{
         ingredients = bean2.getIngredients();
         additives = bean2.getAdditives();
         createItem();  //questo item non viene rimandato alla view, e nemmeno le sue informazioni che andrebbero visualizzate
-
-        bean2.setScore(newItem.getHealthScore());
-        bean2.setBarcode(this.barcode);
-        bean2.setName(this.name);
-        bean2.setImageUrl(this.imageUrl);
-        bean2.setIngredients(this.ingredients);
-        bean2.setEnergy(this.energy);
-        bean2.setSugars(this.sugars);
-        bean2.setSaturatedFats(this.saturatedFats);
-        bean2.setSalt(this.salt);
-        bean2.setFruitPercentage(this.FruitPercentage);
-        bean2.setFibers(this.fibers);
-        bean2.setProtein(this.proteins);
-        bean2.setAdditives(this.additives);
-        bean2.setIsBeverage(this.isBeverage);
-        bean2.setIsBio(this.isBiological);
+        bean.setScore(newItem.getHealthScore());
+        bean.setBarcode(this.barcode);
+        bean.setName(this.name);
+        bean.setImageUrl(this.imageUrl);
+        bean.setIngredients(this.ingredients);
+        bean.setEnergy(this.energy);
+        bean.setSugars(this.sugars);
+        bean.setSaturatedFats(this.saturatedFats);
+        bean.setSalt(this.salt);
+        bean.setFruitPercentage(this.FruitPercentage);
+        bean.setFibers(this.fibers);
+        bean.setProtein(this.proteins);
+        bean.setAdditives(this.additives);
+        bean.setIsBeverage(this.isBeverage);
+        bean.setIsBio(this.isBiological);
         //can't pass price
         //maybe some are redundant
+        //UPDATE: all those values must be passed to bean for the view to get them, not bean2!
     }
 }

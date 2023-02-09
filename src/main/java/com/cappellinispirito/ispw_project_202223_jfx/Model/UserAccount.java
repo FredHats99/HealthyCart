@@ -5,6 +5,12 @@ public class UserAccount {
     private String password;
     private Boolean isPremium;
 
+    public UserAccount(String username, String password, boolean isPremium) {
+        this.username = username;
+        this.password = password;
+        this.isPremium = isPremium;
+    }
+
     public String getUsername(){
         return this.username;
     }
@@ -26,6 +32,6 @@ public class UserAccount {
     }
 
     public void switchPremium(){
-        this.isPremium = !this.isPremium;
+        this.isPremium = true;
     }
 }

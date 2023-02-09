@@ -1,5 +1,10 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model;
 
+import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.AdditivesDAO;
+
+import java.sql.SQLException;
+import java.util.List;
+
 public class Item {
 
     //attributes
@@ -16,7 +21,7 @@ public class Item {
     private float fruitPercentage;
     private float fibers;
     private float proteins;
-    private String additives;
+    private List<String> additives;
     private float isBiological;
     private float isBeverage;
 
@@ -35,11 +40,11 @@ public class Item {
                 float fruitPercentage,
                 float fibers,
                 float proteins,
-                String additives,
+                List<String> additives,
                 boolean isBiological,
                 boolean isBeverage,
                 float price,
-                String name){
+                String name) throws SQLException {
 
         /*
         private void generateAdditivesScore(int B_additives,int C_additives, int D_additives, int E_additives){
@@ -64,8 +69,37 @@ public class Item {
         this.fibers = fibers;
 
     }
+
+
     //methods
-    private int calculateScore(boolean isBeverage, float proteins, float fibers, float fruitPercentage, float calories, float sugars, float saturatedFats, float salt, String additives, boolean isBiological){
+    private int generateAdditivesScore(List<String> additives) throws SQLException {
+        int B_additives = 0;
+        int C_additives = 0;
+        int D_additives = 0;
+        int E_additives = 0;
+        int additivesScore;
+        AdditivesDAO additivesDAO = new AdditivesDAO();
+        int i;
+        for(i=0; i<additives.size(); i++){
+            switch(additivesDAO.getAdditiveDangerousness(additives.get(i))){
+                case "B":
+                    B_additives++;
+                case "C":
+                    C_additives++;
+                case "D":
+                    D_additives++;
+                case "E":
+                    E_additives++;
+            }
+        }
+        additivesScore = 30-(B_additives*5+C_additives*15+D_additives*25+E_additives*30);
+        if (additivesScore<0) additivesScore=0;
+        return additivesScore;
+    }
+
+
+
+    private int calculateScore(boolean isBeverage, float proteins, float fibers, float fruitPercentage, float calories, float sugars, float saturatedFats, float salt, List<String> additives, boolean isBiological) throws SQLException {
         int negativeScore;
         int positiveScore;
         int proteinScore;
@@ -152,7 +186,9 @@ public class Item {
         if (nutriScore<-2) healthScore = 100;
         else if (nutriScore>19) healthScore = 0;
         else healthScore = (int) (0.00000281*Math.pow(nutriScore,7)-0.00017858*Math.pow(nutriScore,6) +0.00402463*Math.pow(nutriScore,5) -0.03479528*Math.pow(nutriScore,4) +0.02908120*Math.pow(nutriScore,3) +0.91405353*Math.pow(nutriScore,2) -7.98065470*nutriScore +81.31242712) * 3/5; //this is a plot function made by us which plots in 60ties.
-
+        //logic for additives
+        healthScore += generateAdditivesScore(additives);
+        //logic for bio
         if(isBiological){
             healthScore += 10;
         }
@@ -217,7 +253,7 @@ public class Item {
         return proteins;
     }
 
-    public String getAdditives() {
+    public List<String> getAdditives() {
         return additives;
     }
 
@@ -282,7 +318,7 @@ public class Item {
         this.proteins = proteins;
     }
 
-    public void setAdditives(String additives) {
+    public void setAdditives(List<String> additives) {
         this.additives = additives;
     }
 

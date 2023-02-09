@@ -9,6 +9,16 @@ import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.showNearest
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.positionBeanClass;
 
 public class ShowNearestSupermarketsController {
+    public static ShowNearestSupermarketsController instance;
+
+    private ShowNearestSupermarketsController(){}
+
+    public static ShowNearestSupermarketsController getInstance(){
+        if(instance == null){
+            instance = new ShowNearestSupermarketsController();
+        }
+        return instance;
+    }
 
     public void getNearestSupermarkets(nearestSupermarketBeanInterface bean) throws Exception {
             String address = bean.getSearch();

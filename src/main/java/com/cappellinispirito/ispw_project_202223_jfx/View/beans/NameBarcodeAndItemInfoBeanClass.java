@@ -2,6 +2,8 @@ package com.cappellinispirito.ispw_project_202223_jfx.View.beans;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nameBarcodeAndItemInfoBeanInterface;
 
+import java.util.List;
+
 public class NameBarcodeAndItemInfoBeanClass implements nameBarcodeAndItemInfoBeanInterface {
     private String name;
     private String barcode;
@@ -174,12 +176,12 @@ public class NameBarcodeAndItemInfoBeanClass implements nameBarcodeAndItemInfoBe
     }
 
     @Override
-    public String getAdditives() {
+    public List<String> getAdditives() {
         return additives;
     }
 
     @Override
-    public void setAdditives(String additives) {
+    public void setAdditives(List<String> additives) {
         this.additives = additives;
     }
 

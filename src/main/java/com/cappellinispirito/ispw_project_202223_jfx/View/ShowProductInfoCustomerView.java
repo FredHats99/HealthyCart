@@ -6,11 +6,12 @@ import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBarcodeAndIt
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ShowProductInfoCustomerView {
 
 
-    private void ShowProductInfo() throws IOException, ParseException {
+    private void ShowProductInfo() throws IOException, ParseException, SQLException {
         String name = "";
         //This one should be obtained from user input, parsed via index
         ShowProductInfoController showProductInfoController = ShowProductInfoController.getInstance();
