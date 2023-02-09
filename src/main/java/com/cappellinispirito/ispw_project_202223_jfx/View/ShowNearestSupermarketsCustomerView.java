@@ -13,7 +13,7 @@ public class ShowNearestSupermarketsCustomerView {
         nearestSupermarketBeanInterface bean = new nearestSupermarketBeanClass();
         bean.setSearch(address);
         //Should be singleton(?)
-        ShowNearestSupermarketsController showNearestSupermarketsController = new ShowNearestSupermarketsController();
+        ShowNearestSupermarketsController showNearestSupermarketsController = ShowNearestSupermarketsController.getInstance();
         showNearestSupermarketsController.getNearestSupermarkets(bean);
 
 
@@ -21,7 +21,7 @@ public class ShowNearestSupermarketsCustomerView {
     }
     //should use beans tho...
     public void pickSupermarket(String name, String address){
-        ShowNearestSupermarketsController showNearestSupermarketsController = new ShowNearestSupermarketsController();
+        ShowNearestSupermarketsController showNearestSupermarketsController = ShowNearestSupermarketsController.getInstance();
         showNearestSupermarketsController.createSupermarket(name, address);
     }
 }
