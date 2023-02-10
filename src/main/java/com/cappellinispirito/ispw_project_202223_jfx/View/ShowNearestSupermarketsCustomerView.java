@@ -19,7 +19,6 @@ public class ShowNearestSupermarketsCustomerView {
 
         //now display them pls!
     }
-    //should use beans tho...
     public void pickSupermarket(String name, String address){
         ShowNearestSupermarketsController showNearestSupermarketsController = ShowNearestSupermarketsController.getInstance();
         showNearestSupermarketsController.createSupermarket(name, address);

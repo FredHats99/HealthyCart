@@ -43,7 +43,7 @@ public class UserAccountDAO {
             stmt = conn.createStatement();
             Queries.changePassword(stmt, username, newPassword);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } finally {
             if(stmt != null){
                 stmt.close();
@@ -61,7 +61,7 @@ public class UserAccountDAO {
             stmt = conn.createStatement();
             Queries.createAccount(stmt, username, password);
         } catch (SQLException e){
-            throw new RuntimeException();
+            e.printStackTrace();
         } finally {
             if(stmt != null){
                 stmt.close();

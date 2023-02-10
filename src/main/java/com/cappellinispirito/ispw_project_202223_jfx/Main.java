@@ -2,6 +2,7 @@ package com.cappellinispirito.ispw_project_202223_jfx;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.DBConnector;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.UserAccountDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +12,8 @@ import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Objects;
 
 
@@ -40,17 +43,19 @@ public class Main extends Application{
         myStage.show();
     }
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) throws IOException, ParseException, SQLException {
         //testing
         //Coca-cola 1 lt: 5449000133328
         //Nutella: 3017620422003
         String barcode = "3017620422003"; //it's the barcode of nutella
         //System.out.println(Nutella.getNutriscore().getNutriscoreValue());
-        launch(args);
+        //launch(args);
         //System.exit(0);
 
         //Testing for db connection...
-        // System.out.println(DBConnector.getInstance().getConnection());
+        UserAccountDAO accountDAO = new UserAccountDAO();
+        accountDAO.createAccount("Cap", "Cap");
+        System.out.println(DBConnector.getInstance().getConnection());
 
     }
 }

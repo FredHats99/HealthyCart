@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class Queries {
 
     public static void createAccount(Statement stmt, String username, String password) throws SQLException {
-        String insertStatement = String.format("INSERT INTO Users(Username, Password_, isPremium) VALUES ('%s', '%s', 0);", username, password);
+        String insertStatement = String.format("INSERT INTO Users(Username, Password, isPremium) VALUES ('%s', '%s', 0);", username, password);
         stmt.execute(insertStatement);
     }
 
