@@ -1,9 +1,10 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Controller;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nameBarcodeAndItemInfoBeanInterface;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.BarcodeToInformationBean;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.NameToItemSearchBean;
 import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.ShowProductInfoOpenFoodFactsAPIBoundary;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBarcodeAndItemInfoBeanClass;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.BarcodeToInformationBeanClass;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -44,48 +45,37 @@ public class ShowProductInfoController{
         this.barcode = searchProductController.getBarcodeByName(name); //non è detto che abbia sempre un hashmap pronta
     }
 
+    private void getImageUrlFromName(String name){
+        SearchProductController searchProductController = SearchProductController.getInstance();
+        this.imageUrl = searchProductController.getImageUrlByName(name);
+    }
+
     private void createItem() throws SQLException {
         newItem = new Item(barcode, imageUrl, ingredients, energy, sugars, saturatedFats, salt, FruitPercentage, fibers, proteins, additives, isBiological, isBeverage,0,name); //must implement price
     }
 
-    public void findProductInfo(nameBarcodeAndItemInfoBeanInterface bean) throws IOException, ParseException, SQLException {
+    public void findProductInfo(NameToItemSearchBean bean) throws IOException, ParseException, SQLException {
         String name = bean.getName();
+        this.name = name;
         getBarcodeFromName(name);
-        nameBarcodeAndItemInfoBeanInterface bean2 = new NameBarcodeAndItemInfoBeanClass();
-        bean2.setBarcode(this.barcode);
+        getImageUrlFromName(name);
+
+        BarcodeToInformationBean bean2 = new BarcodeToInformationBeanClass();
+        bean2.setBarcodeSearch(this.barcode);
         ShowProductInfoOpenFoodFactsAPIBoundary showProductInfoOpenFoodFactsAPIBoundaryInstance = ShowProductInfoOpenFoodFactsAPIBoundary.getInstance();
         showProductInfoOpenFoodFactsAPIBoundaryInstance.findProductInfoByBarcode(bean2);
         FruitPercentage = bean2.getFruitPercentage();
-        energy = bean2.getEnergy();
+        energy = bean2.getCalories();
         sugars = bean2.getSugars();
         proteins = bean2.getProteins();
         saturatedFats = bean2.getSaturatedFats();
         fibers = bean2.getFibers();
         salt = bean2.getSalt();
-        isBiological = bean2.getIsBio();
+        isBiological = bean2.getIsBiological();
         isBeverage = bean2.getIsBeverage();
-        this.name = name;
-        imageUrl = bean2.getImageUrl();
         ingredients = bean2.getIngredients();
         additives = bean2.getAdditives();
-        createItem();  //questo item non viene rimandato alla view, e nemmeno le sue informazioni che andrebbero visualizzate
-        bean.setScore(newItem.getHealthScore());
-        bean.setBarcode(this.barcode);
-        bean.setName(this.name);
-        bean.setImageUrl(this.imageUrl);
-        bean.setIngredients(this.ingredients);
-        bean.setEnergy(this.energy);
-        bean.setSugars(this.sugars);
-        bean.setSaturatedFats(this.saturatedFats);
-        bean.setSalt(this.salt);
-        bean.setFruitPercentage(this.FruitPercentage);
-        bean.setFibers(this.fibers);
-        bean.setProtein(this.proteins);
-        bean.setAdditives(this.additives);
-        bean.setIsBeverage(this.isBeverage);
-        bean.setIsBio(this.isBiological);
-        //can't pass price
-        //maybe some are redundant
-        //UPDATE: all those values must be passed to bean for the view to get them, not bean2!
+        createItem();  //questo item viene rimandato alla view, per distinguerlo dal Bean che collega contoller e boundary.
+        bean.setResultsItem(newItem);
     }
 }

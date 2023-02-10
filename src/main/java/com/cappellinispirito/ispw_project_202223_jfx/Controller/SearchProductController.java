@@ -19,6 +19,7 @@ public class SearchProductController{
     private List<String> resultImages;
     private List<String> resultBarcodes;
     private HashMap<String, String> nameToBarcodeMap;
+    private HashMap<String, String> nameToImageUrlMap;
 
 
     //methods
@@ -57,6 +58,7 @@ public class SearchProductController{
         int i;
         for(i=0;i<this.resultNames.size();i++){
             nameToBarcodeMap.put(resultNames.get(i), resultBarcodes.get(i));
+            nameToImageUrlMap.put(resultNames.get(i), resultImages.get(i));
         }
         bean.setResultsNames(resultNames);
         bean.setResultsImages(resultImages);
@@ -64,5 +66,9 @@ public class SearchProductController{
 
     public String getBarcodeByName(String name) {
         return nameToBarcodeMap.get(name);
+    }
+
+    public String getImageUrlByName(String name) {
+        return nameToImageUrlMap.get(name);
     }
 }

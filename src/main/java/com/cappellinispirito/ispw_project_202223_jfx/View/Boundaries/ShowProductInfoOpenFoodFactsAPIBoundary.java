@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nameBarcodeAndItemInfoBeanInterface;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.BarcodeToInformationBean;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -21,8 +21,8 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
     private JSONParser parser;
     private static ShowProductInfoOpenFoodFactsAPIBoundary instance;
 
-    public void findProductInfoByBarcode(nameBarcodeAndItemInfoBeanInterface bean) throws IOException, ParseException {
-        String barcode = bean.getBarcode();
+    public void findProductInfoByBarcode(BarcodeToInformationBean bean) throws IOException, ParseException {
+        String barcode = bean.getBarcodeSearch();
         // Send a GET request to the API
         HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json");
         CloseableHttpResponse response = httpClient.execute(request);
@@ -37,7 +37,6 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
         // Extract the product data
         String name = (String) product.get("product_name");
         System.out.println(name);
-        String imageUrl = (String) product.get("image_url");
         String ingredients = (String) product.get("ingredients_text");
 
         JSONObject nutritionalValues = (JSONObject) product.get("nutriments");
@@ -69,17 +68,15 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
         boolean isBio = isOrganic(product);
         boolean isBeverage = isBeverage(product);
 
-        bean.setFruitPercentage(fruitPercentage);
-        bean.setEnergy(energy);
+        bean.setFruitPercentage((float) fruitPercentage);
+        bean.setCalories(energy);
         bean.setSugars(sugars);
-        bean.setProtein(protein);
+        bean.setProteins(protein);
         bean.setSaturatedFats(saturated_fat);
         bean.setFibers(fiber);
         bean.setSalt(salt);
-        bean.setIsBio(isBio);
+        bean.setIsBiological(isBio);
         bean.setIsBeverage(isBeverage);
-        bean.setName(name);
-        bean.setImageUrl(imageUrl);
         bean.setIngredients(ingredients);
         bean.setAdditives(additivesList);
     }
