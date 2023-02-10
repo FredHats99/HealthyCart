@@ -14,7 +14,8 @@ module com.cappellinispirito.ispw_project_202223_jfx {
     requires org.apache.httpcomponents.httpcore;
     requires json.simple;
     requires java.sql;
-    requires mysql.connector.j;
+    //todo: undo for using mysql
+    //requires mysql.connector.j;
 
     opens com.cappellinispirito.ispw_project_202223_jfx to javafx.fxml;
     exports com.cappellinispirito.ispw_project_202223_jfx;

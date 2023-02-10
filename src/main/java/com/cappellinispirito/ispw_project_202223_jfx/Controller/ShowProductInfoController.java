@@ -43,7 +43,7 @@ public class ShowProductInfoController{
 
     private void getBarcodeFromName(String name){
         SearchProductController searchProductController = SearchProductController.getInstance();
-        this.barcode = searchProductController.getBarcodeByName(name); //non è detto che abbia sempre un hashmap pronta
+        this.barcode = searchProductController.getBarcodeByName(name);
     }
 
     private void getImageUrlFromName(String name){
