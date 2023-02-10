@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="rootVbox" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" stylesheets="@MyStylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.View.MainMenuControllerG">
+<VBox fx:id="rootVbox" alignment="TOP_CENTER" prefHeight="600.0" prefWidth="800.0" stylesheets="@MyStylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <HBox fx:id="topbarHbox" alignment="CENTER" stylesheets="@MyStylesheet.css">
       <ImageView blendMode="OVERLAY" fitHeight="33.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@icons/apple.png" />

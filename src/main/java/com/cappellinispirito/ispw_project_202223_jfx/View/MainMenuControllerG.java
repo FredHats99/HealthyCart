@@ -6,10 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 
@@ -20,7 +17,7 @@ public class MainMenuControllerG {
 
     private Stage applicationStage;
     @FXML
-    public AnchorPane rootAnchorPane;
+    public StackPane root;
     public Label appTitle;
     public HBox topBar;
     public ImageView logo;
@@ -34,13 +31,13 @@ public class MainMenuControllerG {
     public MainMenuControllerG(){
     }
 
-    public void onNewGroceryButtonClick() throws IOException {
+    public void onCartHistoryClicked() throws IOException {
         //initialize new scene
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/NewGrocery.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/history.fxml")));
         Parent rootNode = loader.load();
-        NewGroceryControllerG controller = loader.getController();
+        CartHistoryControllerG controller = loader.getController();
         Scene myScene = new Scene(rootNode);
-        Stage stage = (Stage) rootVbox.getScene().getWindow();
+        Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(myScene);
     }
 }

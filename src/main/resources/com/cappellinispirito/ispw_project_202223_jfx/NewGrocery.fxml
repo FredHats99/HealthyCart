@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootAnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.View.NewGroceryControllerG">
+<AnchorPane fx:id="rootAnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <HBox fx:id="topbarHbox" alignment="CENTER" prefHeight="42.0" prefWidth="800.0" stylesheets="@MyStylesheet.css">
          <children>
