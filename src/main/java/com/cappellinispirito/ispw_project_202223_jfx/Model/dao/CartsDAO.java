@@ -1,7 +1,9 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model.dao;
 
 import java.sql.*;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class CartsDAO {
     public void addCart(String username, int avgScore) throws SQLException {
@@ -38,14 +40,14 @@ public class CartsDAO {
         }
     }
 
-    private ResultSet getOldCart(String username){
-        CallableStatement stmt = null;
+    private List<Date> getOldCart(String username){
+        Statement stmt = null;
         Connection conn;
 
         try{
             conn = DBConnector.getInstance().getConnection();
-            stmt = conn.prepareCall("{call get_carts(?)}");
-            stmt.setString(1,username);
+            stmt = conn.createStatement();
+            Queries.getOldCartsDate(stmt, username);
             return stmt.getResultSet();
 
         } catch (SQLException throwables) {
@@ -54,23 +56,32 @@ public class CartsDAO {
         return null;
     }
 
-    public HashMap<String, String> getOldCartItems(String username) throws SQLException {
-        HashMap<String, String> CartToItembarcode = new HashMap<>();
-        String cartId;
+    public HashMap<Integer, String> getOldCartItems(String username) throws SQLException {
+        HashMap<Integer, String> CartToItembarcode = new HashMap<>();
+        CallableStatement stmt = null;
+        Connection conn;
+        int cartId;
         String Itembarcode;
-        ResultSet rs = getOldCart(username);
+        ResultSet rs;
         try{
+            conn = DBConnector.getInstance().getConnection();
+            stmt = conn.prepareCall("{call get_carts(?)}");
+            stmt.setString(1,username);
+            rs = stmt.getResultSet();
             rs.first();
             do{
-                cartId = rs.getString("cartId");
-                Itembarcode = rs.getString("barcode");
+                cartId = rs.getInt("Cart");
+                Itembarcode = rs.getString("Barcode");
                 CartToItembarcode.put(cartId, Itembarcode);
             } while(rs.next());
             return CartToItembarcode;
+
         } catch (NullPointerException e){
-            return null;
+           e.printStackTrace();
         }
+        return null;
     }
+
     public HashMap<String, Integer> getOldItemsQuantity(String username) throws SQLException{
         HashMap<String, Integer> ItemsToQuantity = new HashMap<>();
         String Itembarcode;
