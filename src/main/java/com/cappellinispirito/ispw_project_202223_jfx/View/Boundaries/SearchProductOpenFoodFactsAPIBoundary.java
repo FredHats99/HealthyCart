@@ -1,5 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries;
 
+import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.ResultsFromSearchBean;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameImageBarcodeFromSearchBeanClass;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -29,7 +30,7 @@ public class SearchProductOpenFoodFactsAPIBoundary {
         return instance;
     }
 
-    public void findProductByName(NameImageBarcodeFromSearchBeanClass bean) throws IOException, ParseException {
+    public void findProductByName(NameImageBarcodeFromSearchBeanClass bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
 
         List<String> resultsNames = new ArrayList<>();
         List<String> resultsImages = new ArrayList<>();
@@ -44,7 +45,9 @@ public class SearchProductOpenFoodFactsAPIBoundary {
 
         // Read the response
         String json = EntityUtils.toString(response.getEntity());
-
+        if(json == null){
+            throw new FailedQueryToOpenFoodFacts("Products not found!");
+        }
         // Parse the JSON response
         JSONObject obj = (JSONObject) parser.parse(json);
         JSONArray products = (JSONArray) obj.get("products");

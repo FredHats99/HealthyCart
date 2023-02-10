@@ -1,5 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Controller;
 
+import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.UserAccount;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.ResultsFromSearchBean;
 import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.SearchProductOpenFoodFactsAPIBoundary;
@@ -34,7 +35,7 @@ public class SearchProductController{
         return instance;
     }
 
-    public void SearchProduct(ResultsFromSearchBean bean) throws IOException, ParseException {
+    public void SearchProduct(ResultsFromSearchBean bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
         if(checkPremium(this.account)){
             findProductByName(bean);
         }
@@ -45,7 +46,7 @@ public class SearchProductController{
         return account.getIsPremium();
     }
 
-    public void findProductByName(ResultsFromSearchBean bean) throws IOException, ParseException {
+    public void findProductByName(ResultsFromSearchBean bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
 
         String searchName = bean.getNameToSearch();
         NameImageBarcodeFromSearchBeanClass bean2 = new NameImageBarcodeFromSearchBeanClass();

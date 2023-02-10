@@ -2,18 +2,22 @@ package com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
 
+import java.util.List;
+
 public interface shopBean {
-    String getSupermarketName();
-    void setSupermarketName(String supermarket);
+    //outoput data
+    List<String> getSellableProductName();
+    void setSellableProductName(List<String> sellableProductName);
 
-    String getSupermarketAddress();
-    void setSupermarketAddress(String address);
-    //Not quite sure if String or something else
-    int getItemToAdd();
-    void setItemToAdd(int item);
+    List<String> getSellableProductImage();
+    void setSellableProductImage(List<String> sellableProductImage);
 
-    int getItemToRemove();
-    void setItemToRemove(int item);
+    //Query data
+    String getItemToAdd();
+    void setItemToAdd(String name);
+
+    String getItemToRemove();
+    void setItemToRemove(String name);
 
     int getCartHealthScore();
     void setCartHealthScore(int score);

@@ -8,8 +8,9 @@ import java.util.List;
 
 public class supermarketsToProductsBeanClass implements supermarketsToProductsBean {
     private Supermarket supermarket;
-    private List<Item> soldProducts;
-
+    private List<String> sellableProductsNames;
+    private List<String> sellableProductsImages;
+    private List<String> sellableProductsBarcodes;
 
     @Override
     public Supermarket getSupermarket() {
@@ -22,12 +23,34 @@ public class supermarketsToProductsBeanClass implements supermarketsToProductsBe
     }
 
     @Override
-    public List<Item> getSoldProducts() {
-        return soldProducts;
+    public List<String> getSellableProductsName() {
+        return sellableProductsNames;
     }
 
     @Override
-    public void setSoldProducts(List<Item> list) {
-        soldProducts = list;
+    public void setSellableProductsNames(List<String> sellableProductsName) {
+        this.sellableProductsNames = sellableProductsName;
     }
+
+    @Override
+    public List<String> getSellableProductsImage() {
+        return sellableProductsImages;
+    }
+
+    @Override
+    public void setSellableProductsImage(List<String> sellableProductsImage) {
+        this.sellableProductsImages = sellableProductsImage;
+    }
+
+    @Override
+    public List<String> getSellableProductsBarcode() {
+        return sellableProductsBarcodes;
+    }
+
+    @Override
+    public void setSellableProductsBarcode(List<String> sellableProductsBarcodes) {
+        this.sellableProductsBarcodes = sellableProductsBarcodes;
+    }
+
+
 }

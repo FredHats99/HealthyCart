@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class AdditivesDAO {
-
     public String getAdditiveDangerousness(String additive) throws SQLException{
         Statement stmt = null;
         Connection conn;

@@ -1,5 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries;
 
+import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.BarcodeToInformationBean;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -21,7 +22,7 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
     private JSONParser parser;
     private static ShowProductInfoOpenFoodFactsAPIBoundary instance;
 
-    public void findProductInfoByBarcode(BarcodeToInformationBean bean) throws IOException, ParseException {
+    public void findProductInfoByBarcode(BarcodeToInformationBean bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
         String barcode = bean.getBarcodeSearch();
         // Send a GET request to the API
         HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json");
@@ -33,7 +34,9 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
         // Parse the JSON response
         JSONObject obj = (JSONObject) parser.parse(json);
         JSONObject product = (JSONObject) obj.get("product");
-
+        if(product == null){
+            throw new FailedQueryToOpenFoodFacts("product not found!");
+        }
         // Extract the product data
         String name = (String) product.get("product_name");
         System.out.println(name);
