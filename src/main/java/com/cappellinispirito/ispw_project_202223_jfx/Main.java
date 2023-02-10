@@ -54,7 +54,7 @@ public class Main extends Application{
 
         //Testing for db connection...
         UserAccountDAO accountDAO = new UserAccountDAO();
-        accountDAO.createAccount("Cap", "Cap");
+        accountDAO.createAccount("Gio", "Gio");
         System.out.println(DBConnector.getInstance().getConnection());
 
     }

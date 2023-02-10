@@ -20,4 +20,6 @@ public class ConsultCartHistoryCustomerView {
         cartsScore = bean.getCartsScore();
         //Now display them...
     }
+
+    public void showCart(){}
 }
