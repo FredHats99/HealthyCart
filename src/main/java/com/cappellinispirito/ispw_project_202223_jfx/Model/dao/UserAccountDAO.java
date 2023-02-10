@@ -1,5 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model.dao;
 
+import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedRegistrationException;
+
 import javax.security.auth.login.FailedLoginException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -111,7 +113,7 @@ public class UserAccountDAO {
         }
     }
 
-    public boolean checkIfUserExists(String username) throws SQLException {
+    public void checkIfUserExists(String username) throws SQLException {
         Statement stmt = null;
         Connection conn;
 
@@ -119,9 +121,11 @@ public class UserAccountDAO {
             conn = DBConnector.getInstance().getConnection();
             stmt = conn.createStatement();
             ResultSet rs = Queries.checkIfUserExists(stmt, username);
-            return rs.first();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            if(rs.first()){
+                throw new FailedRegistrationException("This user already exists!");
+            }
+        } catch (SQLException | FailedRegistrationException e) {
+            e.printStackTrace();
         } finally {
             if(stmt != null){
                 stmt.close();

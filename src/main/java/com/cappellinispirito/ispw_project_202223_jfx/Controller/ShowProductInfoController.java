@@ -76,6 +76,7 @@ public class ShowProductInfoController{
         ingredients = bean2.getIngredients();
         additives = bean2.getAdditives();
         createItem();  //questo item viene rimandato alla view, per distinguerlo dal Bean che collega contoller e boundary.
+        //Health score logic is inside this Item
         bean.setResultsItem(newItem);
     }
 }

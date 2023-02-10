@@ -19,7 +19,7 @@ public class LogInController {
         return instance;
     }
 
-    public void checkCredentials(LogInBean bean) throws SQLException {
+    public void checkCredentials(LogInBean bean) throws FailedLoginException, SQLException {
         String username = bean.getUsername();
         String password = bean.getPassword();
         UserAccountDAO accountDAO = new UserAccountDAO();

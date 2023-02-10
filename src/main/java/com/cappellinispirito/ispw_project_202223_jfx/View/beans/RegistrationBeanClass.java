@@ -5,7 +5,7 @@ import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.Regist
 public class RegistrationBeanClass implements RegistrationBean {
     private String username;
     private String password;
-    private Boolean isRegistrationDone;
+    private Boolean isRegistrationDone = false;
 
     @Override
     public String getUsername() {
