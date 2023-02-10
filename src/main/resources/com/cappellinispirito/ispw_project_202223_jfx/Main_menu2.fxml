@@ -4,44 +4,113 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@MyStylesheet2.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" scaleX="1.2" scaleY="1.2">
+            <ImageView fitHeight="65.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/Group%201.png" />
                </image>
             </ImageView>
-            <TextField fx:id="search_text" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="150.0" promptText="search for product" stylesheets="@MyStylesheet2.css">
+            <TextField fx:id="search_text" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="220.0" promptText="search for product" stylesheets="@MyStylesheet2.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+               <StackPane.margin>
+                  <Insets left="45.0" />
+               </StackPane.margin>
             </TextField>
          </children>
+         <StackPane.margin>
+            <Insets top="-130.0" />
+         </StackPane.margin>
       </StackPane>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
          <children>
-            <Rectangle arcHeight="80.0" arcWidth="80.0" fill="WHITE" height="120.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="300.0" StackPane.alignment="CENTER" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
+            <Rectangle arcHeight="80.0" arcWidth="80.0" fill="WHITE" height="140.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="330.0" StackPane.alignment="CENTER" />
+            <ImageView fitHeight="122.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
                <image>
-                  <Image url="@icons/logo.png" />
+                  <Image url="@icons/logoFigma.png" />
                </image>
             </ImageView>
          </children>
          <StackPane.margin>
-            <Insets top="20.0" />
+            <Insets top="70.0" />
          </StackPane.margin>
       </StackPane>
-      <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_RIGHT">
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
+         <children>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <ImageView fitWidth="40.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+                     <image>
+                        <Image url="@icons/tune_FILL0_wght400_GRAD0_opsz48.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" StackPane.alignment="TOP_CENTER">
+                     <StackPane.margin>
+                        <Insets top="45.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </StackPane>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <ImageView fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+                     <image>
+                        <Image url="@icons/user64.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" StackPane.alignment="TOP_CENTER">
+                     <StackPane.margin>
+                        <Insets top="45.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+            </StackPane>
+         </children>
+         <StackPane.margin>
+            <Insets right="15.0" top="15.0" />
+         </StackPane.margin>
+      </HBox>
+      <ImageView fitHeight="129.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
          <image>
-            <Image url="@icons/tune_FILL0_wght400_GRAD0_opsz48.png" />
+            <Image url="@icons/add%20button.png" />
          </image>
          <StackPane.margin>
-            <Insets left="11000.0" right="10.0" top="10.0" />
+            <Insets top="100.0" />
+         </StackPane.margin>
+      </ImageView>
+      <ImageView fitHeight="129.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
+         <image>
+            <Image url="@icons/find%20sup.png" />
+         </image>
+         <StackPane.margin>
+            <Insets right="280.0" top="100.0" />
+         </StackPane.margin>
+      </ImageView>
+      <ImageView fitHeight="129.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
+         <image>
+            <Image url="@icons/historybutton.png" />
+         </image>
+         <StackPane.margin>
+            <Insets left="280.0" top="100.0" />
          </StackPane.margin>
       </ImageView>
    </children>
