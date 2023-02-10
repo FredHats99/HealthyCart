@@ -1,6 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model.dao;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +41,8 @@ public class CartsDAO {
         }
     }
 
-    private List<Date> getOldCart(String username){
+    public List<Date> getOldCartDate(String username){
+        List<Date> dateList = new ArrayList<>();
         Statement stmt = null;
         Connection conn;
 
@@ -48,12 +50,55 @@ public class CartsDAO {
             conn = DBConnector.getInstance().getConnection();
             stmt = conn.createStatement();
             Queries.getOldCartsDate(stmt, username);
-            return stmt.getResultSet();
-
+            ResultSet rs = stmt.getResultSet();
+            rs.first();
+            do{
+                dateList.add(rs.getDate("date"));
+            } while(rs.next());
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return null;
+        return dateList;
+    }
+
+    public List<Integer> getOldCartScores(String username){
+        List<Integer> scoreList = new ArrayList<>();
+        Statement stmt = null;
+        Connection conn;
+
+        try{
+            conn = DBConnector.getInstance().getConnection();
+            stmt = conn.createStatement();
+            Queries.getOldCartsScore(stmt, username);
+            ResultSet rs = stmt.getResultSet();
+            rs.first();
+            do{
+                scoreList.add(rs.getInt("avgScore"));
+            } while(rs.next());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return scoreList;
+    }
+
+    public List<Integer> getOldCartId(String username){
+        List<Integer> idList = new ArrayList<>();
+        Statement stmt = null;
+        Connection conn;
+
+        try{
+            conn = DBConnector.getInstance().getConnection();
+            stmt = conn.createStatement();
+            Queries.getOldCartsId(stmt, username);
+            ResultSet rs = stmt.getResultSet();
+            rs.first();
+            do{
+                idList.add(rs.getInt("idCarts"));
+            } while(rs.next());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return idList;
     }
 
     public HashMap<Integer, String> getOldCartItems(String username) throws SQLException {
@@ -82,21 +127,6 @@ public class CartsDAO {
         return null;
     }
 
-    public HashMap<String, Integer> getOldItemsQuantity(String username) throws SQLException{
-        HashMap<String, Integer> ItemsToQuantity = new HashMap<>();
-        String Itembarcode;
-        int quantity;
-        ResultSet rs = getOldCart(username);
-        try{
-            rs.first();
-            do{
-                Itembarcode = rs.getString("barcode");
-                quantity = Integer.parseInt(rs.getString("quantity"));
-                ItemsToQuantity.put(Itembarcode, quantity);
-            } while(rs.next());
-            return ItemsToQuantity;
-        } catch (NullPointerException e){
-            return null;
-        }
-    }
+    public void getOldItemsQuantity(String username) throws SQLException{}
+
 }

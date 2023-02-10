@@ -48,5 +48,6 @@
     <orderEntry type="library" name="Maven: org.mortbay.jetty:servlet-api:2.5-20081211" level="project" />
     <orderEntry type="library" name="javafx-sdk-19.0.2" level="project" />
     <orderEntry type="library" name="mysql-connector-j-8.0.321" level="project" />
+    <orderEntry type="library" name="mysql-connector-j-8.0.32" level="project" />
   </component>
 </module>

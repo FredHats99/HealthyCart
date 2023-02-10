@@ -56,4 +56,19 @@ public class Queries {
         stmt.execute(selectStatement);
         return stmt.getResultSet();
     }
+
+    public static void getOldCartsDate(Statement stmt, String username) throws SQLException {
+        String selectStatement = String.format("SELECT date FROM Carts WHERE user = '%s'",username);
+        stmt.execute(selectStatement);
+    }
+
+    public static void getOldCartsScore(Statement stmt, String username) throws SQLException {
+        String selectStatement = String.format("SELECT avgScore FROM Carts WHERE user = '%s'",username);
+        stmt.execute(selectStatement);
+    }
+
+    public static void getOldCartsId(Statement stmt, String username) throws SQLException {
+        String selectStatement = String.format("SELECT idCarts FROM Carts WHERE user = '%s'",username);
+        stmt.execute(selectStatement);
+    }
 }
