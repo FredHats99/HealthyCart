@@ -101,8 +101,8 @@ public class CartsDAO {
         return idList;
     }
 
-    public HashMap<Integer, String> getOldCartItems(String username) throws SQLException {
-        HashMap<Integer, String> CartToItembarcode = new HashMap<>();
+    public List<String> getOldCartItems(String username, int idCart) throws SQLException {
+        List<String> barcodesInCart = new ArrayList<>();
         CallableStatement stmt = null;
         Connection conn;
         int cartId;
@@ -117,14 +117,16 @@ public class CartsDAO {
             do{
                 cartId = rs.getInt("Cart");
                 Itembarcode = rs.getString("Barcode");
-                CartToItembarcode.put(cartId, Itembarcode);
+                if(cartId == idCart){
+                    barcodesInCart.add(Itembarcode);
+                }
             } while(rs.next());
-            return CartToItembarcode;
+            return barcodesInCart;
 
         } catch (NullPointerException e){
            e.printStackTrace();
         }
-        return null;
+        return barcodesInCart;
     }
 
     public void getOldItemsQuantity(String username) throws SQLException{}

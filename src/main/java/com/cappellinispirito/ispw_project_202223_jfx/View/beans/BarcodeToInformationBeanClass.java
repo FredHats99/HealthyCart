@@ -18,6 +18,9 @@ public class BarcodeToInformationBeanClass implements BarcodeToInformationBean {
     List<String> additivesResult;
     Boolean isBioResult;
     Boolean isBeverageResult;
+    //Optional, unless coming from Consult Old Cart use case
+    String name;
+    String image;
 
     @Override
     public String getBarcodeSearch() {
@@ -137,5 +140,25 @@ public class BarcodeToInformationBeanClass implements BarcodeToInformationBean {
     @Override
     public void setIsBeverage(Boolean isBeverage) {
         isBeverageResult = isBeverage;
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getImage() {
+        return this.image;
+    }
+
+    @Override
+    public void setImage(String image) {
+        this.image = image;
     }
 }

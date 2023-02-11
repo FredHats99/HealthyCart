@@ -39,7 +39,7 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
         }
         // Extract the product data
         String name = (String) product.get("product_name");
-        System.out.println(name);
+        String image = (String) product.get("image_url");
         String ingredients = (String) product.get("ingredients_text");
 
         JSONObject nutritionalValues = (JSONObject) product.get("nutriments");
@@ -82,6 +82,8 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
         bean.setIsBeverage(isBeverage);
         bean.setIngredients(ingredients);
         bean.setAdditives(additivesList);
+        bean.setName(name);
+        bean.setImage(image);
     }
 
     public boolean isBeverage(JSONObject product) {

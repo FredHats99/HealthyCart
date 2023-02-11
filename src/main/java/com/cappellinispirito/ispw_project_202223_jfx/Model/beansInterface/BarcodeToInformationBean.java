@@ -43,4 +43,10 @@ public interface BarcodeToInformationBean {
 
     Boolean getIsBeverage();
     void setIsBeverage(Boolean isBeverage);
+
+    String getName();
+    void setName(String name);
+
+    String getImage();
+    void setImage(String image);
 }
