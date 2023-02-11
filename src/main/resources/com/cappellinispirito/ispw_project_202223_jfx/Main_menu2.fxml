@@ -11,7 +11,7 @@
    <children>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="65.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Label_View" fitHeight="65.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/Group%201.png" />
                </image>
@@ -96,7 +96,7 @@
                         <Image url="@icons/user64.png" />
                      </image>
                   </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" StackPane.alignment="TOP_CENTER">
+                  <Text fx:id="userName_label" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" StackPane.alignment="TOP_CENTER">
                      <StackPane.margin>
                         <Insets top="45.0" />
                      </StackPane.margin>
