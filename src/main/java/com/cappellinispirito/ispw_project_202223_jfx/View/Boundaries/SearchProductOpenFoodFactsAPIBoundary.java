@@ -58,7 +58,7 @@ public class SearchProductOpenFoodFactsAPIBoundary {
         }
         // Convert the products array to a list of Product objects
         int i;
-        for (i=0;i<3;i++) {
+        for (i=0;i<6;i++) {
             //Dunno why but products provided are always 2*3 = 6...
             JSONObject productData = (JSONObject) products.get(i);
             String barcode = (String) productData.get("code");

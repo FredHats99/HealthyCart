@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class SearchProductCustomerView {
+    List<String> resultsNames;
+    private List<String> resultsImages;
 
 
     public void searchProduct(String searchText) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
@@ -18,13 +20,21 @@ public class SearchProductCustomerView {
         ResultsFromSearchBean bean = new NameImageFromSearchBeanClass();
         bean.setNameToSearch(searchText);
         searchProductControllerInstance.SearchProduct(bean);
-        List<String> resultsNames = bean.getResultsNames();
-        List<String> resultsImages = bean.getResultsImages();
+        resultsNames = bean.getResultsNames();
+        resultsImages = bean.getResultsImages();
         //Now the results should be displayed
         int i;
         for(i=0;i<resultsNames.size();i++){
             System.out.println(resultsNames.get(i));
             System.out.println(resultsImages.get(i));
         }
+    }
+
+    public List<String> getResultsImages() {
+        return resultsImages;
+    }
+
+    public List<String> getResultsNames(){
+        return resultsNames;
     }
 }

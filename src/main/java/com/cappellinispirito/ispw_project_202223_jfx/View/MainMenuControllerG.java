@@ -34,11 +34,9 @@ public class MainMenuControllerG {
     //public Text userName_label;
 
     LogInCustomerView logInCustomerView;
-    SearchProductCustomerView searchProductCustomerView;
 
     public MainMenuControllerG() throws FailedQueryToOpenFoodFacts {
         logInCustomerView = new LogInCustomerView();
-        searchProductCustomerView = new SearchProductCustomerView();
     }
 
     public void onCartHistoryClicked() throws IOException, DeniedPermissionsException {
@@ -61,9 +59,15 @@ public class MainMenuControllerG {
             //TODO: some label will tell the user he has to be premium...
             throw new DeniedPermissionsException("You have to be a premium user to use this functionality!");
         }*/
-        if(searchText != null){
-            searchProductCustomerView.searchProduct(searchText);
+        if(searchText == null){
+            throw new DeniedPermissionsException("Input non valid!");
         }
         //initialize new scene
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/search.fxml")));
+        SearchProductControllerG controller = loader.getController();
+        Parent rootNode = loader.load();
+        Scene myScene = new Scene(rootNode);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(myScene);
     }
 }

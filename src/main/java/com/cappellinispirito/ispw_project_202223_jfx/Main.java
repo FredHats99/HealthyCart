@@ -51,7 +51,7 @@ public class Main extends Application{
         //Nutella: 3017620422003
         String barcode = "3017620422003"; //it's the barcode of nutella
         //System.out.println(Nutella.getNutriscore().getNutriscoreValue());
-        //launch(args);
+        launch(args);
         //System.exit(0);
 
         //Testing for db connection...
