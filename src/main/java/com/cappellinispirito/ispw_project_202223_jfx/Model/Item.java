@@ -1,6 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.AdditivesDAO;
+import javafx.scene.image.Image;
 
 import java.sql.SQLException;
 import java.util.List;
