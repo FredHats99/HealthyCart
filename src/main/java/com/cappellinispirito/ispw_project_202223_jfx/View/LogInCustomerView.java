@@ -8,8 +8,8 @@ import javax.security.auth.login.FailedLoginException;
 import java.sql.SQLException;
 
 public class LogInCustomerView {
-    //private String username = "";
-    //private String password = "";
+    private String username;
+    private String password;
     private boolean isPremium = false;
 
     private boolean isCredentialsCorrect;
@@ -17,18 +17,24 @@ public class LogInCustomerView {
 
     public void attemptLogin(String username, String password) throws SQLException, FailedLoginException {
         //Suppose Username and Password field have been updated from user input
-        LogInBean bean = new LogInBeanClass();
-        bean.setUsername(username);
-        bean.setPassword(password);
-        LogInController logInController = LogInController.getInstance();
-        logInController.checkCredentials(bean);
-        isCredentialsCorrect = bean.getIsCredentialsCorrect();
-        if(isCredentialsCorrect){
-            //logic for login ok
-            isLoginDone = true;
-            isPremium = bean.getIsPremium();
-        } else {
-            //display error message
+        try{
+            LogInBean bean = new LogInBeanClass();
+            bean.setUsername(username);
+            bean.setPassword(password);
+            LogInController logInController = LogInController.getInstance();
+            logInController.checkCredentials(bean);
+            isCredentialsCorrect = bean.getIsCredentialsCorrect();
+            if(isCredentialsCorrect){
+                //logic for login ok
+                isLoginDone = true;
+                isPremium = bean.getIsPremium();
+                username = bean.getUsername();
+                password = bean.getPassword();
+            } else {
+                //display error message
+            }
+        } catch (NullPointerException e){
+
         }
     }
     public boolean getIsLoginDone(){
@@ -37,5 +43,9 @@ public class LogInCustomerView {
 
     public boolean getIsPremium(){
         return isPremium;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

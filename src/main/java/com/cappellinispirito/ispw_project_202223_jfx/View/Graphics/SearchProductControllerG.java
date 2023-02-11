@@ -64,7 +64,7 @@ public class SearchProductControllerG {
     public RadioButton searchButton;
     public TextField search_text;
 
-    String searchText;
+    String username;
 
     public SearchProductControllerG() throws FailedQueryToOpenFoodFacts, IOException, ParseException {
         // if bean.value != NULL -> searchProduct(bean.value)
@@ -183,5 +183,9 @@ public class SearchProductControllerG {
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(myScene);
+    }
+
+    public void setUsername(String username) {
+
     }
 }

@@ -23,27 +23,35 @@ public class LogInControllerG {
     public Label loginbutton;
     public Label registerbutton;
 
+    LogInCustomerView view;
+
     public LogInControllerG(){
 
     }
 
-    public void onLoginClick() throws FailedLoginException, SQLException {
+    public void onLoginClick() throws FailedLoginException, SQLException, IOException {
         String username = usernametext.getText();
         String password = passwordtext.getText();
         if(username != null || password != null){
-            LogInCustomerView view = new LogInCustomerView();
+            view = new LogInCustomerView();
             view.attemptLogin(usernametext.getText(), passwordtext.getText());
+            if(view.getIsLoginDone()){
+                onBackPressed();
+            }
         }
 
     }
 
     public void onBackPressed() throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/main_menu2.fxml")));
-        SearchProductControllerG controller = loader.getController();
+        MainMenuControllerG controller = loader.getController();
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(myScene);
+        if(view.getIsLoginDone()){
+            controller.setUsername(view.getUsername());
+        }
     }
 
     public void onRegisterClick() throws Exception {
