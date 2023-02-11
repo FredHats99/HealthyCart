@@ -15,18 +15,15 @@ import java.util.List;
 public class SearchProductController{
     //attributes
     private static SearchProductController instance;
-    private final UserAccount account;
     private List<String> resultNames;
     private List<String> resultImages;
     private List<String> resultBarcodes;
-    private HashMap<String, String> nameToBarcodeMap;
-    private HashMap<String, String> nameToImageUrlMap;
+    private HashMap<String, String> nameToBarcodeMap = new HashMap<>();
+    private HashMap<String, String> nameToImageUrlMap = new HashMap<>();
 
 
     //methods
-    private SearchProductController(){
-        account = LogInController.instance.getUserAccountInstance();
-    }
+    private SearchProductController(){}
 
     public static SearchProductController getInstance(){ //Singleton
         if (instance == null){
@@ -36,9 +33,7 @@ public class SearchProductController{
     }
 
     public void SearchProduct(ResultsFromSearchBean bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
-        if(checkPremium(this.account)){
-            findProductByName(bean);
-        }
+        findProductByName(bean);
         //else error
     }
 

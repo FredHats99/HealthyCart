@@ -1,8 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.DBConnector;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.UserAccountDAO;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
+import com.cappellinispirito.ispw_project_202223_jfx.View.SearchProductCustomerView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +11,6 @@ import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Objects;
 
@@ -43,7 +41,7 @@ public class Main extends Application{
         myStage.show();
     }
 
-    public static void main(String[] args) throws IOException, ParseException, SQLException {
+    public static void main(String[] args) throws IOException, ParseException, SQLException, FailedQueryToOpenFoodFacts {
         //testing
         //Coca-cola 1 lt: 5449000133328
         //Nutella: 3017620422003
@@ -56,6 +54,7 @@ public class Main extends Application{
         /*UserAccountDAO accountDAO = new UserAccountDAO();
         accountDAO.createAccount("Gio", "Gio");
         System.out.println(DBConnector.getInstance().getConnection());*/
+
 
     }
 }

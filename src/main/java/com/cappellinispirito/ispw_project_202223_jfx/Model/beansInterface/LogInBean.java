@@ -10,4 +10,7 @@ public interface LogInBean {
     //output data
     Boolean getIsCredentialsCorrect();
     void setIsCredentialsCorrect(Boolean bool);
+
+    boolean getIsPremium();
+    void setIsPremium(boolean isPremium);
 }
