@@ -24,9 +24,9 @@ public class SearchProductCustomerView {
         resultsImages = bean.getResultsImages();
         //Now the results should be displayed
         int i;
-        for(i=0;i<resultsNames.size();i++){
-            System.out.println(resultsNames.get(i));
-            System.out.println(resultsImages.get(i));
+        for(i=0;i<Math.min(resultsNames.size(), resultsImages.size());i++){
+                System.out.println(resultsNames.get(i));
+                System.out.println(resultsImages.get(i));
         }
     }
 

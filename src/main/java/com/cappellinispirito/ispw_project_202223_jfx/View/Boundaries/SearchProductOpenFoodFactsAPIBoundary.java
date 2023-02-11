@@ -42,8 +42,8 @@ public class SearchProductOpenFoodFactsAPIBoundary {
 
         // Send a GET request to the API
         System.out.println("Connecting...");
-        String search = bean.getNameToSearch().replace(" ", "%20");
-        HttpGet request = new HttpGet("https://world.openfoodfacts.org/cgi/search.pl?search_terms="+ search +"&search_simple=1&action=process&json=1&tagtype_0=languages&tag_contains_0=contains&tag_0=italian");
+        String search = bean.getNameToSearch().replace(" ", "+");
+        HttpGet request = new HttpGet("https://it.openfoodfacts.org/cgi/search.pl?search_terms="+ search +"&search_simple=1&action=process&json=1");
         CloseableHttpResponse response = httpClient.execute(request);
 
         // Read the response
@@ -57,25 +57,38 @@ public class SearchProductOpenFoodFactsAPIBoundary {
             throw new FailedQueryToOpenFoodFacts("Products not found!");
         }
         // Convert the products array to a list of Product objects
-        int i;
-        for (i=0;i<6;i++) {
-            //Dunno why but products provided are always 2*3 = 6...
-            JSONObject productData = (JSONObject) products.get(i);
+        int i = 0,j = 0;
+        JSONObject productData = new JSONObject();
+        while(i<6) {
+            try{
+                productData = (JSONObject) products.get(j);
+            } catch (IndexOutOfBoundsException e){
+                break;
+            }
+
             String barcode = (String) productData.get("code");
             String productName = (String) productData.get("product_name");
             String image = (String) productData.get("image_url");
 
-            System.out.println(barcode);
-            System.out.println(image);
-            System.out.println(productName);
+            if(image == null || productName == null){
+                i--;
+            } else {
+                System.out.format("{%s, %s, %s\n}", productName, image, barcode);
 
-            resultsNames.add(productName);
-            resultsImages.add(image);
-            resultsBarcodes.add(barcode);
+                resultsNames.add(productName);
+                resultsImages.add(image);
+                resultsBarcodes.add(barcode);
+            }
+            i++;
+            j++;
         }
 
         bean.setResultsNames(resultsNames);
         bean.setResultsImages(resultsImages);
         bean.setResultsBarcodes(resultsBarcodes);
+
+        System.out.format("Names size is %s\n",resultsNames.size());
+        System.out.format("images size is %s\n",resultsImages.size());
+        System.out.format("barcodes size is %s\n",resultsBarcodes.size());
     }
 }

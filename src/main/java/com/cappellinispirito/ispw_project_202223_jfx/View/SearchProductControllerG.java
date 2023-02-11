@@ -64,9 +64,14 @@ public class SearchProductControllerG {
 
         int i;
         for(i=0;i<resultsNames.size();i++){
-            productsNames.get(i).setText(resultsNames.get(i));
-            Image tempImage = new Image(String.valueOf(resultsImages.get(i)));
-            productImages.get(i).setImage(tempImage);
+            try{
+                productsNames.get(i).setText(resultsNames.get(i));
+                Image tempImage = new Image(String.valueOf(resultsImages.get(i)));
+                productImages.get(i).setImage(tempImage);
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+
         }
     }
     public void onSearchProductButtonClicked() throws FailedQueryToOpenFoodFacts, IOException, ParseException {
