@@ -15,13 +15,12 @@ public class AdditivesDAO {
             conn = DBConnector.getInstance().getConnection();
             stmt = conn.createStatement();
             ResultSet rs = Queries.getAdditiveDangerousness(stmt, additive);
-            if(!rs.first()){
-                throw new FailedLoginException("Username or Password not valid!");
+            if(!rs.next()){
+                throw new FailedLoginException("No additive found!");
             }
-            rs.first();
             return rs.getString("Dangerousness");
-        } catch (FailedLoginException e) {
-            throw new RuntimeException(e);
+        } catch (RuntimeException | FailedLoginException ignored) {
+            return "A";
         } finally {
             if(stmt != null){
                 stmt.close();

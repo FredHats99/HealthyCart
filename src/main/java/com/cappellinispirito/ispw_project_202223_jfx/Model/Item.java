@@ -75,6 +75,9 @@ public class Item {
         int additivesScore;
         AdditivesDAO additivesDAO = new AdditivesDAO();
         int i;
+        if(additives == null){
+            return 30;
+        }
         for(i=0; i<additives.size(); i++){
             switch(additivesDAO.getAdditiveDangerousness(additives.get(i))){
                 case "B":
