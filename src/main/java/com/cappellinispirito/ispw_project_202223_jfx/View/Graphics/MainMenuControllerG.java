@@ -95,6 +95,14 @@ public class MainMenuControllerG {
 
         }
     }
+    public void onShowNearestSupermarketClicked() throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/nearestSupermarket.fxml")));
+        ShowNearestSupermarketControllerG controller = loader.getController();
+        Parent rootNode = loader.load();
+        Scene myScene = new Scene(rootNode);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(myScene);
+    }
 
     public void setUsername(String username) {
         userName_label.setText(username);

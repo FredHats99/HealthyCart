@@ -5,9 +5,9 @@ import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.positi
 import java.util.HashMap;
 
 public class CacheProxy implements APIProxyBoundary{
-    private HashMap<String, String> searchToSupermarketsNameCache;
-    private HashMap<String, String> searchToSupermarketsAddressCache;
-    private HashMap<String, Float> searchToDistanceCache;
+    private HashMap<String, String> searchToSupermarketsNameCache = new HashMap<>();
+    private HashMap<String, String> searchToSupermarketsAddressCache = new HashMap<>();
+    private HashMap<String, Float> searchToDistanceCache = new HashMap<>();
     private APIProxyBoundary instance;
 
     public CacheProxy(APIProxyBoundary boundary) {
