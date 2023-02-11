@@ -52,6 +52,15 @@ public class MainMenuControllerG {
 
     }
 
+    public void onLogin() throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/login.fxml")));
+        SearchProductControllerG controller = loader.getController();
+        Parent rootNode = loader.load();
+        Scene myScene = new Scene(rootNode);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(myScene);
+    }
+
     public void onSearchProductButtonClicked() throws DeniedPermissionsException, FailedQueryToOpenFoodFacts, IOException, ParseException {
         String searchText = search_text.getText();
         /*if(!logInCustomerView.getIsPremium()){

@@ -2,14 +2,22 @@ package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 
 import com.cappellinispirito.ispw_project_202223_jfx.View.LogInCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.RegisterCustomerView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 import javax.security.auth.login.FailedLoginException;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class LogInControllerG {
 
+    public StackPane root;
     public TextField usernametext;
     public TextField passwordtext;
     public Label loginbutton;
@@ -27,6 +35,15 @@ public class LogInControllerG {
             view.attemptLogin(usernametext.getText(), passwordtext.getText());
         }
 
+    }
+
+    public void onBackPressed() throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/main_menu2.fxml")));
+        SearchProductControllerG controller = loader.getController();
+        Parent rootNode = loader.load();
+        Scene myScene = new Scene(rootNode);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(myScene);
     }
 
     public void onRegisterClick() throws Exception {
