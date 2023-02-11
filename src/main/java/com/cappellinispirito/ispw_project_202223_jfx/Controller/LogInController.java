@@ -10,7 +10,10 @@ import java.sql.SQLException;
 public class LogInController {
     public static LogInController instance;
     private UserAccount logInUser;
-    private LogInController(){}
+
+    private LogInController(){
+        createUserAccount("", "", false);
+    }
 
     public static LogInController getInstance() {
         if(instance == null){

@@ -9,10 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,16 +25,14 @@ public class MainMenuControllerG {
     private Stage applicationStage;
     @FXML
     public StackPane root;
-    public Label search_text;
+    public TextField search_text;
     public RadioButton newcart_button;
     public ImageView Label_View;
     public RadioButton findstore_button;
-    public Label userName_label;
+    //public Text userName_label;
 
     public MainMenuControllerG() throws FailedQueryToOpenFoodFacts {
         LogInCustomerView logInCustomerView = new LogInCustomerView();
-        DoShoppingCustomerView doShoppingCustomerView = new DoShoppingCustomerView();
-        ShowNearestSupermarketsCustomerView showNearestSupermarketsCustomerView = new ShowNearestSupermarketsCustomerView();
         SearchProductCustomerView searchProductCustomerView = new SearchProductCustomerView();
     }
 
