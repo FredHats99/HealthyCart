@@ -31,6 +31,14 @@ public class SearchProductControllerG {
     @FXML
     public StackPane root;
 
+    public StackPane stack1;
+    public StackPane stack2;
+    public StackPane stack3;
+    public StackPane stack4;
+    public StackPane stack5;
+    public StackPane stack6;
+    public List<StackPane> sl = new ArrayList<>();
+
     public Label productName1;
     public Label productName2;
     public Label productName3;
@@ -92,6 +100,7 @@ public class SearchProductControllerG {
                 productsNames.get(i).setText(resultsNames.get(i));
                 Image tempImage = new Image(String.valueOf(resultsImages.get(i)));
                 productImages.get(i).setImage(tempImage);
+                sl.get(i).setVisible(true);
             } catch(Exception e){
                 e.printStackTrace();
             }
@@ -108,6 +117,13 @@ public class SearchProductControllerG {
         itemsButtons.add(item4);
         itemsButtons.add(item5);
         itemsButtons.add(item6);
+
+        sl.add(stack1);
+        sl.add(stack2);
+        sl.add(stack3);
+        sl.add(stack4);
+        sl.add(stack5);
+        sl.add(stack6);
     }
 
     public void onItemClicked(MouseEvent mouseEvent) throws IOException, FailedQueryToOpenFoodFacts, SQLException, ParseException {
