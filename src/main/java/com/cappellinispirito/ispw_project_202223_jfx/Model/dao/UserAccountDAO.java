@@ -17,7 +17,7 @@ public class UserAccountDAO {
 
         try{
             conn = DBConnector.getInstance().getConnection();
-            stmt = conn.createStatement();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = Queries.checkCredentials(stmt, username, password);
 
             assert rs != null;
@@ -28,12 +28,13 @@ public class UserAccountDAO {
             return true;
 
         } catch (SQLException | FailedLoginException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         } finally {
             if(stmt != null){
                 stmt.close();
             }
         }
+        return false;
     }
 
     public void changePassword(String username, String newPassword) throws SQLException {
@@ -98,10 +99,10 @@ public class UserAccountDAO {
             ResultSet rs = Queries.getPremium(stmt, username);
 
             assert rs != null;
-            if(!rs.first()){
+            System.out.println(rs);
+            if(!rs.next()){
                 throw new FailedLoginException("Username or Password not valid!");
             }
-            rs.first();
             return rs.getBoolean("isPremium");
 
         } catch (SQLException | FailedLoginException e) {

@@ -8,14 +8,14 @@ import javax.security.auth.login.FailedLoginException;
 import java.sql.SQLException;
 
 public class LogInCustomerView {
-    private String username = "";
-    private String password = "";
+    //private String username = "";
+    //private String password = "";
     private boolean isPremium = false;
 
     private boolean isCredentialsCorrect;
     private boolean isLoginDone = false;
 
-    public void attemptLogin() throws SQLException, FailedLoginException {
+    public void attemptLogin(String username, String password) throws SQLException, FailedLoginException {
         //Suppose Username and Password field have been updated from user input
         LogInBean bean = new LogInBeanClass();
         bean.setUsername(username);
