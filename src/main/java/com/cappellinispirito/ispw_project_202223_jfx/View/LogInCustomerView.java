@@ -12,6 +12,7 @@ public class LogInCustomerView {
     private String password = "";
 
     private boolean isCredentialsCorrect;
+    private boolean isLoginDone = false;
 
     public void attemptLogin() throws SQLException, FailedLoginException {
         //Suppose Username and Password field have been updated from user input
@@ -23,8 +24,12 @@ public class LogInCustomerView {
         isCredentialsCorrect = bean.getIsCredentialsCorrect();
         if(isCredentialsCorrect){
             //logic for login ok
+            isLoginDone = true;
         } else {
             //display error message
         }
+    }
+    public boolean getIsLoginDone(){
+        return isLoginDone;
     }
 }

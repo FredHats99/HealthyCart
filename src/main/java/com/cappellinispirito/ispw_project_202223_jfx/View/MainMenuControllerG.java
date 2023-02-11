@@ -2,6 +2,7 @@ package com.cappellinispirito.ispw_project_202223_jfx.View;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Controller.ConsultCartHistoryController;
 import com.cappellinispirito.ispw_project_202223_jfx.Controller.LogInController;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.DeniedPermissionsException;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,12 +32,19 @@ public class MainMenuControllerG {
     public RadioButton findstore_button;
     //public Text userName_label;
 
+    LogInCustomerView logInCustomerView;
+    SearchProductCustomerView searchProductCustomerView;
+
     public MainMenuControllerG() throws FailedQueryToOpenFoodFacts {
-        LogInCustomerView logInCustomerView = new LogInCustomerView();
-        SearchProductCustomerView searchProductCustomerView = new SearchProductCustomerView();
+        logInCustomerView = new LogInCustomerView();
+        searchProductCustomerView = new SearchProductCustomerView();
     }
 
-    public void onCartHistoryClicked() throws IOException {
+    public void onCartHistoryClicked() throws IOException, DeniedPermissionsException {
+        if(!logInCustomerView.getIsLoginDone()){
+            //Some label will tell the user that he has to log in...
+            throw new DeniedPermissionsException("You have to log in to use this functionality");
+        }
         //initialize new scene
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/history.fxml")));
         Parent rootNode = loader.load();
