@@ -38,7 +38,7 @@ public class SearchProductInfoControllerG {
         productImageInfo.setImage(tempImage);
         productNameLabelINFO.setText(itemInfo.getName());
         itemScoretext.setText(String.valueOf(itemInfo.getHealthScore()));
-
+        //bro the commit...
         infotext1.setText(String.format("SCHEDA NUTRIZIONALE:\nCalorie: %f kJ\nGrassi saturi: %f g\nZuccheri: %f g\nSale: %f g\nFibre: %f g\nProteine: %f g\n Frutta e altro: %f\n", itemInfo.getCalories(), itemInfo.getSaturatedFats(), itemInfo.getSugars(), itemInfo.getSalt(), itemInfo.getFibers(), itemInfo.getProteins(), itemInfo.getFruitPercentage()));
         infotext2.setText(String.format("INGREDIENTI:\n %s", itemInfo.getIngredients()));
         infotext3.setText(String.format("ADDITIVI: \n %s", itemInfo.getAdditives()));
