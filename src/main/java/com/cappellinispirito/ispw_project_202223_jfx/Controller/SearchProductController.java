@@ -54,6 +54,7 @@ public class SearchProductController{
         int i;
         for(i=0;i<this.resultNames.size();i++){
             nameToBarcodeMap.put(resultNames.get(i), resultBarcodes.get(i));
+            System.out.format("<Name, Barcode> is <%s, %s>\n", resultNames.get(i), resultBarcodes.get(i));
             nameToImageUrlMap.put(resultNames.get(i), resultImages.get(i));
         }
         bean.setResultsNames(resultNames);
@@ -61,6 +62,8 @@ public class SearchProductController{
     }
 
     public String getBarcodeByName(String name) {
+        //System.out.println(name);
+        //System.out.println(nameToBarcodeMap.get(name));
         return nameToBarcodeMap.get(name);
     }
 

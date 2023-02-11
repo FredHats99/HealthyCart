@@ -5,6 +5,7 @@ import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.Barcod
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -18,12 +19,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShowProductInfoOpenFoodFactsAPIBoundary{
-    private CloseableHttpClient httpClient;
-    private JSONParser parser;
+
     private static ShowProductInfoOpenFoodFactsAPIBoundary instance;
 
     public void findProductInfoByBarcode(BarcodeToInformationBean bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
         String barcode = bean.getBarcodeSearch();
+        System.out.format("I will search for barcode: %s\n", barcode);
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        JSONParser parser = new JSONParser();
         // Send a GET request to the API
         HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json");
         CloseableHttpResponse response = httpClient.execute(request);
@@ -46,21 +49,21 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
         JSONObject alternativeNutritionalValues = (JSONObject) product.get("nutriscore_data");
 
         int fruitPercentage = Math.toIntExact((Long) nutritionalValues.get("fruits-vegetables-nuts-estimate-from-ingredients_100g"));
-        System.out.println(fruitPercentage);
+        System.out.format("FruitPercentage: %s\n", fruitPercentage);
         float energy = Float.parseFloat(String.valueOf(nutritionalValues.get("energy")));
-        System.out.println(energy);
+        System.out.format("Energy: %s\n", energy);
         float sugars = Float.parseFloat(String.valueOf(nutritionalValues.get("sugars")));
-        System.out.println(sugars);
+        System.out.format("Sugars: %s\n", sugars);
         float protein = Float.parseFloat(String.valueOf(nutritionalValues.get("proteins")));
-        System.out.println(protein);
+        System.out.format("Proteins: %s\n", protein);
         float saturated_fat = Float.parseFloat(String.valueOf(nutritionalValues.get("saturated-fat")));
-        System.out.println(saturated_fat);
+        System.out.format("Saturated_fats: %s\n", saturated_fat);
         float fiber = Float.parseFloat(String.valueOf(alternativeNutritionalValues.get("fiber")));
-        System.out.println(fiber);
+        System.out.format("Fibers: %s\n", fiber);
         float salt = Float.parseFloat(String.valueOf(nutritionalValues.get("salt")));
-        System.out.println(salt);
+        System.out.format("Salt: %s\n", salt);
 
-        JSONArray additivesArray = (JSONArray) JSONValue.parse((Reader) product.get("additives"));
+        JSONArray additivesArray = (JSONArray) product.get("additives_original_tags");
         List<String> additivesList = new ArrayList<>();
         int i;
         for(i=0;i< additivesArray.size();i++){

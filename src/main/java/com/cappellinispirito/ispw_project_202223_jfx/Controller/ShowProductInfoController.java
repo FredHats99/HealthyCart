@@ -63,6 +63,7 @@ public class ShowProductInfoController{
 
         BarcodeToInformationBean bean2 = new BarcodeToInformationBeanClass();
         bean2.setBarcodeSearch(this.barcode);
+        System.out.println(this.barcode);
         ShowProductInfoOpenFoodFactsAPIBoundary showProductInfoOpenFoodFactsAPIBoundaryInstance = ShowProductInfoOpenFoodFactsAPIBoundary.getInstance();
         showProductInfoOpenFoodFactsAPIBoundaryInstance.findProductInfoByBarcode(bean2);
         FruitPercentage = bean2.getFruitPercentage();

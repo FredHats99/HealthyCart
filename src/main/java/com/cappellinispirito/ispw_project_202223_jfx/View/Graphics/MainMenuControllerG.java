@@ -1,25 +1,20 @@
-package com.cappellinispirito.ispw_project_202223_jfx.View;
+package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.ConsultCartHistoryController;
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.LogInController;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.DeniedPermissionsException;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
+import com.cappellinispirito.ispw_project_202223_jfx.View.LogInCustomerView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Objects;
 
 public class MainMenuControllerG {

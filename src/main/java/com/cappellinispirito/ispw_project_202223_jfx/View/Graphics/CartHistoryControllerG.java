@@ -1,6 +1,5 @@
-package com.cappellinispirito.ispw_project_202223_jfx.View;
+package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.ConsultCartHistoryController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
