@@ -143,6 +143,7 @@ public class SearchProductControllerG {
                 Scene myScene = new Scene(rootNode);
                 Stage stage = (Stage) root.getScene().getWindow();
                 stage.setScene(myScene);
+                controller.displayProductInfo();
             }
         }
     }
