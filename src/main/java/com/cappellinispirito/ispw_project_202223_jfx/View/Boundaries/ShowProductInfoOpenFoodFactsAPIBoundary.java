@@ -47,8 +47,13 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
 
         JSONObject nutritionalValues = (JSONObject) product.get("nutriments");
         JSONObject alternativeNutritionalValues = (JSONObject) product.get("nutriscore_data");
+        int fruitPercentage;
+        try{
+            fruitPercentage = Math.toIntExact((Long) nutritionalValues.get("fruits-vegetables-nuts-estimate-from-ingredients_100g"));
+        } catch (ClassCastException e){
+            fruitPercentage = (int) Math.floor((Double) nutritionalValues.get("fruits-vegetables-nuts-estimate-from-ingredients_100g"));
+        }
 
-        int fruitPercentage = Math.toIntExact((Long) nutritionalValues.get("fruits-vegetables-nuts-estimate-from-ingredients_100g"));
         System.out.format("FruitPercentage: %s\n", fruitPercentage);
         float energy = Float.parseFloat(String.valueOf(nutritionalValues.get("energy")));
         System.out.format("Energy: %s\n", energy);

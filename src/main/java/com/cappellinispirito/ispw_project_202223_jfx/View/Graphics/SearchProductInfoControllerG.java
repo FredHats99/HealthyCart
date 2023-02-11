@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 
@@ -31,6 +33,7 @@ public class SearchProductInfoControllerG {
     public Label isBioTextInfo;
     private String itemName;
     private Item itemInfo;
+    public Rectangle scoreRect;
 
     public SearchProductInfoControllerG() throws FailedQueryToOpenFoodFacts, SQLException, IOException, ParseException {
         NameBean bean = NameBean.getInstance();
@@ -45,7 +48,15 @@ public class SearchProductInfoControllerG {
         Image tempImage = new Image(String.valueOf(itemInfo.getImageUrl()));
         productImageInfo.setImage(tempImage);
         productNameLabelINFO.setText(itemInfo.getName());
+
         itemScoretext.setText(String.valueOf(itemInfo.getHealthScore()));
+        if(itemInfo.getHealthScore() < 30){
+            scoreRect.setFill(Paint.valueOf("#FF8469"));
+        } else if (itemInfo.getHealthScore() < 60 && itemInfo.getHealthScore() >= 30) {
+            scoreRect.setFill(Paint.valueOf("#FFEF98"));
+        } else {
+            scoreRect.setFill(Paint.valueOf("#89FF98"));
+        }
         //bro the commit...
         infotext1.setText(String.format("SCHEDA NUTRIZIONALE:\nCalorie: %f kJ\nGrassi saturi: %f g\nZuccheri: %f g\nSale: %f g\nFibre: %f g\nProteine: %f g\n Frutta e altro: %f\n", itemInfo.getCalories(), itemInfo.getSaturatedFats(), itemInfo.getSugars(), itemInfo.getSalt(), itemInfo.getFibers(), itemInfo.getProteins(), itemInfo.getFruitPercentage()));
         infotext2.setText(String.format("INGREDIENTI:\n %s", itemInfo.getIngredients()));
