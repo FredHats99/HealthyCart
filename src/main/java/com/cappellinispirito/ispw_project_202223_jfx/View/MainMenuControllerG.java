@@ -45,12 +45,16 @@ public class MainMenuControllerG {
             throw new DeniedPermissionsException("You have to log in to use this functionality");
         }
         //initialize new scene
+
+        //Bean.value = textfield;
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/history.fxml")));
         Parent rootNode = loader.load();
         CartHistoryControllerG controller = loader.getController();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(myScene);
+
+
     }
 
     public void onSearchProductButtonClicked() throws DeniedPermissionsException, FailedQueryToOpenFoodFacts, IOException, ParseException {

@@ -39,6 +39,7 @@ public class SearchProductControllerG {
     String searchText;
 
     public SearchProductControllerG() throws FailedQueryToOpenFoodFacts, IOException, ParseException {
+        // if bean.value != NULL -> searchProduct(bean.value)
     }
 
 
