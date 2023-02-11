@@ -5,10 +5,9 @@ import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.Regist
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.RegistrationBeanClass;
 
 public class RegisterCustomerView {
-    private String registrationUsername = "";
-    private String registrationPassword = "";
 
-    public void attemptRegister() throws Exception {
+
+    public void attemptRegister(String registrationUsername, String registrationPassword) throws Exception {
         RegistrationBean bean = new RegistrationBeanClass();
         bean.setUsername(registrationUsername);
         bean.setPassword(registrationPassword);

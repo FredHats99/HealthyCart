@@ -1,16 +1,13 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.SearchProductController;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispw_project_202223_jfx.View.SearchProductCustomerView;
-import com.cappellinispirito.ispw_project_202223_jfx.View.ShowProductInfoCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -90,6 +87,13 @@ public class SearchProductControllerG {
         productImages.add(productImage5);
         productImages.add(productImage6);
 
+        sl.add(stack1);
+        sl.add(stack2);
+        sl.add(stack3);
+        sl.add(stack4);
+        sl.add(stack5);
+        sl.add(stack6);
+
 
         SearchProductCustomerView searchProductCustomerView = new SearchProductCustomerView();
         searchProductCustomerView.searchProduct(searchText);
@@ -139,13 +143,6 @@ public class SearchProductControllerG {
         itemsButtons.add(item4);
         itemsButtons.add(item5);
         itemsButtons.add(item6);
-
-        sl.add(stack1);
-        sl.add(stack2);
-        sl.add(stack3);
-        sl.add(stack4);
-        sl.add(stack5);
-        sl.add(stack6);
     }
 
     public void onItemClicked(MouseEvent mouseEvent) throws IOException, FailedQueryToOpenFoodFacts, SQLException, ParseException {
@@ -168,5 +165,14 @@ public class SearchProductControllerG {
                 controller.displayProductInfo();
             }
         }
+    }
+
+    public void onBackButtonPressed() throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/Main_Menu2.fxml")));
+        MainMenuControllerG controller = loader.getController();
+        Parent rootNode = loader.load();
+        Scene myScene = new Scene(rootNode);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(myScene);
     }
 }
