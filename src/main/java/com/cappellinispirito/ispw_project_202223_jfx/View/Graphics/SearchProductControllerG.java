@@ -5,6 +5,7 @@ import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQuer
 import com.cappellinispirito.ispw_project_202223_jfx.View.SearchProductCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.ShowProductInfoCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBean;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -107,6 +109,26 @@ public class SearchProductControllerG {
 
         }
     }
+
+    public void onEnterPressed(ActionEvent e) throws FailedQueryToOpenFoodFacts, IOException, ParseException {
+        String searchText = search_text.getText();
+        searchProduct(searchText);
+
+        itemsButtons.add(item1);
+        itemsButtons.add(item2);
+        itemsButtons.add(item3);
+        itemsButtons.add(item4);
+        itemsButtons.add(item5);
+        itemsButtons.add(item6);
+
+        sl.add(stack1);
+        sl.add(stack2);
+        sl.add(stack3);
+        sl.add(stack4);
+        sl.add(stack5);
+        sl.add(stack6);
+    }
+
     public void onSearchProductButtonClicked() throws FailedQueryToOpenFoodFacts, IOException, ParseException {
         String searchText = search_text.getText();
         searchProduct(searchText);

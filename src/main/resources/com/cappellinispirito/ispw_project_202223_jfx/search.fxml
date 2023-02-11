@@ -302,7 +302,7 @@
                   <Image url="@icons/Group%201.png" />
                </image>
             </ImageView>
-            <TextField fx:id="search_text" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="220.0" promptText="search for product" stylesheets="@MyStylesheet2.css">
+            <TextField fx:id="search_text" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onEnterPressed" prefHeight="35.0" prefWidth="220.0" promptText="search for product" stylesheets="@MyStylesheet2.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
