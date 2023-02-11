@@ -85,6 +85,13 @@ public class SearchProductControllerG {
         productImages.add(productImage5);
         productImages.add(productImage6);
 
+        sl.add(stack1);
+        sl.add(stack2);
+        sl.add(stack3);
+        sl.add(stack4);
+        sl.add(stack5);
+        sl.add(stack6);
+
 
         SearchProductCustomerView searchProductCustomerView = new SearchProductCustomerView();
         searchProductCustomerView.searchProduct(searchText);
@@ -114,13 +121,6 @@ public class SearchProductControllerG {
         itemsButtons.add(item4);
         itemsButtons.add(item5);
         itemsButtons.add(item6);
-
-        sl.add(stack1);
-        sl.add(stack2);
-        sl.add(stack3);
-        sl.add(stack4);
-        sl.add(stack5);
-        sl.add(stack6);
     }
 
     public void onItemClicked(MouseEvent mouseEvent) throws IOException, FailedQueryToOpenFoodFacts, SQLException, ParseException {
