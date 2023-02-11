@@ -13,7 +13,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -70,6 +69,16 @@ public class SearchProductControllerG {
     public SearchProductControllerG() throws FailedQueryToOpenFoodFacts, IOException, ParseException {
         // if bean.value != NULL -> searchProduct(bean.value)
     }
+
+    public void onBackButton() throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/main_menu2.fxml")));
+        SearchProductControllerG controller = loader.getController();
+        Parent rootNode = loader.load();
+        Scene myScene = new Scene(rootNode);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(myScene);
+    }
+
 
 
     public void searchProduct(String searchText) throws FailedQueryToOpenFoodFacts, IOException, ParseException {
