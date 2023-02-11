@@ -10,3 +10,21 @@
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;*/
 }
+
+#usernametext{
+    -fx-padding: 0px;
+    -fx-background-color: #fafafa;
+    /*-fx-background-insets: 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;*/
+}
+
+
+#passwordtext{
+    -fx-padding: 0px;
+    -fx-background-color: #fafafa;
+    /*-fx-background-insets: 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;*/
+}
+
