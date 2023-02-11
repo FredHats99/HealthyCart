@@ -12,7 +12,6 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@MyStylesheet2.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.View.CartHistoryControllerG">
    <children>
@@ -25,37 +24,12 @@
          <children>
             <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                <children>
-                  <ImageView fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
-                     <image>
-                        <Image url="@icons/tune_FILL0_wght400_GRAD0_opsz48.png" />
-                     </image>
-                  </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings" StackPane.alignment="TOP_CENTER">
-                     <StackPane.margin>
-                        <Insets top="45.0" />
-                     </StackPane.margin>
-                     <font>
-                        <Font size="12.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="history_settings_button" mnemonicParsing="false" opacity="0.0" prefHeight="40.0" prefWidth="40.0" text="Button" StackPane.alignment="CENTER">
-                     <StackPane.margin>
-                        <Insets bottom="20.0" />
-                     </StackPane.margin>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets right="10.0" />
-               </padding>
-            </StackPane>
-            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-               <children>
-                  <ImageView fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+                  <ImageView fx:id="userlogo" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
                      <image>
                         <Image url="@icons/user64.png" />
                      </image>
                   </ImageView>
-                  <Label text="Username">
+                  <Label fx:id="userName_label" text="Username">
                      <font>
                         <Font size="13.0" />
                      </font>
