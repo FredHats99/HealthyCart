@@ -26,9 +26,11 @@ public class LogInCustomerView {
             isCredentialsCorrect = bean.getIsCredentialsCorrect();
             if(isCredentialsCorrect){
                 //logic for login ok
+                System.out.println("Credentials are ok!");
                 isLoginDone = true;
                 isPremium = bean.getIsPremium();
                 username = bean.getUsername();
+                System.out.format("User is %s", username);
                 password = bean.getPassword();
             } else {
                 //display error message

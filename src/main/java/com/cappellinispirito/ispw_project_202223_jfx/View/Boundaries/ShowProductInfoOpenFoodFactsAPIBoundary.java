@@ -108,7 +108,11 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
 
     public boolean isOrganic(JSONObject product) {
         String labels = (String) product.get("labels");
-        return labels.contains("organic");
+        try{
+            return labels.contains("organic");
+        } catch (NullPointerException e){
+            return false;
+        }
     }
 
     private ShowProductInfoOpenFoodFactsAPIBoundary(){}

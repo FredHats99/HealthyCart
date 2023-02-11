@@ -3,6 +3,7 @@ package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.DeniedPermissionsException;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispw_project_202223_jfx.View.LogInCustomerView;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,15 +30,20 @@ public class MainMenuControllerG {
     public ImageView Label_View;
     public RadioButton findstore_button;
     public Label userName_label;
+    public ImageView userlogo;
     SearchProductControllerG controllerG;
     LogInCustomerView logInCustomerView;
+    public String username;
+
 
     public MainMenuControllerG() throws FailedQueryToOpenFoodFacts {
         logInCustomerView = new LogInCustomerView();
+        username = NameBean.getInstance().getName();
+        System.out.format("User is %s", username);
     }
 
     public void onCartHistoryClicked() throws IOException, DeniedPermissionsException {
-        if(!logInCustomerView.getIsLoginDone()){
+        if(username == null){
             //Some label will tell the user that he has to log in...
             throw new DeniedPermissionsException("You have to log in to use this functionality");
         }
@@ -55,12 +61,16 @@ public class MainMenuControllerG {
     }
 
     public void onLogin() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/login.fxml")));
-        LogInControllerG controller = loader.getController();
-        Parent rootNode = loader.load();
-        Scene myScene = new Scene(rootNode);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setScene(myScene);
+        if(username != null){
+            userName_label.setText(username);
+        } else {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/login.fxml")));
+            LogInControllerG controller = loader.getController();
+            Parent rootNode = loader.load();
+            Scene myScene = new Scene(rootNode);
+            Stage stage = (Stage) root.getScene().getWindow();
+            stage.setScene(myScene);
+        }
     }
 
     public void onSearchProductButtonClicked() throws DeniedPermissionsException, FailedQueryToOpenFoodFacts, IOException, ParseException {
@@ -87,6 +97,10 @@ public class MainMenuControllerG {
     }
 
     public void setUsername(String username) {
+        userName_label.setText(username);
+    }
+
+    public void setLabel(String username) {
         userName_label.setText(username);
     }
 }
