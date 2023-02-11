@@ -10,6 +10,7 @@ import java.sql.SQLException;
 public class LogInCustomerView {
     private String username = "";
     private String password = "";
+    private boolean isPremium = false;
 
     private boolean isCredentialsCorrect;
     private boolean isLoginDone = false;
@@ -25,11 +26,16 @@ public class LogInCustomerView {
         if(isCredentialsCorrect){
             //logic for login ok
             isLoginDone = true;
+            isPremium = bean.getIsPremium();
         } else {
             //display error message
         }
     }
     public boolean getIsLoginDone(){
         return isLoginDone;
+    }
+
+    public boolean getIsPremium(){
+        return isPremium;
     }
 }

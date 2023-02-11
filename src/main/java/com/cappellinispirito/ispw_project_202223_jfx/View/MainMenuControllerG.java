@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
+import org.json.simple.parser.ParseException;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
@@ -52,5 +53,17 @@ public class MainMenuControllerG {
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(myScene);
+    }
+
+    public void onSearchProductButtonClicked() throws DeniedPermissionsException, FailedQueryToOpenFoodFacts, IOException, ParseException {
+        String searchText = search_text.getText();
+        /*if(!logInCustomerView.getIsPremium()){
+            //TODO: some label will tell the user he has to be premium...
+            throw new DeniedPermissionsException("You have to be a premium user to use this functionality!");
+        }*/
+        if(searchText != null){
+            searchProductCustomerView.searchProduct(searchText);
+        }
+        //initialize new scene
     }
 }

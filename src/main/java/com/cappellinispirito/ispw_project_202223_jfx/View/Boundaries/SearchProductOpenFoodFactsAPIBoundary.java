@@ -14,6 +14,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,24 +41,34 @@ public class SearchProductOpenFoodFactsAPIBoundary {
         JSONParser parser = new JSONParser();
 
         // Send a GET request to the API
-        HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/search.json?search_terms=" + bean.getNameToSearch());
+        System.out.println("Connecting...");
+        String search = bean.getNameToSearch().replace(" ", "%20");
+        HttpGet request = new HttpGet("https://world.openfoodfacts.org/cgi/search.pl?search_terms="+ search +"&search_simple=1&action=process&json=1&tagtype_0=languages&tag_contains_0=contains&tag_0=italian");
         CloseableHttpResponse response = httpClient.execute(request);
 
         // Read the response
+        System.out.println("Providing results..");
         String json = EntityUtils.toString(response.getEntity());
-        if(json == null){
-            throw new FailedQueryToOpenFoodFacts("Products not found!");
-        }
+
         // Parse the JSON response
         JSONObject obj = (JSONObject) parser.parse(json);
         JSONArray products = (JSONArray) obj.get("products");
-
+        if (products.isEmpty()) {
+            throw new FailedQueryToOpenFoodFacts("Products not found!");
+        }
         // Convert the products array to a list of Product objects
-        for (Object product : products) {
-            JSONObject productData = (JSONObject) product;
+        int i;
+        for (i=0;i<3;i++) {
+            //Dunno why but products provided are always 2*3 = 6...
+            JSONObject productData = (JSONObject) products.get(i);
             String barcode = (String) productData.get("code");
             String productName = (String) productData.get("product_name");
             String image = (String) productData.get("image_url");
+
+            System.out.println(barcode);
+            System.out.println(image);
+            System.out.println(productName);
+
             resultsNames.add(productName);
             resultsImages.add(image);
             resultsBarcodes.add(barcode);

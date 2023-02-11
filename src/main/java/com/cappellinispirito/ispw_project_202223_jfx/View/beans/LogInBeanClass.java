@@ -5,6 +5,7 @@ import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.LogInB
 public class LogInBeanClass implements LogInBean {
     private String username;
     private String password;
+    private boolean isPremium;
     private Boolean isCredentialsCorrect;
 
     @Override
@@ -35,5 +36,15 @@ public class LogInBeanClass implements LogInBean {
     @Override
     public void setIsCredentialsCorrect(Boolean bool) {
         isCredentialsCorrect = bool;
+    }
+
+    @Override
+    public boolean getIsPremium() {
+        return isPremium;
+    }
+
+    @Override
+    public void setIsPremium(boolean isPremium) {
+        this.isPremium = isPremium;
     }
 }

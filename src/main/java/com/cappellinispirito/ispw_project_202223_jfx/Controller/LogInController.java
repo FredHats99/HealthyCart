@@ -30,6 +30,7 @@ public class LogInController {
             boolean isPremium = accountDAO.getPremium(username);
             createUserAccount(username, password, isPremium);
             bean.setIsCredentialsCorrect(true);
+            bean.setIsPremium(isPremium);
         } else {
             bean.setIsCredentialsCorrect(false);
         }
