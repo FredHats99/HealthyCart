@@ -31,6 +31,9 @@ public class LogInController {
             createUserAccount(username, password, isPremium);
             bean.setIsCredentialsCorrect(true);
             bean.setIsPremium(isPremium);
+
+            System.out.println("Correctly logged in as..");
+            System.out.format("Username: '%s', Password: '%s', isPremium: '%s'", username, password, isPremium);
         } else {
             bean.setIsCredentialsCorrect(false);
         }
