@@ -30,7 +30,7 @@ public class TestSearchProduct {
     }
 
     @Test
-    public void testSearchProduct() {
+    /*public void testSearchProduct() {
         // Test name: testSpidermanAuthor
         // Step # | name | target | value | comment
         // 1 | open | /wiki/Pagina_principale |  |
@@ -47,5 +47,16 @@ public class TestSearchProduct {
         js.executeScript("window.scrollTo(0,495)");
         // 7 | assertText | linkText=Stan Lee | Stan Lee |
         assertThat(driver.findElement(By.linkText("Stan Lee")).getText(), is("Stan Lee"));
-        }
+        }*/
+
+    public void testSearchProduct() {
+        driver.get("https://it.openfoodfacts.org/product/8000500310427/nutella-biscuits");
+        driver.manage().window().setSize(new Dimension(945, 1012));
+        System.out.println(driver.findElement(By.xpath("/html/body/div/div[2]/div[3]/div/div/div/div/section[2]/div/div/div/div/div/div[6]/ul/li/div/div/table/tbody/tr[2]/td[2]/span")).getText());
+        assertThat(driver.findElement(By.xpath("/html/body/div/div[2]/div[3]/div/div/div/div/section[2]/div/div/div/div/div/div[6]/ul/li/div/div/table/tbody/tr[2]/td[2]/span")).getText(), is("24,5 g"));
+    }
+
+
+
+
 }
