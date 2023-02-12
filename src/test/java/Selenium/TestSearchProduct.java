@@ -24,7 +24,7 @@ public class TestSearchProduct {
 
     @Before
     public void setUp() {
-        System.setProperty("C:webdriver.chrome.driver","C:\\Users\\Paola\\IdeaProjects\\ISPW_Project_22-23_JFX\\src\\test\\java\\selenium\\Driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","D:\\programmi\\java\\ISPW_Project_22-23_JFX\\src\\test\\java\\Selenium\\chromedriver.exe");
         driver = new ChromeDriver();
         js = (JavascriptExecutor) driver;
     }
