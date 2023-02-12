@@ -48,7 +48,7 @@ public class UserAccountDAO {
             stmt = conn.createStatement();
             Queries.createAccount(stmt, username, password);
         } catch (SQLException e){
-            e.printStackTrace();
+            //e.printStackTrace();
         } finally {
             if(stmt != null){
                 stmt.close();
@@ -98,7 +98,7 @@ public class UserAccountDAO {
         }
     }
 
-    public void checkIfUserExists(String username) throws SQLException {
+    public boolean checkIfUserExists(String username) throws SQLException {
         Statement stmt = null;
         Connection conn;
 
@@ -107,14 +107,15 @@ public class UserAccountDAO {
             stmt = conn.createStatement();
             ResultSet rs = Queries.checkIfUserExists(stmt, username);
             if(rs.next()){
-                throw new FailedRegistrationException("This user already exists!");
+                return true;
             }
-        } catch (SQLException | FailedRegistrationException e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            //e.printStackTrace();
         } finally {
             if(stmt != null){
                 stmt.close();
             }
         }
+        return false;
     }
 }
