@@ -143,7 +143,7 @@
                               </DropShadow>
                            </effect>
                         </Rectangle>
-                        <Label fx:id="registerbutton1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onRegisterClick" prefHeight="60.0" prefWidth="180.0" text="Toggle premium">
+                        <Label fx:id="toggle" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onToggle" prefHeight="60.0" prefWidth="180.0" text="Toggle premium">
                            <font>
                               <Font size="22.0" />
                            </font>

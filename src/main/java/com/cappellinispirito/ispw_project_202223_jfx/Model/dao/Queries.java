@@ -17,8 +17,15 @@ public class Queries {
         return stmt.getResultSet();
     }
 
-    public static void updateToPremium(Statement stmt, String username) throws SQLException{
-        String updateStatement = String.format("if exists(SELECT username from Users WHERE username = '%s') then update Users set isPremium = 1 where username = '%s'; end if;", username, username);
+    public static void updateToPremium(Statement stmt, String username, boolean prevIsPremium) throws SQLException{
+        int newTinyInt;
+        if(prevIsPremium){
+            newTinyInt = 1;
+        } else {
+            newTinyInt = 0;
+        }
+        System.out.format("Update Users set isPremium = %d where Username = '%s';",newTinyInt, username);
+        String updateStatement = String.format("\nUpdate Users set isPremium = %d where username = '%s';\n",newTinyInt, username);
         stmt.executeUpdate(updateStatement);
     }
 

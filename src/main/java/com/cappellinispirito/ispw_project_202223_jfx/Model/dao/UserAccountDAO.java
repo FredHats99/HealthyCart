@@ -56,16 +56,16 @@ public class UserAccountDAO {
         }
     }
 
-    public void updateToPremium(String username) throws SQLException{
+    public void updateToPremium(String username, boolean prevIsPremium) throws SQLException{
         Statement stmt = null;
         Connection conn;
 
         try{
             conn = DBConnector.getInstance().getConnection();
             stmt = conn.createStatement();
-            Queries.updateToPremium(stmt, username);
+            Queries.updateToPremium(stmt, username, prevIsPremium);
         } catch (SQLException e){
-            throw new RuntimeException();
+            e.printStackTrace();
         } finally {
             if(stmt != null){
                 stmt.close();

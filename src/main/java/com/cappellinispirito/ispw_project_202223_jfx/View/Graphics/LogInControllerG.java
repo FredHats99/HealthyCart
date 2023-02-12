@@ -1,9 +1,11 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 
+import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.UserAccountDAO;
 import com.cappellinispirito.ispw_project_202223_jfx.View.LogInCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.RegisterCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NamePremiumBean;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,6 +28,8 @@ public class LogInControllerG {
     public TextField passwordtext;
     public Label loginbutton;
     public Label registerbutton;
+    @FXML
+    public Label toggle;
 
 
     String username;
@@ -80,6 +84,22 @@ public class LogInControllerG {
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(myScene);
+    }
+
+    public void onToggle() throws SQLException {
+        if(NamePremiumBean.getInstance().getPremium()){
+            NamePremiumBean.getInstance().setPremium(false);
+            toggle.setStyle("-fx-background-color: red");
+            UserAccountDAO t = new UserAccountDAO();
+            t.updateToPremium(NamePremiumBean.getInstance().getName(), NamePremiumBean.getInstance().getPremium());
+
+        }
+        else {
+            NamePremiumBean.getInstance().setPremium(true);
+            toggle.setStyle("-fx-background-color: green");
+            UserAccountDAO t = new UserAccountDAO();
+            t.updateToPremium(NamePremiumBean.getInstance().getName(), NamePremiumBean.getInstance().getPremium());
+        }
     }
 
     public void onRegisterClick() throws Exception {

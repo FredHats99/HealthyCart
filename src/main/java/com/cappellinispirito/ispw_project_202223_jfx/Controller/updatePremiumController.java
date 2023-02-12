@@ -16,7 +16,7 @@ public class updatePremiumController {
         String username = getUsernameFromModel();
         if(!accountDao.getPremium(username)){
             //USER IS NOT PREMIUM. BUT IT WILL...
-            accountDao.updateToPremium(username);
+            accountDao.updateToPremium(username, !account.getIsPremium());
             updateModelUser();
             outcome = true;
         } else {
