@@ -10,11 +10,4 @@ public class DeniedPermissionsException extends Exception{
         super(message);
     }
 
-    public DeniedPermissionsException (Throwable cause) {
-        super(cause);
-    }
-
-    public DeniedPermissionsException (String message, Throwable cause) {
-        super(" +++ " + message + " +++ ", cause);
-    }
 }

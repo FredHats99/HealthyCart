@@ -21,10 +21,6 @@ public class ShowNearestSupermarketsCustomerView {
         supermarketsDistances = bean.getSupermarketsNamesDistances();
         //now display them pls!
     }
-    public void pickSupermarket(String name, String address){
-        ShowNearestSupermarketsController showNearestSupermarketsController = ShowNearestSupermarketsController.getInstance();
-        showNearestSupermarketsController.createSupermarket(name, address);
-    }
 
     public List<String> getSupermarketsNames() {
         return supermarketsNames;

@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Controller;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Model.Supermarket;
+
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.nearestSupermarketBeanInterface;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.positionBean;
 import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.APIProxyBoundary;
@@ -10,7 +10,6 @@ import com.cappellinispirito.ispw_project_202223_jfx.View.beans.positionBeanClas
 
 public class ShowNearestSupermarketsController {
     public static ShowNearestSupermarketsController instance;
-    private Supermarket chosenSupermarket;
 
     private ShowNearestSupermarketsController(){}
 
@@ -35,11 +34,4 @@ public class ShowNearestSupermarketsController {
             bean.setSupermarketsNamesDistances(bean2.getSupermarketsDistance());
     }
 
-    public void createSupermarket(String name, String address) {
-        chosenSupermarket = new Supermarket(name, address);
-    }
-
-    public Supermarket getChosenSupermarket(){
-        return chosenSupermarket;
-    }
 }

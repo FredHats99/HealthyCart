@@ -1,8 +1,8 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model.dao;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedRegistrationException;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedLoginException;
 
-import javax.security.auth.login.FailedLoginException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class UserAccountDAO {
 
 
-    public boolean checkCredentials(String username, String password) throws SQLException {
+    public boolean checkCredentials(String username, String password) throws SQLException, FailedLoginException{
         Statement stmt = null;
         Connection conn;
 
@@ -27,9 +27,9 @@ public class UserAccountDAO {
             rs.first();
             return true;
 
-        } catch (SQLException | FailedLoginException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
+        }finally {
             if(stmt != null){
                 stmt.close();
             }
@@ -37,23 +37,6 @@ public class UserAccountDAO {
         return false;
     }
 
-    public void changePassword(String username, String newPassword) throws SQLException {
-        Statement stmt = null;
-        Connection conn;
-
-        try{
-            conn = DBConnector.getInstance().getConnection();
-            stmt = conn.createStatement();
-            Queries.changePassword(stmt, username, newPassword);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if(stmt != null){
-                stmt.close();
-            }
-        }
-
-    }
 
     public void createAccount(String username, String password) throws SQLException{
         Statement stmt = null;

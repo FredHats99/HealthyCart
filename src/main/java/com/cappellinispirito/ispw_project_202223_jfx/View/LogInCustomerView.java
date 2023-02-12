@@ -9,11 +9,11 @@ import java.sql.SQLException;
 
 public class LogInCustomerView {
     private String username;
-    private String password;
-    private boolean isPremium = false;
 
-    private boolean isCredentialsCorrect;
     private boolean isLoginDone = false;
+
+    public LogInCustomerView() {
+    }
 
     public void attemptLogin(String username, String password) throws SQLException, FailedLoginException {
         //Suppose Username and Password field have been updated from user input
@@ -23,31 +23,28 @@ public class LogInCustomerView {
             bean.setPassword(password);
             LogInController logInController = LogInController.getInstance();
             logInController.checkCredentials(bean);
-            isCredentialsCorrect = bean.getIsCredentialsCorrect();
+            boolean isCredentialsCorrect = bean.getIsCredentialsCorrect();
             if(isCredentialsCorrect){
                 //logic for login ok
                 System.out.println("Credentials are ok!");
                 isLoginDone = true;
-                isPremium = bean.getIsPremium();
-                username = bean.getUsername();
+                setUsername(bean.getUsername());
                 System.out.format("User is %s", username);
-                password = bean.getPassword();
-            } else {
-                //display error message
             }
         } catch (NullPointerException e){
-
+            e.printStackTrace();
+        } catch (com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedLoginException e) {
+            throw new FailedLoginException(e.getMessage());
         }
     }
     public boolean getIsLoginDone(){
         return isLoginDone;
     }
 
-    public boolean getIsPremium(){
-        return isPremium;
-    }
-
     public String getUsername() {
         return username;
+    }
+    private void setUsername(String user){
+        this.username = user;
     }
 }

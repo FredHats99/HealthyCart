@@ -14,6 +14,7 @@ public class SearchProductCustomerView {
     private List<String> resultsImages;
 
 
+
     public void searchProduct(String searchText) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
         //This one should be obtained from user input
         SearchProductController searchProductControllerInstance = SearchProductController.getInstance();

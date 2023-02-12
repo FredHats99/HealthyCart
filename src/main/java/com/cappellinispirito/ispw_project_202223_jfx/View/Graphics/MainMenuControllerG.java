@@ -17,11 +17,11 @@ import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class MainMenuControllerG {
 
-    private Stage applicationStage;
     @FXML
     public StackPane root;
     public TextField search_text;
@@ -30,20 +30,23 @@ public class MainMenuControllerG {
     public RadioButton findstore_button;
     public Label userName_label;
     public ImageView userlogo;
-    SearchProductControllerG controllerG;
     LogInCustomerView logInCustomerView;
     public String username;
 
 
-    public MainMenuControllerG() throws FailedQueryToOpenFoodFacts {
+    public MainMenuControllerG(){
         logInCustomerView = new LogInCustomerView();
         username = NameBean.getInstance().getName();
         System.out.format("User is %s", username);
     }
 
     public void onCartHistoryClicked() throws IOException, DeniedPermissionsException {
-        if(username == null){
-            //Some label will tell the user that he has to log in...
+        try{
+            if(username == null){
+                //Some label will tell the user that he has to log in...
+                throw new DeniedPermissionsException("You have to log in to use this functionality");
+            }
+        } catch (DeniedPermissionsException e){
             throw new DeniedPermissionsException("You have to log in to use this functionality");
         }
         //initialize new scene
@@ -51,7 +54,6 @@ public class MainMenuControllerG {
         //Bean.value = textfield;
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/history.fxml")));
         Parent rootNode = loader.load();
-        CartHistoryControllerG controller = loader.getController();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(myScene);
@@ -64,7 +66,6 @@ public class MainMenuControllerG {
             userName_label.setText(username);
         } else {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/login.fxml")));
-            LogInControllerG controller = loader.getController();
             Parent rootNode = loader.load();
             Scene myScene = new Scene(rootNode);
             Stage stage = (Stage) root.getScene().getWindow();
@@ -83,16 +84,15 @@ public class MainMenuControllerG {
         }
         //initialize new scene
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/search.fxml")));
-        SearchProductControllerG controller = new SearchProductControllerG();
-        loader.setController(controller);
+        SearchProductControllerG controller = loader.getController();
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(myScene);
         try{
             controller.searchProduct(searchText);
-        } catch (NullPointerException e){
-
+        } catch (NullPointerException | SQLException e){
+            e.printStackTrace();
         }
     }
     public void onShowNearestSupermarketClicked() throws IOException {

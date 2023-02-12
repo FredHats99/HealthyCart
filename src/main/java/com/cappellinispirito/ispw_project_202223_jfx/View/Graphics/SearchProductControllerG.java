@@ -4,6 +4,7 @@ import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQuer
 import com.cappellinispirito.ispw_project_202223_jfx.View.SearchProductCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBean;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -81,7 +82,7 @@ public class SearchProductControllerG {
 
 
 
-    public void searchProduct(String searchText) throws FailedQueryToOpenFoodFacts, IOException, ParseException {
+    public void searchProduct(String searchText) throws IOException, FailedQueryToOpenFoodFacts, SQLException, ParseException {
         productsNames.add(productName1);
         productsNames.add(productName2);
         productsNames.add(productName3);
@@ -104,6 +105,7 @@ public class SearchProductControllerG {
         sl.add(stack6);
 
 
+
         SearchProductCustomerView searchProductCustomerView = new SearchProductCustomerView();
         searchProductCustomerView.searchProduct(searchText);
         List<String> resultsNames = searchProductCustomerView.getResultsNames();
@@ -123,7 +125,7 @@ public class SearchProductControllerG {
         }
     }
 
-    public void onEnterPressed(ActionEvent e) throws FailedQueryToOpenFoodFacts, IOException, ParseException {
+    public void onEnterPressed(ActionEvent e) throws FailedQueryToOpenFoodFacts, IOException, ParseException, SQLException {
         String searchText = search_text.getText();
         searchProduct(searchText);
 
@@ -142,7 +144,7 @@ public class SearchProductControllerG {
         sl.add(stack6);
     }
 
-    public void onSearchProductButtonClicked() throws FailedQueryToOpenFoodFacts, IOException, ParseException {
+    public void onSearchProductButtonClicked() throws FailedQueryToOpenFoodFacts, IOException, ParseException, SQLException {
         String searchText = search_text.getText();
         searchProduct(searchText);
 

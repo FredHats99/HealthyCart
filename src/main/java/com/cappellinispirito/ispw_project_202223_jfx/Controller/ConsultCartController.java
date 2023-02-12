@@ -10,26 +10,25 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class ConsultCartController {
-    private List<String> CartBarcodes = new ArrayList<>();
-    private String username = LogInController.getInstance().getUserAccountInstance().getUsername();
-    private List<String> cartItemsName;
-    private List<String> cartItemsImage;
+    private final String username = LogInController.getInstance().getUserAccountInstance().getUsername();
+    private final List<String> cartItemsName = new ArrayList<>();
+    private final List<String> cartItemsImage = new ArrayList<>();
 
 
     public void getItemInfosFromId(CartItemsBean bean) throws SQLException, FailedQueryToOpenFoodFacts, IOException, ParseException {
         int cartId = bean.getCartId();
         CartsDAO cartsDAO = new CartsDAO();
-        CartBarcodes = cartsDAO.getOldCartItems(username, cartId);
+        List<String> cartBarcodes = cartsDAO.getOldCartItems(username, cartId);
         BarcodeToInformationBean bean2 = new BarcodeToInformationBeanClass();
         ShowProductInfoOpenFoodFactsAPIBoundary boundary = ShowProductInfoOpenFoodFactsAPIBoundary.getInstance();
         int i;
-        for(i=0; i<CartBarcodes.size();i++){
-            bean2.setBarcodeSearch(CartBarcodes.get(i));
+        for(i=0; i< cartBarcodes.size(); i++){
+            bean2.setBarcodeSearch(cartBarcodes.get(i));
             boundary.findProductInfoByBarcode(bean2);
             cartItemsName.add(bean2.getName());
             cartItemsImage.add(bean2.getImage());
