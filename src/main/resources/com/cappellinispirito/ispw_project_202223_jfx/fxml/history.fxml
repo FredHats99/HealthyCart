@@ -29,7 +29,7 @@
                         <Image url="@../icons/user64.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="userName_label" text="Username">
+                  <Label fx:id="userName_label" text="Not logged">
                      <font>
                         <Font size="13.0" />
                      </font>

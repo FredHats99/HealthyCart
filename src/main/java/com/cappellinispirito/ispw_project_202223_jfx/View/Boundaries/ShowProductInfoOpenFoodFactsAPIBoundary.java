@@ -52,6 +52,8 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
             fruitPercentage = Math.toIntExact((Long) nutritionalValues.get("fruits-vegetables-nuts-estimate-from-ingredients_100g"));
         } catch (ClassCastException e){
             fruitPercentage = (int) Math.floor((Double) nutritionalValues.get("fruits-vegetables-nuts-estimate-from-ingredients_100g"));
+        } catch (NullPointerException e){
+            fruitPercentage = 0;
         }
 
         System.out.format("FruitPercentage: %s\n", fruitPercentage);

@@ -4,7 +4,9 @@ import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQuer
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
 import com.cappellinispirito.ispw_project_202223_jfx.View.ShowProductInfoCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NamePremiumBean;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.ProductNameBean;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -17,10 +19,12 @@ import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class SearchProductInfoControllerG {
+public class SearchProductInfoControllerG implements Initializable {
 
     public StackPane root;
 
@@ -31,15 +35,22 @@ public class SearchProductInfoControllerG {
     public Label infotext2;
     public Label infotext1;
     public Label isBioTextInfo;
-    private final Item itemInfo;
+    private Item itemInfo;
     public Rectangle scoreRect;
+    public Label userName_label;
 
-    public SearchProductInfoControllerG() throws FailedQueryToOpenFoodFacts, SQLException, IOException, ParseException {
-        NamePremiumBean bean = NamePremiumBean.getInstance();
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        ProductNameBean bean = ProductNameBean.getInstance();
         String itemName = bean.getName();
         System.out.println(itemName);
         ShowProductInfoCustomerView view = new ShowProductInfoCustomerView();
-        itemInfo = view.ShowProductInfo(itemName);
+        try {
+            itemInfo = view.ShowProductInfo(itemName);
+        } catch (IOException | ParseException | SQLException | FailedQueryToOpenFoodFacts e) {
+            throw new RuntimeException(e);
+        }
+        userName_label.setText(NamePremiumBean.getInstance().getName());
 
     }
 
