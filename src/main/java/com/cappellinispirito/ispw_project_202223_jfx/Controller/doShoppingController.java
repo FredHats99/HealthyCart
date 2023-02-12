@@ -36,7 +36,8 @@ public class doShoppingController {
     private HashMap<String, String> nameToImageMap = new HashMap<String, String>();
 
     public doShoppingController(){
-        shopSupermarket = ShowNearestSupermarketsController.getInstance().getChosenSupermarket();
+        //shopSupermarket = ShowNearestSupermarketsController.getInstance().getChosenSupermarket();
+        shopSupermarket = new Supermarket("Carrefour", " ");
         sellableSupermarketNames = new ArrayList<>();
         sellableSupermarketImages = new ArrayList<>();
         sellableSupermarketBarcodes = new ArrayList<>();

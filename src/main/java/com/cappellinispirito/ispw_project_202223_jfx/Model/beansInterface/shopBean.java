@@ -5,7 +5,7 @@ import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
 import java.util.List;
 
 public interface shopBean {
-    //outoput data
+    //output data
     List<String> getSellableProductName();
     void setSellableProductName(List<String> sellableProductName);
 

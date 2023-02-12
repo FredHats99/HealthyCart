@@ -20,6 +20,8 @@ public class DoShoppingCustomerView {
     private List<String> sellableProductsNames;
     private List<String> sellableProductsImages;
 
+    private String supermarket = "Carrefour";
+
     public DoShoppingCustomerView() throws FailedQueryToOpenFoodFacts {
         //Whenever this View starts up, invokes a Controller for obtaining items to put into the cart.
         controller = new doShoppingController();
