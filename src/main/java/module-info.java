@@ -30,4 +30,5 @@ module com.cappellinispirito.ispw_project_202223_jfx {
     exports com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface;
     exports com.cappellinispirito.ispw_project_202223_jfx.View.beans;
     exports com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions;
+    exports com.cappellinispirito.ispw_project_202223_jfx.Model.dao;
 }
