@@ -4,7 +4,7 @@ import com.cappellinispirito.ispw_project_202223_jfx.Controller.LogInController;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.LogInBean;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.LogInBeanClass;
 
-import javax.security.auth.login.FailedLoginException;
+
 import java.sql.SQLException;
 
 public class LogInCustomerView {
@@ -16,7 +16,7 @@ public class LogInCustomerView {
     public LogInCustomerView() {
     }
 
-    public void attemptLogin(String username, String password) throws SQLException, FailedLoginException {
+    public void attemptLogin(String username, String password) throws SQLException, com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedLoginException {
         //Suppose Username and Password field have been updated from user input
         try{
             LogInBean bean = new LogInBeanClass();

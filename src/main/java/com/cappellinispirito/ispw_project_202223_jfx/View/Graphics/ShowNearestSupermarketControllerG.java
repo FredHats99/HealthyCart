@@ -1,8 +1,10 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 
 import com.cappellinispirito.ispw_project_202223_jfx.View.ShowNearestSupermarketsCustomerView;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBean;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.supermarketNameBean;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -12,11 +14,13 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class ShowNearestSupermarketControllerG {
+public class ShowNearestSupermarketControllerG implements Initializable {
 
     public StackPane root;
 
@@ -35,12 +39,20 @@ public class ShowNearestSupermarketControllerG {
     public List<Label> marketDistancesList = new ArrayList<>();
 
     public TextField search_text;
+    public Label userName_label;
 
     private boolean isStartingAShop;
+    String username;
 
     ShowNearestSupermarketsCustomerView view;
 
-    public ShowNearestSupermarketControllerG(){}
+    @Override
+    public void initialize(URL url, ResourceBundle rb){
+        username = NameBean.getInstance().getName(); // getName() returns null
+        if(username != null) {
+            userName_label.setText(username);
+        }
+    }
 
     public void onSearchSupermarketsClicked() throws Exception {
         marketAddressesList.add(market1);

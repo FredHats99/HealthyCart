@@ -6,6 +6,7 @@ import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NamePremiumBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -19,13 +20,15 @@ import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 
-public class SearchProductControllerG {
+public class SearchProductControllerG implements Initializable {
     @FXML
     public StackPane root;
 
@@ -64,10 +67,15 @@ public class SearchProductControllerG {
     public RadioButton searchButton;
     public TextField search_text;
 
-    String username;
+    public Label userName_label;
 
-    public SearchProductControllerG() throws FailedQueryToOpenFoodFacts, IOException, ParseException {
-        // if bean.value != NULL -> searchProduct(bean.value)
+    String username;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)  {
+        username = NameBean.getInstance().getName(); // getName() returns null
+        if(username != null) {
+            userName_label.setText(username);
+        }
     }
 
 
