@@ -17,7 +17,7 @@ public class showNearestSupermarketsNominatimAPIBoundary implements APIProxyBoun
     JSONArray jsonArray;
     @Override
     public void getNearestSupermarkets(positionBean bean) throws Exception {
-        String address = bean.getAddress();
+        String address = bean.getAddress().replace(" ","+");
 
         String url = "https://nominatim.openstreetmap.org/search?q=" + address + "&format=json&limit=5&addressdetails=1&polygon_svg=1&namedetails=1";
         URL obj = new URL(url);
@@ -35,6 +35,7 @@ public class showNearestSupermarketsNominatimAPIBoundary implements APIProxyBoun
         in.close();
 
         jsonArray = (JSONArray) JSONValue.parse(response.toString());
+        System.out.println(jsonArray);
         extractInformation(bean, jsonArray);
     }
 

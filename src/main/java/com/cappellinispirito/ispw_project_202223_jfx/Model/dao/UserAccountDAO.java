@@ -122,7 +122,7 @@ public class UserAccountDAO {
             conn = DBConnector.getInstance().getConnection();
             stmt = conn.createStatement();
             ResultSet rs = Queries.checkIfUserExists(stmt, username);
-            if(rs.first()){
+            if(rs.next()){
                 throw new FailedRegistrationException("This user already exists!");
             }
         } catch (SQLException | FailedRegistrationException e) {
