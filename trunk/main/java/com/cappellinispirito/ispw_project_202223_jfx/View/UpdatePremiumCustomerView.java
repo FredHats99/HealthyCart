@@ -12,10 +12,5 @@ public class UpdatePremiumCustomerView {
         updatePremiumBean bean = new updatePremiumBeanClass();
         updatePremiumController controller = new updatePremiumController();
         controller.updateCurrentUserToPremium(bean);
-        if(bean.getUpdatePremiumProcedureOutcome()){
-            //User has been updated to Premium. Hooray!!
-        } else {
-            //Nooo. Something went wrong, maybe user is already premium...
-        }
     }
 }

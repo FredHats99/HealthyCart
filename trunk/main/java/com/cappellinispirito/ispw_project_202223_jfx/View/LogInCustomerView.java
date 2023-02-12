@@ -34,7 +34,7 @@ public class LogInCustomerView {
                 isPremium=bean.getIsPremium();
             }
         } catch (Exception e){
-            //e.printStackTrace();
+            e.printStackTrace();
         }
     }
     public boolean getIsLoginDone(){

@@ -13,10 +13,5 @@ public class RegisterCustomerView {
         bean.setPassword(registrationPassword);
         RegistrationController registrationController = new RegistrationController();
         registrationController.register(bean);
-        if(bean.getIsRegistrationDone()){
-            //Yay! Registration ended up well... Now back to the login screen...
-        } else {
-            //Oops! Something went wrong. Display error message!
-        }
     }
 }

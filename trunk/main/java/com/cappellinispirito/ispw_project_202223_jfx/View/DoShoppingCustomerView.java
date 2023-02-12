@@ -2,7 +2,6 @@ package com.cappellinispirito.ispw_project_202223_jfx.View;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Controller.doShoppingController;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.shopBean;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.shopBeanClass;
 import org.json.simple.parser.ParseException;
