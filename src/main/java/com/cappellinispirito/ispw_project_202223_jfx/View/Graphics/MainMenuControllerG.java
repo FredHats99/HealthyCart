@@ -84,7 +84,8 @@ public class MainMenuControllerG {
         }
         //initialize new scene
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/search.fxml")));
-        SearchProductControllerG controller = loader.getController();
+        SearchProductControllerG controller = new SearchProductControllerG();
+        loader.setController(controller);
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
@@ -97,7 +98,9 @@ public class MainMenuControllerG {
     }
     public void onShowNearestSupermarketClicked() throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/nearestSupermarket.fxml")));
-        ShowNearestSupermarketControllerG controller = loader.getController();
+        ShowNearestSupermarketControllerG controller = new ShowNearestSupermarketControllerG();
+        loader.setController(controller);
+        controller.setIsStartingAShop(false);
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();

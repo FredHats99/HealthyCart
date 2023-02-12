@@ -6,11 +6,14 @@ import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.shopBe
 import java.util.List;
 
 public class shopBeanClass implements shopBean {
+    private String supermarket;
+    private String supermarketLocation;
     private List<String> sellableProductsNames;
     private List<String> sellableProductsImages;
     private String itemNameToAdd;
     private String itemNameToRemove;
     private int cartHealthScore;
+
 
 
     @Override
