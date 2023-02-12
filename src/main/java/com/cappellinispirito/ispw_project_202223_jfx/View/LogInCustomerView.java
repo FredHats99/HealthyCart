@@ -31,10 +31,8 @@ public class LogInCustomerView {
                 setUsername(bean.getUsername());
                 System.out.format("User is %s", username);
             }
-        } catch (NullPointerException e){
-            e.printStackTrace();
-        } catch (com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedLoginException e) {
-            throw new FailedLoginException(e.getMessage());
+        } catch (Exception e){
+            //e.printStackTrace();
         }
     }
     public boolean getIsLoginDone(){

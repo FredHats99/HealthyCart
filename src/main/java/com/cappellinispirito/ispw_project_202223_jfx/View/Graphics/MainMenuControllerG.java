@@ -2,7 +2,6 @@ package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.DeniedPermissionsException;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
-import com.cappellinispirito.ispw_project_202223_jfx.View.LogInCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -24,8 +22,6 @@ public class MainMenuControllerG implements Initializable {
     @FXML
     public StackPane root;
     public Label usernameLabel;
-
-    LogInCustomerView logInCustomerView;
     public String username;
 
     @Override
@@ -34,7 +30,6 @@ public class MainMenuControllerG implements Initializable {
         if(username != null) {
             usernameLabel.setText(username);
         }
-        System.out.format("User is %s", username);
     }
 
     public void onCartHistoryClick() throws IOException, DeniedPermissionsException {
@@ -144,7 +139,4 @@ public class MainMenuControllerG implements Initializable {
         stage.setScene(myScene);
     }
 
-    public void setUsernameLabel(String username) {
-        usernameLabel.setText(username);
-    }
 }
