@@ -1,10 +1,6 @@
 package com.cappellinispirito.ispw_project_202223_jfx;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.DBConnector;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.UserAccountDAO;
-import com.cappellinispirito.ispw_project_202223_jfx.View.LogInCustomerView;
-import com.cappellinispirito.ispw_project_202223_jfx.View.SearchProductCustomerView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,7 +22,7 @@ public class Main extends Application{
     public void start(Stage myStage) throws IOException {
 
         //node
-        Parent rootNode = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/Main_menu2.fxml")));
+        Parent rootNode = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/Main_menu2.fxml")));
         //scene
         Scene myScene = new Scene(rootNode);
         //stylesheet

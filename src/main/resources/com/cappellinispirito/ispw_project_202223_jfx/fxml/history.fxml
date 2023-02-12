@@ -13,11 +13,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@MyStylesheet2.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.View.Graphics.CartHistoryControllerG">
+<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@../MyStylesheet2.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.View.Graphics.CartHistoryControllerG">
    <children>
       <ImageView fitHeight="900.0" fitWidth="1200.0" opacity="0.04" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@icons/bg_history.png" />
+            <Image url="@../icons/bg_history.png" />
          </image>
       </ImageView>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
@@ -26,7 +26,7 @@
                <children>
                   <ImageView fx:id="userlogo" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
                      <image>
-                        <Image url="@icons/user64.png" />
+                        <Image url="@../icons/user64.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="userName_label" text="Username">
@@ -46,7 +46,7 @@
       </HBox>
       <ImageView fitHeight="50.0" fitWidth="50.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
          <image>
-            <Image url="@icons/back.png" />
+            <Image url="@../icons/back.png" />
          </image>
          <StackPane.margin>
             <Insets left="15.0" top="15.0" />
@@ -61,7 +61,7 @@
          <children>
             <ImageView fitHeight="682.0" fitWidth="507.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons/sheet.png" />
+                  <Image url="@../icons/sheet.png" />
                </image>
             </ImageView>
             <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">

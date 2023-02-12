@@ -165,7 +165,7 @@ public class SearchProductControllerG {
                 NameBean bean = NameBean.getInstance();
                 bean.setName(String.valueOf(productsNames.get(i).getText()));
                 System.out.format("SPC will send %s..\n", String.valueOf(productsNames.get(i).getText()));
-                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/itemInfo.fxml")));
+                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/itemInfo.fxml")));
                 Parent rootNode = loader.load();
                 SearchProductInfoControllerG controller = loader.getController();
                 Scene myScene = new Scene(rootNode);

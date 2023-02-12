@@ -13,7 +13,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 
@@ -50,7 +49,7 @@ public class MainMenuControllerG {
         //initialize new scene
 
         //Bean.value = textfield;
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/history.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/history.fxml")));
         Parent rootNode = loader.load();
         CartHistoryControllerG controller = loader.getController();
         Scene myScene = new Scene(rootNode);
@@ -64,7 +63,7 @@ public class MainMenuControllerG {
         if(username != null){
             userName_label.setText(username);
         } else {
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/login.fxml")));
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/login.fxml")));
             LogInControllerG controller = loader.getController();
             Parent rootNode = loader.load();
             Scene myScene = new Scene(rootNode);
@@ -83,7 +82,7 @@ public class MainMenuControllerG {
             throw new DeniedPermissionsException("Input non valid!");
         }
         //initialize new scene
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/search.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/search.fxml")));
         SearchProductControllerG controller = loader.getController();
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
@@ -96,7 +95,7 @@ public class MainMenuControllerG {
         }
     }
     public void onShowNearestSupermarketClicked() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/nearestSupermarket.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/nearestSupermarket.fxml")));
         ShowNearestSupermarketControllerG controller = loader.getController();
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);

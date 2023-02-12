@@ -22,7 +22,7 @@ public class CartHistoryControllerG {
     }
 
     public void onBackButtonClicked() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/Main_menu.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/Main_menu.fxml")));
         Parent rootNode = loader.load();
         MainMenuControllerG controller = loader.getController();
         Scene myScene = new Scene(rootNode);

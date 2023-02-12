@@ -64,7 +64,7 @@ public class SearchProductInfoControllerG {
     }
 
     public void onBackButtonPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/search.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/search.fxml")));
         SearchProductControllerG controller = loader.getController();
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
