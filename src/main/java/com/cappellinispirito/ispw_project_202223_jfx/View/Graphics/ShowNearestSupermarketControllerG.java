@@ -2,11 +2,14 @@ package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 
 import com.cappellinispirito.ispw_project_202223_jfx.View.ShowNearestSupermarketsCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NamePremiumBean;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.newShopBean;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.supermarketNameBean;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -52,6 +55,8 @@ public class ShowNearestSupermarketControllerG implements Initializable {
         if(username != null) {
             userName_label.setText(username);
         }
+
+
     }
 
     public void onSearchSupermarketsClicked() throws Exception {
@@ -79,13 +84,16 @@ public class ShowNearestSupermarketControllerG implements Initializable {
         }
     }
 
+
+
     public void onSupermarketClicked(MouseEvent mouseEvent) throws IOException {
-        if(isStartingAShop){
+        if(newShopBean.getInstance().getNewShop()){
             Label label = (Label) mouseEvent.getSource();
             if(!Objects.equals(label.getText(), "")){
                 supermarketNameBean bean = supermarketNameBean.getInstance();
                 bean.setSupermarketName(label.getText());
-                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/doShopping.fxml")));
+
+                FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/doShopping.fxml")));
                 Parent rootNode = loader.load();
                 Scene myScene = new Scene(rootNode);
                 Stage stage = (Stage) root.getScene().getWindow();

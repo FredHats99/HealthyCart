@@ -3,6 +3,7 @@ package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.DeniedPermissionsException;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NamePremiumBean;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.newShopBean;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -147,6 +148,8 @@ public class MainMenuControllerG implements Initializable {
 
         //controllerG.setIsStartingAShop(false); // why not?
 
+        newShopBean.getInstance().setNewShop(false);
+
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
@@ -154,11 +157,12 @@ public class MainMenuControllerG implements Initializable {
     }
 
     public void onNewCartClick() throws  IOException{ //why research is starting on click?
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/doShopping.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/nearestSupermarket.fxml")));
 
         //already specified by fxml
         //DoShoppingControllerG controllerG = new DoShoppingControllerG();
         //loader.setController(controllerG);
+        newShopBean.getInstance().setNewShop(true);
 
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);

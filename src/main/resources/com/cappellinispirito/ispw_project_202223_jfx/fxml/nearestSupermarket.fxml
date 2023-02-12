@@ -114,7 +114,7 @@
                         </DropShadow>
                      </effect>
                   </Rectangle>
-                  <Label fx:id="market1" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="market1" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -143,7 +143,7 @@
                         </DropShadow>
                      </effect>
                   </Rectangle>
-                  <Label fx:id="market2" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="market2" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -175,7 +175,7 @@
                         </DropShadow>
                      </effect>
                   </Rectangle>
-                  <Label fx:id="market3" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="market3" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -207,7 +207,7 @@
                         </DropShadow>
                      </effect>
                   </Rectangle>
-                  <Label fx:id="market4" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="market4" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -239,7 +239,7 @@
                         </DropShadow>
                      </effect>
                   </Rectangle>
-                  <Label fx:id="market5" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="market5" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="25.0" />
                      </font>
