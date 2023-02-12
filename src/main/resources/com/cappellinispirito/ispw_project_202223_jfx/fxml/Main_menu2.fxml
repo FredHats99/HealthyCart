@@ -71,12 +71,12 @@
             </StackPane>
             <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                <children>
-                  <ImageView fx:id="userlogo" fitWidth="40.0" onMouseClicked="#onLogin" opacity="0.7" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+                  <ImageView fx:id="usernameButton" fitWidth="40.0" onMouseClicked="#onLogin" opacity="0.7" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
                      <image>
                         <Image url="@../icons/user64.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="userName_label" text="Username">
+                  <Label fx:id="usernameLabel" text="Username">
                      <StackPane.margin>
                         <Insets top="45.0" />
                      </StackPane.margin>
