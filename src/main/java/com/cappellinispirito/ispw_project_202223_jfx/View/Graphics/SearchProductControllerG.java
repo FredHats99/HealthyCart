@@ -72,7 +72,7 @@ public class SearchProductControllerG implements Initializable {
     String username;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)  {
-        username = NameBean.getInstance().getName(); // getName() returns null
+        username = NamePremiumBean.getInstance().getName(); // getName() returns null
         if(username != null) {
             userName_label.setText(username);
         }

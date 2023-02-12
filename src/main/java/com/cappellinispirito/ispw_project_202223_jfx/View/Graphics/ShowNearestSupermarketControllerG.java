@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 
 import com.cappellinispirito.ispw_project_202223_jfx.View.ShowNearestSupermarketsCustomerView;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBean;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NamePremiumBean;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.supermarketNameBean;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -48,7 +48,7 @@ public class ShowNearestSupermarketControllerG implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        username = NameBean.getInstance().getName(); // getName() returns null
+        username = NamePremiumBean.getInstance().getName(); // getName() returns null
         if(username != null) {
             userName_label.setText(username);
         }
