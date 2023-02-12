@@ -19,6 +19,7 @@ import static org.junit.Assert.assertTrue;
 public class TestShowProductInfoController {
     public static final String GIORDANO = "Ringo alla Vaniglia";
     boolean result;
+    //Giordano Spirito MATRICOLA: 0268514
     @Test
     public void TestCorrectShowProductInfo() throws FailedQueryToOpenFoodFacts, SQLException, IOException, ParseException {
         ShowProductInfoController controller = ShowProductInfoController.getInstance();

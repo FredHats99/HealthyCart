@@ -15,7 +15,7 @@ public class TestRegistrationController {
 
     private static final String NONREGISTEREDUSER = "Cappellini";
     private static final String NONREGISTEREDPASSWORD = "Federico";
-
+    //Giordano Spirito MATRICOLA: 0268514
     @Test
     void testRegistrationNonExistingUser() throws Exception {
 

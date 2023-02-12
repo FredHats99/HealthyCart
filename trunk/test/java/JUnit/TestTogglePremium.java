@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestTogglePremium {
     private static final String GIORDANO = "Cap";
-
+    //Giordano Spirito MATRICOLA: 0268514
     @Test
     public void TestPremiumSwitch(){
         boolean result;

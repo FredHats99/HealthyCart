@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestSearchProductController {
 
     private static final String GIORDANO = "Ringo";
+    //Federico Cappellini MATRICOLA: 0272280
     @Test
     void testCorrectSearchProduct() {
         boolean result;
