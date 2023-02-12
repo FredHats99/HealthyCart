@@ -2,7 +2,7 @@ package com.cappellinispirito.ispw_project_202223_jfx.View.beans;
 
 public class NameBean {
     public static NameBean instance;
-    private String name;
+    private String name = "Not Logged";
 
     private NameBean(){}
 
