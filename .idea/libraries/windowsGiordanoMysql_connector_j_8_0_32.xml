@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="mysql-connector-j-8.0.32">
+  <library name="windowsGiordanoMysql-connector-j-8.0.32">
     <CLASSES>
       <root url="jar://C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-j-8.0.32.jar!/" />
     </CLASSES>

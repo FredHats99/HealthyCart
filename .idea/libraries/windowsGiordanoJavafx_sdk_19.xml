@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="windowsGiordanoJavafx-sdk-19">
+    <CLASSES>
+      <root url="file://$USER_HOME$/javafx-sdk-19/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/javafx-sdk-19" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/javafx-sdk-19/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/javafx-sdk-19" recursive="false" type="SOURCES" />
+  </library>
+</component>
