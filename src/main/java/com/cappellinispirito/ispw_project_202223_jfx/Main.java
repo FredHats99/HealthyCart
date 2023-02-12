@@ -57,7 +57,7 @@ public class Main extends Application{
         //testing
         //Coca-cola 1 lt: 5449000133328
         //Nutella: 3017620422003
-        String barcode = "3017620422003"; //it's the barcode of nutella
+        //String barcode = "3017620422003"; //it's the barcode of nutella
         //System.out.println(Nutella.getNutriscore().getNutriscoreValue());
         launch(args);
         //System.exit(0);

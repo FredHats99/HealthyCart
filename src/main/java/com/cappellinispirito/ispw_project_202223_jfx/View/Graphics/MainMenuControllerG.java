@@ -9,50 +9,50 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Objects;
 
 public class MainMenuControllerG {
 
     @FXML
     public StackPane root;
-    public TextField search_text;
-    public RadioButton newcart_button;
-    public ImageView Label_View;
-    public RadioButton findstore_button;
-    public Label userName_label;
-    public ImageView userlogo;
+    public Label usernameLabel;
+
     LogInCustomerView logInCustomerView;
     public String username;
 
 
     public MainMenuControllerG(){
-        logInCustomerView = new LogInCustomerView();
-        username = NameBean.getInstance().getName();
+        logInCustomerView = new LogInCustomerView(); // used for?
+        username = NameBean.getInstance().getName(); // getName() returns null
         System.out.format("User is %s", username);
     }
 
-    public void onCartHistoryClicked() throws IOException, DeniedPermissionsException {
-        try{
+    public void onCartHistoryClick() throws IOException, DeniedPermissionsException {
+
+        /*try{
             if(username == null){
                 //Some label will tell the user that he has to log in...
                 throw new DeniedPermissionsException("You have to log in to use this functionality");
             }
         } catch (DeniedPermissionsException e){
             throw new DeniedPermissionsException("You have to log in to use this functionality");
-        }
+        }*/
+
         //initialize new scene
 
         //Bean.value = textfield;
+
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/history.fxml")));
+
+        //already specified by fxml
+        //CartHistoryControllerG controllerG = new CartHistoryControllerG();
+        //loader.setController(controllerG);
+
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
@@ -62,55 +62,84 @@ public class MainMenuControllerG {
     }
 
     public void onLogin() throws IOException {
-        if(username != null){
-            userName_label.setText(username);
+
+        /*if(username != null){
+            usernameLabel.setText(username);
         } else {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/login.fxml")));
+
+            LogInControllerG controllerG = new LogInControllerG();
+            loader.setController(controllerG);
+
             Parent rootNode = loader.load();
             Scene myScene = new Scene(rootNode);
             Stage stage = (Stage) root.getScene().getWindow();
             stage.setScene(myScene);
-        }
+        }*/
+
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/login.fxml")));
+
+        //Already specified inside the fxml
+        //LogInControllerG controllerG = new LogInControllerG();
+        //loader.setController(controllerG);
+
+        Parent rootNode = loader.load();
+        Scene myScene = new Scene(rootNode);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(myScene);
     }
 
-    public void onSearchProductButtonClicked() throws DeniedPermissionsException, FailedQueryToOpenFoodFacts, IOException, ParseException {
-        String searchText = search_text.getText();
+    public void onFindItemClick() throws DeniedPermissionsException, FailedQueryToOpenFoodFacts, IOException, ParseException {
+
         /*if(!logInCustomerView.getIsPremium()){
             //TODO: some label will tell the user he has to be premium...
             throw new DeniedPermissionsException("You have to be a premium user to use this functionality!");
         }*/
-        if(searchText == null){
-            throw new DeniedPermissionsException("Input non valid!");
-        }
+
         //initialize new scene
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/search.fxml")));
-        SearchProductControllerG controller = loader.getController();
+
+        //already specified inside fxml
+        //SearchProductControllerG controller = loader.getController(); // ???
+        //SearchProductControllerG controllerG = new SearchProductControllerG();
+        //loader.setController(controllerG);
+
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(myScene);
-        try{
-            controller.searchProduct(searchText);
-        } catch (NullPointerException | SQLException e){
-            e.printStackTrace();
-        }
+
     }
-    public void onShowNearestSupermarketClicked() throws IOException {
+
+    public void onFindStoreClick() throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/nearestSupermarket.fxml")));
-        ShowNearestSupermarketControllerG controller = new ShowNearestSupermarketControllerG();
-        loader.setController(controller);
-        controller.setIsStartingAShop(false);
+
+        //already specified inside fxml
+        //ShowNearestSupermarketControllerG controllerG = new ShowNearestSupermarketControllerG();
+        //loader.setController(controllerG);
+
+        //controllerG.setIsStartingAShop(false); // why not?
+
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
         stage.setScene(myScene);
     }
 
-    public void setUsername(String username) {
-        userName_label.setText(username);
+    public void onNewCartClick() throws  IOException{ //why research is starting on click?
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/doShopping.fxml")));
+
+        //already specified by fxml
+        //DoShoppingControllerG controllerG = new DoShoppingControllerG();
+        //loader.setController(controllerG);
+
+        Parent rootNode = loader.load();
+        Scene myScene = new Scene(rootNode);
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(myScene);
     }
 
-    public void setLabel(String username) {
-        userName_label.setText(username);
+    public void setUsernameLabel(String username) {
+        usernameLabel.setText(username);
     }
 }
