@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -37,9 +36,6 @@ public class ShowNearestSupermarketControllerG {
 
     public TextField search_text;
 
-    private List<String> supermarketNames = new ArrayList<>();
-    private List<String> supermarketAddresses = new ArrayList<>();
-    private List<Float> supermarketDistances = new ArrayList<>();
     private boolean isStartingAShop;
 
     ShowNearestSupermarketsCustomerView view;
@@ -62,13 +58,12 @@ public class ShowNearestSupermarketControllerG {
         view = new ShowNearestSupermarketsCustomerView();
         String search = search_text.getText();
         view.showNearestFrom(search);
-        supermarketNames = view.getSupermarketsNames();
-        supermarketAddresses = view.getSupermarketsAddresses();
-        supermarketDistances = view.getSupermarketsDistances();
+        List<String> supermarketNames = view.getSupermarketsNames();
+        List<Float> supermarketDistances = view.getSupermarketsDistances();
         int i;
-        for(i=0;i<supermarketNames.size();i++){
+        for(i=0; i< supermarketNames.size(); i++){
             marketAddressesList.get(i).setText(String.format("%s", supermarketNames.get(i)));
-            marketDistancesList.get(i).setText(String.format("%s Km",supermarketDistances.get(i)));
+            marketDistancesList.get(i).setText(String.format("%s Km", supermarketDistances.get(i)));
         }
     }
 
@@ -79,7 +74,6 @@ public class ShowNearestSupermarketControllerG {
                 supermarketNameBean bean = supermarketNameBean.getInstance();
                 bean.setSupermarketName(label.getText());
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/doShopping.fxml")));
-                DoShoppingControllerG controller = loader.getController();
                 Parent rootNode = loader.load();
                 Scene myScene = new Scene(rootNode);
                 Stage stage = (Stage) root.getScene().getWindow();

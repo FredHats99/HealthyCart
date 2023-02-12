@@ -22,7 +22,7 @@ public class LogInController {
         return instance;
     }
 
-    public void checkCredentials(LogInBean bean) throws FailedLoginException, SQLException {
+    public void checkCredentials(LogInBean bean) throws SQLException, FailedLoginException, com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedLoginException {
         String username = bean.getUsername();
         String password = bean.getPassword();
         UserAccountDAO accountDAO = new UserAccountDAO();

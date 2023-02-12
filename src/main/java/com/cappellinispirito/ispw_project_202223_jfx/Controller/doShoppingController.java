@@ -5,14 +5,12 @@ import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.ShoppingCart;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Supermarket;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.BarcodeToInformationBean;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.NameToItemSearchBean;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.shopBean;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.supermarketsToProductsBean;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.CartsDAO;
 import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.SearchProductsFromSupermarketOpenFoodFactsAPIBoundary;
 import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.ShowProductInfoOpenFoodFactsAPIBoundary;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.BarcodeToInformationBeanClass;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameToItemSearchBeanClass;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.supermarketsToProductsBeanClass;
 import org.json.simple.parser.ParseException;
 
@@ -24,16 +22,16 @@ import java.util.List;
 import java.util.Objects;
 
 public class doShoppingController {
-    private ShoppingCart shoppingCart;
-    private Supermarket shopSupermarket;
-    private String username;
+    private final ShoppingCart shoppingCart;
+    private final Supermarket shopSupermarket;
+    private final String username;
     //By now, the easiest way to pass a lot of values, is via Item classes...this controller class will track them.
     private List<String> sellableSupermarketNames;
     private List<String> sellableSupermarketImages;
     private List<String> sellableSupermarketBarcodes;
 
-    private HashMap<String, String> nameToBarcodeMap = new HashMap<String, String>();
-    private HashMap<String, String> nameToImageMap = new HashMap<String, String>();
+    private final HashMap<String, String> nameToBarcodeMap = new HashMap<>();
+    private final HashMap<String, String> nameToImageMap = new HashMap<>();
 
     public doShoppingController(){
         //shopSupermarket = ShowNearestSupermarketsController.getInstance().getChosenSupermarket();

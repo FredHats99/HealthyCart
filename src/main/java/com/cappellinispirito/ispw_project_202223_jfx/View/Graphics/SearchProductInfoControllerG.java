@@ -31,13 +31,12 @@ public class SearchProductInfoControllerG {
     public Label infotext2;
     public Label infotext1;
     public Label isBioTextInfo;
-    private String itemName;
-    private Item itemInfo;
+    private final Item itemInfo;
     public Rectangle scoreRect;
 
     public SearchProductInfoControllerG() throws FailedQueryToOpenFoodFacts, SQLException, IOException, ParseException {
         NameBean bean = NameBean.getInstance();
-        itemName = bean.getName();
+        String itemName = bean.getName();
         System.out.println(itemName);
         ShowProductInfoCustomerView view = new ShowProductInfoCustomerView();
         itemInfo = view.ShowProductInfo(itemName);
@@ -65,7 +64,6 @@ public class SearchProductInfoControllerG {
 
     public void onBackButtonPressed() throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/search.fxml")));
-        SearchProductControllerG controller = loader.getController();
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();

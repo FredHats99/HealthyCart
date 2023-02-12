@@ -3,7 +3,6 @@ package com.cappellinispirito.ispw_project_202223_jfx.Model.dao;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 public class CartsDAO {
@@ -43,7 +42,7 @@ public class CartsDAO {
 
     public List<Date> getOldCartDate(String username){
         List<Date> dateList = new ArrayList<>();
-        Statement stmt = null;
+        Statement stmt;
         Connection conn;
 
         try{
@@ -63,7 +62,7 @@ public class CartsDAO {
 
     public List<Integer> getOldCartScores(String username){
         List<Integer> scoreList = new ArrayList<>();
-        Statement stmt = null;
+        Statement stmt;
         Connection conn;
 
         try{
@@ -83,7 +82,7 @@ public class CartsDAO {
 
     public List<Integer> getOldCartId(String username){
         List<Integer> idList = new ArrayList<>();
-        Statement stmt = null;
+        Statement stmt;
         Connection conn;
 
         try{
@@ -103,7 +102,7 @@ public class CartsDAO {
 
     public List<String> getOldCartItems(String username, int idCart) throws SQLException {
         List<String> barcodesInCart = new ArrayList<>();
-        CallableStatement stmt = null;
+        CallableStatement stmt;
         Connection conn;
         int cartId;
         String Itembarcode;
@@ -128,7 +127,4 @@ public class CartsDAO {
         }
         return barcodesInCart;
     }
-
-    public void getOldItemsQuantity(String username) throws SQLException{}
-
 }

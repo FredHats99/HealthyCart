@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -48,7 +47,6 @@ public class LogInControllerG {
 
     public void onBackPressed() throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/main_menu2.fxml")));
-        MainMenuControllerG controller = loader.getController();
         if(view.getIsLoginDone()){
             NameBean bean = NameBean.getInstance();
             bean.setName(username);

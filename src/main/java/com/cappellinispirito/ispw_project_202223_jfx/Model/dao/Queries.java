@@ -17,11 +17,6 @@ public class Queries {
         return stmt.getResultSet();
     }
 
-    public static void changePassword(Statement stmt, String username, String newPassword) throws SQLException {
-        String updateStatement = String.format("if exists(SELECT username from Users WHERE username = '%s') then update Users set Users.password = '%s' where username = '%s' end if;", username, newPassword, username);
-        stmt.executeUpdate(updateStatement);
-    }
-
     public static void updateToPremium(Statement stmt, String username) throws SQLException{
         String updateStatement = String.format("if exists(SELECT username from Users WHERE username = '%s') then update Users set isPremium = 1 where username = '%s'; end if;", username, username);
         stmt.executeUpdate(updateStatement);

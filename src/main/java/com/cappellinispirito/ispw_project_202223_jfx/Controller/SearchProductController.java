@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Controller;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.UserAccount;
+
 import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.ResultsFromSearchBean;
 import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.SearchProductOpenFoodFactsAPIBoundary;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameImageBarcodeFromSearchBeanClass;
@@ -15,11 +15,8 @@ import java.util.List;
 public class SearchProductController{
     //attributes
     private static SearchProductController instance;
-    private List<String> resultNames;
-    private List<String> resultImages;
-    private List<String> resultBarcodes;
-    private HashMap<String, String> nameToBarcodeMap = new HashMap<>();
-    private HashMap<String, String> nameToImageUrlMap = new HashMap<>();
+    private final HashMap<String, String> nameToBarcodeMap = new HashMap<>();
+    private final HashMap<String, String> nameToImageUrlMap = new HashMap<>();
 
 
     //methods
@@ -37,10 +34,6 @@ public class SearchProductController{
         //else error
     }
 
-    private boolean checkPremium(UserAccount account){
-        return account.getIsPremium();
-    }
-
     public void findProductByName(ResultsFromSearchBean bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
 
         String searchName = bean.getNameToSearch();
@@ -48,11 +41,11 @@ public class SearchProductController{
         bean2.setNameToSearch(searchName);
         SearchProductOpenFoodFactsAPIBoundary apiBoundary = SearchProductOpenFoodFactsAPIBoundary.getInstance();
         apiBoundary.findProductByName(bean2);
-        this.resultNames = bean2.getResultsNames();
-        this.resultImages = bean2.getResultsImages();
-        this.resultBarcodes = bean2.getResultsBarcodes();
+        List<String> resultNames = bean2.getResultsNames();
+        List<String> resultImages = bean2.getResultsImages();
+        List<String> resultBarcodes = bean2.getResultsBarcodes();
         int i;
-        for(i=0;i<this.resultNames.size();i++){
+        for(i=0; i< resultNames.size(); i++){
             nameToBarcodeMap.put(resultNames.get(i), resultBarcodes.get(i));
             System.out.format("<Name, Barcode> is <%s, %s>\n", resultNames.get(i), resultBarcodes.get(i));
             nameToImageUrlMap.put(resultNames.get(i), resultImages.get(i));
@@ -62,8 +55,6 @@ public class SearchProductController{
     }
 
     public String getBarcodeByName(String name) {
-        //System.out.println(name);
-        //System.out.println(nameToBarcodeMap.get(name));
         return nameToBarcodeMap.get(name);
     }
 
