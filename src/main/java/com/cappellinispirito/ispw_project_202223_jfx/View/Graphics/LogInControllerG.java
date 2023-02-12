@@ -7,6 +7,7 @@ import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NamePremiumBean;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -16,12 +17,14 @@ import javafx.stage.Stage;
 
 import javax.security.auth.login.FailedLoginException;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class LogInControllerG {
+public class LogInControllerG implements Initializable {
 
     public StackPane root;
     public TextField usernametext;
@@ -30,14 +33,23 @@ public class LogInControllerG {
     public Label registerbutton;
     @FXML
     public Label toggle;
+    public StackPane vis;
 
 
     String username;
 
     LogInCustomerView view = new LogInCustomerView();
 
-    public LogInControllerG(){
+    @Override
+    public void initialize(URL url, ResourceBundle rb){
+        if (NamePremiumBean.getInstance().getPremium()){
+            toggle.setStyle("-fx-background-color: green");
+        }
+        else if (!NamePremiumBean.getInstance().getPremium()){
+            toggle.setStyle("-fx-background-color: red");
+        }
 
+        vis.setVisible(NamePremiumBean.getInstance().getName() != null);
     }
 
     public void onLoginClick() throws FailedLoginException, SQLException, IOException, com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedLoginException {
@@ -67,6 +79,7 @@ public class LogInControllerG {
                     }
                 }, 4000);
             }
+
         }
 
     }

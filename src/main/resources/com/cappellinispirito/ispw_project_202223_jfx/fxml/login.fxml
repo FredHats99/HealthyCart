@@ -132,7 +132,7 @@
                         <Insets left="40.0" />
                      </HBox.margin>
                   </StackPane>
-                  <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+                  <StackPane fx:id="vis" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" visible="false">
                      <children>
                         <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#fafafa" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="180.0">
                            <effect>
