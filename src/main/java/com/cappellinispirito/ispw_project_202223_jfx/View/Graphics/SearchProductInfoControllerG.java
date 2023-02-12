@@ -3,7 +3,7 @@ package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Item;
 import com.cappellinispirito.ispw_project_202223_jfx.View.ShowProductInfoCustomerView;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBean;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NamePremiumBean;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -35,7 +35,7 @@ public class SearchProductInfoControllerG {
     public Rectangle scoreRect;
 
     public SearchProductInfoControllerG() throws FailedQueryToOpenFoodFacts, SQLException, IOException, ParseException {
-        NameBean bean = NameBean.getInstance();
+        NamePremiumBean bean = NamePremiumBean.getInstance();
         String itemName = bean.getName();
         System.out.println(itemName);
         ShowProductInfoCustomerView view = new ShowProductInfoCustomerView();

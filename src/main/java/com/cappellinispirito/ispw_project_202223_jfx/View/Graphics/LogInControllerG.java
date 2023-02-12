@@ -2,7 +2,7 @@ package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 
 import com.cappellinispirito.ispw_project_202223_jfx.View.LogInCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.RegisterCustomerView;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBean;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NamePremiumBean;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,6 +42,7 @@ public class LogInControllerG {
         if(username != null || password != null){
             view.attemptLogin(usernametext.getText(), passwordtext.getText());
             if(view.getIsLoginDone()){
+                NamePremiumBean.getInstance().setPremium(view.getIsPremium());
                 onBackButton();
             }
             else{
@@ -70,7 +71,7 @@ public class LogInControllerG {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/main_menu2.fxml")));
 
         if(view.getIsLoginDone()){
-            NameBean bean = NameBean.getInstance();
+            NamePremiumBean bean = NamePremiumBean.getInstance();
             bean.setName(username);
             System.out.format("Sending user %s", username);
         }

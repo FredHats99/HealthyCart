@@ -132,6 +132,27 @@
                         <Insets left="40.0" />
                      </HBox.margin>
                   </StackPane>
+                  <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+                     <children>
+                        <Rectangle arcHeight="25.0" arcWidth="25.0" fill="#fafafa" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="180.0">
+                           <effect>
+                              <DropShadow blurType="GAUSSIAN" offsetX="1.0" offsetY="3.0">
+                                 <color>
+                                    <Color opacity="0.29389312863349915" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                        </Rectangle>
+                        <Label fx:id="registerbutton1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onRegisterClick" prefHeight="60.0" prefWidth="180.0" text="Toggle premium">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
+                  </StackPane>
                </children>
                <padding>
                   <Insets left="280.0" top="50.0" />

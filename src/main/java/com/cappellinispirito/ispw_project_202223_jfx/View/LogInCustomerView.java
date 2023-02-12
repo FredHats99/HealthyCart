@@ -11,6 +11,7 @@ public class LogInCustomerView {
     private String username;
 
     private boolean isLoginDone = false;
+    private boolean isPremium;
 
     public LogInCustomerView() {
     }
@@ -30,6 +31,7 @@ public class LogInCustomerView {
                 isLoginDone = true;
                 setUsername(bean.getUsername());
                 System.out.format("User is %s", username);
+                isPremium=bean.getIsPremium();
             }
         } catch (Exception e){
             //e.printStackTrace();
@@ -44,5 +46,8 @@ public class LogInCustomerView {
     }
     private void setUsername(String user){
         this.username = user;
+    }
+    public boolean getIsPremium(){
+        return this.isPremium;
     }
 }

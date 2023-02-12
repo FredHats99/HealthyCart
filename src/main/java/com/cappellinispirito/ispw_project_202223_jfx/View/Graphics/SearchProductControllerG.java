@@ -2,9 +2,8 @@ package com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispw_project_202223_jfx.View.SearchProductCustomerView;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBean;
+import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NamePremiumBean;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -155,7 +154,7 @@ public class SearchProductControllerG {
         int i;
         for(i=0;i<6;i++){
             if(clickedButton == itemsButtons.get(i)){
-                NameBean bean = NameBean.getInstance();
+                NamePremiumBean bean = NamePremiumBean.getInstance();
                 bean.setName(String.valueOf(productsNames.get(i).getText()));
                 System.out.format("SPC will send %s..\n", String.valueOf(productsNames.get(i).getText()));
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/itemInfo.fxml")));
