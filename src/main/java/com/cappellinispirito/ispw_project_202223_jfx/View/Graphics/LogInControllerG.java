@@ -33,7 +33,7 @@ public class LogInControllerG {
 
     }
 
-    public void onLoginClick() throws FailedLoginException, SQLException, IOException {
+    public void onLoginClick() throws FailedLoginException, SQLException, IOException, com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedLoginException {
         username = usernametext.getText();
         String password = passwordtext.getText();
         if(username != null || password != null){
