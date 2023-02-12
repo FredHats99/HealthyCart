@@ -44,5 +44,7 @@
     <orderEntry type="library" name="Maven: org.mortbay.jetty:jetty:6.1.25" level="project" />
     <orderEntry type="library" name="Maven: org.mortbay.jetty:jetty-util:6.1.25" level="project" />
     <orderEntry type="library" name="Maven: org.mortbay.jetty:servlet-api:2.5-20081211" level="project" />
+    <orderEntry type="library" name="windowsGiordanoJavafx-sdk-19" level="application" />
+    <orderEntry type="library" name="windowsGiordanoMysql-connector-j-8.0.32" level="application" />
   </component>
 </module>

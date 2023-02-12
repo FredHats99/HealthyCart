@@ -6,6 +6,7 @@ import com.cappellinispirito.ispw_project_202223_jfx.View.LogInCustomerView;
 import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameBean;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -14,9 +15,11 @@ import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class MainMenuControllerG {
+public class MainMenuControllerG implements Initializable {
 
     @FXML
     public StackPane root;
@@ -25,9 +28,8 @@ public class MainMenuControllerG {
     LogInCustomerView logInCustomerView;
     public String username;
 
-
-    public MainMenuControllerG(){
-        logInCustomerView = new LogInCustomerView(); // used for?
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
         username = NameBean.getInstance().getName(); // getName() returns null
         if(username != null) {
             usernameLabel.setText(username);
