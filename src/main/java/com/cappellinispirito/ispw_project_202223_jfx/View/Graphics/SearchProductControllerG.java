@@ -71,15 +71,6 @@ public class SearchProductControllerG {
         // if bean.value != NULL -> searchProduct(bean.value)
     }
 
-    public void onBackButton() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/main_menu2.fxml")));
-        SearchProductControllerG controller = loader.getController();
-        Parent rootNode = loader.load();
-        Scene myScene = new Scene(rootNode);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setScene(myScene);
-    }
-
 
 
     public void searchProduct(String searchText) throws IOException, FailedQueryToOpenFoodFacts, SQLException, ParseException {
@@ -178,9 +169,9 @@ public class SearchProductControllerG {
         }
     }
 
-    public void onBackButtonPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/Main_Menu2.fxml")));
-        MainMenuControllerG controller = loader.getController();
+    public void onBackButton() throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/Main_menu2.fxml")));
+
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();

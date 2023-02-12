@@ -39,19 +39,21 @@ public class LogInControllerG {
         if(username != null || password != null){
             view.attemptLogin(usernametext.getText(), passwordtext.getText());
             if(view.getIsLoginDone()){
-                onBackPressed();
+                onBackButton();
             }
         }
 
     }
 
-    public void onBackPressed() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/main_menu2.fxml")));
+    public void onBackButton() throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/main_menu2.fxml")));
+
         if(view.getIsLoginDone()){
             NameBean bean = NameBean.getInstance();
             bean.setName(username);
             System.out.format("Sending user %s", username);
         }
+
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();

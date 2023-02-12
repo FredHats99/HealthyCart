@@ -29,6 +29,9 @@ public class MainMenuControllerG {
     public MainMenuControllerG(){
         logInCustomerView = new LogInCustomerView(); // used for?
         username = NameBean.getInstance().getName(); // getName() returns null
+        if(username != null) {
+            usernameLabel.setText(username);
+        }
         System.out.format("User is %s", username);
     }
 

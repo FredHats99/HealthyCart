@@ -44,7 +44,7 @@
             <Insets right="15.0" top="15.0" />
          </StackPane.margin>
       </HBox>
-      <ImageView fitHeight="50.0" fitWidth="50.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+      <ImageView fx:id="backButton" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onBackButton" opacity="0.75" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
          <image>
             <Image url="@../icons/back.png" />
          </image>
@@ -52,11 +52,6 @@
             <Insets left="15.0" top="15.0" />
          </StackPane.margin>
       </ImageView>
-      <Button fx:id="history_backbutton" mnemonicParsing="false" opacity="0.0" prefHeight="40.0" prefWidth="40.0" text="Button" StackPane.alignment="TOP_LEFT">
-         <StackPane.margin>
-            <Insets left="20.0" top="20.0" />
-         </StackPane.margin>
-      </Button>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="682.0" fitWidth="507.0" pickOnBounds="true" preserveRatio="true">
