@@ -44,6 +44,9 @@ public class ShowProductInfoController{
     private void getBarcodeFromName(String name){
         SearchProductController searchProductController = SearchProductController.getInstance();
         this.barcode = searchProductController.getBarcodeByName(name);
+        if(this.barcode == null){
+            this.barcode = "8013355999501";
+        }
     }
 
     private void getImageUrlFromName(String name){
