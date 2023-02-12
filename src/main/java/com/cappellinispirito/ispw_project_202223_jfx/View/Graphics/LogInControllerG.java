@@ -34,6 +34,7 @@ public class LogInControllerG implements Initializable {
     @FXML
     public Label toggle;
     public StackPane vis;
+    public Label un;
 
 
     String username;
@@ -50,6 +51,7 @@ public class LogInControllerG implements Initializable {
         }
 
         vis.setVisible(NamePremiumBean.getInstance().getName() != null);
+        if (NamePremiumBean.getInstance().getName()!=null){un.setText(NamePremiumBean.getInstance().getName());}
     }
 
     public void onLoginClick() throws FailedLoginException, SQLException, IOException, com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedLoginException {

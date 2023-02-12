@@ -76,7 +76,7 @@
                         <Image url="@../icons/user64.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="usernameLabel" text="Username">
+                  <Label fx:id="usernameLabel" text="Not logged">
                      <StackPane.margin>
                         <Insets top="45.0" />
                      </StackPane.margin>
