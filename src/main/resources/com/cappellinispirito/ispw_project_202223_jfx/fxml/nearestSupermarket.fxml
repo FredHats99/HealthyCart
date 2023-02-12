@@ -9,11 +9,11 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@MyStylesheet2.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.View.Graphics.ShowNearestSupermarketControllerG">
+<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@../MyStylesheet2.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.View.Graphics.ShowNearestSupermarketControllerG">
    <children>
       <ImageView fitHeight="900.0" fitWidth="1200.0" opacity="0.04" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@icons/bgFindMarket.png" />
+            <Image url="@../icons/bgFindMarket.png" />
          </image>
       </ImageView>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
@@ -22,7 +22,7 @@
                <children>
                   <ImageView fx:id="userlogo" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
                      <image>
-                        <Image url="@icons/user64.png" />
+                        <Image url="@../icons/user64.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="userName_label" text="Username">
@@ -42,7 +42,7 @@
       </HBox>
       <ImageView fitHeight="50.0" fitWidth="50.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
          <image>
-            <Image url="@icons/back.png" />
+            <Image url="@../icons/back.png" />
          </image>
          <StackPane.margin>
             <Insets left="15.0" top="15.0" />
@@ -67,7 +67,7 @@
                   <Insets />
                </StackPane.margin>
             </Rectangle>
-            <TextField fx:id="search_text" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="680.0" stylesheets="@MyStylesheet2.css" StackPane.alignment="CENTER_LEFT">
+            <TextField fx:id="search_text" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="680.0" stylesheets="@../MyStylesheet2.css" StackPane.alignment="CENTER_LEFT">
                <StackPane.margin>
                   <Insets left="10.0" />
                </StackPane.margin>
@@ -88,7 +88,7 @@
                   </Circle>
                   <ImageView fx:id="searchButtonMarket" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onSearchSupermarketsClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/map.png" />
+                        <Image url="@../icons/map.png" />
                      </image>
                   </ImageView>
                </children>
@@ -114,7 +114,7 @@
                         </DropShadow>
                      </effect>
                   </Rectangle>
-                  <Label fx:id="market1" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="market1" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -143,7 +143,7 @@
                         </DropShadow>
                      </effect>
                   </Rectangle>
-                  <Label fx:id="market2" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="market2" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -166,7 +166,7 @@
             </StackPane>
             <StackPane layoutX="10.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
                <children>
-                  <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="60.0" onMouseClicked="#onSupermarketClicked" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0">
+                  <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0">
                      <effect>
                         <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="3.0" offsetY="3.0" radius="9.5" width="20.0">
                            <color>
@@ -175,7 +175,7 @@
                         </DropShadow>
                      </effect>
                   </Rectangle>
-                  <Label fx:id="market3" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT" onMouseClicked="#onSupermarketClicked">
+                  <Label fx:id="market3" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -207,7 +207,7 @@
                         </DropShadow>
                      </effect>
                   </Rectangle>
-                  <Label fx:id="market4" prefHeight="40.0" prefWidth="500.0" onMouseClicked="#onSupermarketClicked" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="market4" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -239,7 +239,7 @@
                         </DropShadow>
                      </effect>
                   </Rectangle>
-                  <Label fx:id="market5" prefHeight="40.0" onMouseClicked="#onSupermarketClicked" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="market5" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="25.0" />
                      </font>

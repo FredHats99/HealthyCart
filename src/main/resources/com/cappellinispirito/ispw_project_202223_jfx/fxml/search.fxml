@@ -8,11 +8,11 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@MyStylesheet2.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.View.Graphics.SearchProductControllerG">
+<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@../MyStylesheet2.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.View.Graphics.SearchProductControllerG">
    <children>
       <ImageView fitHeight="900.0" fitWidth="1200.0" opacity="0.04" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@icons/textureSearch.png" />
+            <Image url="@../icons/textureSearch.png" />
          </image>
       </ImageView>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
@@ -21,7 +21,7 @@
                <children>
                   <ImageView fx:id="userlogo" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
                      <image>
-                        <Image url="@icons/user64.png" />
+                        <Image url="@../icons/user64.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="userName_label" text="Username">
@@ -41,7 +41,7 @@
       </HBox>
       <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onBackButtonPressed" opacity="0.75" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
          <image>
-            <Image url="@icons/back.png" />
+            <Image url="@../icons/back.png" />
          </image>
          <StackPane.margin>
             <Insets left="15.0" top="15.0" />
@@ -54,7 +54,7 @@
       </Button>
       <ImageView fitHeight="551.0" fitWidth="810.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER">
          <image>
-            <Image url="@icons/rectSearch.png" />
+            <Image url="@../icons/rectSearch.png" />
          </image>
       </ImageView>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="CENTER">
@@ -65,17 +65,17 @@
                      <children>
                         <ImageView fitHeight="188.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true" scaleX="1.3" scaleY="1.3">
                            <image>
-                              <Image url="@icons/Ellipse%207.png" />
+                              <Image url="@../icons/ellisse7.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="productImage1" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/nutella.png" />
+                              <Image url="@../icons/nutella.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="20.0" fitWidth="160.0" pickOnBounds="true">
                            <image>
-                              <Image url="@icons/linehistory.png" />
+                              <Image url="@../icons/linehistory.png" />
                            </image>
                            <StackPane.margin>
                               <Insets top="250.0" />
@@ -103,17 +103,17 @@
                      <children>
                         <ImageView fitHeight="188.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true" scaleX="1.3" scaleY="1.3">
                            <image>
-                              <Image url="@icons/Ellipse%207.png" />
+                              <Image url="@../icons/ellisse7.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="productImage2" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/nutella.png" />
+                              <Image url="@../icons/nutella.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="20.0" fitWidth="160.0" pickOnBounds="true">
                            <image>
-                              <Image url="@icons/linehistory.png" />
+                              <Image url="@../icons/linehistory.png" />
                            </image>
                            <StackPane.margin>
                               <Insets top="250.0" />
@@ -141,17 +141,17 @@
                      <children>
                         <ImageView fitHeight="188.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true" scaleX="1.3" scaleY="1.3">
                            <image>
-                              <Image url="@icons/Ellipse%207.png" />
+                              <Image url="@../icons/ellisse7.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="productImage3" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/nutella.png" />
+                              <Image url="@../icons/nutella.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="20.0" fitWidth="160.0" pickOnBounds="true">
                            <image>
-                              <Image url="@icons/linehistory.png" />
+                              <Image url="@../icons/linehistory.png" />
                            </image>
                            <StackPane.margin>
                               <Insets top="250.0" />
@@ -179,17 +179,17 @@
                      <children>
                         <ImageView fitHeight="188.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true" scaleX="1.3" scaleY="1.3">
                            <image>
-                              <Image url="@icons/Ellipse%207.png" />
+                              <Image url="@../icons/ellisse7.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="productImage4" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/nutella.png" />
+                              <Image url="@../icons/nutella.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="20.0" fitWidth="160.0" pickOnBounds="true">
                            <image>
-                              <Image url="@icons/linehistory.png" />
+                              <Image url="@../icons/linehistory.png" />
                            </image>
                            <StackPane.margin>
                               <Insets top="250.0" />
@@ -217,17 +217,17 @@
                      <children>
                         <ImageView fitHeight="188.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true" scaleX="1.3" scaleY="1.3">
                            <image>
-                              <Image url="@icons/Ellipse%207.png" />
+                              <Image url="@../icons/ellisse7.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="productImage5" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/nutella.png" />
+                              <Image url="@../icons/nutella.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="20.0" fitWidth="160.0" pickOnBounds="true">
                            <image>
-                              <Image url="@icons/linehistory.png" />
+                              <Image url="@../icons/linehistory.png" />
                            </image>
                            <StackPane.margin>
                               <Insets top="250.0" />
@@ -255,17 +255,17 @@
                      <children>
                         <ImageView fitHeight="188.0" fitWidth="188.0" pickOnBounds="true" preserveRatio="true" scaleX="1.3" scaleY="1.3">
                            <image>
-                              <Image url="@icons/Ellipse%207.png" />
+                              <Image url="@../icons/ellisse7.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="productImage6" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/nutella.png" />
+                              <Image url="@../icons/nutella.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="20.0" fitWidth="160.0" pickOnBounds="true">
                            <image>
-                              <Image url="@icons/linehistory.png" />
+                              <Image url="@../icons/linehistory.png" />
                            </image>
                            <StackPane.margin>
                               <Insets top="250.0" />
@@ -293,10 +293,10 @@
          <children>
             <ImageView fx:id="Label_View" fitHeight="65.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@icons/Group%201.png" />
+                  <Image url="@../icons/gruppo.png" />
                </image>
             </ImageView>
-            <TextField fx:id="search_text" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onEnterPressed" prefHeight="35.0" prefWidth="220.0" promptText="search for product" stylesheets="@MyStylesheet2.css">
+            <TextField fx:id="search_text" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onEnterPressed" prefHeight="35.0" prefWidth="220.0" promptText="search for product" stylesheets="@../MyStylesheet2.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

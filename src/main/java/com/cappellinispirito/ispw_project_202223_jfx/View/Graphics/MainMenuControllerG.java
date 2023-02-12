@@ -52,7 +52,7 @@ public class MainMenuControllerG {
         //initialize new scene
 
         //Bean.value = textfield;
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/history.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/history.fxml")));
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
         Stage stage = (Stage) root.getScene().getWindow();
@@ -65,7 +65,7 @@ public class MainMenuControllerG {
         if(username != null){
             userName_label.setText(username);
         } else {
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/login.fxml")));
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/login.fxml")));
             Parent rootNode = loader.load();
             Scene myScene = new Scene(rootNode);
             Stage stage = (Stage) root.getScene().getWindow();
@@ -83,7 +83,7 @@ public class MainMenuControllerG {
             throw new DeniedPermissionsException("Input non valid!");
         }
         //initialize new scene
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/search.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/search.fxml")));
         SearchProductControllerG controller = loader.getController();
         Parent rootNode = loader.load();
         Scene myScene = new Scene(rootNode);
@@ -96,7 +96,7 @@ public class MainMenuControllerG {
         }
     }
     public void onShowNearestSupermarketClicked() throws IOException {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/nearestSupermarket.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispw_project_202223_jfx/fxml/nearestSupermarket.fxml")));
         ShowNearestSupermarketControllerG controller = new ShowNearestSupermarketControllerG();
         loader.setController(controller);
         controller.setIsStartingAShop(false);

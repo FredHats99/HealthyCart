@@ -14,16 +14,16 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@MyStylesheet2.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.View.Graphics.LogInControllerG">
+<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@../MyStylesheet2.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispw_project_202223_jfx.View.Graphics.LogInControllerG">
    <children>
       <ImageView fitHeight="900.0" fitWidth="1200.0" opacity="0.04" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@icons/loginbg.png" />
+            <Image url="@../icons/loginbg.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="50.0" fitWidth="50.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
          <image>
-            <Image url="@icons/back.png" />
+            <Image url="@../icons/back.png" />
          </image>
          <StackPane.margin>
             <Insets left="15.0" top="15.0" />
@@ -40,7 +40,7 @@
                <children>
                   <ImageView fitHeight="234.0" fitWidth="234.0" opacity="0.85" pickOnBounds="true">
                      <image>
-                        <Image url="@icons/user.png" />
+                        <Image url="@../icons/user.png" />
                      </image>
                      <HBox.margin>
                         <Insets right="50.0" />
@@ -59,7 +59,7 @@
                                     </DropShadow>
                                  </effect>
                               </Rectangle>
-                              <TextField fx:id="usernametext" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="680.0" promptText="Username" stylesheets="@MyStylesheet2.css">
+                              <TextField fx:id="usernametext" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="680.0" promptText="Username" stylesheets="@../MyStylesheet2.css">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -77,7 +77,7 @@
                                     </DropShadow>
                                  </effect>
                               </Rectangle>
-                              <TextField fx:id="passwordtext" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="680.0" promptText="Password" stylesheets="@MyStylesheet2.css">
+                              <TextField fx:id="passwordtext" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="680.0" promptText="Password" stylesheets="@../MyStylesheet2.css">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
