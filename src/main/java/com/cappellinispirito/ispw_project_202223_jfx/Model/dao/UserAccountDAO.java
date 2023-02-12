@@ -2,6 +2,7 @@ package com.cappellinispirito.ispw_project_202223_jfx.Model.dao;
 
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedRegistrationException;
 import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedLoginException;
+import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.conenctor.DBConnector;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

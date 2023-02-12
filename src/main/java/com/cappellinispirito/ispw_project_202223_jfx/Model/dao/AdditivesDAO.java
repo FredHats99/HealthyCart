@@ -1,5 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model.dao;
 
+import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.conenctor.DBConnector;
+
 import javax.security.auth.login.FailedLoginException;
 import java.sql.Connection;
 import java.sql.ResultSet;

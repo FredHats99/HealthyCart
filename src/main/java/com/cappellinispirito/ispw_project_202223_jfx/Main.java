@@ -1,29 +1,13 @@
 package com.cappellinispirito.ispw_project_202223_jfx;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.Supermarket;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.positionBean;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.supermarketsToProductsBean;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.DBConnector;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.UserAccountDAO;
-import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.SearchProductsFromSupermarketOpenFoodFactsAPIBoundary;
-import com.cappellinispirito.ispw_project_202223_jfx.View.Boundaries.showNearestSupermarketsNominatimAPIBoundary;
-import com.cappellinispirito.ispw_project_202223_jfx.View.DoShoppingCustomerView;
-import com.cappellinispirito.ispw_project_202223_jfx.View.LogInCustomerView;
-import com.cappellinispirito.ispw_project_202223_jfx.View.SearchProductCustomerView;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.positionBeanClass;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.supermarketsToProductsBeanClass;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.json.simple.parser.ParseException;
 
-import javax.security.auth.login.FailedLoginException;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Objects;
 
 

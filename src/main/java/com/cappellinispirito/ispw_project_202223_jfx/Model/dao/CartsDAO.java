@@ -1,5 +1,7 @@
 package com.cappellinispirito.ispw_project_202223_jfx.Model.dao;
 
+import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.conenctor.DBConnector;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
