@@ -31,7 +31,7 @@ public class updatePremiumController {
     }
 
     private void updateModelUser(){
-        //assert: the check has already been madeeee
+        //assert: the check has already been made
         account.switchPremium();
     }
 }
