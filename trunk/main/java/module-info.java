@@ -18,17 +18,17 @@ module com.cappellinispirito.ispw_project_202223_jfx {
     //todo: undo for using mysql
     //requires mysql.connector.j;
 
-    opens com.cappellinispirito.ispw_project_202223_jfx to javafx.fxml;
-    exports com.cappellinispirito.ispw_project_202223_jfx;
-    exports com.cappellinispirito.ispw_project_202223_jfx.Model;
-    opens com.cappellinispirito.ispw_project_202223_jfx.Model to javafx.fxml;
-    exports com.cappellinispirito.ispw_project_202223_jfx.View;
-    opens com.cappellinispirito.ispw_project_202223_jfx.View to javafx.fxml;
-    exports com.cappellinispirito.ispw_project_202223_jfx.View.Graphics;
-    opens com.cappellinispirito.ispw_project_202223_jfx.View.Graphics to javafx.fxml;
-    exports com.cappellinispirito.ispw_project_202223_jfx.Controller;
-    exports com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface;
-    exports com.cappellinispirito.ispw_project_202223_jfx.View.beans;
-    exports com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions;
-    exports com.cappellinispirito.ispw_project_202223_jfx.Model.dao;
+    opens com.cappellinispirito.ispwproject202223jfx to javafx.fxml;
+    exports com.cappellinispirito.ispwproject202223jfx;
+    exports com.cappellinispirito.ispwproject202223jfx.model;
+    opens com.cappellinispirito.ispwproject202223jfx.model to javafx.fxml;
+    exports com.cappellinispirito.ispwproject202223jfx.view;
+    opens com.cappellinispirito.ispwproject202223jfx.view to javafx.fxml;
+    exports com.cappellinispirito.ispwproject202223jfx.view.graphics;
+    opens com.cappellinispirito.ispwproject202223jfx.view.graphics to javafx.fxml;
+    exports com.cappellinispirito.ispwproject202223jfx.controller;
+    exports com.cappellinispirito.ispwproject202223jfx.model.beansInterface;
+    exports com.cappellinispirito.ispwproject202223jfx.view.beans;
+    exports com.cappellinispirito.ispwproject202223jfx.model.exceptions;
+    exports com.cappellinispirito.ispwproject202223jfx.model.dao;
 }

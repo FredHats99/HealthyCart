@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@../MyStylesheet2.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispwproject202223jfx.view.graphics.ShowNearestSupermarketControllerG">
+   <children>
+      <ImageView fitHeight="900.0" fitWidth="1200.0" opacity="0.04" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icons/bgFindMarket.png" />
+         </image>
+      </ImageView>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_RIGHT">
+         <children>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <ImageView fx:id="userlogo" fitWidth="40.0" opacity="0.7" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_CENTER">
+                     <image>
+                        <Image url="@../icons/user64.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="userNameLabel" text="Not logged">
+                     <StackPane.margin>
+                        <Insets top="45.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+         <StackPane.margin>
+            <Insets right="15.0" top="15.0" />
+         </StackPane.margin>
+      </HBox>
+      <ImageView fx:id="backButton" fitHeight="50.0" fitWidth="50.0" onMouseClicked="#onBackButton" opacity="0.75" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+         <image>
+            <Image url="@../icons/back.png" />
+         </image>
+         <StackPane.margin>
+            <Insets left="15.0" top="15.0" />
+         </StackPane.margin>
+      </ImageView>
+      <StackPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="800.0" StackPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#fafafa" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="700.0" StackPane.alignment="CENTER_LEFT">
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="3.0" offsetY="3.0" radius="9.5" width="20.0">
+                     <color>
+                        <Color opacity="0.37022900581359863" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+            </Rectangle>
+            <TextField fx:id="searchText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="680.0" stylesheets="@../MyStylesheet2.css" StackPane.alignment="CENTER_LEFT">
+               <StackPane.margin>
+                  <Insets left="10.0" />
+               </StackPane.margin>
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </TextField>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="CENTER_RIGHT">
+               <children>
+                  <Circle fill="WHITE" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" offsetX="3.0" offsetY="3.0">
+                           <color>
+                              <Color opacity="0.2557251453399658" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Circle>
+                  <ImageView fx:id="searchButtonMarket" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#onSearchSupermarketsClicked" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/map.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <StackPane.margin>
+                  <Insets right="10.0" />
+               </StackPane.margin>
+            </StackPane>
+         </children>
+         <StackPane.margin>
+            <Insets bottom="400.0" />
+         </StackPane.margin>
+      </StackPane>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="CENTER">
+         <children>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="800.0">
+               <children>
+                  <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="3.0" offsetY="3.0" radius="9.5" width="20.0">
+                           <color>
+                              <Color opacity="0.37022900581359863" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Rectangle>
+                  <Label fx:id="market1" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="10.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label fx:id="marketDist1" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="150.0" StackPane.alignment="CENTER_RIGHT">
+                     <StackPane.margin>
+                        <Insets right="20.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="3.0" offsetY="3.0" radius="9.5" width="20.0">
+                           <color>
+                              <Color opacity="0.37022900581359863" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Rectangle>
+                  <Label fx:id="market2" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="10.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label fx:id="marketDist2" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="150.0" StackPane.alignment="CENTER_RIGHT">
+                     <StackPane.margin>
+                        <Insets right="20.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </StackPane>
+            <StackPane layoutX="10.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="3.0" offsetY="3.0" radius="9.5" width="20.0">
+                           <color>
+                              <Color opacity="0.37022900581359863" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Rectangle>
+                  <Label fx:id="market3" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="10.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label fx:id="marketDist3" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="150.0" StackPane.alignment="CENTER_RIGHT">
+                     <StackPane.margin>
+                        <Insets right="20.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </StackPane>
+            <StackPane layoutX="10.0" layoutY="145.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="3.0" offsetY="3.0" radius="9.5" width="20.0">
+                           <color>
+                              <Color opacity="0.37022900581359863" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Rectangle>
+                  <Label fx:id="market4" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="10.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label fx:id="marketDist4" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="150.0" StackPane.alignment="CENTER_RIGHT">
+                     <StackPane.margin>
+                        <Insets right="20.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </StackPane>
+            <StackPane layoutX="10.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <Rectangle arcHeight="50.0" arcWidth="50.0" fill="WHITE" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0">
+                     <effect>
+                        <DropShadow blurType="GAUSSIAN" height="20.0" offsetX="3.0" offsetY="3.0" radius="9.5" width="20.0">
+                           <color>
+                              <Color opacity="0.37022900581359863" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Rectangle>
+                  <Label fx:id="market5" onMouseClicked="#onSupermarketClicked" prefHeight="40.0" prefWidth="500.0" StackPane.alignment="CENTER_LEFT">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="10.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label fx:id="marketDist5" alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="150.0" StackPane.alignment="CENTER_RIGHT">
+                     <StackPane.margin>
+                        <Insets right="20.0" />
+                     </StackPane.margin>
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </StackPane>
+         </children>
+         <StackPane.margin>
+            <Insets top="200.0" />
+         </StackPane.margin>
+      </VBox>
+   </children>
+</StackPane>

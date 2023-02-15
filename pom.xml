@@ -131,7 +131,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.cappellinispirito.ispw_project_202223_jfx/com.cappellinispirito.ispw_project_202223_jfx.HelloApplication
+                                com.cappellinispirito.ispw_project_202223_jfx/com.cappellinispirito.ispwproject202223jfx.HelloApplication
                             </mainClass>
                         </configuration>
                     </execution>

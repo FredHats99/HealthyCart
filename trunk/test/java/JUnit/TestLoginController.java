@@ -1,11 +1,11 @@
 package JUnit;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedLoginException;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.LogInBean;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.LogInBeanClass;
+import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedLoginException;
+import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.LogInBean;
+import com.cappellinispirito.ispwproject202223jfx.view.beans.LogInBeanClass;
 import org.junit.jupiter.api.Test;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.LogInController;
+import com.cappellinispirito.ispwproject202223jfx.controller.LogInController;
 
 import java.sql.SQLException;
 

@@ -1,15 +1,14 @@
 package JUnit;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Model.dao.UserAccountDAO;
+import com.cappellinispirito.ispwproject202223jfx.model.dao.UserAccountDAO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-public class TestTogglePremium {
-    private static final String GIORDANO = "Cap";
+class TestTogglePremium {
     //Giordano Spirito MATRICOLA: 0268514
     @Test
-    public void TestPremiumSwitch(){
+    void TestPremiumSwitch(){
         boolean result;
         UserAccountDAO accountDAO = new UserAccountDAO();
         try{

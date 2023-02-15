@@ -1,12 +1,9 @@
 package JUnit;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.SearchProductController;
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.ShowProductInfoController;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedQueryToOpenFoodFacts;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.NameToItemSearchBean;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.ResultsFromSearchBean;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameImageBarcodeFromSearchBeanClass;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameToItemSearchBeanClass;
+import com.cappellinispirito.ispwproject202223jfx.controller.ShowProductInfoController;
+import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
+import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.NameToItemSearchBean;
+import com.cappellinispirito.ispwproject202223jfx.view.beans.NameToItemSearchBeanClass;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,14 +11,13 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import static org.junit.Assert.assertTrue;
 
-public class TestShowProductInfoController {
+class TestShowProductInfoController {
     public static final String GIORDANO = "Ringo alla Vaniglia";
     boolean result;
     //Giordano Spirito MATRICOLA: 0268514
     @Test
-    public void TestCorrectShowProductInfo() throws FailedQueryToOpenFoodFacts, SQLException, IOException, ParseException {
+    void TestCorrectShowProductInfo(){
         ShowProductInfoController controller = ShowProductInfoController.getInstance();
         NameToItemSearchBean bean = new NameToItemSearchBeanClass();
         bean.setName(GIORDANO);
@@ -32,6 +28,6 @@ public class TestShowProductInfoController {
         } catch (Exception e){
             result = false;
         }
-        assertTrue(result);
+        Assertions.assertTrue(result);
     }
 }

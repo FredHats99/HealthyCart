@@ -1,13 +1,12 @@
 package JUnit;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.SearchProductController;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.ResultsFromSearchBean;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.NameImageBarcodeFromSearchBeanClass;
+import com.cappellinispirito.ispwproject202223jfx.controller.SearchProductController;
+import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.ResultsFromSearchBean;
+import com.cappellinispirito.ispwproject202223jfx.view.beans.NameImageBarcodeFromSearchBeanClass;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-public class TestSearchProductController {
+class TestSearchProductController {
 
     private static final String GIORDANO = "Ringo";
     //Federico Cappellini MATRICOLA: 0272280
@@ -19,7 +18,7 @@ public class TestSearchProductController {
         ResultsFromSearchBean bean  = new NameImageBarcodeFromSearchBeanClass();
         bean.setNameToSearch(GIORDANO);
         try {
-            controlProducts.SearchProduct(bean);
+            controlProducts.searchProduct(bean);
             result = true;
         } catch (Exception e) {
             result = false;

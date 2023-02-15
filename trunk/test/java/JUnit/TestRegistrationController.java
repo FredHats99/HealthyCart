@@ -1,17 +1,15 @@
 package JUnit;
 
-import com.cappellinispirito.ispw_project_202223_jfx.Controller.RegistrationController;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.Exceptions.FailedRegistrationException;
-import com.cappellinispirito.ispw_project_202223_jfx.Model.beansInterface.RegistrationBean;
-import com.cappellinispirito.ispw_project_202223_jfx.View.beans.RegistrationBeanClass;
+import com.cappellinispirito.ispwproject202223jfx.controller.RegistrationController;
+import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.RegistrationBean;
+import com.cappellinispirito.ispwproject202223jfx.view.beans.RegistrationBeanClass;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class TestRegistrationController {
+class TestRegistrationController {
 
     private static final String NONREGISTEREDUSER = "Cappellini";
     private static final String NONREGISTEREDPASSWORD = "Federico";
