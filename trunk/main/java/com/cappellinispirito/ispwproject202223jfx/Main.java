@@ -18,7 +18,7 @@ public class Main extends Application{
     @Override
     public void start(Stage myStage) throws IOException {
 
-        //node
+        //nodeee
         Parent rootNode = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispwproject202223jfx/fxml/Main_menu2.fxml")));
         //scene
         Scene myScene = new Scene(rootNode);
