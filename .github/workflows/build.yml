@@ -19,8 +19,8 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@v1.8
         with:
           projectBaseDir: trunk
-          projectKey: fredhats99
-          organization: FredHats99
+          sonar.projectKey: fredhats99
+          sonar.organization: FredHats99
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
