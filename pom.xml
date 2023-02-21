@@ -16,6 +16,7 @@
         <sonar.organization>fredhats99</sonar.organization>
         <sonar.sources>trunk</sonar.sources>
         <sonar.language>java</sonar.language>
+        <sonar.java.binaries>.</sonar.java.binaries>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
