@@ -1,15 +1,10 @@
 package JUnit;
 
 import com.cappellinispirito.ispwproject202223jfx.controller.ShowProductInfoController;
-import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.NameToItemSearchBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.NameToItemSearchBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NameToItemSearchBeanClass;
-import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
-import java.sql.SQLException;
 
 
 class TestShowProductInfoController {

@@ -1,8 +1,8 @@
 package com.cappellinispirito.ispwproject202223jfx.controller;
 
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.nearestSupermarketBeanInterface;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.positionBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.nearestSupermarketBeanInterface;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.positionBean;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.APIProxyBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.CacheProxy;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.ShowNearestSupermarketsNominatimApiBoundary;

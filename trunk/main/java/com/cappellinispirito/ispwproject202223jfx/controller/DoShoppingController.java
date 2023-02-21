@@ -4,9 +4,9 @@ import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryTo
 import com.cappellinispirito.ispwproject202223jfx.model.Item;
 import com.cappellinispirito.ispwproject202223jfx.model.ShoppingCart;
 import com.cappellinispirito.ispwproject202223jfx.model.Supermarket;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.BarcodeToInformationBean;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.shopBean;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.supermarketsToProductsBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.BarcodeToInformationBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.shopBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.supermarketsToProductsBean;
 import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.SearchProductsFromSupermarketOpenFoodFactsAPIBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.ShowProductInfoOpenFoodFactsAPIBoundary;

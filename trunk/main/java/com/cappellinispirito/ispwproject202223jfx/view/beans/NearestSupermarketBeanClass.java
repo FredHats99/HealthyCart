@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.nearestSupermarketBeanInterface;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.nearestSupermarketBeanInterface;
 
 import java.util.List;
 

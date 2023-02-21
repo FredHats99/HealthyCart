@@ -27,7 +27,7 @@ module com.cappellinispirito.ispw_project_202223_jfx {
     exports com.cappellinispirito.ispwproject202223jfx.view.graphics;
     opens com.cappellinispirito.ispwproject202223jfx.view.graphics to javafx.fxml;
     exports com.cappellinispirito.ispwproject202223jfx.controller;
-    exports com.cappellinispirito.ispwproject202223jfx.model.beansInterface;
+    exports com.cappellinispirito.ispwproject202223jfx.model.beansinterface;
     exports com.cappellinispirito.ispwproject202223jfx.view.beans;
     exports com.cappellinispirito.ispwproject202223jfx.model.exceptions;
     exports com.cappellinispirito.ispwproject202223jfx.model.dao;

@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
 import com.cappellinispirito.ispwproject202223jfx.model.Item;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.NameToItemSearchBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.NameToItemSearchBean;
 
 public class NameToItemSearchBeanClass implements NameToItemSearchBean {
     private String name;

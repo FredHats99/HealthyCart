@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.RegistrationBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.RegistrationBean;
 
 public class RegistrationBeanClass implements RegistrationBean {
     private String username;

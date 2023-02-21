@@ -2,7 +2,7 @@ package com.cappellinispirito.ispwproject202223jfx.view;
 
 import com.cappellinispirito.ispwproject202223jfx.controller.SearchProductController;
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.ResultsFromSearchBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.ResultsFromSearchBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NameImageFromSearchBeanClass;
 import org.json.simple.parser.ParseException;
 

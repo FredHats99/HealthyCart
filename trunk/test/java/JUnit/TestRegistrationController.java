@@ -1,7 +1,7 @@
 package JUnit;
 
 import com.cappellinispirito.ispwproject202223jfx.controller.RegistrationController;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.RegistrationBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.RegistrationBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.RegistrationBeanClass;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

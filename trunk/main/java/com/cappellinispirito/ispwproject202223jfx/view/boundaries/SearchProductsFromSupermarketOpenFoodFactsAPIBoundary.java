@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
 
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.supermarketsToProductsBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.supermarketsToProductsBean;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;

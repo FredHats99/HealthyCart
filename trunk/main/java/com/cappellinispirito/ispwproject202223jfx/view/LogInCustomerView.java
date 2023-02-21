@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view;
 
 import com.cappellinispirito.ispwproject202223jfx.controller.LogInController;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.LogInBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.LogInBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.LogInBeanClass;
 
 

@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.ResultsFromSearchBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.ResultsFromSearchBean;
 
 import java.util.List;
 

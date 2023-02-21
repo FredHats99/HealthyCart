@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view;
 
 import com.cappellinispirito.ispwproject202223jfx.controller.ShowNearestSupermarketsController;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.nearestSupermarketBeanInterface;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.nearestSupermarketBeanInterface;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NearestSupermarketBeanClass;
 
 import java.util.List;

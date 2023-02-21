@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
 import com.cappellinispirito.ispwproject202223jfx.model.Supermarket;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.supermarketsToProductsBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.supermarketsToProductsBean;
 
 import java.util.List;
 

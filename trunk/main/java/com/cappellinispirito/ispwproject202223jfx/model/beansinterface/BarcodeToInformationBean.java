@@ -1,4 +1,4 @@
-package com.cappellinispirito.ispwproject202223jfx.model.beansInterface;
+package com.cappellinispirito.ispwproject202223jfx.model.beansinterface;
 
 import java.util.List;
 
@@ -6,11 +6,6 @@ public interface BarcodeToInformationBean {
     String getBarcodeSearch();
     void setBarcodeSearch(String name);
 
-    /*
-    Float getPriceResult();
-    void setPriceResult(Float price);
-    TODO: DECIDE IF PRICES ARE OBTAINABLE OR NOT
-    */
     String getIngredients();
     void setIngredients(String ingredients);
 

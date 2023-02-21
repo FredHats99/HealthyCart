@@ -104,7 +104,7 @@ public class CartsDAO {
 
     public List<String> getOldCartItems(String username, int idCart) throws SQLException {
         List<String> barcodesInCart = new ArrayList<>();
-        CallableStatement stmt;
+        CallableStatement stmt = null;
         Connection conn;
         int cartId;
         String itemBarcode;
@@ -126,6 +126,9 @@ public class CartsDAO {
 
         } catch (NullPointerException e){
            e.printStackTrace();
+        } finally {
+            assert stmt != null;
+            stmt.close();
         }
         return barcodesInCart;
     }

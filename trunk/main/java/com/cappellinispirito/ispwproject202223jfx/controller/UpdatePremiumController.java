@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.controller;
 
 import com.cappellinispirito.ispwproject202223jfx.model.UserAccount;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.updatePremiumBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.updatePremiumBean;
 import com.cappellinispirito.ispwproject202223jfx.model.dao.UserAccountDAO;
 
 import java.sql.SQLException;

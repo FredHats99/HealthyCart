@@ -1,7 +1,7 @@
 package JUnit;
 
 import com.cappellinispirito.ispwproject202223jfx.controller.SearchProductController;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.ResultsFromSearchBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.ResultsFromSearchBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NameImageBarcodeFromSearchBeanClass;
 import org.junit.jupiter.api.Test;
 

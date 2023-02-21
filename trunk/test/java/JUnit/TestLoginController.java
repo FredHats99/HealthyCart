@@ -1,7 +1,7 @@
 package JUnit;
 
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedLoginException;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.LogInBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.LogInBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.LogInBeanClass;
 import org.junit.jupiter.api.Test;
 

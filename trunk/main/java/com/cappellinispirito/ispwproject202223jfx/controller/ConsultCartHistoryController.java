@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.controller;
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.CartHistoryBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.CartHistoryBean;
 
 import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
 

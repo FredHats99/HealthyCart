@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view;
 
 import com.cappellinispirito.ispwproject202223jfx.controller.RegistrationController;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.RegistrationBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.RegistrationBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.RegistrationBeanClass;
 
 public class RegisterCustomerView {

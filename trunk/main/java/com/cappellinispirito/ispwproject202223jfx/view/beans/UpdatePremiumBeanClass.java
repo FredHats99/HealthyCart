@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.updatePremiumBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.updatePremiumBean;
 
 public class UpdatePremiumBeanClass implements updatePremiumBean {
     private boolean procedureOutcome;

@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.LogInBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.LogInBean;
 
 public class LogInBeanClass implements LogInBean {
     private String username;

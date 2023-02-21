@@ -1,5 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.graphics;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NamePremiumBean;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -14,8 +15,10 @@ import java.util.ResourceBundle;
 
 public class CartHistoryControllerG implements Initializable {
 
-    public StackPane root;
-    public Label userNameLabel;
+    @FXML
+    private StackPane root;
+    @FXML
+    private Label userNameLabel;
 
     String username;
 

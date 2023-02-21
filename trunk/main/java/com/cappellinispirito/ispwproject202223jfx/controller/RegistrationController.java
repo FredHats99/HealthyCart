@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.controller;
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.RegistrationBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.RegistrationBean;
 import com.cappellinispirito.ispwproject202223jfx.model.dao.UserAccountDAO;
 
 import java.sql.SQLException;

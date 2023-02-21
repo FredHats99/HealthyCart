@@ -1,8 +1,8 @@
 package com.cappellinispirito.ispwproject202223jfx.controller;
 
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.BarcodeToInformationBean;
-import com.cappellinispirito.ispwproject202223jfx.model.beansInterface.CartItemsBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.BarcodeToInformationBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.CartItemsBean;
 import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.ShowProductInfoOpenFoodFactsAPIBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.BarcodeToInformationBeanClass;

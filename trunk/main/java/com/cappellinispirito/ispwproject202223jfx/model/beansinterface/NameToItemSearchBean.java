@@ -1,4 +1,4 @@
-package com.cappellinispirito.ispwproject202223jfx.model.beansInterface;
+package com.cappellinispirito.ispwproject202223jfx.model.beansinterface;
 
 import com.cappellinispirito.ispwproject202223jfx.model.Item;
 
