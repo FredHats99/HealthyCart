@@ -4,7 +4,6 @@ import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryTo
 import com.cappellinispirito.ispwproject202223jfx.view.SearchProductCustomerView;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NamePremiumBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.ProductNameBean;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,7 +21,6 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -31,44 +29,70 @@ import java.util.ResourceBundle;
 
 public class SearchProductControllerG implements Initializable {
     @FXML
-    public StackPane root;
+    private StackPane root;
+    @FXML
+    private StackPane stack1;
+    @FXML
+    private StackPane stack2;
+    @FXML
+    private StackPane stack3;
+    @FXML
+    private StackPane stack4;
+    @FXML
+    private StackPane stack5;
+    @FXML
+    private StackPane stack6;
+    private List<StackPane> sl = new ArrayList<>();
 
-    public StackPane stack1;
-    public StackPane stack2;
-    public StackPane stack3;
-    public StackPane stack4;
-    public StackPane stack5;
-    public StackPane stack6;
-    public List<StackPane> sl = new ArrayList<>();
+    @FXML
+    private Label productName1;
+    @FXML
+    private Label productName2;
+    @FXML
+    private Label productName3;
+    @FXML
+    private Label productName4;
+    @FXML
+    private Label productName5;
+    @FXML
+    private Label productName6;
+    private List<Label> productsNames = new ArrayList<>();
 
-    public Label productName1;
-    public Label productName2;
-    public Label productName3;
-    public Label productName4;
-    public Label productName5;
-    public Label productName6;
-    public List<Label> productsNames = new ArrayList<>();
+    @FXML
+    private ImageView productImage1;
+    @FXML
+    private ImageView productImage2;
+    @FXML
+    private ImageView productImage3;
+    @FXML
+    private ImageView productImage4;
+    @FXML
+    private ImageView productImage5;
+    @FXML
+    private ImageView productImage6;
 
-    public ImageView productImage1;
-    public ImageView productImage2;
-    public ImageView productImage3;
-    public ImageView productImage4;
-    public ImageView productImage5;
-    public ImageView productImage6;
-    public List<ImageView> productImages = new ArrayList<>();
+    private List<ImageView> productImages = new ArrayList<>();
 
-    public RadioButton item1;
-    public RadioButton item2;
-    public RadioButton item3;
-    public RadioButton item4;
-    public RadioButton item5;
-    public RadioButton item6;
-    public List<RadioButton> itemsButtons = new ArrayList<>();
+    @FXML
+    private RadioButton item1;
+    @FXML
+    private RadioButton item2;
+    @FXML
+    private RadioButton item3;
+    @FXML
+    private RadioButton item4;
+    @FXML
+    private RadioButton item5;
+    @FXML
+    private RadioButton item6;
+    private final List<RadioButton> itemsButtons = new ArrayList<>();
 
-    public RadioButton searchButton;
-    public TextField searchText;
-
-    public Label userNameLabel;
+    @FXML
+    private RadioButton searchButton;
+    @FXML
+    private TextField searchText;
+    @FXML
+    private Label userNameLabel;
 
     String username;
     @Override
@@ -81,7 +105,7 @@ public class SearchProductControllerG implements Initializable {
 
 
 
-    public void searchProduct(String searchText) throws IOException, FailedQueryToOpenFoodFacts, SQLException, ParseException {
+    public void searchProduct(String searchText) throws IOException, FailedQueryToOpenFoodFacts, ParseException {
         productsNames.add(productName1);
         productsNames.add(productName2);
         productsNames.add(productName3);
@@ -124,9 +148,9 @@ public class SearchProductControllerG implements Initializable {
         }
     }
 
-    public void onEnterPressed(ActionEvent e) throws FailedQueryToOpenFoodFacts, IOException, ParseException, SQLException {
-        String searchText = this.searchText.getText();
-        searchProduct(searchText);
+    public void onEnterPressed() throws FailedQueryToOpenFoodFacts, IOException, ParseException {
+        String searchTextL = this.searchText.getText();
+        searchProduct(searchTextL);
 
         itemsButtons.add(item1);
         itemsButtons.add(item2);
@@ -143,9 +167,9 @@ public class SearchProductControllerG implements Initializable {
         sl.add(stack6);
     }
 
-    public void onSearchProductButtonClicked() throws FailedQueryToOpenFoodFacts, IOException, ParseException, SQLException {
-        String searchText = this.searchText.getText();
-        searchProduct(searchText);
+    public void onSearchProductButtonClicked() throws FailedQueryToOpenFoodFacts, IOException, ParseException {
+        String searchTextL = this.searchText.getText();
+        searchProduct(searchTextL);
 
         itemsButtons.add(item1);
         itemsButtons.add(item2);
@@ -155,7 +179,7 @@ public class SearchProductControllerG implements Initializable {
         itemsButtons.add(item6);
     }
 
-    public void onItemClicked(MouseEvent mouseEvent) throws IOException, FailedQueryToOpenFoodFacts, SQLException, ParseException {
+    public void onItemClicked(MouseEvent mouseEvent) throws IOException {
 
 
         RadioButton clickedButton = (RadioButton) mouseEvent.getSource();
@@ -165,7 +189,6 @@ public class SearchProductControllerG implements Initializable {
             if(clickedButton == itemsButtons.get(i)){
                 ProductNameBean bean = ProductNameBean.getInstance();
                 bean.setName(String.valueOf(productsNames.get(i).getText()));
-                System.out.format("SPC will send %s..\n", String.valueOf(productsNames.get(i).getText()));
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispwproject202223jfx/fxml/itemInfo.fxml")));
                 Parent rootNode = loader.load();
                 SearchProductInfoControllerG controller = loader.getController();
@@ -187,6 +210,6 @@ public class SearchProductControllerG implements Initializable {
     }
 
     public void setUsername(String username) {
-
+        this.username = username;
     }
 }

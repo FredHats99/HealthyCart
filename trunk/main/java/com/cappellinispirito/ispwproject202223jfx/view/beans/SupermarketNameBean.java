@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
 public class SupermarketNameBean {
-    public static SupermarketNameBean instance;
+    private static SupermarketNameBean instance;
 
     private SupermarketNameBean(){}
 

@@ -4,7 +4,7 @@ import com.cappellinispirito.ispwproject202223jfx.model.Supermarket;
 
 import java.util.List;
 
-public interface supermarketsToProductsBean {
+public interface SupermarketsToProductsBean {
     Supermarket getSupermarket();
     void setSupermarket(Supermarket supermarket);
 

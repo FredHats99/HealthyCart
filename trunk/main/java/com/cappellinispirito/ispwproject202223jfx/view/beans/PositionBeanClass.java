@@ -1,11 +1,11 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.positionBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.PositionBean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PositionBeanClass implements positionBean {
+public class PositionBeanClass implements PositionBean {
     private String searchAddress;
     private final List<String> supermarketsNames = new ArrayList<>();
     private final List<String> supermarketsAddresses = new ArrayList<>();

@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view;
 
 import com.cappellinispirito.ispwproject202223jfx.controller.ShowNearestSupermarketsController;
-import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.nearestSupermarketBeanInterface;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.NearestSupermarketBeanInterface;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NearestSupermarketBeanClass;
 
 import java.util.List;
@@ -11,7 +11,7 @@ public class ShowNearestSupermarketsCustomerView {
     private List<Float> supermarketsDistances;
 
     public void showNearestFrom(String address) throws Exception {
-        nearestSupermarketBeanInterface bean = new NearestSupermarketBeanClass();
+        NearestSupermarketBeanInterface bean = new NearestSupermarketBeanClass();
         bean.setSearch(address);
         ShowNearestSupermarketsController showNearestSupermarketsController = ShowNearestSupermarketsController.getInstance();
         showNearestSupermarketsController.getNearestSupermarkets(bean);

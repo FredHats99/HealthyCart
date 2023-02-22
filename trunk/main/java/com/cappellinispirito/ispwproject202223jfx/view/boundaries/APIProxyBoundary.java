@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.positionBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.PositionBean;
 
 public interface APIProxyBoundary {
-     void getNearestSupermarkets(positionBean bean);
+     void getNearestSupermarkets(PositionBean bean);
 }

@@ -1,15 +1,15 @@
 package com.cappellinispirito.ispwproject202223jfx.controller;
 
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.nearestSupermarketBeanInterface;
-import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.positionBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.NearestSupermarketBeanInterface;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.PositionBean;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.APIProxyBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.CacheProxy;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.ShowNearestSupermarketsNominatimApiBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.PositionBeanClass;
 
 public class ShowNearestSupermarketsController {
-    public static ShowNearestSupermarketsController instance;
+    private static ShowNearestSupermarketsController instance;
 
     private ShowNearestSupermarketsController(){}
 
@@ -20,9 +20,9 @@ public class ShowNearestSupermarketsController {
         return instance;
     }
 
-    public void getNearestSupermarkets(nearestSupermarketBeanInterface bean) throws Exception {
+    public void getNearestSupermarkets(NearestSupermarketBeanInterface bean) {
             String address = bean.getSearch();
-            positionBean bean2 = new PositionBeanClass();
+            PositionBean bean2 = new PositionBeanClass();
             bean2.setAddress(address);
             APIProxyBoundary boundary = new ShowNearestSupermarketsNominatimApiBoundary();
             APIProxyBoundary proxyBoundary = new CacheProxy(boundary);

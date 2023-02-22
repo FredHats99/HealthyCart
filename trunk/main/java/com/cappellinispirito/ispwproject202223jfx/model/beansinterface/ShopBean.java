@@ -4,7 +4,7 @@ package com.cappellinispirito.ispwproject202223jfx.model.beansinterface;
 
 import java.util.List;
 
-public interface shopBean {
+public interface ShopBean {
     //output data
     List<String> getSellableProductName();
     void setSellableProductName(List<String> sellableProductName);

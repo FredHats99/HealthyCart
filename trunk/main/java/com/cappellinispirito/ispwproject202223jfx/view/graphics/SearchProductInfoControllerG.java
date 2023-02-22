@@ -5,6 +5,7 @@ import com.cappellinispirito.ispwproject202223jfx.model.Item;
 import com.cappellinispirito.ispwproject202223jfx.view.ShowProductInfoCustomerView;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NamePremiumBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.ProductNameBean;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -25,19 +26,27 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SearchProductInfoControllerG implements Initializable {
-
-    public StackPane root;
-
-    public Label productNameLabelINFO;
-    public ImageView productImageInfo;
-    public Label itemScoretext;
-    public Label infotext3;
-    public Label infotext2;
-    public Label infotext1;
-    public Label isBioTextInfo;
+    @FXML
+    private StackPane root;
+    @FXML
+    private Label productNameLabelINFO;
+    @FXML
+    private ImageView productImageInfo;
+    @FXML
+    private Label itemScoretext;
+    @FXML
+    private Label infotext3;
+    @FXML
+    private Label infotext2;
+    @FXML
+    private Label infotext1;
+    @FXML
+    private Label isBioTextInfo;
     private Item itemInfo;
-    public Rectangle scoreRect;
-    public Label userNameLabel;
+    @FXML
+    private Rectangle scoreRect;
+    @FXML
+    private Label userNameLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

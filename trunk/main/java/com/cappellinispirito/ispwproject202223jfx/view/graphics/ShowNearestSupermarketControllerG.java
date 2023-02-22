@@ -4,6 +4,7 @@ import com.cappellinispirito.ispwproject202223jfx.view.ShowNearestSupermarketsCu
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NamePremiumBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NewShopBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.SupermarketNameBean;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -22,25 +23,34 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ShowNearestSupermarketControllerG implements Initializable {
-
-    public StackPane root;
-
-    public Label market1;
-    public Label market2;
-    public Label market3;
-    public Label market4;
-    public Label market5;
-    public List<Label> marketAddressesList = new ArrayList<>();
-
-    public Label marketDist1;
-    public Label marketDist2;
-    public Label marketDist3;
+    @FXML
+    private StackPane root;
+    @FXML
+    private Label market1;
+    @FXML
+    private Label market2;
+    @FXML
+    private Label market3;
+    @FXML
+    private Label market4;
+    @FXML
+    private Label market5;
+    private List<Label> marketAddressesList = new ArrayList<>();
+    @FXML
+    private Label marketDist1;
+    @FXML
+    private Label marketDist2;
+    @FXML
+    private Label marketDist3;
+    @FXML
     public Label marketDist4;
-    public Label marketDist5;
-    public List<Label> marketDistancesList = new ArrayList<>();
-
-    public TextField searchText;
-    public Label userNameLabel;
+    @FXML
+    private Label marketDist5;
+    private List<Label> marketDistancesList = new ArrayList<>();
+    @FXML
+    private TextField searchText;
+    @FXML
+    private Label userNameLabel;
 
     String username;
 

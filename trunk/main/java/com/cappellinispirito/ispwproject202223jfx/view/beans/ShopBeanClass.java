@@ -1,10 +1,10 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.shopBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.ShopBean;
 
 import java.util.List;
 
-public class ShopBeanClass implements shopBean {
+public class ShopBeanClass implements ShopBean {
     private List<String> sellableProductsNames;
     private List<String> sellableProductsImages;
     private String itemNameToAdd;

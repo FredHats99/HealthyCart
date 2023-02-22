@@ -23,38 +23,35 @@ public class Item {
     private final boolean isBiological;
     private final boolean isBeverage;
 
-
-
+    private int proteinScore;
+    private int fiberScore;
+    private int fruitPercentageScore;
+    private int energyScore;
+    private int sugarScore;
+    private int saturatedFatsScore;
+    private int sodiumScore;
 
     //construction method
     public Item(
                 String barcode,
                 String imageUrl,
-                String ingredients,
-                float calories,
-                float sugars,
-                float saturatedFats,
-                float salt,
-                float fruitPercentage,
-                float fibers,
-                float proteins,
+                List<Float> nutritionalValues,
                 List<String> additives,
                 boolean isBiological,
                 boolean isBeverage,
-                float price,
                 String name) throws SQLException {
 
         this.barcode = barcode;
         this.name = name;
         this.imageUrl = imageUrl;
         this.additives = additives;
-        this.calories = calories;
-        this.proteins = proteins;
-        this.sugars = sugars;
-        this.saturatedFats = saturatedFats;
-        this.fruitPercentage = fruitPercentage;
-        this.salt = salt;
-        this.fibers = fibers;
+        this.calories = nutritionalValues.get(0);
+        this.proteins = nutritionalValues.get(1);
+        this.sugars = nutritionalValues.get(2);
+        this.saturatedFats = nutritionalValues.get(3);
+        this.fruitPercentage = nutritionalValues.get(4);
+        this.salt = nutritionalValues.get(5);
+        this.fibers = nutritionalValues.get(6);
         this.isBeverage = isBeverage;
         this.isBiological = isBiological;
         this.healthScore = calculateScore();
@@ -67,6 +64,7 @@ public class Item {
         int cAdditives = 0;
         int dAdditives = 0;
         int eAdditives = 0;
+        int notFoundAdditives = 0;
         int additivesScore;
         AdditivesDAO additivesDAO = new AdditivesDAO();
         int i;
@@ -79,6 +77,7 @@ public class Item {
                 case "C" -> cAdditives++;
                 case "D" -> dAdditives++;
                 case "E" -> eAdditives++;
+                default -> notFoundAdditives++;
             }
         }
         additivesScore = 30-(bAdditives*5+cAdditives*15+dAdditives*25+eAdditives*30);
@@ -91,85 +90,33 @@ public class Item {
     private int calculateScore() throws SQLException {
         int negativeScore;
         int positiveScore;
-        int proteinScore;
         boolean checkFruitPercentage = false;
         int nutriScore; //this is the vanilla score from the research
         int healthScoreL; // this is newly calculated score
 
+        setProteinsScore();
+        setFibersScore();
+        setFruitPercentageScore(isBeverage);
+        setEnergyScore(isBeverage);
+        setSugarScore(isBeverage);
+        setSaturatedFatsScore();
+        setSodiumScore();
+
+        //calculation for positive score
+        positiveScore = this.proteinScore + this.fiberScore + this.fruitPercentageScore;
+        negativeScore = this.energyScore + this.sugarScore + this.saturatedFatsScore + this.sodiumScore;
+
         if(isBeverage){
-            //calculation for positive score
-            proteinScore = (int)Math.floor(proteins/1.6);
-            if (proteinScore>5){proteinScore = 5;}
-
-            int fibersScore = (int)Math.floor(fibers/0.9);
-            if (fibersScore>5) fibersScore = 5;
-
-            int fruitPercentageScore;
-            if (fruitPercentage<=40){fruitPercentageScore = 0;}
-            else if (fruitPercentage<=60){fruitPercentageScore=2;}
-            else if (fruitPercentage<=80){fruitPercentageScore=4;}
-            else {fruitPercentageScore=10;}
-
-            positiveScore = proteinScore + fibersScore + fruitPercentageScore;
-
-            if (fruitPercentageScore!=10) {
+            if (this.fruitPercentageScore!=10) {
                 checkFruitPercentage = true;
             }
-
-            //calculation for negative score
-            int energyScore = (int) Math.floor(calories / 30) + 1;
-            if (energyScore > 10) energyScore = 10;
-
-            int sugarScore = (int) Math.floor(sugars / 1.5);
-            if (sugarScore > 10) sugarScore = 10;
-
-            int saturatedFatsScore = (int) Math.floor(saturatedFats);
-            if (saturatedFatsScore > 10) saturatedFatsScore = 10;
-
-            int sodiumScore = (int) Math.floor(salt / 90);
-            if (sodiumScore > 10) sodiumScore = 10;
-
-            negativeScore = energyScore + sugarScore + saturatedFatsScore + sodiumScore;
-
         }
         else {
-            //calculation for positive score
-            proteinScore = (int)Math.floor(proteins/1.6);
-            if (proteinScore>5) {
-                proteinScore = 5;
-            }
-
-            int fibersScore = (int)Math.floor(fibers/0.9);
-            if (fibersScore>5) fibersScore = 5;
-
-            int fruitPercentageScore;
-            if (fruitPercentage<=40){fruitPercentageScore = 0;}
-            else if (fruitPercentage<=60){fruitPercentageScore=1;}
-            else if (fruitPercentage<=80){fruitPercentageScore=2;}
-            else {fruitPercentageScore=5;}
-
-            positiveScore = proteinScore + fibersScore + fruitPercentageScore;
-
             if (fruitPercentageScore!=5) checkFruitPercentage = true;
-
-            //calculation for negative score
-            int energyScore = (int)Math.floor(calories/335);
-            if (energyScore>10) energyScore = 10;
-
-            int sugarsScore = (int)Math.floor(sugars/4.5);
-            if (sugarsScore>10) sugarsScore = 10;
-
-            int saturatedFatsScore = (int)Math.floor(saturatedFats);
-            if (saturatedFatsScore>10) saturatedFatsScore = 10;
-
-            int sodiumScore = (int)Math.floor(salt/90);
-            if (sodiumScore>10) sodiumScore = 10;
-
-            negativeScore = energyScore+sugarsScore+saturatedFatsScore+sodiumScore;
         }
 
         if (negativeScore>=11 && checkFruitPercentage){
-            positiveScore -= proteinScore; //if check==true then positiveScore does not count proteinsScore5
+            positiveScore -= this.proteinScore; //if check==true then positiveScore does not count proteinsScore5
         }
         nutriScore = negativeScore - positiveScore;
 
@@ -189,6 +136,60 @@ public class Item {
         return healthScoreL;
     }
 
+    private void setProteinsScore(){
+        this.proteinScore = (int)Math.floor(proteins/1.6);
+        if (this.proteinScore>5){this.proteinScore = 5;}
+    }
+
+    private void setFibersScore(){
+        this.fiberScore = (int)Math.floor(fibers/0.9);
+        if (this.fiberScore>5) this.fiberScore = 5;
+    }
+
+    private void setFruitPercentageScore(boolean isBeverage){
+        if(isBeverage){
+            if (this.fruitPercentage<=40){this.fruitPercentageScore = 0;}
+            else if (this.fruitPercentage<=60){this.fruitPercentageScore=2;}
+            else if (this.fruitPercentage<=80){this.fruitPercentageScore=4;}
+            else {fruitPercentageScore=10;}
+        } else {
+            if (this.fruitPercentage<=40){this.fruitPercentageScore = 0;}
+            else if (this.fruitPercentage<=60){this.fruitPercentageScore=1;}
+            else if (this.fruitPercentage<=80){this.fruitPercentageScore=2;}
+            else {fruitPercentageScore=5;}
+        }
+    }
+
+    private void setEnergyScore(boolean isBeverage){
+        if(isBeverage){
+            this.energyScore = (int) Math.floor(calories / 30) + 1;
+        } else {
+            this.energyScore = (int)Math.floor(calories/335);
+        }
+        if (this.energyScore>10) this.energyScore = 10;
+    }
+
+    private void setSugarScore(boolean isBeverage){
+        if(isBeverage){
+            this.sugarScore = (int) Math.floor(sugars / 1.5);
+        } else {
+            this.sugarScore = (int)Math.floor(sugars/4.5);
+        }
+        if (this.sugarScore>10) this.sugarScore = 10;
+
+
+    }
+
+    private void setSaturatedFatsScore(){
+        this.saturatedFatsScore = (int) Math.floor(saturatedFats);
+        if (saturatedFatsScore > 10) this.saturatedFatsScore = 10;
+
+    }
+
+    private void setSodiumScore(){
+        this.sodiumScore = (int) Math.floor(salt / 90);
+        if (this.sodiumScore > 10) this.sodiumScore = 10;
+    }
     //getters
     public String getBarcode() {
         return barcode;

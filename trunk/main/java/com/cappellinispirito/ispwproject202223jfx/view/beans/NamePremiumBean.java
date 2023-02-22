@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
 public class NamePremiumBean {
-    public static NamePremiumBean instance;
+    private static NamePremiumBean instance;
     private String name;
     private boolean premium;
 

@@ -10,6 +10,7 @@ import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShowProductInfoController{
@@ -55,7 +56,15 @@ public class ShowProductInfoController{
     }
 
     private void createItem() throws SQLException {
-        newItem = new Item(barcode, imageUrl, ingredients, energy, sugars, saturatedFats, salt, fruitPercentage, fibers, proteins, additives, isBiological, isBeverage,0,name); //must implement price
+        List<Float> nutritionalValues = new ArrayList<>();
+        nutritionalValues.add(energy);
+        nutritionalValues.add(proteins);
+        nutritionalValues.add(sugars);
+        nutritionalValues.add(saturatedFats);
+        nutritionalValues.add(fruitPercentage);
+        nutritionalValues.add(salt);
+        nutritionalValues.add(fibers);
+        newItem = new Item(barcode, imageUrl, nutritionalValues, additives, isBiological, isBeverage,name); //must implement price
     }
 
     public void findProductInfo(NameToItemSearchBean bean) throws IOException, ParseException, SQLException, FailedQueryToOpenFoodFacts {

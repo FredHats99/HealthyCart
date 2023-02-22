@@ -2,7 +2,7 @@ package com.cappellinispirito.ispwproject202223jfx.model.beansinterface;
 
 import java.util.List;
 
-public interface nearestSupermarketBeanInterface {
+public interface NearestSupermarketBeanInterface {
 
     String getSearch();
     void setSearch(String search);

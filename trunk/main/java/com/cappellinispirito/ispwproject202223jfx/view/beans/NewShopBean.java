@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
 public class NewShopBean {
-    public static NewShopBean instance;
+    private static NewShopBean instance;
     private Boolean newShop;
 
     private NewShopBean(){}

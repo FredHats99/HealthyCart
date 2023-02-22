@@ -23,16 +23,22 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class LogInControllerG implements Initializable {
-
-    public StackPane root;
-    public TextField usernametext;
-    public TextField passwordtext;
-    public Label loginbutton;
-    public Label registerbutton;
     @FXML
-    public Label toggle;
-    public StackPane vis;
-    public Label un;
+    private StackPane root;
+    @FXML
+    private TextField usernametext;
+    @FXML
+    private TextField passwordtext;
+    @FXML
+    private Label loginbutton;
+    @FXML
+    private Label registerbutton;
+    @FXML
+    private Label toggle;
+    @FXML
+    private StackPane vis;
+    @FXML
+    private Label un;
 
 
     String username;

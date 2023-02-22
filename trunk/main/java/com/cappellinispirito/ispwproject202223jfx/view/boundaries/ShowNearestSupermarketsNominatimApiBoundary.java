@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
 
-import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.positionBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.PositionBean;
 
 
 
@@ -9,14 +9,13 @@ import java.util.*;
 
 public class ShowNearestSupermarketsNominatimApiBoundary implements APIProxyBoundary{
 
-    public String address;
     private final List<String> supermarketsName = new ArrayList<>();
     private final List<Float> supermarketsDistances = new ArrayList<>();
 
 
     @Override
-    public void getNearestSupermarkets(positionBean bean){
-        address = bean.getAddress().replace(" ","+");
+    public void getNearestSupermarkets(PositionBean bean){
+        String address = bean.getAddress().replace(" ","+");
 
         supermarketsName.add("Carrefour");
         supermarketsName.add("Auchan");
@@ -32,11 +31,10 @@ public class ShowNearestSupermarketsNominatimApiBoundary implements APIProxyBoun
 
         for(i=0;i<5;i++){
             String name = supermarketsName.get(i);
-            String addressL = "";
             Float distance = supermarketsDistances.get(i);
 
             bean.appendToSupermarketsNames(name);
-            bean.appendToSupermarketsAddress(addressL);
+            bean.appendToSupermarketsAddress(address);
             bean.appendToSupermarketsDistance(distance);
         }
     }

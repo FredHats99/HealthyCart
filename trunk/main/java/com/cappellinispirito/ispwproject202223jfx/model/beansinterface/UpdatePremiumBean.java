@@ -1,6 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.model.beansinterface;
 
-public interface updatePremiumBean {
+public interface UpdatePremiumBean {
     boolean getUpdatePremiumProcedureOutcome();
     void setUpdatePremiumProcedureOutcome(boolean bool);
 }

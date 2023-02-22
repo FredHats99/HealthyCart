@@ -2,7 +2,7 @@ package com.cappellinispirito.ispwproject202223jfx.model.beansinterface;
 
 import java.util.List;
 
-public interface positionBean {
+public interface PositionBean {
     String getAddress();
     void setAddress(String address);
 

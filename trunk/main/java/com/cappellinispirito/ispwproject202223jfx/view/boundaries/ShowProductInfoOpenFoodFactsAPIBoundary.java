@@ -22,68 +22,71 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
 
     public void findProductInfoByBarcode(BarcodeToInformationBean bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
         String barcode = bean.getBarcodeSearch();
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        JSONParser parser = new JSONParser();
-        // Send a GET request to the API
-        HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json");
-        CloseableHttpResponse response = httpClient.execute(request);
-
-        // Read the response
-        String json = EntityUtils.toString(response.getEntity());
-
-        // Parse the JSON response
-        JSONObject obj = (JSONObject) parser.parse(json);
-        JSONObject product = (JSONObject) obj.get("product");
-        if(product == null){
-            throw new FailedQueryToOpenFoodFacts("product not found!");
-        }
-        // Extract the product data
-        String name = (String) product.get("product_name");
-        String image = (String) product.get("image_url");
-        String ingredients = (String) product.get("ingredients_text");
-
-        JSONObject nutritionalValues = (JSONObject) product.get("nutriments");
-        JSONObject alternativeNutritionalValues = (JSONObject) product.get("nutriscore_data");
-        int fruitPercentage;
+        CloseableHttpClient httpClient = null;
         try{
-            fruitPercentage = Math.toIntExact((Long) nutritionalValues.get("fruits-vegetables-nuts-estimate-from-ingredients_100g"));
-        } catch (ClassCastException e){
-            fruitPercentage = (int) Math.floor((Double) nutritionalValues.get("fruits-vegetables-nuts-estimate-from-ingredients_100g"));
-        } catch (NullPointerException e){
-            fruitPercentage = 0;
+            httpClient = HttpClients.createDefault();
+            JSONParser parser = new JSONParser();
+            // Send a GET request to the API
+            HttpGet request = new HttpGet("https://world.openfoodfacts.org/api/v0/product/" + barcode + ".json");
+            CloseableHttpResponse response = httpClient.execute(request);
+
+            // Read the response
+            String json = EntityUtils.toString(response.getEntity());
+
+            // Parse the JSON response
+            JSONObject obj = (JSONObject) parser.parse(json);
+            JSONObject product = (JSONObject) obj.get("product");
+            if(product == null){
+                throw new FailedQueryToOpenFoodFacts("product not found!");
+            }
+            // Extract the product data
+            String name = (String) product.get("product_name");
+            String image = (String) product.get("image_url");
+            String ingredients = (String) product.get("ingredients_text");
+
+            JSONObject nutritionalValues = (JSONObject) product.get("nutriments");
+            JSONObject alternativeNutritionalValues = (JSONObject) product.get("nutriscore_data");
+
+            int fruitPercentage = getFruitPercentageParsed(nutritionalValues);
+
+            float energy = Float.parseFloat(String.valueOf(nutritionalValues.get("energy")));
+            float sugars = Float.parseFloat(String.valueOf(nutritionalValues.get("sugars")));
+            float protein = Float.parseFloat(String.valueOf(nutritionalValues.get("proteins")));
+            float saturatedFat = Float.parseFloat(String.valueOf(nutritionalValues.get("saturated-fat")));
+            float fiber = Float.parseFloat(String.valueOf(alternativeNutritionalValues.get("fiber")));
+            float salt = Float.parseFloat(String.valueOf(nutritionalValues.get("salt")));
+
+            JSONArray additivesArray = (JSONArray) product.get("additives_original_tags");
+            List<String> additivesList = new ArrayList<>();
+            int i;
+            for(i=0;i< additivesArray.size();i++){
+                additivesList.add((String) additivesArray.get(i));
+            }
+            // Check if the "organic" label is present in the labels array
+
+            boolean isBio = isOrganic(product);
+            boolean isBeverage = isBeverage(product);
+
+            bean.setFruitPercentage((float) fruitPercentage);
+            bean.setCalories(energy);
+            bean.setSugars(sugars);
+            bean.setProteins(protein);
+            bean.setSaturatedFats(saturatedFat);
+            bean.setFibers(fiber);
+            bean.setSalt(salt);
+            bean.setIsBiological(isBio);
+            bean.setIsBeverage(isBeverage);
+            bean.setIngredients(ingredients);
+            bean.setAdditives(additivesList);
+            bean.setName(name);
+            bean.setImage(image);
+        } catch (IOException e){
+            e.printStackTrace();
+        } finally {
+            assert httpClient != null;
+            httpClient.close();
         }
 
-        float energy = Float.parseFloat(String.valueOf(nutritionalValues.get("energy")));
-        float sugars = Float.parseFloat(String.valueOf(nutritionalValues.get("sugars")));
-        float protein = Float.parseFloat(String.valueOf(nutritionalValues.get("proteins")));
-        float saturatedFat = Float.parseFloat(String.valueOf(nutritionalValues.get("saturated-fat")));
-        float fiber = Float.parseFloat(String.valueOf(alternativeNutritionalValues.get("fiber")));
-        float salt = Float.parseFloat(String.valueOf(nutritionalValues.get("salt")));
-
-        JSONArray additivesArray = (JSONArray) product.get("additives_original_tags");
-        List<String> additivesList = new ArrayList<>();
-        int i;
-        for(i=0;i< additivesArray.size();i++){
-            additivesList.add((String) additivesArray.get(i));
-        }
-        // Check if the "organic" label is present in the labels array
-
-        boolean isBio = isOrganic(product);
-        boolean isBeverage = isBeverage(product);
-
-        bean.setFruitPercentage((float) fruitPercentage);
-        bean.setCalories(energy);
-        bean.setSugars(sugars);
-        bean.setProteins(protein);
-        bean.setSaturatedFats(saturatedFat);
-        bean.setFibers(fiber);
-        bean.setSalt(salt);
-        bean.setIsBiological(isBio);
-        bean.setIsBeverage(isBeverage);
-        bean.setIngredients(ingredients);
-        bean.setAdditives(additivesList);
-        bean.setName(name);
-        bean.setImage(image);
     }
 
     public boolean isBeverage(JSONObject product) {
@@ -114,5 +117,16 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
             instance = new ShowProductInfoOpenFoodFactsAPIBoundary();
         }
         return instance;
+    }
+    private int getFruitPercentageParsed(JSONObject nutritionalValues){
+        int fp;
+        try{
+            fp = Math.toIntExact((Long) nutritionalValues.get("fruits-vegetables-nuts-estimate-from-ingredients_100g"));
+        } catch (ClassCastException e){
+            fp = (int) Math.floor((Double) nutritionalValues.get("fruits-vegetables-nuts-estimate-from-ingredients_100g"));
+        } catch (NullPointerException e){
+            fp = 0;
+        }
+        return fp;
     }
 }

@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.controller;
 
 import com.cappellinispirito.ispwproject202223jfx.model.UserAccount;
-import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.updatePremiumBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.UpdatePremiumBean;
 import com.cappellinispirito.ispwproject202223jfx.model.dao.UserAccountDAO;
 
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ public class UpdatePremiumController {
 
     private final UserAccount account = LogInController.getInstance().getUserAccountInstance();
 
-    public void updateCurrentUserToPremium(updatePremiumBean bean) throws SQLException {
+    public void updateCurrentUserToPremium(UpdatePremiumBean bean) throws SQLException {
         UserAccountDAO accountDao = new UserAccountDAO();
         boolean outcome;
         String username = getUsernameFromModel();

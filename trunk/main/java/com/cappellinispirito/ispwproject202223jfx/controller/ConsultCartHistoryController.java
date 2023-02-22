@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ConsultCartHistoryController {
-    public static ConsultCartHistoryController instance;
+    private static ConsultCartHistoryController instance;
     private final String username = LogInController.getInstance().getUserAccountInstance().getUsername();
     private List<Integer> cartsId = new ArrayList<>();
 

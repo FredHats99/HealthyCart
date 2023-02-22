@@ -26,7 +26,7 @@ public class Queries {
         } else {
             newTinyInt = 0;
         }
-        String updateStatement = String.format("\nUpdate Users set isPremium = %d where username = '%s';",newTinyInt, username);
+        String updateStatement = String.format("Update Users set isPremium = %d where username = '%s';",newTinyInt, username);
         stmt.executeUpdate(updateStatement);
     }
 

@@ -8,7 +8,7 @@ import com.cappellinispirito.ispwproject202223jfx.model.dao.UserAccountDAO;
 import java.sql.SQLException;
 
 public class LogInController {
-    public static LogInController instance;
+    private static LogInController instance;
     private UserAccount logInUser;
 
     private LogInController(){

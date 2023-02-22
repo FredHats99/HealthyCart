@@ -34,51 +34,57 @@ public class SearchProductOpenFoodFactsAPIBoundary {
         List<String> resultsImages = new ArrayList<>();
         List<String> resultsBarcodes = new ArrayList<>();
 
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        JSONParser parser = new JSONParser();
+        CloseableHttpClient httpClient = null;
+        try{
+            httpClient = HttpClients.createDefault();
+            JSONParser parser = new JSONParser();
 
-        // Send a GET request to the API
-        String search = bean.getNameToSearch().replace(" ", "+");
-        HttpGet request = new HttpGet("https://it.openfoodfacts.org/cgi/search.pl?search_terms="+ search +"&search_simple=1&action=process&json=1");
-        CloseableHttpResponse response = httpClient.execute(request);
+            // Send a GET request to the API
+            String search = bean.getNameToSearch().replace(" ", "+");
+            HttpGet request = new HttpGet("https://it.openfoodfacts.org/cgi/search.pl?search_terms="+ search +"&search_simple=1&action=process&json=1");
+            CloseableHttpResponse response = httpClient.execute(request);
 
-        // Read the response
-        String json = EntityUtils.toString(response.getEntity());
+            // Read the response
+            String json = EntityUtils.toString(response.getEntity());
 
-        // Parse the JSON response
-        JSONObject obj = (JSONObject) parser.parse(json);
-        JSONArray products = (JSONArray) obj.get("products");
-        if (products.isEmpty()) {
-            throw new FailedQueryToOpenFoodFacts("Products not found!");
-        }
-        // Convert the products array to a list of Product objects
-        int i = 0;
-        int j = 0;
-        JSONObject productData;
-        while(i<6) {
-            try{
+            // Parse the JSON response
+            JSONObject obj = (JSONObject) parser.parse(json);
+            JSONArray products = (JSONArray) obj.get("products");
+            if (products.isEmpty()) {
+                throw new FailedQueryToOpenFoodFacts("Products not found!");
+            }
+            // Convert the products array to a list of Product objects
+            int i = 0;
+            int j = 0;
+            JSONObject productData;
+            while(i<6) {
                 productData = (JSONObject) products.get(j);
-            } catch (IndexOutOfBoundsException e){
-                break;
+
+                String barcode = (String) productData.get("code");
+                String productName = (String) productData.get("product_name");
+                String image = (String) productData.get("image_url");
+
+                if(image == null || productName == null){
+                    i--;
+                } else {
+                    resultsNames.add(productName);
+                    resultsImages.add(image);
+                    resultsBarcodes.add(barcode);
+                }
+                i++;
+                j++;
             }
 
-            String barcode = (String) productData.get("code");
-            String productName = (String) productData.get("product_name");
-            String image = (String) productData.get("image_url");
-
-            if(image == null || productName == null){
-                i--;
-            } else {
-                resultsNames.add(productName);
-                resultsImages.add(image);
-                resultsBarcodes.add(barcode);
-            }
-            i++;
-            j++;
+            bean.setResultsNames(resultsNames);
+            bean.setResultsImages(resultsImages);
+            bean.setResultsBarcodes(resultsBarcodes);
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            assert httpClient != null;
+            httpClient.close();
         }
 
-        bean.setResultsNames(resultsNames);
-        bean.setResultsImages(resultsImages);
-        bean.setResultsBarcodes(resultsBarcodes);
+
     }
 }

@@ -22,13 +22,13 @@ public class MainMenuControllerG implements Initializable {
 
     @FXML
     public StackPane root;
-    public Label usernameLabel;
-    public String username;
-    public boolean isPremium;
+    @FXML
+    private Label usernameLabel;
+    private boolean isPremium;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        username = NamePremiumBean.getInstance().getName(); // getName() returns null
+        String username = NamePremiumBean.getInstance().getName(); // getName() returns null
         isPremium = NamePremiumBean.getInstance().getPremium();
         if(username != null) {
             usernameLabel.setText(username);

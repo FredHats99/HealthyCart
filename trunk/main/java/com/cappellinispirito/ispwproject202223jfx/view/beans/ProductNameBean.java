@@ -1,7 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view.beans;
 
 public class ProductNameBean {
-    public static ProductNameBean instance;
+    private static ProductNameBean instance;
     private String name;
 
     private ProductNameBean(){}

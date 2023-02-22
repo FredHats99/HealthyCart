@@ -5,8 +5,8 @@ import com.cappellinispirito.ispwproject202223jfx.model.Item;
 import com.cappellinispirito.ispwproject202223jfx.model.ShoppingCart;
 import com.cappellinispirito.ispwproject202223jfx.model.Supermarket;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.BarcodeToInformationBean;
-import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.shopBean;
-import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.supermarketsToProductsBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.ShopBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.SupermarketsToProductsBean;
 import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.SearchProductsFromSupermarketOpenFoodFactsAPIBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.ShowProductInfoOpenFoodFactsAPIBoundary;
@@ -42,8 +42,8 @@ public class DoShoppingController {
         username = LogInController.getInstance().getUserAccountInstance().getUsername();
     }
 
-    public void setUpShop(shopBean bean) throws FailedQueryToOpenFoodFacts {
-        supermarketsToProductsBean bean2 = new SupermarketsToProductsBeanClass();
+    public void setUpShop(ShopBean bean) throws IOException {
+        SupermarketsToProductsBean bean2 = new SupermarketsToProductsBeanClass();
         bean2.setSupermarket(shopSupermarket);
         SearchProductsFromSupermarketOpenFoodFactsAPIBoundary boundary = new SearchProductsFromSupermarketOpenFoodFactsAPIBoundary();
         boundary.searchProductsBySupermarket(bean2);
@@ -59,7 +59,7 @@ public class DoShoppingController {
         bean.setSellableProductImage(sellableSupermarketImages);
     }
 
-    public void addItemToCart(shopBean bean) throws FailedQueryToOpenFoodFacts, IOException, ParseException, SQLException {
+    public void addItemToCart(ShopBean bean) throws FailedQueryToOpenFoodFacts, IOException, ParseException, SQLException {
         String itemBarcode = nameToBarcodeMap.get(bean.getItemToAdd());
 
         BarcodeToInformationBean bean2 = new BarcodeToInformationBeanClass();
@@ -68,13 +68,14 @@ public class DoShoppingController {
         ShowProductInfoOpenFoodFactsAPIBoundary boundary = ShowProductInfoOpenFoodFactsAPIBoundary.getInstance();
         boundary.findProductInfoByBarcode(bean2);
 
-        Float calories = bean2.getCalories();
-        Float proteins = bean2.getProteins();
-        Float fibers = bean2.getFibers();
-        Float salt = bean2.getSalt();
-        Float sugars = bean2.getSugars();
-        Float fruitPercentage = bean2.getFruitPercentage();
-        Float saturatedFats = bean2.getSaturatedFats();
+        List<Float> nutritionalValues = new ArrayList<>();
+        nutritionalValues.add(bean2.getCalories());
+        nutritionalValues.add(bean2.getProteins());
+        nutritionalValues.add(bean2.getSugars());
+        nutritionalValues.add(bean2.getSaturatedFats());
+        nutritionalValues.add(bean2.getFruitPercentage());
+        nutritionalValues.add(bean2.getSalt());
+        nutritionalValues.add(bean2.getFibers());
         List<String> additives = bean2.getAdditives();
         String ingredients = bean2.getIngredients();
         Boolean isBiological = bean2.getIsBiological();
@@ -82,24 +83,16 @@ public class DoShoppingController {
 
         Item shopItem = new Item(itemBarcode,
                 nameToImageMap.get(bean.getItemToAdd()),
-                ingredients,
-                calories,
-                sugars,
-                saturatedFats,
-                salt,
-                fruitPercentage,
-                fibers,
-                proteins,
+                nutritionalValues,
                 additives,
                 isBiological,
                 isBeverage,
-                0,
                 bean.getItemToAdd());
         shoppingCart.addItem(shopItem);
         getCartHealthScore(bean);
     }
 
-    public void removeItemFromCart(shopBean bean){
+    public void removeItemFromCart(ShopBean bean){
         String itemBarcode = bean.getItemToRemove();
         Item shopItem;
         int i;
@@ -121,7 +114,7 @@ public class DoShoppingController {
         }
     }
 
-    private void getCartHealthScore(shopBean bean){
+    private void getCartHealthScore(ShopBean bean){
         bean.setCartHealthScore(shoppingCart.getAverageScore());
     }
 }
