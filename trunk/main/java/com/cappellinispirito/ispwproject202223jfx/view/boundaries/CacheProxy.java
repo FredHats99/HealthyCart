@@ -25,9 +25,9 @@ public class CacheProxy implements APIProxyBoundary{
         } else {
             //If no, call the API and then save the results into the cache.
             instance.getNearestSupermarkets(bean);
-            searchToSupermarketsNameCache.put(bean.getAddress(), bean.getSupermarketsNames().get(bean.getSupermarketsNames().size()));
-            searchToSupermarketsAddressCache.put(bean.getAddress(), bean.getSupermarketsAddress().get(bean.getSupermarketsAddress().size()));
-            searchToDistanceCache.put(bean.getAddress(), bean.getSupermarketsDistance().get(bean.getSupermarketsDistance().size()));
+            searchToSupermarketsNameCache.put(bean.getAddress(), bean.getSupermarketsNames().get(bean.getSupermarketsNames().size()-1));
+            searchToSupermarketsAddressCache.put(bean.getAddress(), bean.getSupermarketsAddress().get(bean.getSupermarketsAddress().size()-1));
+            searchToDistanceCache.put(bean.getAddress(), bean.getSupermarketsDistance().get(bean.getSupermarketsDistance().size()-1));
         }
     }
 }

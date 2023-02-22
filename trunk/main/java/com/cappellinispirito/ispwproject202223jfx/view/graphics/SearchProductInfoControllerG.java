@@ -66,7 +66,6 @@ public class SearchProductInfoControllerG implements Initializable {
         Image tempImage = new Image(String.valueOf(itemInfo.getImageUrl()));
         productImageInfo.setImage(tempImage);
         productNameLabelINFO.setText(itemInfo.getName());
-
         itemScoretext.setText(String.valueOf(itemInfo.getHealthScore()));
         if(itemInfo.getHealthScore() < 30){
             scoreRect.setFill(Paint.valueOf("#FF8469"));

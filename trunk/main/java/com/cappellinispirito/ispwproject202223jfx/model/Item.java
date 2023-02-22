@@ -207,6 +207,38 @@ public class Item {
         return this.healthScore;
     }
 
+    public float getProteins() {
+        return proteins;
+    }
+
+    public float getFibers() {
+        return fibers;
+    }
+
+    public float getFruitPercentage() {
+        return fruitPercentage;
+    }
+
+    public float getSalt() {
+        return salt;
+    }
+
+    public float getSaturatedFats() {
+        return saturatedFats;
+    }
+
+    public float getSugars() {
+        return sugars;
+    }
+
+    public float getCalories() {
+        return calories;
+    }
+
+    public List<String> getAdditives() {
+        return additives;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
