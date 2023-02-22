@@ -14,8 +14,8 @@
         <junit.version>5.9.0</junit.version>
         <sonar.projectKey>fredhats99</sonar.projectKey>
         <sonar.organization>fredhats99</sonar.organization>
-        <sonar.sources>trunk</sonar.sources>
-        <sonar.tests>.</sonar.tests>
+        <sonar.sources>trunk/main</sonar.sources>
+        <sonar.tests>trunk/test</sonar.tests>
         <sonar.language>java</sonar.language>
         <sonar.java.binaries>.</sonar.java.binaries>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
