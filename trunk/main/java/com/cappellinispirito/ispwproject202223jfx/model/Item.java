@@ -22,6 +22,7 @@ public class Item {
     private final List<String> additives;
     private final boolean isBiological;
     private final boolean isBeverage;
+    private String ingredients;
 
     private int proteinScore;
     private int fiberScore;
@@ -33,17 +34,17 @@ public class Item {
 
     //construction method
     public Item(
-                String barcode,
-                String imageUrl,
+                List<String> informations,
                 List<Float> nutritionalValues,
                 List<String> additives,
                 boolean isBiological,
-                boolean isBeverage,
-                String name) throws SQLException {
+                boolean isBeverage
+                ) throws SQLException {
 
-        this.barcode = barcode;
-        this.name = name;
-        this.imageUrl = imageUrl;
+        this.barcode = informations.get(1);
+        this.name = informations.get(0);
+        this.imageUrl = informations.get(2);
+        this.ingredients = informations.get(3);
         this.additives = additives;
         this.calories = nutritionalValues.get(0);
         this.proteins = nutritionalValues.get(1);
@@ -243,4 +244,7 @@ public class Item {
         this.name = name;
     }
 
+    public String getIngredients() {
+        return ingredients;
+    }
 }

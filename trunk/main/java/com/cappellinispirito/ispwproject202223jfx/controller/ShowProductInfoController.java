@@ -57,6 +57,11 @@ public class ShowProductInfoController{
 
     private void createItem() throws SQLException {
         List<Float> nutritionalValues = new ArrayList<>();
+        List<String> itemInformation = new ArrayList<>();
+        itemInformation.add(name);
+        itemInformation.add(barcode);
+        itemInformation.add(imageUrl);
+        itemInformation.add(ingredients);
         nutritionalValues.add(energy);
         nutritionalValues.add(proteins);
         nutritionalValues.add(sugars);
@@ -64,7 +69,7 @@ public class ShowProductInfoController{
         nutritionalValues.add(fruitPercentage);
         nutritionalValues.add(salt);
         nutritionalValues.add(fibers);
-        newItem = new Item(barcode, imageUrl, nutritionalValues, additives, isBiological, isBeverage,name); //must implement price
+        newItem = new Item(itemInformation, nutritionalValues, additives, isBiological, isBeverage);
     }
 
     public void findProductInfo(NameToItemSearchBean bean) throws IOException, ParseException, SQLException, FailedQueryToOpenFoodFacts {

@@ -66,8 +66,9 @@ public class SearchProductInfoControllerG implements Initializable {
         Image tempImage = new Image(String.valueOf(itemInfo.getImageUrl()));
         productImageInfo.setImage(tempImage);
         productNameLabelINFO.setText(itemInfo.getName());
-        infotext1.setText(String.format("Valori per 100g:\nCalorie:%d J\nZuccheri:%d g\nAcidi Grassi:%d g\nSale:%d g\nProteine:%d g\nFibre:%d g\nPercentuale di frutta:%d", (int) itemInfo.getCalories(),(int) itemInfo.getSugars(),(int) itemInfo.getSaturatedFats(),(int) itemInfo.getSalt(),(int) itemInfo.getProteins(),(int) itemInfo.getFibers(),(int) itemInfo.getFruitPercentage()));
-        infotext3.setText(String.format("ADDITIVI:\n %s", itemInfo.getAdditives()));
+        infotext1.setText(String.format("Valori per 100g:%nCalorie: %d J%nZuccheri: %d g%nAcidi Grassi: %d g%nSale: %d g%nProteine: %d g%nFibre: %d g%nPercentuale di frutta: %d ", (int) itemInfo.getCalories(),(int) itemInfo.getSugars(),(int) itemInfo.getSaturatedFats(),(int) itemInfo.getSalt(),(int) itemInfo.getProteins(),(int) itemInfo.getFibers(),(int) itemInfo.getFruitPercentage()));
+        infotext2.setText(String.format("INGREDIENTI:%n %s", itemInfo.getIngredients()));
+        infotext3.setText(String.format("ADDITIVI:%n %s", itemInfo.getAdditives()));
         itemScoretext.setText(String.valueOf(itemInfo.getHealthScore()));
         if(itemInfo.getHealthScore() < 30){
             scoreRect.setFill(Paint.valueOf("#FF8469"));

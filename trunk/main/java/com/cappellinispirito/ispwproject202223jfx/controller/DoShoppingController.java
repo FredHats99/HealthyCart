@@ -81,13 +81,17 @@ public class DoShoppingController {
         Boolean isBiological = bean2.getIsBiological();
         Boolean isBeverage = bean2.getIsBeverage();
 
-        Item shopItem = new Item(itemBarcode,
-                nameToImageMap.get(bean.getItemToAdd()),
+        List<String> informations = new ArrayList<>();
+        informations.add(bean.getItemToAdd());
+        informations.add(itemBarcode);
+        informations.add(nameToImageMap.get(bean.getItemToAdd()));
+        informations.add(ingredients);
+        Item shopItem = new Item(
+                informations,
                 nutritionalValues,
                 additives,
                 isBiological,
-                isBeverage,
-                bean.getItemToAdd());
+                isBeverage);
         shoppingCart.addItem(shopItem);
         getCartHealthScore(bean);
     }
