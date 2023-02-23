@@ -15,13 +15,13 @@
         <sonar.projectKey>fredhats99</sonar.projectKey>
         <sonar.organization>fredhats99</sonar.organization>
         <sonar.sources>trunk/main</sonar.sources>
-        <sonar.tests>trunk/test/java</sonar.tests>
+        <sonar.test.inclusion>trunk/test/java</sonar.test.inclusion>
         <sonar.language>java</sonar.language>
         <sonar.java.source>1.19</sonar.java.source>
         <sonar.java.binaries>.</sonar.java.binaries>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.coverage.jacoco.xmlReportPaths>.</sonar.coverage.jacoco.xmlReportPaths>
-        <sonar.plsql.defaultSchema>Users_&amp;_Additives.sql</sonar.plsql.defaultSchema>
+        <sonar.exclusions>trunk/main/resources/com.cappellinispirito.ispwproject202223jfx</sonar.exclusions>
     </properties>
 
     <dependencies>
