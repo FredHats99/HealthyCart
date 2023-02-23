@@ -17,10 +17,11 @@
         <sonar.sources>trunk/main</sonar.sources>
         <sonar.tests>trunk/test/java</sonar.tests>
         <sonar.language>java</sonar.language>
-        <sonar.java.source>1.8</sonar.java.source>
+        <sonar.java.source>1.19</sonar.java.source>
         <sonar.java.binaries>.</sonar.java.binaries>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.coverage.jacoco.xmlReportPaths>.</sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.plsql.defaultSchema>Users_&amp;_Additives.sql</sonar.plsql.defaultSchema>
     </properties>
 
     <dependencies>
