@@ -1,6 +1,7 @@
 package com.cappellinispirito.ispwproject202223jfx.view.graphics;
 
 import com.cappellinispirito.ispwproject202223jfx.model.dao.UserAccountDAO;
+import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedRegistrationException;
 import com.cappellinispirito.ispwproject202223jfx.view.LogInCustomerView;
 import com.cappellinispirito.ispwproject202223jfx.view.RegisterCustomerView;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NamePremiumBean;
@@ -120,7 +121,7 @@ public class LogInControllerG implements Initializable {
         }
     }
 
-    public void onRegisterClick() throws Exception {
+    public void onRegisterClick() throws FailedRegistrationException {
         String usernamee = usernametext.getText();
         String password = passwordtext.getText();
         if(usernamee != null || password != null){

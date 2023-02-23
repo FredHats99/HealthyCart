@@ -6,6 +6,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CartsDAO {
     public void addCart(String username, int avgScore) throws SQLException {
@@ -17,7 +19,8 @@ public class CartsDAO {
             stmt = conn.createStatement();
             Queries.addCart(stmt,username,avgScore);
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             if(stmt != null){
                 stmt.close();
@@ -34,7 +37,8 @@ public class CartsDAO {
             stmt = conn.createStatement();
             Queries.addCartItem(stmt,username,barcode,quantity);
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             if(stmt != null){
                 stmt.close();
@@ -56,8 +60,9 @@ public class CartsDAO {
             do{
                 dateList.add(rs.getDate("date"));
             } while(rs.next());
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         }
         return dateList;
     }
@@ -76,8 +81,9 @@ public class CartsDAO {
             do{
                 scoreList.add(rs.getInt("avgScore"));
             } while(rs.next());
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         }
         return scoreList;
     }
@@ -96,8 +102,9 @@ public class CartsDAO {
             do{
                 idList.add(rs.getInt("idCarts"));
             } while(rs.next());
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         }
         return idList;
     }
@@ -125,7 +132,8 @@ public class CartsDAO {
             return barcodesInCart;
 
         } catch (NullPointerException e){
-           e.printStackTrace();
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             assert stmt != null;
             stmt.close();

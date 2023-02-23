@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class SearchProductControllerG implements Initializable {
@@ -142,7 +144,8 @@ public class SearchProductControllerG implements Initializable {
                 productImages.get(i).setImage(tempImage);
                 sl.get(i).setVisible(true);
             } catch(Exception e){
-                e.printStackTrace();
+                Logger logger = Logger.getLogger(SearchProductControllerG.class.getName());
+                logger.log(Level.INFO, e.getMessage());
             }
 
         }

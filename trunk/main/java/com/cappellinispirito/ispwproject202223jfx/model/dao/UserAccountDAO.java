@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class UserAccountDAO {
 
@@ -28,7 +30,8 @@ public class UserAccountDAO {
             return true;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         }finally {
             if(stmt != null){
                 stmt.close();
@@ -47,7 +50,8 @@ public class UserAccountDAO {
             stmt = conn.createStatement();
             Queries.createAccount(stmt, username, password);
         } catch (SQLException e){
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             if(stmt != null){
                 stmt.close();
@@ -64,7 +68,8 @@ public class UserAccountDAO {
             stmt = conn.createStatement();
             Queries.updateToPremium(stmt, username, prevIsPremium);
         } catch (SQLException e){
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             if(stmt != null){
                 stmt.close();
@@ -88,7 +93,8 @@ public class UserAccountDAO {
             return rs.getBoolean("isPremium");
 
         } catch (SQLException | FailedLoginException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             if(stmt != null){
                 stmt.close();
@@ -109,7 +115,8 @@ public class UserAccountDAO {
                 return true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             if(stmt != null){
                 stmt.close();

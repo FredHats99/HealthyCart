@@ -1,5 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
 
+
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.SupermarketsToProductsBean;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -14,6 +15,8 @@ import org.json.simple.parser.JSONParser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
     List<String> sellableProductsNames = new ArrayList<>();
@@ -58,7 +61,8 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
             bean.setSellableProductsImage(sellableProductsImages);
             bean.setSellableProductsBarcode(sellableProductsBarcodes);
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(SearchProductsFromSupermarketOpenFoodFactsAPIBoundary.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             assert httpClient != null;
             httpClient.close();

@@ -1,5 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
 
+
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.BarcodeToInformationBean;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -15,6 +16,8 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ShowProductInfoOpenFoodFactsAPIBoundary{
 
@@ -81,7 +84,8 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
             bean.setName(name);
             bean.setImage(image);
         } catch (IOException e){
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(ShowProductInfoOpenFoodFactsAPIBoundary.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         } finally {
             assert httpClient != null;
             httpClient.close();

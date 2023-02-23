@@ -10,7 +10,7 @@ public class ShowNearestSupermarketsCustomerView {
     private List<String> supermarketsNames;
     private List<Float> supermarketsDistances;
 
-    public void showNearestFrom(String address) throws Exception {
+    public void showNearestFrom(String address) {
         NearestSupermarketBeanInterface bean = new NearestSupermarketBeanClass();
         bean.setSearch(address);
         ShowNearestSupermarketsController showNearestSupermarketsController = ShowNearestSupermarketsController.getInstance();
