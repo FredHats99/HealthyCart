@@ -20,6 +20,7 @@
         <sonar.java.source>1.8</sonar.java.source>
         <sonar.java.binaries>.</sonar.java.binaries>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.coverage.jacoco.xmlReportPaths>../jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <dependencies>
