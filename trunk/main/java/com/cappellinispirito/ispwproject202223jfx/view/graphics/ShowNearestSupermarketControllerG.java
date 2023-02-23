@@ -66,7 +66,7 @@ public class ShowNearestSupermarketControllerG implements Initializable {
 
     }
 
-    public void onSearchSupermarketsClicked() throws Exception {
+    public void onSearchSupermarketsClicked(){
         marketAddressesList.add(market1);
         marketAddressesList.add(market2);
         marketAddressesList.add(market3);

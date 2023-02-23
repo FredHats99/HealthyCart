@@ -86,7 +86,10 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
         } catch (IOException e){
             Logger logger = Logger.getLogger(ShowProductInfoOpenFoodFactsAPIBoundary.class.getName());
             logger.log(Level.INFO, e.getMessage());
-        } finally {
+        } catch (NullPointerException e){
+            Logger logger = Logger.getLogger(ShowProductInfoOpenFoodFactsAPIBoundary.class.getName());
+            logger.log(Level.INFO,String.format("Couldn't find further information for this product...%n"));
+        }finally {
             assert httpClient != null;
             httpClient.close();
         }

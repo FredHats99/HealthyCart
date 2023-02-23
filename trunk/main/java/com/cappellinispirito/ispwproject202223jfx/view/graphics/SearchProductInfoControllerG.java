@@ -47,6 +47,8 @@ public class SearchProductInfoControllerG implements Initializable {
     private Rectangle scoreRect;
     @FXML
     private Label userNameLabel;
+    @FXML
+    private Rectangle bioRect;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -70,12 +72,28 @@ public class SearchProductInfoControllerG implements Initializable {
         infotext2.setText(String.format("INGREDIENTI:%n %s", itemInfo.getIngredients()));
         infotext3.setText(String.format("ADDITIVI:%n %s", itemInfo.getAdditives()));
         itemScoretext.setText(String.valueOf(itemInfo.getHealthScore()));
+        if(itemInfo.getIsBiological()){
+            isBioTextInfo.setText("This product IS bio");
+            bioRect.setFill(Paint.valueOf("#89FF98"));
+        }
         if(itemInfo.getHealthScore() < 30){
             scoreRect.setFill(Paint.valueOf("#FF8469"));
         } else if (itemInfo.getHealthScore() < 60 && itemInfo.getHealthScore() >= 30) {
             scoreRect.setFill(Paint.valueOf("#FFEF98"));
         } else {
             scoreRect.setFill(Paint.valueOf("#89FF98"));
+        }
+
+        if(itemInfo.getCalories() < 0){
+            infotext1.setText(String.format("Alcuni valori nutrizionali non sono forniti. %nNon ci fidiamo di questo prodotto."));
+            itemScoretext.setText("0");
+            scoreRect.setFill(Paint.valueOf("#FF8469"));
+        }
+        if(Objects.equals(itemInfo.getIngredients(), "")){
+            infotext2.setText("Non sono stati trovati gli ingredienti...");
+        }
+        if(itemInfo.getAdditives().isEmpty()){
+            infotext3.setText("Questo prodotto non contiene additivi!");
         }
     }
 

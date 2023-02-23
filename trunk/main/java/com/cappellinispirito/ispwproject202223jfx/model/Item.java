@@ -22,7 +22,7 @@ public class Item {
     private final List<String> additives;
     private final boolean isBiological;
     private final boolean isBeverage;
-    private String ingredients;
+    private final String ingredients;
 
     private int proteinScore;
     private int fiberScore;
@@ -234,6 +234,10 @@ public class Item {
 
     public float getCalories() {
         return calories;
+    }
+
+    public boolean getIsBiological() {
+        return isBiological;
     }
 
     public List<String> getAdditives() {

@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ShowProductInfoController{
 
@@ -82,17 +84,34 @@ public class ShowProductInfoController{
         bean2.setBarcodeSearch(this.barcode);
         ShowProductInfoOpenFoodFactsAPIBoundary showProductInfoOpenFoodFactsAPIBoundaryInstance = ShowProductInfoOpenFoodFactsAPIBoundary.getInstance();
         showProductInfoOpenFoodFactsAPIBoundaryInstance.findProductInfoByBarcode(bean2);
-        fruitPercentage = bean2.getFruitPercentage();
-        energy = bean2.getCalories();
-        sugars = bean2.getSugars();
-        proteins = bean2.getProteins();
-        saturatedFats = bean2.getSaturatedFats();
-        fibers = bean2.getFibers();
-        salt = bean2.getSalt();
-        isBiological = bean2.getIsBiological();
-        isBeverage = bean2.getIsBeverage();
-        ingredients = bean2.getIngredients();
-        additives = bean2.getAdditives();
+        try{
+            fruitPercentage = bean2.getFruitPercentage();
+            energy = bean2.getCalories();
+            sugars = bean2.getSugars();
+            proteins = bean2.getProteins();
+            saturatedFats = bean2.getSaturatedFats();
+            fibers = bean2.getFibers();
+            salt = bean2.getSalt();
+            isBiological = bean2.getIsBiological();
+            isBeverage = bean2.getIsBeverage();
+            ingredients = bean2.getIngredients();
+            additives = bean2.getAdditives();
+        } catch (NullPointerException e){
+            Logger logger = Logger.getLogger(ShowProductInfoController.class.getName());
+            logger.log(Level.INFO, "Some value is not provided from OpenFoodFactsAPI. Thus, no information can be displayed.");
+            fruitPercentage = -1;
+            energy = -1;
+            sugars = -1;
+            proteins = -1;
+            saturatedFats = -1;
+            fibers = -1;
+            salt = -1;
+            isBiological = false;
+            isBeverage = false;
+            ingredients = "";
+            additives = new ArrayList<>();
+        }
+
         createItem();  //questo item viene rimandato alla view, per distinguerlo dal Bean che collega contoller e boundary.
         //Health score logic is inside this Item
         bean.setResultsItem(newItem);
