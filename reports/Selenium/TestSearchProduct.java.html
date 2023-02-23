@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TestSearchProduct.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISPW_PROJECT_2022_23_JFX$Main.exec</a> &gt; <a href="index.source.html" class="el_package">Selenium</a> &gt; <span class="el_source">TestSearchProduct.java</span></div><h1>TestSearchProduct.java</h1><pre class="source lang-java linenums">package Selenium;
+import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.is;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+
+<span class="nc" id="L14">public class TestSearchProduct {</span>
+
+    private WebDriver driver;
+    private static final String SEARCH_INPUT = &quot;searchInput&quot;;
+    JavascriptExecutor js;
+    //dada
+    @After
+    public void tearDown() {
+<span class="nc" id="L22">        driver.quit();</span>
+<span class="nc" id="L23">    }</span>
+
+    @Before
+    public void setUp() {
+<span class="nc" id="L27">        System.setProperty(&quot;webdriver.chrome.driver&quot;,&quot;D:\\programmi\\java\\ISPW_Project_22-23_JFX\\src\\test\\java\\Selenium\\chromedriver.exe&quot;);</span>
+<span class="nc" id="L28">        driver = new ChromeDriver();</span>
+<span class="nc" id="L29">        js = (JavascriptExecutor) driver;</span>
+<span class="nc" id="L30">    }</span>
+
+    @Test
+    /*public void testSearchProduct() {
+        // Test name: testSpidermanAuthor
+        // Step # | name | target | value | comment
+        // 1 | open | /wiki/Pagina_principale |  |
+        driver.get(&quot;https://it.wikipedia.org/wiki/Pagina_principale&quot;);
+        // 2 | setWindowSize | 945x1012 |  |
+        driver.manage().window().setSize(new Dimension(945, 1012));
+        // 3 | click | id=searchInput |  |
+        driver.findElement(By.id(SEARCH_INPUT)).click();
+        // 4 | type | id=searchInput | uomo ragno |
+        driver.findElement(By.id(SEARCH_INPUT)).sendKeys(&quot;uomo ragno&quot;);
+        // 5 | sendKeys | id=searchInput | ${KEY_ENTER} |
+        driver.findElement(By.id(SEARCH_INPUT)).sendKeys(Keys.ENTER);
+        // 6 | runScript | window.scrollTo(0,495) |  |
+        js.executeScript(&quot;window.scrollTo(0,495)&quot;);
+        // 7 | assertText | linkText=Stan Lee | Stan Lee |
+        assertThat(driver.findElement(By.linkText(&quot;Stan Lee&quot;)).getText(), is(&quot;Stan Lee&quot;));
+        }*/
+
+    public void testSearchProduct() {
+<span class="nc" id="L53">        driver.get(&quot;https://it.openfoodfacts.org/product/8000500310427/nutella-biscuits&quot;);</span>
+<span class="nc" id="L54">        driver.manage().window().setSize(new Dimension(945, 1012));</span>
+<span class="nc" id="L55">        System.out.println(driver.findElement(By.xpath(&quot;/html/body/div/div[2]/div[3]/div/div/div/div/section[2]/div/div/div/div/div/div[6]/ul/li/div/div/table/tbody/tr[2]/td[2]/span&quot;)).getText());</span>
+<span class="nc" id="L56">        assertThat(driver.findElement(By.xpath(&quot;/html/body/div/div[2]/div[3]/div/div/div/div/section[2]/div/div/div/div/div/div[6]/ul/li/div/div/table/tbody/tr[2]/td[2]/span&quot;)).getText(), is(&quot;24,5 g&quot;));</span>
+<span class="nc" id="L57">    }</span>
+
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

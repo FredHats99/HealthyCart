@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShowProductInfoController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISPW_PROJECT_2022_23_JFX$Main.exec</a> &gt; <a href="index.source.html" class="el_package">com.cappellinispirito.ispwproject202223jfx.controller</a> &gt; <span class="el_source">ShowProductInfoController.java</span></div><h1>ShowProductInfoController.java</h1><pre class="source lang-java linenums">package com.cappellinispirito.ispwproject202223jfx.controller;
+
+import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
+import com.cappellinispirito.ispwproject202223jfx.model.Item;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.BarcodeToInformationBean;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.NameToItemSearchBean;
+import com.cappellinispirito.ispwproject202223jfx.view.boundaries.ShowProductInfoOpenFoodFactsAPIBoundary;
+import com.cappellinispirito.ispwproject202223jfx.view.beans.BarcodeToInformationBeanClass;
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ShowProductInfoController{
+
+    private static ShowProductInfoController instance;
+    private String barcode;
+    private float fruitPercentage;
+    private float energy;
+    private float sugars;
+    private float proteins;
+    private float saturatedFats;
+    private float fibers;
+    private float salt;
+    private boolean isBiological;
+    private boolean isBeverage;
+    private String name;
+    private String imageUrl;
+    private String ingredients;
+    private List&lt;String&gt; additives;
+
+    private Item newItem; // creiamo un item invece di tenere solo le info ricevute perchè l'item ci permette di calcolare dei valori come gli Score.
+
+    private ShowProductInfoController(){}
+
+    public static ShowProductInfoController getInstance() {
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        if(instance == null){</span>
+<span class="nc" id="L42">            instance = new ShowProductInfoController();</span>
+        }
+<span class="nc" id="L44">        return instance;</span>
+    }
+
+    private void getBarcodeFromName(String name){
+<span class="nc" id="L48">        SearchProductController searchProductController = SearchProductController.getInstance();</span>
+<span class="nc" id="L49">        this.barcode = searchProductController.getBarcodeByName(name);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        if(this.barcode == null){</span>
+<span class="nc" id="L51">            this.barcode = &quot;8013355999501&quot;;</span>
+        }
+<span class="nc" id="L53">    }</span>
+
+    private void getImageUrlFromName(String name){
+<span class="nc" id="L56">        SearchProductController searchProductController = SearchProductController.getInstance();</span>
+<span class="nc" id="L57">        this.imageUrl = searchProductController.getImageUrlByName(name);</span>
+<span class="nc" id="L58">    }</span>
+
+    private void createItem() throws SQLException {
+<span class="nc" id="L61">        List&lt;Float&gt; nutritionalValues = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L62">        List&lt;String&gt; itemInformation = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L63">        itemInformation.add(name);</span>
+<span class="nc" id="L64">        itemInformation.add(barcode);</span>
+<span class="nc" id="L65">        itemInformation.add(imageUrl);</span>
+<span class="nc" id="L66">        itemInformation.add(ingredients);</span>
+<span class="nc" id="L67">        nutritionalValues.add(energy);</span>
+<span class="nc" id="L68">        nutritionalValues.add(proteins);</span>
+<span class="nc" id="L69">        nutritionalValues.add(sugars);</span>
+<span class="nc" id="L70">        nutritionalValues.add(saturatedFats);</span>
+<span class="nc" id="L71">        nutritionalValues.add(fruitPercentage);</span>
+<span class="nc" id="L72">        nutritionalValues.add(salt);</span>
+<span class="nc" id="L73">        nutritionalValues.add(fibers);</span>
+<span class="nc" id="L74">        newItem = new Item(itemInformation, nutritionalValues, additives, isBiological, isBeverage);</span>
+<span class="nc" id="L75">    }</span>
+
+    public void findProductInfo(NameToItemSearchBean bean) throws IOException, ParseException, SQLException, FailedQueryToOpenFoodFacts {
+<span class="nc" id="L78">        String nameL = bean.getName();</span>
+<span class="nc" id="L79">        this.name = nameL;</span>
+<span class="nc" id="L80">        getBarcodeFromName(nameL);</span>
+<span class="nc" id="L81">        getImageUrlFromName(nameL);</span>
+
+<span class="nc" id="L83">        BarcodeToInformationBean bean2 = new BarcodeToInformationBeanClass();</span>
+<span class="nc" id="L84">        bean2.setBarcodeSearch(this.barcode);</span>
+<span class="nc" id="L85">        ShowProductInfoOpenFoodFactsAPIBoundary showProductInfoOpenFoodFactsAPIBoundaryInstance = ShowProductInfoOpenFoodFactsAPIBoundary.getInstance();</span>
+<span class="nc" id="L86">        showProductInfoOpenFoodFactsAPIBoundaryInstance.findProductInfoByBarcode(bean2);</span>
+        try{
+<span class="nc" id="L88">            fruitPercentage = bean2.getFruitPercentage();</span>
+<span class="nc" id="L89">            energy = bean2.getCalories();</span>
+<span class="nc" id="L90">            sugars = bean2.getSugars();</span>
+<span class="nc" id="L91">            proteins = bean2.getProteins();</span>
+<span class="nc" id="L92">            saturatedFats = bean2.getSaturatedFats();</span>
+<span class="nc" id="L93">            fibers = bean2.getFibers();</span>
+<span class="nc" id="L94">            salt = bean2.getSalt();</span>
+<span class="nc" id="L95">            isBiological = bean2.getIsBiological();</span>
+<span class="nc" id="L96">            isBeverage = bean2.getIsBeverage();</span>
+<span class="nc" id="L97">            ingredients = bean2.getIngredients();</span>
+<span class="nc" id="L98">            additives = bean2.getAdditives();</span>
+<span class="nc" id="L99">        } catch (NullPointerException e){</span>
+<span class="nc" id="L100">            Logger logger = Logger.getLogger(ShowProductInfoController.class.getName());</span>
+<span class="nc" id="L101">            logger.log(Level.INFO, &quot;Some value is not provided from OpenFoodFactsAPI. Thus, no information can be displayed.&quot;);</span>
+<span class="nc" id="L102">            fruitPercentage = -1;</span>
+<span class="nc" id="L103">            energy = -1;</span>
+<span class="nc" id="L104">            sugars = -1;</span>
+<span class="nc" id="L105">            proteins = -1;</span>
+<span class="nc" id="L106">            saturatedFats = -1;</span>
+<span class="nc" id="L107">            fibers = -1;</span>
+<span class="nc" id="L108">            salt = -1;</span>
+<span class="nc" id="L109">            isBiological = false;</span>
+<span class="nc" id="L110">            isBeverage = false;</span>
+<span class="nc" id="L111">            ingredients = &quot;&quot;;</span>
+<span class="nc" id="L112">            additives = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L113">        }</span>
+
+<span class="nc" id="L115">        createItem();  //questo item viene rimandato alla view, per distinguerlo dal Bean che collega contoller e boundary.</span>
+        //Health score logic is inside this Item
+<span class="nc" id="L117">        bean.setResultsItem(newItem);</span>
+<span class="nc" id="L118">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
