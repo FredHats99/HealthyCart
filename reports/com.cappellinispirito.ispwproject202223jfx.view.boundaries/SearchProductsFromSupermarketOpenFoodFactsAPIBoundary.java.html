@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SearchProductsFromSupermarketOpenFoodFactsAPIBoundary.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISPW_PROJECT_2022_23_JFX$Main.exec</a> &gt; <a href="index.source.html" class="el_package">com.cappellinispirito.ispwproject202223jfx.view.boundaries</a> &gt; <span class="el_source">SearchProductsFromSupermarketOpenFoodFactsAPIBoundary.java</span></div><h1>SearchProductsFromSupermarketOpenFoodFactsAPIBoundary.java</h1><pre class="source lang-java linenums">package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
+
+import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.SupermarketsToProductsBean;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="nc bnc" id="L18" title="All 2 branches missed.">public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {</span>
+<span class="nc" id="L19">    List&lt;String&gt; sellableProductsNames = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L20">    List&lt;String&gt; sellableProductsImages = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L21">    List&lt;String&gt; sellableProductsBarcodes = new ArrayList&lt;&gt;();</span>
+
+    public void searchProductsBySupermarket(SupermarketsToProductsBean bean) throws IOException {
+<span class="nc" id="L24">        CloseableHttpClient httpClient = null;</span>
+        try{
+<span class="nc" id="L26">            httpClient = HttpClients.createDefault();</span>
+<span class="nc" id="L27">            JSONParser parser = new JSONParser();</span>
+
+<span class="nc" id="L29">            String supermarketName = bean.getSupermarket().getSupermarketName();</span>
+
+                // Replace spaces in the supermarket name with &quot;%20&quot; for the API call
+
+                // Send a GET request to the API
+<span class="nc" id="L34">                String search = supermarketName.replace(&quot; &quot;, &quot;+&quot;);</span>
+<span class="nc" id="L35">                HttpGet request = new HttpGet(&quot;https://it.openfoodfacts.org/cgi/search.pl?search_terms=&quot;+ search +&quot;&amp;search_tag=supermarket&amp;json=1&quot;);</span>
+<span class="nc" id="L36">                CloseableHttpResponse response = httpClient.execute(request);</span>
+
+                // Read the response
+<span class="nc" id="L39">                String json = EntityUtils.toString(response.getEntity());</span>
+
+                // Parse the JSON response
+
+<span class="nc" id="L43">                JSONObject obj = (JSONObject) parser.parse(json);</span>
+<span class="nc" id="L44">                JSONArray products = (JSONArray) obj.get(&quot;products&quot;);</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">                if (products.isEmpty()) {</span>
+<span class="nc" id="L46">                    throw new FailedQueryToOpenFoodFacts(&quot;Products not found!&quot;);</span>
+                }
+
+                // Do something with the lists
+<span class="nc bnc" id="L50" title="All 2 branches missed.">                for (Object o : products) {</span>
+<span class="nc" id="L51">                    JSONObject product = (JSONObject) o;</span>
+
+<span class="nc" id="L53">                    sellableProductsNames.add((String) product.get(&quot;product_name&quot;));</span>
+<span class="nc" id="L54">                    sellableProductsImages.add((String) product.get(&quot;image_url&quot;));</span>
+<span class="nc" id="L55">                    sellableProductsBarcodes.add((String) product.get(&quot;code&quot;));</span>
+<span class="nc" id="L56">                }</span>
+<span class="nc" id="L57">            bean.setSellableProductsNames(sellableProductsNames);</span>
+<span class="nc" id="L58">            bean.setSellableProductsImage(sellableProductsImages);</span>
+<span class="nc" id="L59">            bean.setSellableProductsBarcode(sellableProductsBarcodes);</span>
+<span class="nc" id="L60">        } catch (Exception e) {</span>
+<span class="nc" id="L61">            e.printStackTrace();</span>
+        } finally {
+<span class="nc bnc" id="L63" title="All 4 branches missed.">            assert httpClient != null;</span>
+<span class="nc" id="L64">            httpClient.close();</span>
+        }
+
+<span class="nc" id="L67">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

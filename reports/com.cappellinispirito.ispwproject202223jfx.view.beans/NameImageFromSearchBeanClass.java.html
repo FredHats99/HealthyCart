@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NameImageFromSearchBeanClass.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISPW_PROJECT_2022_23_JFX$Main.exec</a> &gt; <a href="index.source.html" class="el_package">com.cappellinispirito.ispwproject202223jfx.view.beans</a> &gt; <span class="el_source">NameImageFromSearchBeanClass.java</span></div><h1>NameImageFromSearchBeanClass.java</h1><pre class="source lang-java linenums">package com.cappellinispirito.ispwproject202223jfx.view.beans;
+
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.ResultsFromSearchBean;
+
+import java.util.List;
+
+<span class="nc" id="L7">public class NameImageFromSearchBeanClass implements ResultsFromSearchBean {</span>
+    private String nameToSearch;
+    private List&lt;String&gt; resultsNames;
+    private List&lt;String&gt; resultsImages;
+
+    @Override
+    public String getNameToSearch() {
+<span class="nc" id="L14">        return nameToSearch;</span>
+    }
+
+    @Override
+    public void setNameToSearch(String newName) {
+<span class="nc" id="L19">        this.nameToSearch = newName;</span>
+<span class="nc" id="L20">    }</span>
+
+    @Override
+    public List&lt;String&gt; getResultsNames() {
+<span class="nc" id="L24">        return resultsNames;</span>
+    }
+
+    @Override
+    public void setResultsNames(List&lt;String&gt; list) {
+<span class="nc" id="L29">        resultsNames = list;</span>
+<span class="nc" id="L30">    }</span>
+
+    @Override
+    public List&lt;String&gt; getResultsImages() {
+<span class="nc" id="L34">        return resultsImages;</span>
+    }
+
+    @Override
+    public void setResultsImages(List&lt;String&gt; list) {
+<span class="nc" id="L39">        resultsImages = list;</span>
+<span class="nc" id="L40">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

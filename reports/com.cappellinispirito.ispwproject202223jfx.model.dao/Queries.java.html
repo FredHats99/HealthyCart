@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Queries.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISPW_PROJECT_2022_23_JFX$Main.exec</a> &gt; <a href="index.source.html" class="el_package">com.cappellinispirito.ispwproject202223jfx.model.dao</a> &gt; <span class="el_source">Queries.java</span></div><h1>Queries.java</h1><pre class="source lang-java linenums">package com.cappellinispirito.ispwproject202223jfx.model.dao;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Queries {
+
+    private Queries(){}
+
+    public static void createAccount(Statement stmt, String username, String password) throws SQLException {
+<span class="nc" id="L12">        String insertStatement = String.format(&quot;INSERT INTO Users(Username, Password, isPremium) VALUES ('%s', '%s', 0);&quot;, username, password);</span>
+<span class="nc" id="L13">        stmt.execute(insertStatement);</span>
+<span class="nc" id="L14">    }</span>
+
+    public static ResultSet checkCredentials(Statement stmt, String username, String password) throws SQLException{
+<span class="nc" id="L17">        String selectStatement = String.format(&quot;SELECT * FROM Users WHERE Username = '%s' AND Password = '%s';&quot;, username, password);</span>
+<span class="nc" id="L18">        stmt.execute(selectStatement);</span>
+<span class="nc" id="L19">        return stmt.getResultSet();</span>
+    }
+
+    public static void updateToPremium(Statement stmt, String username, boolean prevIsPremium) throws SQLException{
+        int newTinyInt;
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        if(prevIsPremium){</span>
+<span class="nc" id="L25">            newTinyInt = 1;</span>
+        } else {
+<span class="nc" id="L27">            newTinyInt = 0;</span>
+        }
+<span class="nc" id="L29">        String updateStatement = String.format(&quot;Update Users set isPremium = %d where username = '%s';&quot;,newTinyInt, username);</span>
+<span class="nc" id="L30">        stmt.executeUpdate(updateStatement);</span>
+<span class="nc" id="L31">    }</span>
+
+    public static void addCart(Statement stmt, String username, int avgScore) throws SQLException {
+<span class="nc" id="L34">        String insertStatement = String.format(&quot;INSERT INTO Carts(user, date, avgScore) VALUES ('%s', curdate(), '%s');&quot;, username, avgScore);</span>
+<span class="nc" id="L35">        stmt.execute(insertStatement);</span>
+<span class="nc" id="L36">    }</span>
+
+    public static ResultSet getAdditiveDangerousness(Statement stmt, String additive) throws SQLException{
+<span class="nc" id="L39">        String selectStatement = String.format(&quot;SELECT Dangerousness FROM Additives WHERE name = '%s';&quot;,additive);</span>
+<span class="nc" id="L40">        stmt.execute(selectStatement);</span>
+<span class="nc" id="L41">        return stmt.getResultSet();</span>
+    }
+
+    public static void addCartItem(Statement stmt, String cartUser, String barcode, int quantity) throws SQLException{
+<span class="nc" id="L45">        String insertStatement = String.format(&quot;DECLARE Cart_id int;&quot; +</span>
+                                                &quot;SET Cart_id = (SELECT CartId FROM Carts WHERE user = '%s');&quot; +
+<span class="nc" id="L47">                                                &quot;INSERT INTO ItemsInCart(CartId, Barcode, Quantity) VALUES (CartId, '%s', '%s');&quot;,cartUser, barcode, quantity);</span>
+<span class="nc" id="L48">        stmt.execute(insertStatement);</span>
+<span class="nc" id="L49">    }</span>
+
+    public static ResultSet getPremium(Statement stmt, String username) throws SQLException {
+<span class="nc" id="L52">        String selectStatement = String.format(&quot;SELECT isPremium FROM Users WHERE Username = '%s';&quot;,username);</span>
+<span class="nc" id="L53">        stmt.execute(selectStatement);</span>
+<span class="nc" id="L54">        return stmt.getResultSet();</span>
+    }
+
+    public static ResultSet checkIfUserExists(Statement stmt, String username) throws SQLException {
+<span class="nc" id="L58">        String selectStatement = String.format(&quot;SELECT * FROM Users WHERE Username = '%s';&quot;, username);</span>
+<span class="nc" id="L59">        stmt.execute(selectStatement);</span>
+<span class="nc" id="L60">        return stmt.getResultSet();</span>
+    }
+
+    public static void getOldCartsDate(Statement stmt, String username) throws SQLException {
+<span class="nc" id="L64">        String selectStatement = String.format(&quot;SELECT date FROM Carts WHERE user = '%s'&quot;,username);</span>
+<span class="nc" id="L65">        stmt.execute(selectStatement);</span>
+<span class="nc" id="L66">    }</span>
+
+    public static void getOldCartsScore(Statement stmt, String username) throws SQLException {
+<span class="nc" id="L69">        String selectStatement = String.format(&quot;SELECT avgScore FROM Carts WHERE user = '%s'&quot;,username);</span>
+<span class="nc" id="L70">        stmt.execute(selectStatement);</span>
+<span class="nc" id="L71">    }</span>
+
+    public static void getOldCartsId(Statement stmt, String username) throws SQLException {
+<span class="nc" id="L74">        String selectStatement = String.format(&quot;SELECT idCarts FROM Carts WHERE user = '%s'&quot;,username);</span>
+<span class="nc" id="L75">        stmt.execute(selectStatement);</span>
+<span class="nc" id="L76">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

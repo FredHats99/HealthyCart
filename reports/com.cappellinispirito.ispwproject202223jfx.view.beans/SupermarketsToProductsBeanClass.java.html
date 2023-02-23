@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SupermarketsToProductsBeanClass.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISPW_PROJECT_2022_23_JFX$Main.exec</a> &gt; <a href="index.source.html" class="el_package">com.cappellinispirito.ispwproject202223jfx.view.beans</a> &gt; <span class="el_source">SupermarketsToProductsBeanClass.java</span></div><h1>SupermarketsToProductsBeanClass.java</h1><pre class="source lang-java linenums">package com.cappellinispirito.ispwproject202223jfx.view.beans;
+
+import com.cappellinispirito.ispwproject202223jfx.model.Supermarket;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.SupermarketsToProductsBean;
+
+import java.util.List;
+
+<span class="nc" id="L8">public class SupermarketsToProductsBeanClass implements SupermarketsToProductsBean {</span>
+    private Supermarket supermarket;
+    private List&lt;String&gt; sellableProductsNames;
+    private List&lt;String&gt; sellableProductsImages;
+    private List&lt;String&gt; sellableProductsBarcodes;
+
+    @Override
+    public Supermarket getSupermarket() {
+<span class="nc" id="L16">        return supermarket;</span>
+    }
+
+    @Override
+    public void setSupermarket(Supermarket supermarket) {
+<span class="nc" id="L21">        this.supermarket = supermarket;</span>
+<span class="nc" id="L22">    }</span>
+
+    @Override
+    public List&lt;String&gt; getSellableProductsName() {
+<span class="nc" id="L26">        return sellableProductsNames;</span>
+    }
+
+    @Override
+    public void setSellableProductsNames(List&lt;String&gt; sellableProductsName) {
+<span class="nc" id="L31">        this.sellableProductsNames = sellableProductsName;</span>
+<span class="nc" id="L32">    }</span>
+
+    @Override
+    public List&lt;String&gt; getSellableProductsImage() {
+<span class="nc" id="L36">        return sellableProductsImages;</span>
+    }
+
+    @Override
+    public void setSellableProductsImage(List&lt;String&gt; sellableProductsImage) {
+<span class="nc" id="L41">        this.sellableProductsImages = sellableProductsImage;</span>
+<span class="nc" id="L42">    }</span>
+
+    @Override
+    public List&lt;String&gt; getSellableProductsBarcode() {
+<span class="nc" id="L46">        return sellableProductsBarcodes;</span>
+    }
+
+    @Override
+    public void setSellableProductsBarcode(List&lt;String&gt; sellableProductsBarcodes) {
+<span class="nc" id="L51">        this.sellableProductsBarcodes = sellableProductsBarcodes;</span>
+<span class="nc" id="L52">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

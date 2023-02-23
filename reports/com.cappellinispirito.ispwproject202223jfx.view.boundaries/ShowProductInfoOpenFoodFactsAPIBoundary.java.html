@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShowProductInfoOpenFoodFactsAPIBoundary.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISPW_PROJECT_2022_23_JFX$Main.exec</a> &gt; <a href="index.source.html" class="el_package">com.cappellinispirito.ispwproject202223jfx.view.boundaries</a> &gt; <span class="el_source">ShowProductInfoOpenFoodFactsAPIBoundary.java</span></div><h1>ShowProductInfoOpenFoodFactsAPIBoundary.java</h1><pre class="source lang-java linenums">package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
+
+import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.BarcodeToInformationBean;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="nc bnc" id="L19" title="All 2 branches missed.">public class ShowProductInfoOpenFoodFactsAPIBoundary{</span>
+
+    private static ShowProductInfoOpenFoodFactsAPIBoundary instance;
+
+    public void findProductInfoByBarcode(BarcodeToInformationBean bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
+<span class="nc" id="L24">        String barcode = bean.getBarcodeSearch();</span>
+<span class="nc" id="L25">        CloseableHttpClient httpClient = null;</span>
+        try{
+<span class="nc" id="L27">            httpClient = HttpClients.createDefault();</span>
+<span class="nc" id="L28">            JSONParser parser = new JSONParser();</span>
+            // Send a GET request to the API
+<span class="nc" id="L30">            HttpGet request = new HttpGet(&quot;https://world.openfoodfacts.org/api/v0/product/&quot; + barcode + &quot;.json&quot;);</span>
+<span class="nc" id="L31">            CloseableHttpResponse response = httpClient.execute(request);</span>
+
+            // Read the response
+<span class="nc" id="L34">            String json = EntityUtils.toString(response.getEntity());</span>
+
+            // Parse the JSON response
+<span class="nc" id="L37">            JSONObject obj = (JSONObject) parser.parse(json);</span>
+<span class="nc" id="L38">            JSONObject product = (JSONObject) obj.get(&quot;product&quot;);</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">            if(product == null){</span>
+<span class="nc" id="L40">                throw new FailedQueryToOpenFoodFacts(&quot;product not found!&quot;);</span>
+            }
+            // Extract the product data
+<span class="nc" id="L43">            String name = (String) product.get(&quot;product_name&quot;);</span>
+<span class="nc" id="L44">            String image = (String) product.get(&quot;image_url&quot;);</span>
+<span class="nc" id="L45">            String ingredients = (String) product.get(&quot;ingredients_text&quot;);</span>
+
+<span class="nc" id="L47">            JSONObject nutritionalValues = (JSONObject) product.get(&quot;nutriments&quot;);</span>
+<span class="nc" id="L48">            JSONObject alternativeNutritionalValues = (JSONObject) product.get(&quot;nutriscore_data&quot;);</span>
+
+<span class="nc" id="L50">            int fruitPercentage = getFruitPercentageParsed(nutritionalValues);</span>
+
+<span class="nc" id="L52">            float energy = Float.parseFloat(String.valueOf(nutritionalValues.get(&quot;energy&quot;)));</span>
+<span class="nc" id="L53">            float sugars = Float.parseFloat(String.valueOf(nutritionalValues.get(&quot;sugars&quot;)));</span>
+<span class="nc" id="L54">            float protein = Float.parseFloat(String.valueOf(nutritionalValues.get(&quot;proteins&quot;)));</span>
+<span class="nc" id="L55">            float saturatedFat = Float.parseFloat(String.valueOf(nutritionalValues.get(&quot;saturated-fat&quot;)));</span>
+<span class="nc" id="L56">            float fiber = Float.parseFloat(String.valueOf(alternativeNutritionalValues.get(&quot;fiber&quot;)));</span>
+<span class="nc" id="L57">            float salt = Float.parseFloat(String.valueOf(nutritionalValues.get(&quot;salt&quot;)));</span>
+
+<span class="nc" id="L59">            JSONArray additivesArray = (JSONArray) product.get(&quot;additives_original_tags&quot;);</span>
+<span class="nc" id="L60">            List&lt;String&gt; additivesList = new ArrayList&lt;&gt;();</span>
+            int i;
+<span class="nc bnc" id="L62" title="All 2 branches missed.">            for(i=0;i&lt; additivesArray.size();i++){</span>
+<span class="nc" id="L63">                additivesList.add((String) additivesArray.get(i));</span>
+            }
+            // Check if the &quot;organic&quot; label is present in the labels array
+
+<span class="nc" id="L67">            boolean isBio = isOrganic(product);</span>
+<span class="nc" id="L68">            boolean isBeverage = isBeverage(product);</span>
+
+<span class="nc" id="L70">            bean.setFruitPercentage((float) fruitPercentage);</span>
+<span class="nc" id="L71">            bean.setCalories(energy);</span>
+<span class="nc" id="L72">            bean.setSugars(sugars);</span>
+<span class="nc" id="L73">            bean.setProteins(protein);</span>
+<span class="nc" id="L74">            bean.setSaturatedFats(saturatedFat);</span>
+<span class="nc" id="L75">            bean.setFibers(fiber);</span>
+<span class="nc" id="L76">            bean.setSalt(salt);</span>
+<span class="nc" id="L77">            bean.setIsBiological(isBio);</span>
+<span class="nc" id="L78">            bean.setIsBeverage(isBeverage);</span>
+<span class="nc" id="L79">            bean.setIngredients(ingredients);</span>
+<span class="nc" id="L80">            bean.setAdditives(additivesList);</span>
+<span class="nc" id="L81">            bean.setName(name);</span>
+<span class="nc" id="L82">            bean.setImage(image);</span>
+<span class="nc" id="L83">        } catch (IOException e){</span>
+<span class="nc" id="L84">            e.printStackTrace();</span>
+        } finally {
+<span class="nc bnc" id="L86" title="All 4 branches missed.">            assert httpClient != null;</span>
+<span class="nc" id="L87">            httpClient.close();</span>
+        }
+
+<span class="nc" id="L90">    }</span>
+
+    public boolean isBeverage(JSONObject product) {
+
+        // Get the categories array
+<span class="nc" id="L95">        JSONArray keywords = (JSONArray) product.get(&quot;_keywords&quot;);</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">        for (Object keyword : keywords) {</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">            if (keyword == &quot;beverage&quot;) {</span>
+<span class="nc" id="L98">                return true;</span>
+            }
+<span class="nc" id="L100">        }</span>
+<span class="nc" id="L101">        return false;</span>
+    }
+
+    public boolean isOrganic(JSONObject product) {
+<span class="nc" id="L105">        String labels = (String) product.get(&quot;labels&quot;);</span>
+        try{
+<span class="nc" id="L107">            return labels.contains(&quot;organic&quot;);</span>
+<span class="nc" id="L108">        } catch (NullPointerException e){</span>
+<span class="nc" id="L109">            return false;</span>
+        }
+    }
+
+    private ShowProductInfoOpenFoodFactsAPIBoundary(){}
+
+    public static ShowProductInfoOpenFoodFactsAPIBoundary getInstance() {
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        if(instance == null){</span>
+<span class="nc" id="L117">            instance = new ShowProductInfoOpenFoodFactsAPIBoundary();</span>
+        }
+<span class="nc" id="L119">        return instance;</span>
+    }
+    private int getFruitPercentageParsed(JSONObject nutritionalValues){
+        int fp;
+        try{
+<span class="nc" id="L124">            fp = Math.toIntExact((Long) nutritionalValues.get(&quot;fruits-vegetables-nuts-estimate-from-ingredients_100g&quot;));</span>
+<span class="nc" id="L125">        } catch (ClassCastException e){</span>
+<span class="nc" id="L126">            fp = (int) Math.floor((Double) nutritionalValues.get(&quot;fruits-vegetables-nuts-estimate-from-ingredients_100g&quot;));</span>
+<span class="nc" id="L127">        } catch (NullPointerException e){</span>
+<span class="nc" id="L128">            fp = 0;</span>
+<span class="nc" id="L129">        }</span>
+<span class="nc" id="L130">        return fp;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

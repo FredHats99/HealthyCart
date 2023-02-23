@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Item.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISPW_PROJECT_2022_23_JFX$Main.exec</a> &gt; <a href="index.source.html" class="el_package">com.cappellinispirito.ispwproject202223jfx.model</a> &gt; <span class="el_source">Item.java</span></div><h1>Item.java</h1><pre class="source lang-java linenums">package com.cappellinispirito.ispwproject202223jfx.model;
+
+import com.cappellinispirito.ispwproject202223jfx.model.dao.AdditivesDAO;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public class Item {
+
+    //attributes
+    private final String barcode;
+    private String name;
+    private final String imageUrl;
+    private final int healthScore;
+    private final float calories;
+    private final float sugars;
+    private final float saturatedFats;
+    private final float salt;
+    private final float fruitPercentage;
+    private final float fibers;
+    private final float proteins;
+    private final List&lt;String&gt; additives;
+    private final boolean isBiological;
+    private final boolean isBeverage;
+    private String ingredients;
+
+    private int proteinScore;
+    private int fiberScore;
+    private int fruitPercentageScore;
+    private int energyScore;
+    private int sugarScore;
+    private int saturatedFatsScore;
+    private int sodiumScore;
+
+    //construction method
+    public Item(
+                List&lt;String&gt; informations,
+                List&lt;Float&gt; nutritionalValues,
+                List&lt;String&gt; additives,
+                boolean isBiological,
+                boolean isBeverage
+<span class="nc" id="L42">                ) throws SQLException {</span>
+
+<span class="nc" id="L44">        this.barcode = informations.get(1);</span>
+<span class="nc" id="L45">        this.name = informations.get(0);</span>
+<span class="nc" id="L46">        this.imageUrl = informations.get(2);</span>
+<span class="nc" id="L47">        this.ingredients = informations.get(3);</span>
+<span class="nc" id="L48">        this.additives = additives;</span>
+<span class="nc" id="L49">        this.calories = nutritionalValues.get(0);</span>
+<span class="nc" id="L50">        this.proteins = nutritionalValues.get(1);</span>
+<span class="nc" id="L51">        this.sugars = nutritionalValues.get(2);</span>
+<span class="nc" id="L52">        this.saturatedFats = nutritionalValues.get(3);</span>
+<span class="nc" id="L53">        this.fruitPercentage = nutritionalValues.get(4);</span>
+<span class="nc" id="L54">        this.salt = nutritionalValues.get(5);</span>
+<span class="nc" id="L55">        this.fibers = nutritionalValues.get(6);</span>
+<span class="nc" id="L56">        this.isBeverage = isBeverage;</span>
+<span class="nc" id="L57">        this.isBiological = isBiological;</span>
+<span class="nc" id="L58">        this.healthScore = calculateScore();</span>
+<span class="nc" id="L59">    }</span>
+
+
+    //methods
+    private int generateAdditivesScore(List&lt;String&gt; additives) throws SQLException {
+<span class="nc" id="L64">        int bAdditives = 0;</span>
+<span class="nc" id="L65">        int cAdditives = 0;</span>
+<span class="nc" id="L66">        int dAdditives = 0;</span>
+<span class="nc" id="L67">        int eAdditives = 0;</span>
+<span class="nc" id="L68">        int notFoundAdditives = 0;</span>
+        int additivesScore;
+<span class="nc" id="L70">        AdditivesDAO additivesDAO = new AdditivesDAO();</span>
+        int i;
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if(additives == null){</span>
+<span class="nc" id="L73">            return 30;</span>
+        }
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        for(i=0; i&lt;additives.size(); i++){</span>
+<span class="nc bnc" id="L76" title="All 5 branches missed.">            switch (additivesDAO.getAdditiveDangerousness(additives.get(i))) {</span>
+<span class="nc" id="L77">                case &quot;B&quot; -&gt; bAdditives++;</span>
+<span class="nc" id="L78">                case &quot;C&quot; -&gt; cAdditives++;</span>
+<span class="nc" id="L79">                case &quot;D&quot; -&gt; dAdditives++;</span>
+<span class="nc" id="L80">                case &quot;E&quot; -&gt; eAdditives++;</span>
+<span class="nc" id="L81">                default -&gt; notFoundAdditives++;</span>
+            }
+        }
+<span class="nc" id="L84">        additivesScore = 30-(bAdditives*5+cAdditives*15+dAdditives*25+eAdditives*30);</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        if (additivesScore&lt;0) additivesScore=0;</span>
+<span class="nc" id="L86">        return additivesScore;</span>
+    }
+
+
+
+    private int calculateScore() throws SQLException {
+        int negativeScore;
+        int positiveScore;
+<span class="nc" id="L94">        boolean checkFruitPercentage = false;</span>
+        int nutriScore; //this is the vanilla score from the research
+        int healthScoreL; // this is newly calculated score
+
+<span class="nc" id="L98">        setProteinsScore();</span>
+<span class="nc" id="L99">        setFibersScore();</span>
+<span class="nc" id="L100">        setFruitPercentageScore(isBeverage);</span>
+<span class="nc" id="L101">        setEnergyScore(isBeverage);</span>
+<span class="nc" id="L102">        setSugarScore(isBeverage);</span>
+<span class="nc" id="L103">        setSaturatedFatsScore();</span>
+<span class="nc" id="L104">        setSodiumScore();</span>
+
+        //calculation for positive score
+<span class="nc" id="L107">        positiveScore = this.proteinScore + this.fiberScore + this.fruitPercentageScore;</span>
+<span class="nc" id="L108">        negativeScore = this.energyScore + this.sugarScore + this.saturatedFatsScore + this.sodiumScore;</span>
+
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        if(isBeverage){</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">            if (this.fruitPercentageScore!=10) {</span>
+<span class="nc" id="L112">                checkFruitPercentage = true;</span>
+            }
+        }
+        else {
+<span class="nc bnc" id="L116" title="All 2 branches missed.">            if (fruitPercentageScore!=5) checkFruitPercentage = true;</span>
+        }
+
+<span class="nc bnc" id="L119" title="All 4 branches missed.">        if (negativeScore&gt;=11 &amp;&amp; checkFruitPercentage){</span>
+<span class="nc" id="L120">            positiveScore -= this.proteinScore; //if check==true then positiveScore does not count proteinsScore5</span>
+        }
+<span class="nc" id="L122">        nutriScore = negativeScore - positiveScore;</span>
+
+        //logic for health score
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        if (nutriScore&lt;-2) healthScoreL = 100;</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        else if (nutriScore&gt;19) healthScoreL = 0;</span>
+        else {
+<span class="nc" id="L128">            healthScoreL = (int) (0.00000281*Math.pow(nutriScore,7)-0.00017858*Math.pow(nutriScore,6) +0.00402463*Math.pow(nutriScore,5) -0.03479528*Math.pow(nutriScore,4) +0.02908120*Math.pow(nutriScore,3) +0.91405353*Math.pow(nutriScore,2) -7.98065470*nutriScore +81.31242712) * 3/5; //this is a plot function made by us which plots in 60ties.</span>
+            //logic for additives
+<span class="nc" id="L130">            healthScoreL += generateAdditivesScore(additives);</span>
+            //logic for bio
+<span class="nc bnc" id="L132" title="All 2 branches missed.">            if(isBiological){</span>
+<span class="nc" id="L133">                healthScoreL += 10;</span>
+            }
+        }
+
+<span class="nc" id="L137">        return healthScoreL;</span>
+    }
+
+    private void setProteinsScore(){
+<span class="nc" id="L141">        this.proteinScore = (int)Math.floor(proteins/1.6);</span>
+<span class="nc bnc" id="L142" title="All 2 branches missed.">        if (this.proteinScore&gt;5){this.proteinScore = 5;}</span>
+<span class="nc" id="L143">    }</span>
+
+    private void setFibersScore(){
+<span class="nc" id="L146">        this.fiberScore = (int)Math.floor(fibers/0.9);</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">        if (this.fiberScore&gt;5) this.fiberScore = 5;</span>
+<span class="nc" id="L148">    }</span>
+
+    private void setFruitPercentageScore(boolean isBeverage){
+<span class="nc bnc" id="L151" title="All 2 branches missed.">        if(isBeverage){</span>
+<span class="nc bnc" id="L152" title="All 2 branches missed.">            if (this.fruitPercentage&lt;=40){this.fruitPercentageScore = 0;}</span>
+<span class="nc bnc" id="L153" title="All 2 branches missed.">            else if (this.fruitPercentage&lt;=60){this.fruitPercentageScore=2;}</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">            else if (this.fruitPercentage&lt;=80){this.fruitPercentageScore=4;}</span>
+<span class="nc" id="L155">            else {fruitPercentageScore=10;}</span>
+        } else {
+<span class="nc bnc" id="L157" title="All 2 branches missed.">            if (this.fruitPercentage&lt;=40){this.fruitPercentageScore = 0;}</span>
+<span class="nc bnc" id="L158" title="All 2 branches missed.">            else if (this.fruitPercentage&lt;=60){this.fruitPercentageScore=1;}</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">            else if (this.fruitPercentage&lt;=80){this.fruitPercentageScore=2;}</span>
+<span class="nc" id="L160">            else {fruitPercentageScore=5;}</span>
+        }
+<span class="nc" id="L162">    }</span>
+
+    private void setEnergyScore(boolean isBeverage){
+<span class="nc bnc" id="L165" title="All 2 branches missed.">        if(isBeverage){</span>
+<span class="nc" id="L166">            this.energyScore = (int) Math.floor(calories / 30) + 1;</span>
+        } else {
+<span class="nc" id="L168">            this.energyScore = (int)Math.floor(calories/335);</span>
+        }
+<span class="nc bnc" id="L170" title="All 2 branches missed.">        if (this.energyScore&gt;10) this.energyScore = 10;</span>
+<span class="nc" id="L171">    }</span>
+
+    private void setSugarScore(boolean isBeverage){
+<span class="nc bnc" id="L174" title="All 2 branches missed.">        if(isBeverage){</span>
+<span class="nc" id="L175">            this.sugarScore = (int) Math.floor(sugars / 1.5);</span>
+        } else {
+<span class="nc" id="L177">            this.sugarScore = (int)Math.floor(sugars/4.5);</span>
+        }
+<span class="nc bnc" id="L179" title="All 2 branches missed.">        if (this.sugarScore&gt;10) this.sugarScore = 10;</span>
+
+
+<span class="nc" id="L182">    }</span>
+
+    private void setSaturatedFatsScore(){
+<span class="nc" id="L185">        this.saturatedFatsScore = (int) Math.floor(saturatedFats);</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">        if (saturatedFatsScore &gt; 10) this.saturatedFatsScore = 10;</span>
+
+<span class="nc" id="L188">    }</span>
+
+    private void setSodiumScore(){
+<span class="nc" id="L191">        this.sodiumScore = (int) Math.floor(salt / 90);</span>
+<span class="nc bnc" id="L192" title="All 2 branches missed.">        if (this.sodiumScore &gt; 10) this.sodiumScore = 10;</span>
+<span class="nc" id="L193">    }</span>
+    //getters
+    public String getBarcode() {
+<span class="nc" id="L196">        return barcode;</span>
+    }
+
+    public String getName() {
+<span class="nc" id="L200">        return name;</span>
+    }
+
+    public String getImageUrl() {
+<span class="nc" id="L204">        return imageUrl;</span>
+    }
+
+    public int getHealthScore(){
+<span class="nc" id="L208">        return this.healthScore;</span>
+    }
+
+    public float getProteins() {
+<span class="nc" id="L212">        return proteins;</span>
+    }
+
+    public float getFibers() {
+<span class="nc" id="L216">        return fibers;</span>
+    }
+
+    public float getFruitPercentage() {
+<span class="nc" id="L220">        return fruitPercentage;</span>
+    }
+
+    public float getSalt() {
+<span class="nc" id="L224">        return salt;</span>
+    }
+
+    public float getSaturatedFats() {
+<span class="nc" id="L228">        return saturatedFats;</span>
+    }
+
+    public float getSugars() {
+<span class="nc" id="L232">        return sugars;</span>
+    }
+
+    public float getCalories() {
+<span class="nc" id="L236">        return calories;</span>
+    }
+
+    public List&lt;String&gt; getAdditives() {
+<span class="nc" id="L240">        return additives;</span>
+    }
+
+    public void setName(String name) {
+<span class="nc" id="L244">        this.name = name;</span>
+<span class="nc" id="L245">    }</span>
+
+    public String getIngredients() {
+<span class="nc" id="L248">        return ingredients;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

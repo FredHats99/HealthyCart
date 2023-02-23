@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShowNearestSupermarketsNominatimApiBoundary.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ISPW_PROJECT_2022_23_JFX$Main.exec</a> &gt; <a href="index.source.html" class="el_package">com.cappellinispirito.ispwproject202223jfx.view.boundaries</a> &gt; <span class="el_source">ShowNearestSupermarketsNominatimApiBoundary.java</span></div><h1>ShowNearestSupermarketsNominatimApiBoundary.java</h1><pre class="source lang-java linenums">package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
+
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.PositionBean;
+
+
+
+import java.util.*;
+
+
+<span class="nc" id="L10">public class ShowNearestSupermarketsNominatimApiBoundary implements APIProxyBoundary{</span>
+
+<span class="nc" id="L12">    private final List&lt;String&gt; supermarketsName = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L13">    private final List&lt;Float&gt; supermarketsDistances = new ArrayList&lt;&gt;();</span>
+
+
+    @Override
+    public void getNearestSupermarkets(PositionBean bean){
+<span class="nc" id="L18">        String address = bean.getAddress().replace(&quot; &quot;,&quot;+&quot;);</span>
+
+<span class="nc" id="L20">        supermarketsName.add(&quot;Carrefour&quot;);</span>
+<span class="nc" id="L21">        supermarketsName.add(&quot;Auchan&quot;);</span>
+<span class="nc" id="L22">        supermarketsName.add(&quot;Esselunga&quot;);</span>
+<span class="nc" id="L23">        supermarketsName.add(&quot;Conad&quot;);</span>
+<span class="nc" id="L24">        supermarketsName.add(&quot;Lidl&quot;);</span>
+        int i;
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        for(i=0;i&lt;7;i++){</span>
+<span class="nc" id="L27">            float x = (float) (1 + Math.random()* 9);</span>
+<span class="nc" id="L28">            supermarketsDistances.add(Math.round(x * 100f) / 100f);</span>
+        }
+<span class="nc" id="L30">        Collections.sort(supermarketsDistances);</span>
+
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        for(i=0;i&lt;5;i++){</span>
+<span class="nc" id="L33">            String name = supermarketsName.get(i);</span>
+<span class="nc" id="L34">            Float distance = supermarketsDistances.get(i);</span>
+
+<span class="nc" id="L36">            bean.appendToSupermarketsNames(name);</span>
+<span class="nc" id="L37">            bean.appendToSupermarketsAddress(address);</span>
+<span class="nc" id="L38">            bean.appendToSupermarketsDistance(distance);</span>
+        }
+<span class="nc" id="L40">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
