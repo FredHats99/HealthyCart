@@ -8,6 +8,7 @@ import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.BarcodeTo
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.ShopBean;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.SupermarketsToProductsBean;
 import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
+import com.cappellinispirito.ispwproject202223jfx.view.beans.SupermarketNameBean;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.SearchProductsFromSupermarketOpenFoodFactsAPIBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.ShowProductInfoOpenFoodFactsAPIBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.BarcodeToInformationBeanClass;
@@ -23,7 +24,7 @@ import java.util.Objects;
 
 public class DoShoppingController {
     private final ShoppingCart shoppingCart;
-    private final Supermarket shopSupermarket;
+    private Supermarket shopSupermarket;
     private final String username;
     //By now, the easiest way to pass a lot of values, is via Item classes...this controller class will track them.
     private List<String> sellableSupermarketNames;
@@ -34,7 +35,6 @@ public class DoShoppingController {
     private final HashMap<String, String> nameToImageMap = new HashMap<>();
 
     public DoShoppingController(){
-        shopSupermarket = new Supermarket("Carrefour");
         sellableSupermarketNames = new ArrayList<>();
         sellableSupermarketImages = new ArrayList<>();
         sellableSupermarketBarcodes = new ArrayList<>();
@@ -43,6 +43,7 @@ public class DoShoppingController {
     }
 
     public void setUpShop(ShopBean bean) throws IOException {
+        shopSupermarket = new Supermarket(SupermarketNameBean.getInstance().getSupermarketName());
         SupermarketsToProductsBean bean2 = new SupermarketsToProductsBeanClass();
         bean2.setSupermarket(shopSupermarket);
         SearchProductsFromSupermarketOpenFoodFactsAPIBoundary boundary = new SearchProductsFromSupermarketOpenFoodFactsAPIBoundary();

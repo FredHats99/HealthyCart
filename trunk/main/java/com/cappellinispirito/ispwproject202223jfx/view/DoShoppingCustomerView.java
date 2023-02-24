@@ -4,15 +4,33 @@ import com.cappellinispirito.ispwproject202223jfx.controller.DoShoppingControlle
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.ShopBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.ShopBeanClass;
+import com.cappellinispirito.ispwproject202223jfx.view.beans.SupermarketNameBean;
 
 import java.io.IOException;
+import java.util.List;
 
 public class DoShoppingCustomerView {
 
+    private List<String> sellableProductName;
+    private List<String> sellableProductImage;
+
     public DoShoppingCustomerView() throws FailedQueryToOpenFoodFacts, IOException {
-        //Whenever this View starts up, invokes a Controller for obtaining items to put into the cart.
+
+    }
+
+    public void displayShop() throws IOException {
         DoShoppingController controller = new DoShoppingController();
-        ShopBean bean = new ShopBeanClass();
-        controller.setUpShop(bean);
+        ShopBean bean2 = new ShopBeanClass();
+        controller.setUpShop(bean2);
+        sellableProductName = bean2.getSellableProductName();
+        sellableProductImage = bean2.getSellableProductImage();
+    }
+
+    public List<String> getSellableProductImage() {
+        return sellableProductImage;
+    }
+
+    public List<String> getSellableProductName() {
+        return sellableProductName;
     }
 }

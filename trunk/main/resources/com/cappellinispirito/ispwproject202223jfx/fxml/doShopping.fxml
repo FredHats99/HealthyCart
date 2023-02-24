@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.Double?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Polygon?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@../MyStylesheet2.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispwproject202223jfx.view.graphics.DoShoppingControllerG">
+<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@../MyStylesheet2.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispwproject202223jfx.view.graphics.DoShoppingControllerG">
    <children>
       <ImageView fitHeight="900.0" fitWidth="1200.0" opacity="0.04" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -81,7 +73,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                  <ImageView fx:id="NutellaView1" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin>
@@ -89,7 +81,7 @@
                         <Image url="@../icons/nutella.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                  <ImageView fx:id="NutellaView2" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin>
@@ -97,7 +89,7 @@
                         <Image url="@../icons/nutella.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                  <ImageView fx:id="NutellaView3" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin>
@@ -105,7 +97,7 @@
                         <Image url="@../icons/nutella.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                  <ImageView fx:id="NutellaView4" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin>
@@ -113,7 +105,7 @@
                         <Image url="@../icons/nutella.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                  <ImageView fx:id="NutellaView5" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin>
@@ -121,7 +113,7 @@
                         <Image url="@../icons/nutella.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                  <ImageView fx:id="NutellaView6" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin>
@@ -129,7 +121,7 @@
                         <Image url="@../icons/nutella.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                  <ImageView fx:id="NutellaView7" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin>
@@ -137,7 +129,7 @@
                         <Image url="@../icons/nutella.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                  <ImageView fx:id="NutellaView8" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin>
@@ -145,7 +137,7 @@
                         <Image url="@../icons/nutella.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+                  <ImageView fx:id="NutellaView9" fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets top="10.0" />
                      </GridPane.margin>
@@ -153,47 +145,47 @@
                         <Image url="@../icons/nutella.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                  <Label fx:id="NutellaName1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                  <Label fx:id="NutellaName2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                  <Label fx:id="NutellaName3" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                  <Label fx:id="NutellaName4" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                  <Label fx:id="NutellaName5" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                  <Label fx:id="NutellaName6" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                  <Label fx:id="NutellaName7" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                  <Label fx:id="NutellaName8" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
+                  <Label fx:id="NutellaName9" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="25.0" minWidth="-Infinity" prefWidth="200.0" text="Nutella" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" GridPane.vgrow="NEVER">
                      <GridPane.margin>
                         <Insets bottom="10.0" />
                      </GridPane.margin>

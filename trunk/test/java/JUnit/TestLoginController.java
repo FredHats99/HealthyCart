@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TestLoginController {
     private static final String FEDERICO = "Cap";
     private static final String CORRECT_PASSWORD = "Cap";
+
     //Federico Cappellini MATRICOLA: 0272280
     @Test
     void testLoginCorrectCredentials() {
