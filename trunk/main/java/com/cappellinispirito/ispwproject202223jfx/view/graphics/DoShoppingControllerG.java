@@ -12,6 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -64,6 +67,8 @@ public class DoShoppingControllerG implements Initializable {
     private Label NutellaName8;
     @FXML
     private Label NutellaName9;
+    @FXML
+    private Polygon leftArrowButton;
     private int pageNumber;
     private final List<Label> NutellaNames = new ArrayList<>();
 
@@ -99,6 +104,7 @@ public class DoShoppingControllerG implements Initializable {
         NutellaNames.add(NutellaName8);
         NutellaNames.add(NutellaName9);
 
+        leftArrowButton.setFill(Color.GRAY);
         SupermarketNameBean bean = SupermarketNameBean.getInstance();
         String chosenSupermarket = bean.getSupermarketName();
         String username = NamePremiumBean.getInstance().getName(); // getName() returns null
@@ -149,15 +155,16 @@ public class DoShoppingControllerG implements Initializable {
             }
         }
         pageNumber++;
+        leftArrowButton.setFill(Paint.valueOf("#1fff8e"));
         System.out.format("Page:%d%n", pageNumber);
     }
 
     public void onLeftArrowClicked(){
         Image tempImage;
-        if(pageNumber>0){
+        if(pageNumber>1){
             pageNumber--;
             int i;
-            for(i=9*pageNumber; i<9*(pageNumber+1); i++){
+            for(i=9*(pageNumber-1); i<9*pageNumber; i++){
                 assert view != null;
                 try{
                     tempImage = new Image(String.valueOf(view.getSellableProductImage().get(i)));
@@ -171,6 +178,10 @@ public class DoShoppingControllerG implements Initializable {
                 }
             }
             System.out.format("Page:%d%n", pageNumber);
+            if(pageNumber==1){
+                leftArrowButton.setFill(Color.GRAY);
+            }
+
         }
     }
 
