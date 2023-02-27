@@ -231,7 +231,7 @@
                         </DropShadow>
                      </effect>
                   </Rectangle>
-                  <Polygon fill="#1fff8e" scaleX="0.4" scaleY="0.4" stroke="#3c3c3c" strokeType="INSIDE" strokeWidth="0.0" style="-fx-rotate: 90;" StackPane.alignment="CENTER_RIGHT">
+                  <Polygon fx:id="rightArrowButton" fill="#1fff8e" onMouseClicked="#onRightArrowClicked" scaleX="0.4" scaleY="0.4" stroke="#3c3c3c" strokeType="INSIDE" strokeWidth="0.0" style="-fx-rotate: 90;" StackPane.alignment="CENTER_RIGHT">
                     <points>
                       <Double fx:value="-50.0" />
                       <Double fx:value="40.0" />
@@ -244,7 +244,7 @@
                         <DropShadow blurType="GAUSSIAN" height="54.915" radius="20.728749999999998" width="30.0" />
                      </effect>
                   </Polygon>
-                  <Polygon fill="#1fff8e" scaleX="0.4" scaleY="0.4" stroke="#3c3c3c" strokeType="INSIDE" strokeWidth="0.0" style="-fx-rotate: -90;" StackPane.alignment="CENTER_LEFT">
+                  <Polygon fx:id="leftArrowButton" fill="#1fff8e" onMouseClicked="#onLeftArrowClicked" scaleX="0.4" scaleY="0.4" stroke="#3c3c3c" strokeType="INSIDE" strokeWidth="0.0" style="-fx-rotate: -90;" StackPane.alignment="CENTER_LEFT">
                      <points>
                         <Double fx:value="-50.0" />
                         <Double fx:value="40.0" />

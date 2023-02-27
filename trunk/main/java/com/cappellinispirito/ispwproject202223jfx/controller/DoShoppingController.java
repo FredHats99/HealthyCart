@@ -26,6 +26,8 @@ public class DoShoppingController {
     private final ShoppingCart shoppingCart;
     private Supermarket shopSupermarket;
     private final String username;
+    SearchProductsFromSupermarketOpenFoodFactsAPIBoundary boundary = new SearchProductsFromSupermarketOpenFoodFactsAPIBoundary();
+    SupermarketsToProductsBean bean2 = new SupermarketsToProductsBeanClass();
     //By now, the easiest way to pass a lot of values, is via Item classes...this controller class will track them.
     private List<String> sellableSupermarketNames;
     private List<String> sellableSupermarketImages;
@@ -44,9 +46,7 @@ public class DoShoppingController {
 
     public void setUpShop(ShopBean bean) throws IOException {
         shopSupermarket = new Supermarket(SupermarketNameBean.getInstance().getSupermarketName());
-        SupermarketsToProductsBean bean2 = new SupermarketsToProductsBeanClass();
         bean2.setSupermarket(shopSupermarket);
-        SearchProductsFromSupermarketOpenFoodFactsAPIBoundary boundary = new SearchProductsFromSupermarketOpenFoodFactsAPIBoundary();
         boundary.searchProductsBySupermarket(bean2);
         sellableSupermarketNames = bean2.getSellableProductsName();
         sellableSupermarketImages = bean2.getSellableProductsImage();
@@ -121,5 +121,9 @@ public class DoShoppingController {
 
     private void getCartHealthScore(ShopBean bean){
         bean.setCartHealthScore(shoppingCart.getAverageScore());
+    }
+
+    public void loadNewPage() throws IOException {
+        boundary.searchProductsBySupermarketLoadNewPage(bean2);
     }
 }

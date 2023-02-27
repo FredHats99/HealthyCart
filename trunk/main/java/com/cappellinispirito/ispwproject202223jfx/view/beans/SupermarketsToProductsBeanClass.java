@@ -10,6 +10,7 @@ public class SupermarketsToProductsBeanClass implements SupermarketsToProductsBe
     private List<String> sellableProductsNames;
     private List<String> sellableProductsImages;
     private List<String> sellableProductsBarcodes;
+    private int page;
 
     @Override
     public Supermarket getSupermarket() {
@@ -50,6 +51,17 @@ public class SupermarketsToProductsBeanClass implements SupermarketsToProductsBe
     public void setSellableProductsBarcode(List<String> sellableProductsBarcodes) {
         this.sellableProductsBarcodes = sellableProductsBarcodes;
     }
+
+    @Override
+    public int getPage() {
+        return page;
+    }
+
+    @Override
+    public void setPage(int page) {
+        this.page = page;
+    }
+
 
 
 }

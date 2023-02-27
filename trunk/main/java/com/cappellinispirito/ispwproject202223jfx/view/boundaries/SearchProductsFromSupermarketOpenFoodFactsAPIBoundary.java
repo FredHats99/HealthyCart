@@ -19,6 +19,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
+    int apiPage = 0;
+    long count;
     List<String> sellableProductsNames = new ArrayList<>();
     List<String> sellableProductsImages = new ArrayList<>();
     List<String> sellableProductsBarcodes = new ArrayList<>();
@@ -35,7 +37,7 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
 
                 // Send a GET request to the API
                 String search = supermarketName.replace(" ", "+");
-                HttpGet request = new HttpGet("https://it.openfoodfacts.org/cgi/search.pl?search_terms="+ search +"&search_tag=supermarket&json=1");
+                HttpGet request = new HttpGet(String.format("https://it.openfoodfacts.org/cgi/search.pl?action=process&search_terms=%s&sort_by=unique_scans_n&page_size=24&page=%d&json=1", search, apiPage));
                 CloseableHttpResponse response = httpClient.execute(request);
 
                 // Read the response
@@ -44,6 +46,7 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
                 // Parse the JSON response
 
                 JSONObject obj = (JSONObject) parser.parse(json);
+                count = (long) obj.get("count");
                 JSONArray products = (JSONArray) obj.get("products");
                 if (products.isEmpty()) {
                     throw new FailedQueryToOpenFoodFacts("Products not found!");
@@ -56,10 +59,13 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
                     sellableProductsNames.add((String) product.get("product_name"));
                     sellableProductsImages.add((String) product.get("image_url"));
                     sellableProductsBarcodes.add((String) product.get("code"));
+
                 }
             bean.setSellableProductsNames(sellableProductsNames);
             bean.setSellableProductsImage(sellableProductsImages);
             bean.setSellableProductsBarcode(sellableProductsBarcodes);
+            apiPage = 1;
+            bean.setPage(apiPage);
         } catch (Exception e) {
             Logger logger = Logger.getLogger(SearchProductsFromSupermarketOpenFoodFactsAPIBoundary.class.getName());
             logger.log(Level.INFO, e.getMessage());
@@ -68,5 +74,48 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
             httpClient.close();
         }
 
+    }
+    public void searchProductsBySupermarketLoadNewPage(SupermarketsToProductsBean bean) throws IOException {
+        CloseableHttpClient httpClient = null;
+        try{
+            httpClient = HttpClients.createDefault();
+            JSONParser parser = new JSONParser();
+
+            String supermarketName = bean.getSupermarket().getSupermarketName();
+
+            // Replace spaces in the supermarket name with "%20" for the API call
+
+            // Send a GET request to the API
+            String search = supermarketName.replace(" ", "+");
+            apiPage++;
+            HttpGet request = new HttpGet(String.format("https://it.openfoodfacts.org/cgi/search.pl?action=process&search_terms=%s&sort_by=unique_scans_n&page_size=24&page=%d&json=1", search, apiPage));
+            CloseableHttpResponse response = httpClient.execute(request);
+
+            // Read the response
+            String json = EntityUtils.toString(response.getEntity());
+
+            // Parse the JSON response
+
+            JSONObject obj = (JSONObject) parser.parse(json);
+            JSONArray products = (JSONArray) obj.get("products");
+            if (products.isEmpty()) {
+                throw new FailedQueryToOpenFoodFacts("Products not found!");
+            }
+
+            // Do something with the lists
+            for (Object o : products) {
+                JSONObject product = (JSONObject) o;
+                bean.getSellableProductsName().add((String) product.get("product_name"));
+                bean.getSellableProductsImage().add((String) product.get("image_url"));
+                bean.getSellableProductsBarcode().add((String) product.get("code"));
+            }
+            bean.setPage(apiPage++);
+        } catch (Exception e) {
+            Logger logger = Logger.getLogger(SearchProductsFromSupermarketOpenFoodFactsAPIBoundary.class.getName());
+            logger.log(Level.INFO, e.getMessage());
+        } finally {
+            assert httpClient != null;
+            httpClient.close();
+        }
     }
 }

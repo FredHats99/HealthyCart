@@ -16,4 +16,7 @@ public interface SupermarketsToProductsBean {
 
     List<String> getSellableProductsBarcode();
     void setSellableProductsBarcode(List<String> sellableProductsBarcode);
+
+    int getPage();
+    void setPage(int page);
 }

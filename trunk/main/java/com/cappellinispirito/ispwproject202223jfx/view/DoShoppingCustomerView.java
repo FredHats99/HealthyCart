@@ -13,14 +13,14 @@ public class DoShoppingCustomerView {
 
     private List<String> sellableProductName;
     private List<String> sellableProductImage;
+    private final DoShoppingController controller = new DoShoppingController();
+    ShopBean bean2 = new ShopBeanClass();
 
     public DoShoppingCustomerView() throws FailedQueryToOpenFoodFacts, IOException {
 
     }
 
     public void displayShop() throws IOException {
-        DoShoppingController controller = new DoShoppingController();
-        ShopBean bean2 = new ShopBeanClass();
         controller.setUpShop(bean2);
         sellableProductName = bean2.getSellableProductName();
         sellableProductImage = bean2.getSellableProductImage();
@@ -32,5 +32,11 @@ public class DoShoppingCustomerView {
 
     public List<String> getSellableProductName() {
         return sellableProductName;
+    }
+
+    public void loadNewPage() throws IOException {
+        controller.loadNewPage();
+        sellableProductName = bean2.getSellableProductName();
+        sellableProductImage = bean2.getSellableProductImage();
     }
 }
