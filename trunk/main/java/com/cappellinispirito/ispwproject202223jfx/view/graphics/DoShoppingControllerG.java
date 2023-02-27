@@ -16,9 +16,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
+import org.json.simple.parser.ParseException;
+import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -69,6 +72,8 @@ public class DoShoppingControllerG implements Initializable {
     private Label NutellaName9;
     @FXML
     private Polygon leftArrowButton;
+    @FXML
+    private StackPane cartStackPane;
     private int pageNumber;
     private final List<Label> NutellaNames = new ArrayList<>();
 
@@ -103,6 +108,26 @@ public class DoShoppingControllerG implements Initializable {
         NutellaNames.add(NutellaName7);
         NutellaNames.add(NutellaName8);
         NutellaNames.add(NutellaName9);
+
+        int j;
+        for(j=0;j<9;j++){
+            NutellaViews.get(j).setOnMouseClicked(
+                    mouseEvent -> {
+                        int i;
+                        for(i=0;i<9;i++){
+                            if(mouseEvent.getSource().equals(NutellaViews.get(i))){
+                                try {
+                                    view.addItemToCart(i+9*(pageNumber-1));
+                                } catch (FailedQueryToOpenFoodFacts | SQLException | IOException | ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                //TODO: Observers to display the shopping cart list in real time
+                                break;
+                            }
+                        }
+                    }
+            );
+        }
 
         leftArrowButton.setFill(Color.GRAY);
         SupermarketNameBean bean = SupermarketNameBean.getInstance();

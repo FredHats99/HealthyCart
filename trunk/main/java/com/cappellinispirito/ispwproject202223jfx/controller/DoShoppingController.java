@@ -95,6 +95,9 @@ public class DoShoppingController {
                 isBeverage);
         shoppingCart.addItem(shopItem);
         getCartHealthScore(bean);
+
+        bean.setItemToAdd("");
+        System.out.println(shoppingCart.getItemsList());
     }
 
     public void removeItemFromCart(ShopBean bean){

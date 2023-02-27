@@ -1,12 +1,15 @@
 package com.cappellinispirito.ispwproject202223jfx.view;
 
 import com.cappellinispirito.ispwproject202223jfx.controller.DoShoppingController;
+import com.cappellinispirito.ispwproject202223jfx.model.ShoppingCart;
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.ShopBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.ShopBeanClass;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.SupermarketNameBean;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class DoShoppingCustomerView {
@@ -38,5 +41,10 @@ public class DoShoppingCustomerView {
         controller.loadNewPage();
         sellableProductName = bean2.getSellableProductName();
         sellableProductImage = bean2.getSellableProductImage();
+    }
+
+    public void addItemToCart(int index) throws FailedQueryToOpenFoodFacts, SQLException, IOException, ParseException {
+       bean2.setItemToAdd(sellableProductName.get(index));
+       controller.addItemToCart(bean2);
     }
 }

@@ -194,7 +194,7 @@
             </GridPane>
             <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="355.0" StackPane.alignment="CENTER_RIGHT">
                <children>
-                  <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="BOTTOM_CENTER">
+                  <StackPane fx:id="cartStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="BOTTOM_CENTER">
                      <children>
                         <Circle fill="WHITE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                            <effect>
