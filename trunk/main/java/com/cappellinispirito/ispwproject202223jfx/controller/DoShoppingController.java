@@ -1,5 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.controller;
 
+import com.cappellinispirito.ispwproject202223jfx.model.Subject;
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.model.Item;
 import com.cappellinispirito.ispwproject202223jfx.model.ShoppingCart;
@@ -8,6 +9,7 @@ import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.BarcodeTo
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.ShopBean;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.SupermarketsToProductsBean;
 import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
+import com.cappellinispirito.ispwproject202223jfx.view.Observer;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.SupermarketNameBean;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.SearchProductsFromSupermarketOpenFoodFactsAPIBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.ShowProductInfoOpenFoodFactsAPIBoundary;
@@ -128,5 +130,10 @@ public class DoShoppingController {
 
     public void loadNewPage() throws IOException {
         boundary.searchProductsBySupermarketLoadNewPage(bean2);
+    }
+
+    public Subject registerObserver(Observer observer) {
+        shoppingCart.registerObserver(observer);
+        return shoppingCart;
     }
 }

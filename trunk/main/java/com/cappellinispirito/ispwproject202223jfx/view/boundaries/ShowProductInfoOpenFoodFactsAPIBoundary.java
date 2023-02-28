@@ -39,9 +39,15 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
             // Parse the JSON response
             JSONObject obj = (JSONObject) parser.parse(json);
             JSONObject product = (JSONObject) obj.get("product");
-            if(product == null){
-                throw new FailedQueryToOpenFoodFacts("product not found!");
-            }
+
+            float energy;
+            float sugars;
+            float protein;
+            float saturatedFat;
+            float fiber;
+            float salt;
+            int fruitPercentage;
+
             // Extract the product data
             String name = (String) product.get("product_name");
             String image = (String) product.get("image_url");
@@ -50,14 +56,14 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
             JSONObject nutritionalValues = (JSONObject) product.get("nutriments");
             JSONObject alternativeNutritionalValues = (JSONObject) product.get("nutriscore_data");
 
-            int fruitPercentage = getFruitPercentageParsed(nutritionalValues);
+            fruitPercentage = getFruitPercentageParsed(nutritionalValues);
 
-            float energy = Float.parseFloat(String.valueOf(nutritionalValues.get("energy")));
-            float sugars = Float.parseFloat(String.valueOf(nutritionalValues.get("sugars")));
-            float protein = Float.parseFloat(String.valueOf(nutritionalValues.get("proteins")));
-            float saturatedFat = Float.parseFloat(String.valueOf(nutritionalValues.get("saturated-fat")));
-            float fiber = Float.parseFloat(String.valueOf(alternativeNutritionalValues.get("fiber")));
-            float salt = Float.parseFloat(String.valueOf(nutritionalValues.get("salt")));
+            energy = Float.parseFloat(String.valueOf(nutritionalValues.get("energy")));
+            sugars = Float.parseFloat(String.valueOf(nutritionalValues.get("sugars")));
+            protein = Float.parseFloat(String.valueOf(nutritionalValues.get("proteins")));
+            saturatedFat = Float.parseFloat(String.valueOf(nutritionalValues.get("saturated-fat")));
+            fiber = Float.parseFloat(String.valueOf(alternativeNutritionalValues.get("fiber")));
+            salt = Float.parseFloat(String.valueOf(nutritionalValues.get("salt")));
 
             JSONArray additivesArray = (JSONArray) product.get("additives_original_tags");
             List<String> additivesList = new ArrayList<>();
@@ -89,6 +95,15 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
         } catch (NullPointerException e){
             Logger logger = Logger.getLogger(ShowProductInfoOpenFoodFactsAPIBoundary.class.getName());
             logger.log(Level.INFO,String.format("Couldn't find further information for this product...%n"));
+            bean.setCalories((float) -1);
+            bean.setSugars((float) -1);
+            bean.setProteins((float) -1);
+            bean.setSalt((float) -1);
+            bean.setSaturatedFats((float) -1);
+            bean.setFibers((float) -1);
+            bean.setFruitPercentage((float) -1);
+            bean.setIsBiological(false);
+            bean.setIsBeverage(false);
         }finally {
             assert httpClient != null;
             httpClient.close();

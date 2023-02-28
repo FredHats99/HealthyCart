@@ -95,45 +95,48 @@ public class Item {
         int nutriScore; //this is the vanilla score from the research
         int healthScoreL; // this is newly calculated score
 
-        setProteinsScore();
-        setFibersScore();
-        setFruitPercentageScore(isBeverage);
-        setEnergyScore(isBeverage);
-        setSugarScore(isBeverage);
-        setSaturatedFatsScore();
-        setSodiumScore();
+        if(this.getCalories()<0 || this.getFibers()<0 || this.getProteins() < 0 || this.getFruitPercentage()<0 || this.getSalt()<0 || this.getSaturatedFats()<0 || this.getSugars()<0){
+            healthScoreL = -1; // Not valid for calculation
+        } else {
+            setProteinsScore();
+            setFibersScore();
+            setFruitPercentageScore(isBeverage);
+            setEnergyScore(isBeverage);
+            setSugarScore(isBeverage);
+            setSaturatedFatsScore();
+            setSodiumScore();
 
-        //calculation for positive score
-        positiveScore = this.proteinScore + this.fiberScore + this.fruitPercentageScore;
-        negativeScore = this.energyScore + this.sugarScore + this.saturatedFatsScore + this.sodiumScore;
+            //calculation for positive score
+            positiveScore = this.proteinScore + this.fiberScore + this.fruitPercentageScore;
+            negativeScore = this.energyScore + this.sugarScore + this.saturatedFatsScore + this.sodiumScore;
 
-        if(isBeverage){
-            if (this.fruitPercentageScore!=10) {
-                checkFruitPercentage = true;
+            if(isBeverage){
+                if (this.fruitPercentageScore!=10) {
+                    checkFruitPercentage = true;
+                }
+            }
+            else {
+                if (fruitPercentageScore!=5) checkFruitPercentage = true;
+            }
+
+            if (negativeScore>=11 && checkFruitPercentage){
+                positiveScore -= this.proteinScore; //if check==true then positiveScore does not count proteinsScore5
+            }
+            nutriScore = negativeScore - positiveScore;
+
+            //logic for health score
+            if (nutriScore<-2) healthScoreL = 100;
+            else if (nutriScore>19) healthScoreL = 0;
+            else {
+                healthScoreL = (int) (0.00000281*Math.pow(nutriScore,7)-0.00017858*Math.pow(nutriScore,6) +0.00402463*Math.pow(nutriScore,5) -0.03479528*Math.pow(nutriScore,4) +0.02908120*Math.pow(nutriScore,3) +0.91405353*Math.pow(nutriScore,2) -7.98065470*nutriScore +81.31242712) * 3/5; //this is a plot function made by us which plots in 60ties.
+                //logic for additives
+                healthScoreL += generateAdditivesScore(additives);
+                //logic for bio
+                if(isBiological){
+                    healthScoreL += 10;
+                }
             }
         }
-        else {
-            if (fruitPercentageScore!=5) checkFruitPercentage = true;
-        }
-
-        if (negativeScore>=11 && checkFruitPercentage){
-            positiveScore -= this.proteinScore; //if check==true then positiveScore does not count proteinsScore5
-        }
-        nutriScore = negativeScore - positiveScore;
-
-        //logic for health score
-        if (nutriScore<-2) healthScoreL = 100;
-        else if (nutriScore>19) healthScoreL = 0;
-        else {
-            healthScoreL = (int) (0.00000281*Math.pow(nutriScore,7)-0.00017858*Math.pow(nutriScore,6) +0.00402463*Math.pow(nutriScore,5) -0.03479528*Math.pow(nutriScore,4) +0.02908120*Math.pow(nutriScore,3) +0.91405353*Math.pow(nutriScore,2) -7.98065470*nutriScore +81.31242712) * 3/5; //this is a plot function made by us which plots in 60ties.
-            //logic for additives
-            healthScoreL += generateAdditivesScore(additives);
-            //logic for bio
-            if(isBiological){
-                healthScoreL += 10;
-            }
-        }
-
         return healthScoreL;
     }
 

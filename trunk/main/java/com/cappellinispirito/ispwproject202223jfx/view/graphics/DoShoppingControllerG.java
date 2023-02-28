@@ -1,6 +1,9 @@
 package com.cappellinispirito.ispwproject202223jfx.view.graphics;
+import com.cappellinispirito.ispwproject202223jfx.model.ShoppingCart;
+import com.cappellinispirito.ispwproject202223jfx.model.Subject;
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.view.DoShoppingCustomerView;
+import com.cappellinispirito.ispwproject202223jfx.view.Observer;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NamePremiumBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.SupermarketNameBean;
 import javafx.fxml.FXML;
@@ -9,12 +12,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import org.json.simple.parser.ParseException;
 import org.w3c.dom.events.MouseEvent;
@@ -28,7 +34,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class DoShoppingControllerG implements Initializable {
+public class DoShoppingControllerG implements Initializable, Observer {
     @FXML
     private StackPane root;
     @FXML
@@ -73,9 +79,12 @@ public class DoShoppingControllerG implements Initializable {
     @FXML
     private Polygon leftArrowButton;
     @FXML
-    private StackPane cartStackPane;
+    private VBox cartVBox;
     private int pageNumber;
     private final List<Label> NutellaNames = new ArrayList<>();
+    private List<Integer> HealthScoreList = new ArrayList<>();
+    private ShoppingCart cart;
+    private int averageHealthScore;
 
     private DoShoppingCustomerView view = null;
     public void onBackButton() throws IOException {
@@ -109,6 +118,7 @@ public class DoShoppingControllerG implements Initializable {
         NutellaNames.add(NutellaName8);
         NutellaNames.add(NutellaName9);
 
+
         int j;
         for(j=0;j<9;j++){
             NutellaViews.get(j).setOnMouseClicked(
@@ -121,7 +131,9 @@ public class DoShoppingControllerG implements Initializable {
                                 } catch (FailedQueryToOpenFoodFacts | SQLException | IOException | ParseException e) {
                                     e.printStackTrace();
                                 }
+                                update(cart);
                                 //TODO: Observers to display the shopping cart list in real time
+                                displayUpdatedCart(i+9*(pageNumber-1));
                                 break;
                             }
                         }
@@ -142,6 +154,7 @@ public class DoShoppingControllerG implements Initializable {
         } catch (FailedQueryToOpenFoodFacts | IOException e) {
             e.printStackTrace();
         }
+        cart = (ShoppingCart) view.registerObserver(this);
         int i;
         for(i=0; i<9; i++){
             assert view != null;
@@ -152,6 +165,27 @@ public class DoShoppingControllerG implements Initializable {
         pageNumber = 1;
         System.out.format("Page:%d%n", pageNumber);
         System.out.printf("%d products found!%n", view.getSellableProductName().size());
+    }
+
+    private void displayUpdatedCart(int index) {
+
+        String labelText = view.getSellableProductName().get(index);
+        Image image;
+        try{
+            image = new Image(view.getSellableProductImage().get(index));
+        } catch (NullPointerException e){
+            image = new Image(String.valueOf(getClass().getResource("/com/cappellinispirito/ispwproject202223jfx/icons/question_mark.png")));
+        }
+        String circleLabelText;
+        if(HealthScoreList.get(HealthScoreList.size()-1) == -1){
+            circleLabelText = "?";
+        } else {
+            circleLabelText = HealthScoreList.get(HealthScoreList.size()-1).toString();
+        }
+
+
+        CustomRectangle customRectangle = new CustomRectangle(labelText, image, circleLabelText);
+        cartVBox.getChildren().add(customRectangle);
     }
 
     public void onRightArrowClicked() throws IOException {
@@ -218,5 +252,19 @@ public class DoShoppingControllerG implements Initializable {
             tempImage = new Image(String.valueOf(getClass().getResource("/com/cappellinispirito/ispwproject202223jfx/icons/question_mark.png")));
         }
         return tempImage;
+    }
+
+    @Override
+    public void update(Subject subject) {
+        if (subject instanceof ShoppingCart concreteSubject) {
+            int i;
+            HealthScoreList = new ArrayList<>();
+            for(i=0;i<concreteSubject.getItemsList().size();i++){
+                HealthScoreList.add(concreteSubject.getItemsList().get(i).getHealthScore());
+            }
+            averageHealthScore = concreteSubject.getAverageScore();
+            System.out.println(HealthScoreList);
+            System.out.println("Average health score is" + averageHealthScore);
+        }
     }
 }
