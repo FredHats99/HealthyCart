@@ -35,10 +35,15 @@ public class ShoppingCart implements Subject{
 
     public void setAverageScore(){
         int tmp=0;
+        int tmpSize = itemsList.size();
         for (Item item:this.itemsList) {
-            tmp+=item.getHealthScore();
+            if(item.getHealthScore() != -1){
+                tmp+=item.getHealthScore();
+            } else {
+                tmpSize--;
+            }
         }
-        this.averageFinalScore= tmp/itemsList.size();
+        this.averageFinalScore= tmp/tmpSize;
     }
 
     @Override

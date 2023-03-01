@@ -53,4 +53,8 @@ public class DoShoppingCustomerView {
     public Subject registerObserver(Observer observer) {
         return controller.registerObserver(observer);
     }
+
+    public void saveCart() throws SQLException {
+        controller.saveCart();
+    }
 }

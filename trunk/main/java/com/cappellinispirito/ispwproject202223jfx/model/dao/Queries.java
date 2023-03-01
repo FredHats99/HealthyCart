@@ -31,7 +31,7 @@ public class Queries {
     }
 
     public static void addCart(Statement stmt, String username, int avgScore) throws SQLException {
-        String insertStatement = String.format("INSERT INTO Carts(user, date, avgScore) VALUES ('%s', curdate(), '%s');", username, avgScore);
+        String insertStatement = String.format("INSERT INTO carts(user, date, avgScore) VALUES ('%s', curdate(), '%s');", username, avgScore);
         stmt.execute(insertStatement);
     }
 
@@ -42,9 +42,12 @@ public class Queries {
     }
 
     public static void addCartItem(Statement stmt, String cartUser, String barcode, int quantity) throws SQLException{
-        String insertStatement = String.format("DECLARE Cart_id int;" +
-                                                "SET Cart_id = (SELECT CartId FROM Carts WHERE user = '%s');" +
-                                                "INSERT INTO ItemsInCart(CartId, Barcode, Quantity) VALUES (CartId, '%s', '%s');",cartUser, barcode, quantity);
+        String selectCartIdStatement = String.format("SELECT idCarts FROM carts WHERE user = '%s'", cartUser);
+        stmt.execute(selectCartIdStatement);
+        ResultSet tmpRs = stmt.getResultSet();
+        tmpRs.next();
+        int cartId = tmpRs.getInt(1);
+        String insertStatement = String.format("INSERT INTO ItemsInCart(Cart, Barcode, Quantity) VALUES ('%s', '%s', '%s');",cartId, barcode, quantity);
         stmt.execute(insertStatement);
     }
 

@@ -1,9 +1,12 @@
 package com.cappellinispirito.ispwproject202223jfx.view.graphics;
+import com.cappellinispirito.ispwproject202223jfx.controller.LogInController;
 import com.cappellinispirito.ispwproject202223jfx.model.ShoppingCart;
 import com.cappellinispirito.ispwproject202223jfx.model.Subject;
+import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.LogInBean;
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.view.DoShoppingCustomerView;
 import com.cappellinispirito.ispwproject202223jfx.view.Observer;
+import com.cappellinispirito.ispwproject202223jfx.view.beans.LogInBeanClass;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NamePremiumBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.SupermarketNameBean;
 import javafx.fxml.FXML;
@@ -19,6 +22,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -80,6 +84,10 @@ public class DoShoppingControllerG implements Initializable, Observer {
     private Polygon leftArrowButton;
     @FXML
     private VBox cartVBox;
+    @FXML
+    private Circle avgScoreCircle;
+    @FXML
+    private Label avgScoreLabel;
     private int pageNumber;
     private final List<Label> NutellaNames = new ArrayList<>();
     private List<Integer> HealthScoreList = new ArrayList<>();
@@ -118,6 +126,8 @@ public class DoShoppingControllerG implements Initializable, Observer {
         NutellaNames.add(NutellaName8);
         NutellaNames.add(NutellaName9);
 
+        avgScoreCircle.setFill(Color.GRAY);
+        avgScoreLabel.setText("0");
 
         int j;
         for(j=0;j<9;j++){
@@ -134,6 +144,7 @@ public class DoShoppingControllerG implements Initializable, Observer {
                                 update(cart);
                                 //TODO: Observers to display the shopping cart list in real time
                                 displayUpdatedCart(i+9*(pageNumber-1));
+                                updateAverageScore();
                                 break;
                             }
                         }
@@ -165,6 +176,17 @@ public class DoShoppingControllerG implements Initializable, Observer {
         pageNumber = 1;
         System.out.format("Page:%d%n", pageNumber);
         System.out.printf("%d products found!%n", view.getSellableProductName().size());
+    }
+
+    private void updateAverageScore() {
+        avgScoreLabel.setText(String.valueOf(averageHealthScore));
+        if(averageHealthScore<30){
+            avgScoreCircle.setFill(Color.RED);
+        } else if(averageHealthScore<60){
+            avgScoreCircle.setFill(Color.YELLOW);
+        } else {
+            avgScoreCircle.setFill(Color.LIGHTGREEN);
+        }
     }
 
     private void displayUpdatedCart(int index) {
@@ -265,6 +287,15 @@ public class DoShoppingControllerG implements Initializable, Observer {
             averageHealthScore = concreteSubject.getAverageScore();
             System.out.println(HealthScoreList);
             System.out.println("Average health score is" + averageHealthScore);
+        }
+    }
+
+    public void onSaveCart(){
+        try{
+            view.saveCart();
+            onBackButton();
+        } catch (NullPointerException | SQLException | IOException e){
+            e.printStackTrace();
         }
     }
 }
