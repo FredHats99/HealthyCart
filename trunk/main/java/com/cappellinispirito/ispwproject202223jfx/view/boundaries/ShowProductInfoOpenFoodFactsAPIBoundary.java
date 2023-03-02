@@ -93,8 +93,10 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
             Logger logger = Logger.getLogger(ShowProductInfoOpenFoodFactsAPIBoundary.class.getName());
             logger.log(Level.INFO, e.getMessage());
         } catch (NullPointerException e){
-            Logger logger = Logger.getLogger(ShowProductInfoOpenFoodFactsAPIBoundary.class.getName());
-            logger.log(Level.INFO,String.format("Couldn't find further information for this product...%n"));
+            //TODO: Some products don't provide the values needed to calculate the score, but still have a nutri-score provided. It should be used whenever nutritional values are not found...
+            e.printStackTrace();
+            /*Logger logger = Logger.getLogger(ShowProductInfoOpenFoodFactsAPIBoundary.class.getName());
+            logger.log(Level.INFO,String.format("Couldn't find further information for this product...%n"));*/
             bean.setCalories((float) -1);
             bean.setSugars((float) -1);
             bean.setProteins((float) -1);
@@ -104,6 +106,8 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
             bean.setFruitPercentage((float) -1);
             bean.setIsBiological(false);
             bean.setIsBeverage(false);
+        }catch(NumberFormatException e){
+            e.printStackTrace();
         }finally {
             assert httpClient != null;
             httpClient.close();

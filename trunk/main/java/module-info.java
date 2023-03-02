@@ -13,6 +13,10 @@ module com.cappellinispirito.ispw_project_202223_jfx {
     requires json.simple;
     requires java.sql;
     requires mysql.connector.j;
+    requires com.google.gson;
+    requires com.fasterxml.jackson.databind;
+    requires crawler;
+    requires okhttp;
 
     opens com.cappellinispirito.ispwproject202223jfx to javafx.fxml;
     exports com.cappellinispirito.ispwproject202223jfx;

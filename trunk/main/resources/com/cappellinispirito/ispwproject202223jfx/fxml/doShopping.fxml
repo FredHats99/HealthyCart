@@ -198,7 +198,7 @@
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <StackPane onMouseClicked="#onSaveCart" prefHeight="150.0" prefWidth="200.0">
+                              <StackPane fx:id="saveCartStackPane" prefHeight="150.0" prefWidth="200.0">
                                  <children>
                                     <Circle fill="WHITE" radius="55.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                                        <effect>
@@ -241,7 +241,7 @@
                   </StackPane>
                   <ScrollPane fx:id="shopScrollPane" maxHeight="-Infinity" prefHeight="640.0" prefWidth="328.0">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="647.0" prefWidth="340.0" style="-fx-background-color: C6FFD5;">
+                      <AnchorPane fx:id="shopAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="647.0" prefWidth="340.0" style="-fx-background-color: C6FFD5;">
                            <children>
                               <VBox fx:id="cartVBox" prefHeight="840.0" prefWidth="321.0" spacing="5.0" />
                            </children></AnchorPane>

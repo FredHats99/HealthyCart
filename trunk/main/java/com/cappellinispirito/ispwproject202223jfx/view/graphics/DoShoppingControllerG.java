@@ -3,6 +3,7 @@ import com.cappellinispirito.ispwproject202223jfx.controller.LogInController;
 import com.cappellinispirito.ispwproject202223jfx.model.ShoppingCart;
 import com.cappellinispirito.ispwproject202223jfx.model.Subject;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.LogInBean;
+import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.view.DoShoppingCustomerView;
 import com.cappellinispirito.ispwproject202223jfx.view.Observer;
@@ -36,6 +37,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class DoShoppingControllerG implements Initializable, Observer {
@@ -88,11 +91,16 @@ public class DoShoppingControllerG implements Initializable, Observer {
     private Circle avgScoreCircle;
     @FXML
     private Label avgScoreLabel;
+    @FXML
+    private StackPane saveCartStackPane;
+    @FXML
+    private ScrollPane shopScrollPane;
     private int pageNumber;
     private final List<Label> NutellaNames = new ArrayList<>();
     private List<Integer> HealthScoreList = new ArrayList<>();
     private ShoppingCart cart;
     private int averageHealthScore;
+    private final List<CustomRectangle> shopList = new ArrayList<>();
 
     private DoShoppingCustomerView view = null;
     public void onBackButton() throws IOException {
@@ -142,7 +150,6 @@ public class DoShoppingControllerG implements Initializable, Observer {
                                     e.printStackTrace();
                                 }
                                 update(cart);
-                                //TODO: Observers to display the shopping cart list in real time
                                 displayUpdatedCart(i+9*(pageNumber-1));
                                 updateAverageScore();
                                 break;
@@ -159,6 +166,11 @@ public class DoShoppingControllerG implements Initializable, Observer {
         if(username != null && chosenSupermarket != null) {
             userNameLabel.setText(username);
         }
+
+        if(username != null){
+            saveCartStackPane.setOnMouseClicked(mouseEvent -> onSaveCart());
+        }
+
         try {
             view = new DoShoppingCustomerView();
             view.displayShop();
@@ -169,7 +181,7 @@ public class DoShoppingControllerG implements Initializable, Observer {
         int i;
         for(i=0; i<9; i++){
             assert view != null;
-            Image tempImage = new Image(String.valueOf(view.getSellableProductImage().get(i)));
+            Image tempImage = validateImage(view, i);
             NutellaViews.get(i).setImage(tempImage);
             NutellaNames.get(i).setText(view.getSellableProductName().get(i));
         }
@@ -207,10 +219,21 @@ public class DoShoppingControllerG implements Initializable, Observer {
 
 
         CustomRectangle customRectangle = new CustomRectangle(labelText, image, circleLabelText);
+        shopList.add(customRectangle);
+        customRectangle.setOnMouseClicked(mouseEvent -> onRemoveItem(shopList.indexOf(customRectangle)));
         cartVBox.getChildren().add(customRectangle);
+        cartVBox.setPrefHeight(cartVBox.getHeight() + customRectangle.getHeight());
+        shopScrollPane.setHmin(cartVBox.getHeight());
     }
 
-    public void onRightArrowClicked() throws IOException {
+    private void onRemoveItem(int indexOf) {
+        cartVBox.getChildren().remove(cartVBox.getChildren().get(indexOf));
+        view.removeItemFromCart(indexOf);
+        update(cart);
+        updateAverageScore();
+    }
+
+    public void onRightArrowClicked() throws IOException, FailedQueryToOpenFoodFacts {
         int i;
         System.out.format("Items are %d%n", view.getSellableProductName().size());
         Image tempImage;
@@ -294,7 +317,7 @@ public class DoShoppingControllerG implements Initializable, Observer {
         try{
             view.saveCart();
             onBackButton();
-        } catch (NullPointerException | SQLException | IOException e){
+        } catch (SQLException | IOException e){
             e.printStackTrace();
         }
     }

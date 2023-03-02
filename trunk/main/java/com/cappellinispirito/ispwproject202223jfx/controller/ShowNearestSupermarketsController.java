@@ -8,6 +8,8 @@ import com.cappellinispirito.ispwproject202223jfx.view.boundaries.CacheProxy;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.ShowNearestSupermarketsNominatimApiBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.PositionBeanClass;
 
+import java.io.IOException;
+
 public class ShowNearestSupermarketsController {
     private static ShowNearestSupermarketsController instance;
 
@@ -20,7 +22,7 @@ public class ShowNearestSupermarketsController {
         return instance;
     }
 
-    public void getNearestSupermarkets(NearestSupermarketBeanInterface bean) {
+    public void getNearestSupermarkets(NearestSupermarketBeanInterface bean) throws IOException {
             String address = bean.getSearch();
             PositionBean bean2 = new PositionBeanClass();
             bean2.setAddress(address);

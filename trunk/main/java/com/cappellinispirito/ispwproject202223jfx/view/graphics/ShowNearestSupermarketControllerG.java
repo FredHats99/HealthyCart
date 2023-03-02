@@ -66,7 +66,7 @@ public class ShowNearestSupermarketControllerG implements Initializable {
 
     }
 
-    public void onSearchSupermarketsClicked(){
+    public void onSearchSupermarketsClicked() throws IOException {
         marketAddressesList.add(market1);
         marketAddressesList.add(market2);
         marketAddressesList.add(market3);
@@ -83,10 +83,11 @@ public class ShowNearestSupermarketControllerG implements Initializable {
         String search = searchText.getText();
         view.showNearestFrom(search);
         List<String> supermarketNames = view.getSupermarketsNames();
+        List<String> supermarketAddresses = view.getSupermarketAddresses();
         List<Float> supermarketDistances = view.getSupermarketsDistances();
         int i;
-        for(i=0; i< supermarketNames.size(); i++){
-            marketAddressesList.get(i).setText(String.format("%s", supermarketNames.get(i)));
+        for(i=0; i<5; i++){
+            marketAddressesList.get(i).setText(String.format("%s - %s", supermarketNames.get(i), supermarketAddresses.get(i)));
             marketDistancesList.get(i).setText(String.format("%s Km", supermarketDistances.get(i)));
         }
     }

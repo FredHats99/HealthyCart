@@ -103,7 +103,7 @@ public class DoShoppingController {
     }
 
     public void removeItemFromCart(ShopBean bean){
-        String itemBarcode = bean.getItemToRemove();
+        String itemBarcode = nameToBarcodeMap.get(bean.getItemToRemove());
         Item shopItem;
         int i;
         for(i=0;i<shoppingCart.getItemsList().size();i++){
@@ -128,7 +128,7 @@ public class DoShoppingController {
         bean.setCartHealthScore(shoppingCart.getAverageScore());
     }
 
-    public void loadNewPage() throws IOException {
+    public void loadNewPage() throws IOException, FailedQueryToOpenFoodFacts {
         boundary.searchProductsBySupermarketLoadNewPage(bean2);
     }
 

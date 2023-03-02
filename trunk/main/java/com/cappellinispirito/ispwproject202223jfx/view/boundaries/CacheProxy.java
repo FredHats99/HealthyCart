@@ -2,6 +2,7 @@ package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
 
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.PositionBean;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class CacheProxy implements APIProxyBoundary{
@@ -15,7 +16,7 @@ public class CacheProxy implements APIProxyBoundary{
     }
 
     @Override
-    public void getNearestSupermarkets(PositionBean bean) {
+    public void getNearestSupermarkets(PositionBean bean) throws IOException {
         String searchAddress = bean.getAddress();
         //proxy will check if the search results are already been searched. If yes, return them.
         if(searchToSupermarketsNameCache.containsKey(searchAddress)){

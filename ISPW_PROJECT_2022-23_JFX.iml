@@ -59,5 +59,8 @@
     <orderEntry type="library" name="Maven: org.mortbay.jetty:jetty:6.1.25" level="project" />
     <orderEntry type="library" name="Maven: org.mortbay.jetty:jetty-util:6.1.25" level="project" />
     <orderEntry type="library" name="Maven: org.mortbay.jetty:servlet-api:2.5-20081211" level="project" />
+    <orderEntry type="library" name="google.code.gson" level="project" />
+    <orderEntry type="library" name="fasterxml.jackson.core.databind" level="project" />
+    <orderEntry type="library" name="squareup.okhttp3.sample.crawler" level="project" />
   </component>
 </module>

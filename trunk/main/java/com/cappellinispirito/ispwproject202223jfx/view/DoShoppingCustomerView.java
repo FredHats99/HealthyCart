@@ -39,7 +39,7 @@ public class DoShoppingCustomerView {
         return sellableProductName;
     }
 
-    public void loadNewPage() throws IOException {
+    public void loadNewPage() throws IOException, FailedQueryToOpenFoodFacts {
         controller.loadNewPage();
         sellableProductName = bean2.getSellableProductName();
         sellableProductImage = bean2.getSellableProductImage();
@@ -56,5 +56,10 @@ public class DoShoppingCustomerView {
 
     public void saveCart() throws SQLException {
         controller.saveCart();
+    }
+
+    public void removeItemFromCart(int indexOf) {
+        bean2.setItemToRemove(bean2.getSellableProductName().get(indexOf));
+        controller.removeItemFromCart(bean2);
     }
 }
