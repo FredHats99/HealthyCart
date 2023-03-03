@@ -99,7 +99,7 @@ public class ShowNearestSupermarketControllerG implements Initializable {
             Label label = (Label) mouseEvent.getSource();
             if(!Objects.equals(label.getText(), "")){
                 SupermarketNameBean bean = SupermarketNameBean.getInstance();
-                bean.setSupermarketName(label.getText());
+                bean.setSupermarketName(label.getText().substring(0,label.getText().indexOf(" ")));
 
                 FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispwproject202223jfx/fxml/doShopping.fxml")));
                 Parent rootNode = loader.load();

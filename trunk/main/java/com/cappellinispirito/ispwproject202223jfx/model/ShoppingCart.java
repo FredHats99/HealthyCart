@@ -10,7 +10,7 @@ public class ShoppingCart implements Subject{
     //attributes
     private final List<Item> itemsList = new ArrayList<>();
     private int averageFinalScore;
-    private Observer DoShoppingObserver;
+    private Observer doShoppingObserver;
 
     //getters & setters
     public List<Item> getItemsList() {
@@ -24,13 +24,13 @@ public class ShoppingCart implements Subject{
     public void addItem(Item newItem){
         itemsList.add(newItem);
         setAverageScore();
-        System.out.println("Score is "+ newItem.getHealthScore());
         notifyObservers();
     }
 
     public void removeItem(Item trashItem){
         itemsList.remove(trashItem);
         setAverageScore();
+        notifyObservers();
     }
 
     public void setAverageScore(){
@@ -43,12 +43,17 @@ public class ShoppingCart implements Subject{
                 tmpSize--;
             }
         }
-        this.averageFinalScore= tmp/tmpSize;
+        try{
+            this.averageFinalScore= tmp/tmpSize;
+        } catch (ArithmeticException e){
+            this.averageFinalScore = 0;
+        }
+
     }
 
     @Override
     public void registerObserver(Observer observer) {
-        this.DoShoppingObserver = observer;
+        this.doShoppingObserver = observer;
     }
 
     @Override
@@ -58,6 +63,6 @@ public class ShoppingCart implements Subject{
 
     @Override
     public void notifyObservers() {
-        DoShoppingObserver.update(this);
+        doShoppingObserver.update(this);
     }
 }

@@ -110,6 +110,7 @@ public class Item {
             positiveScore = this.proteinScore + this.fiberScore + this.fruitPercentageScore;
             negativeScore = this.energyScore + this.sugarScore + this.saturatedFatsScore + this.sodiumScore;
 
+
             if(isBeverage){
                 if (this.fruitPercentageScore!=10) {
                     checkFruitPercentage = true;
@@ -125,19 +126,24 @@ public class Item {
             nutriScore = negativeScore - positiveScore;
 
             //logic for health score
-            if (nutriScore<-2) healthScoreL = 100;
-            else if (nutriScore>19) healthScoreL = 0;
-            else {
-                healthScoreL = (int) (0.00000281*Math.pow(nutriScore,7)-0.00017858*Math.pow(nutriScore,6) +0.00402463*Math.pow(nutriScore,5) -0.03479528*Math.pow(nutriScore,4) +0.02908120*Math.pow(nutriScore,3) +0.91405353*Math.pow(nutriScore,2) -7.98065470*nutriScore +81.31242712) * 3/5; //this is a plot function made by us which plots in 60ties.
-                //logic for additives
-                healthScoreL += generateAdditivesScore(additives);
-                //logic for bio
-                if(isBiological){
-                    healthScoreL += 10;
-                }
-            }
+            healthScoreL = evaluateScore(nutriScore);
         }
         return healthScoreL;
+    }
+
+    private int evaluateScore(int nutriScore) throws SQLException {
+        int score;
+        if (nutriScore<-2) score = 100;
+        else {
+            score = (int) (0.00000281*Math.pow(nutriScore,7)-0.00017858*Math.pow(nutriScore,6) +0.00402463*Math.pow(nutriScore,5) -0.03479528*Math.pow(nutriScore,4) +0.02908120*Math.pow(nutriScore,3) +0.91405353*Math.pow(nutriScore,2) -7.98065470*nutriScore +81.31242712) * 3/5; //this is a plot function made by us which plots in 60ties.
+            //logic for additives
+            score += generateAdditivesScore(additives);
+            //logic for bio
+            if(isBiological){
+                score += 10;
+            }
+        }
+        return score;
     }
 
     private void setProteinsScore(){

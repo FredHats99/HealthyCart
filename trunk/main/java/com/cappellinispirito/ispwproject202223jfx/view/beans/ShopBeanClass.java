@@ -8,7 +8,7 @@ public class ShopBeanClass implements ShopBean {
     private List<String> sellableProductsNames;
     private List<String> sellableProductsImages;
     private String itemNameToAdd;
-    private String itemNameToRemove;
+    private int itemIndexNameToRemove;
     private int cartHealthScore;
 
 
@@ -44,13 +44,13 @@ public class ShopBeanClass implements ShopBean {
     }
 
     @Override
-    public String getItemToRemove() {
-        return itemNameToRemove;
+    public int getItemToRemove() {
+        return itemIndexNameToRemove;
     }
 
     @Override
-    public void setItemToRemove(String name) {
-        itemNameToRemove = name;
+    public void setItemToRemove(int name) {
+        itemIndexNameToRemove = name;
     }
 
 

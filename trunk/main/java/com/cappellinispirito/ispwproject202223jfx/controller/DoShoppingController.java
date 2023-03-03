@@ -20,13 +20,10 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class DoShoppingController {
     private final ShoppingCart shoppingCart;
-    private Supermarket shopSupermarket;
     private final String username;
     SearchProductsFromSupermarketOpenFoodFactsAPIBoundary boundary = new SearchProductsFromSupermarketOpenFoodFactsAPIBoundary();
     SupermarketsToProductsBean bean2 = new SupermarketsToProductsBeanClass();
@@ -35,8 +32,6 @@ public class DoShoppingController {
     private List<String> sellableSupermarketImages;
     private List<String> sellableSupermarketBarcodes;
 
-    private final HashMap<String, String> nameToBarcodeMap = new HashMap<>();
-    private final HashMap<String, String> nameToImageMap = new HashMap<>();
 
     public DoShoppingController(){
         sellableSupermarketNames = new ArrayList<>();
@@ -47,47 +42,42 @@ public class DoShoppingController {
     }
 
     public void setUpShop(ShopBean bean) throws IOException {
-        shopSupermarket = new Supermarket(SupermarketNameBean.getInstance().getSupermarketName());
+        Supermarket shopSupermarket = new Supermarket(SupermarketNameBean.getInstance().getSupermarketName());
         bean2.setSupermarket(shopSupermarket);
         boundary.searchProductsBySupermarket(bean2);
         sellableSupermarketNames = bean2.getSellableProductsName();
         sellableSupermarketImages = bean2.getSellableProductsImage();
         sellableSupermarketBarcodes = bean2.getSellableProductsBarcode();
-        int i;
-        for(i=0;i<sellableSupermarketNames.size();i++){
-            nameToBarcodeMap.put(sellableSupermarketNames.get(i),sellableSupermarketBarcodes.get(i));
-            nameToImageMap.put(sellableSupermarketNames.get(i), sellableSupermarketImages.get(i));
-        }
         bean.setSellableProductName(sellableSupermarketNames);
         bean.setSellableProductImage(sellableSupermarketImages);
     }
 
     public void addItemToCart(ShopBean bean) throws FailedQueryToOpenFoodFacts, IOException, ParseException, SQLException {
-        String itemBarcode = nameToBarcodeMap.get(bean.getItemToAdd());
+        String itemBarcode = sellableSupermarketBarcodes.get(sellableSupermarketNames.indexOf(bean.getItemToAdd()));
 
-        BarcodeToInformationBean bean2 = new BarcodeToInformationBeanClass();
-        bean2.setBarcodeSearch(itemBarcode);
+        BarcodeToInformationBean localBean = new BarcodeToInformationBeanClass();
+        localBean.setBarcodeSearch(itemBarcode);
 
-        ShowProductInfoOpenFoodFactsAPIBoundary boundary = ShowProductInfoOpenFoodFactsAPIBoundary.getInstance();
-        boundary.findProductInfoByBarcode(bean2);
+        ShowProductInfoOpenFoodFactsAPIBoundary localBoundary = ShowProductInfoOpenFoodFactsAPIBoundary.getInstance();
+        localBoundary.findProductInfoByBarcode(localBean);
 
         List<Float> nutritionalValues = new ArrayList<>();
-        nutritionalValues.add(bean2.getCalories());
-        nutritionalValues.add(bean2.getProteins());
-        nutritionalValues.add(bean2.getSugars());
-        nutritionalValues.add(bean2.getSaturatedFats());
-        nutritionalValues.add(bean2.getFruitPercentage());
-        nutritionalValues.add(bean2.getSalt());
-        nutritionalValues.add(bean2.getFibers());
-        List<String> additives = bean2.getAdditives();
-        String ingredients = bean2.getIngredients();
-        Boolean isBiological = bean2.getIsBiological();
-        Boolean isBeverage = bean2.getIsBeverage();
+        nutritionalValues.add(localBean.getCalories());
+        nutritionalValues.add(localBean.getProteins());
+        nutritionalValues.add(localBean.getSugars());
+        nutritionalValues.add(localBean.getSaturatedFats());
+        nutritionalValues.add(localBean.getFruitPercentage());
+        nutritionalValues.add(localBean.getSalt());
+        nutritionalValues.add(localBean.getFibers());
+        List<String> additives = localBean.getAdditives();
+        String ingredients = localBean.getIngredients();
+        Boolean isBiological = localBean.getIsBiological();
+        Boolean isBeverage = localBean.getIsBeverage();
 
         List<String> informations = new ArrayList<>();
         informations.add(bean.getItemToAdd());
         informations.add(itemBarcode);
-        informations.add(nameToImageMap.get(bean.getItemToAdd()));
+        informations.add(sellableSupermarketImages.get(sellableSupermarketNames.indexOf(bean.getItemToAdd())));
         informations.add(ingredients);
         Item shopItem = new Item(
                 informations,
@@ -99,19 +89,10 @@ public class DoShoppingController {
         getCartHealthScore(bean);
 
         bean.setItemToAdd("");
-        System.out.println(shoppingCart.getItemsList());
     }
 
     public void removeItemFromCart(ShopBean bean){
-        String itemBarcode = nameToBarcodeMap.get(bean.getItemToRemove());
-        Item shopItem;
-        int i;
-        for(i=0;i<shoppingCart.getItemsList().size();i++){
-            shopItem = shoppingCart.getItemsList().get(i);
-            if(Objects.equals(shopItem.getBarcode(), itemBarcode)){
-                shoppingCart.removeItem(shopItem);
-            }
-        }
+        shoppingCart.removeItem(shoppingCart.getItemsList().get(bean.getItemToRemove()));
         getCartHealthScore(bean);
     }
 

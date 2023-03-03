@@ -14,11 +14,7 @@ import java.util.*;
 
 public class ShowNearestSupermarketsNominatimApiBoundary implements APIProxyBoundary{
 
-    private final List<String> supermarketsName = new ArrayList<>();
-    private final List<Float> supermarketsDistances = new ArrayList<>();
-
-
-    private static final String API_KEY = "vq1WMd-HmyVaO3Clys3zdKn-WuXGZpoC-b8iQkHrxZRcuN3nALrvuu5zuJO-9ogE8L-QBsnutO3SYmchDTAVQfuinaTHsOg1JBfpN8UZ8OxRipd2gMa5O0xvHYYAZHYx";
+    private static final String API_KEY = "j-Y-VmBNlz6n7MTIzEu9atdNZ_Pf9R_uusGEsLoPKAylr7P7miUMCf80tKFsHPq9ZcLaIDzzPq7ltneNGdeScc2bffMUpgeMbtmOXi4X2M0K7zVkVueW0sFUPb4BZHYx";
 
 
     @Override
@@ -63,9 +59,6 @@ public class ShowNearestSupermarketsNominatimApiBoundary implements APIProxyBoun
         // Get the response body as a string
         String responseBody = response.body().string();
 
-        // Print the response body
-        System.out.println(responseBody);
-
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(responseBody);
 
@@ -77,11 +70,10 @@ public class ShowNearestSupermarketsNominatimApiBoundary implements APIProxyBoun
             String name = businessNode.get("name").asText();
             String marketAddress = businessNode.get("location").get("address1").asText();
             double distance = (businessNode.get("distance").asDouble())/1000;
-            System.out.println(name + " - " + distance + " meters");
             if(whiteListSupermarkets.contains(name)){
                 bean.appendToSupermarketsNames(name);
                 bean.appendToSupermarketsAddress(marketAddress);
-                bean.appendToSupermarketsDistance((float) Math.round(distance*100f)/100f);
+                bean.appendToSupermarketsDistance(Math.round(distance*100f)/100f);
             }
         }
     }

@@ -16,8 +16,8 @@ public interface ShopBean {
     String getItemToAdd();
     void setItemToAdd(String name);
 
-    String getItemToRemove();
-    void setItemToRemove(String name);
+    int getItemToRemove();
+    void setItemToRemove(int indexOfName);
 
     int getCartHealthScore();
     void setCartHealthScore(int score);

@@ -1,13 +1,10 @@
 package com.cappellinispirito.ispwproject202223jfx.view;
 
 import com.cappellinispirito.ispwproject202223jfx.controller.DoShoppingController;
-import com.cappellinispirito.ispwproject202223jfx.model.ShoppingCart;
 import com.cappellinispirito.ispwproject202223jfx.model.Subject;
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.ShopBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.ShopBeanClass;
-import com.cappellinispirito.ispwproject202223jfx.view.beans.SupermarketNameBean;
-import com.cappellinispirito.ispwproject202223jfx.view.graphics.DoShoppingControllerG;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -20,10 +17,6 @@ public class DoShoppingCustomerView {
     private List<String> sellableProductImage;
     private final DoShoppingController controller = new DoShoppingController();
     ShopBean bean2 = new ShopBeanClass();
-
-    public DoShoppingCustomerView() throws FailedQueryToOpenFoodFacts, IOException {
-
-    }
 
     public void displayShop() throws IOException {
         controller.setUpShop(bean2);
@@ -50,6 +43,7 @@ public class DoShoppingCustomerView {
        controller.addItemToCart(bean2);
     }
 
+
     public Subject registerObserver(Observer observer) {
         return controller.registerObserver(observer);
     }
@@ -59,7 +53,7 @@ public class DoShoppingCustomerView {
     }
 
     public void removeItemFromCart(int indexOf) {
-        bean2.setItemToRemove(bean2.getSellableProductName().get(indexOf));
+        bean2.setItemToRemove(indexOf);
         controller.removeItemFromCart(bean2);
     }
 }

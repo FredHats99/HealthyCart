@@ -1,7 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
 
 
-import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.BarcodeToInformationBean;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -23,7 +22,7 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
 
     private static ShowProductInfoOpenFoodFactsAPIBoundary instance;
 
-    public void findProductInfoByBarcode(BarcodeToInformationBean bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
+    public void findProductInfoByBarcode(BarcodeToInformationBean bean) throws IOException, ParseException {
         String barcode = bean.getBarcodeSearch();
         CloseableHttpClient httpClient = null;
         try{
@@ -94,9 +93,8 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
             logger.log(Level.INFO, e.getMessage());
         } catch (NullPointerException e){
             //TODO: Some products don't provide the values needed to calculate the score, but still have a nutri-score provided. It should be used whenever nutritional values are not found...
-            e.printStackTrace();
-            /*Logger logger = Logger.getLogger(ShowProductInfoOpenFoodFactsAPIBoundary.class.getName());
-            logger.log(Level.INFO,String.format("Couldn't find further information for this product...%n"));*/
+            Logger logger = Logger.getLogger(ShowProductInfoOpenFoodFactsAPIBoundary.class.getName());
+            logger.log(Level.INFO,String.format("Couldn't find further information for this product...%n"));
             bean.setCalories((float) -1);
             bean.setSugars((float) -1);
             bean.setProteins((float) -1);

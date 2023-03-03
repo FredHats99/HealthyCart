@@ -3,14 +3,11 @@ package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
 
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.SupermarketsToProductsBean;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.json.simple.parser.JSONParser;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -45,7 +42,6 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
                 JsonObject product = products.get(i).getAsJsonObject();
                 tryToGetName(product);
                 tryToGetImage(product);
-                System.out.println(product.get("code").getAsString());
                 sellableProductsBarcodes.add(product.get("code").getAsString());
             }
             bean.setSellableProductsNames(sellableProductsNames);
@@ -53,10 +49,8 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
             bean.setSellableProductsBarcode(sellableProductsBarcodes);
             bean.setPage(interfacePage);
         } catch (Exception e) {
-            /*Logger logger = Logger.getLogger(SearchProductsFromSupermarketOpenFoodFactsAPIBoundary.class.getName());
-            logger.log(Level.INFO, e.getMessage());*/
-            e.printStackTrace();
-
+            Logger logger = Logger.getLogger(SearchProductsFromSupermarketOpenFoodFactsAPIBoundary.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         }
     }
 
@@ -71,24 +65,19 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
     public void searchProductsBySupermarketLoadNewPage(SupermarketsToProductsBean bean) throws IOException, FailedQueryToOpenFoodFacts {
         int pageItems = 9;
         try{
-            System.out.println("product size is "+products.size());
             for (int i = pageItems * interfacePage; i< pageItems *(interfacePage +1); i++) {
                 JsonObject product = products.get(i).getAsJsonObject();
                 tryToGetName(product);
                 tryToGetImage(product);
-                System.out.println(product.get("code").getAsString());
                 sellableProductsBarcodes.add(product.get("code").getAsString());
             }
         } catch (IndexOutOfBoundsException e){
             getJsonFromOpenFoodFacts(true);
-            System.out.println("products list size has now been updated to " + products.size());
             int itemsPerApiPage = 24;
             for(int i = itemsPerApiPage *apiPage; i< pageItems *(interfacePage+1); i++){
                 JsonObject product = products.get(i).getAsJsonObject();
                 tryToGetName(product);
                 tryToGetImage(product);
-                System.out.println(product.get("image_url").getAsString());
-                System.out.println(product.get("code").getAsString());
                 sellableProductsBarcodes.add(product.get("code").getAsString());
             }
             apiPage++;
@@ -103,7 +92,6 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
 
     private void tryToGetName(JsonObject product) {
         try{
-            System.out.println(product.get("product_name").getAsString());
             sellableProductsNames.add(product.get("product_name").getAsString());
         } catch (NullPointerException e){
             sellableProductsNames.add("???");

@@ -14,7 +14,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
-public class CustomRectangle extends StackPane {
+public class CustomRectangle extends Pane {
 
     private static final double WIDTH = 300;
     private static final double HEIGHT = 60;
@@ -63,7 +63,6 @@ public class CustomRectangle extends StackPane {
         circle.setStrokeWidth(1);
         Label circleLabel = new Label();
         circleLabel.setText(circleLabelText);
-        //circleLabel.setPadding(new Insets(-28));
         HBox circleBox = new HBox(circle, circleLabel);
         circleBox.setAlignment(Pos.CENTER_RIGHT);
         StackPane stackPane = new StackPane();
