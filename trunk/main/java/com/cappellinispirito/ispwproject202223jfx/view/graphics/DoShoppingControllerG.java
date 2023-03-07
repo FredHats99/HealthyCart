@@ -135,7 +135,6 @@ public class DoShoppingControllerG implements Initializable, Observer {
         for(j=0;j<9;j++){
             nutellaViews.get(j).setOnMouseClicked(this::onAddItem);
         }
-
         leftArrowButton.setFill(Color.GRAY);
         SupermarketNameBean bean = SupermarketNameBean.getInstance();
         String chosenSupermarket = bean.getSupermarketName();
@@ -151,6 +150,7 @@ public class DoShoppingControllerG implements Initializable, Observer {
         try {
             view = new DoShoppingCustomerView();
             view.displayShop();
+            view.registerObserver(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

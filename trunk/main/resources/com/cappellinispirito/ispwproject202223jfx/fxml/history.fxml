@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@../MyStylesheet2.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispwproject202223jfx.view.graphics.CartHistoryControllerG">
+<StackPane fx:id="root" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" stylesheets="@../MyStylesheet2.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cappellinispirito.ispwproject202223jfx.view.graphics.CartHistoryControllerG">
    <children>
       <ImageView fitHeight="900.0" fitWidth="1200.0" opacity="0.04" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -59,9 +54,9 @@
                   <Image url="@../icons/sheet.png" />
                </image>
             </ImageView>
-            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
+            <StackPane fx:id="historyStackPane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
                <children>
-                  <Rectangle arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
+                  <Rectangle fx:id="historyRectangle1" arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
                      <fill>
                         <LinearGradient endX="0.7867298578199052" endY="1.0" startX="0.7819905213270142" startY="1.0">
                            <stops>
@@ -79,7 +74,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Label text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="historyCartLabel1" text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -87,7 +82,7 @@
                         <Insets left="20.0" />
                      </StackPane.margin>
                   </Label>
-                  <Label text="73/100" StackPane.alignment="CENTER_RIGHT">
+                  <Label fx:id="historyCartScoreLabel1" text="73/100" StackPane.alignment="CENTER_RIGHT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -104,9 +99,9 @@
                   <Insets right="25.0" top="100.0" />
                </StackPane.margin>
             </StackPane>
-            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
+            <StackPane fx:id="historyStackPane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
                <children>
-                  <Rectangle arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
+                  <Rectangle fx:id="historyRectangle2" arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
                      <fill>
                         <LinearGradient endX="0.7867298578199052" endY="1.0" startX="0.7819905213270142" startY="1.0">
                            <stops>
@@ -124,7 +119,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Label text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="historyCartLabel2" text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -132,7 +127,7 @@
                         <Insets left="20.0" />
                      </StackPane.margin>
                   </Label>
-                  <Label text="73/100" StackPane.alignment="CENTER_RIGHT">
+                  <Label fx:id="historyCartScoreLabel2" text="73/100" StackPane.alignment="CENTER_RIGHT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -149,9 +144,9 @@
                   <Insets right="25.0" top="160.0" />
                </StackPane.margin>
             </StackPane>
-            <StackPane layoutX="68.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
+            <StackPane fx:id="historyStackPane3" layoutX="68.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
                <children>
-                  <Rectangle arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
+                  <Rectangle fx:id="historyRectangle3" arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
                      <fill>
                         <LinearGradient endX="0.7867298578199052" endY="1.0" startX="0.7819905213270142" startY="1.0">
                            <stops>
@@ -169,7 +164,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Label text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="historyCartLabel3" text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -177,7 +172,7 @@
                         <Insets left="20.0" />
                      </StackPane.margin>
                   </Label>
-                  <Label text="73/100" StackPane.alignment="CENTER_RIGHT">
+                  <Label fx:id="historyCartScoreLabel3" text="73/100" StackPane.alignment="CENTER_RIGHT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -194,9 +189,9 @@
                   <Insets right="25.0" top="220.0" />
                </StackPane.margin>
             </StackPane>
-            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
+            <StackPane fx:id="historyStackPane4" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
                <children>
-                  <Rectangle arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
+                  <Rectangle fx:id="historyRectangle4" arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
                      <fill>
                         <LinearGradient endX="0.7867298578199052" endY="1.0" startX="0.7819905213270142" startY="1.0">
                            <stops>
@@ -214,7 +209,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Label text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="historyCartLabel4" text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -222,7 +217,7 @@
                         <Insets left="20.0" />
                      </StackPane.margin>
                   </Label>
-                  <Label text="73/100" StackPane.alignment="CENTER_RIGHT">
+                  <Label fx:id="historyCartScoreLabel4" text="73/100" StackPane.alignment="CENTER_RIGHT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -239,9 +234,9 @@
                   <Insets right="25.0" top="280.0" />
                </StackPane.margin>
             </StackPane>
-            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
+            <StackPane fx:id="historyStackPane5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
                <children>
-                  <Rectangle arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
+                  <Rectangle fx:id="historyRectangle5" arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
                      <fill>
                         <LinearGradient endX="0.7867298578199052" endY="1.0" startX="0.7819905213270142" startY="1.0">
                            <stops>
@@ -259,7 +254,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Label text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="historyCartLabel5" text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -267,7 +262,7 @@
                         <Insets left="20.0" />
                      </StackPane.margin>
                   </Label>
-                  <Label text="73/100" StackPane.alignment="CENTER_RIGHT">
+                  <Label fx:id="historyCartScoreLabel5" text="73/100" StackPane.alignment="CENTER_RIGHT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -284,9 +279,9 @@
                   <Insets right="25.0" top="340.0" />
                </StackPane.margin>
             </StackPane>
-            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
+            <StackPane fx:id="historyStackPane6" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
                <children>
-                  <Rectangle arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
+                  <Rectangle fx:id="historyRectangle6" arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
                      <fill>
                         <LinearGradient endX="0.7867298578199052" endY="1.0" startX="0.7819905213270142" startY="1.0">
                            <stops>
@@ -304,7 +299,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Label text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="historyCartLabel6" text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -312,7 +307,7 @@
                         <Insets left="20.0" />
                      </StackPane.margin>
                   </Label>
-                  <Label text="73/100" StackPane.alignment="CENTER_RIGHT">
+                  <Label fx:id="historyCartScoreLabel6" text="73/100" StackPane.alignment="CENTER_RIGHT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -332,9 +327,9 @@
                   <Insets right="25.0" />
                </padding>
             </StackPane>
-            <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
+            <StackPane fx:id="historyStackPane7" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
                <children>
-                  <Rectangle arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
+                  <Rectangle fx:id="historyRectangle7" arcHeight="40.0" arcWidth="40.0" height="39.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="367.0">
                      <fill>
                         <LinearGradient endX="0.7867298578199052" endY="1.0" startX="0.7819905213270142" startY="1.0">
                            <stops>
@@ -352,7 +347,7 @@
                         </LinearGradient>
                      </fill>
                   </Rectangle>
-                  <Label text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
+                  <Label fx:id="historyCartLabel7" text="carrello del 22/10" StackPane.alignment="CENTER_LEFT">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -360,7 +355,7 @@
                         <Insets left="20.0" />
                      </StackPane.margin>
                   </Label>
-                  <Label text="73/100" StackPane.alignment="CENTER_RIGHT">
+                  <Label fx:id="historyCartScoreLabel7" text="73/100" StackPane.alignment="CENTER_RIGHT">
                      <font>
                         <Font size="18.0" />
                      </font>

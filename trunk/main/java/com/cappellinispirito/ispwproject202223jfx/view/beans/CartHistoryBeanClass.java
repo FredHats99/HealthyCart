@@ -6,8 +6,19 @@ import java.util.Date;
 import java.util.List;
 
 public class CartHistoryBeanClass implements CartHistoryBean {
+    private String username;
     private List<Date> cartsDate;
     private List<Integer> cartsScore;
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     @Override
     public List<Date> getCartsDate() {

@@ -134,6 +134,7 @@ public class Item {
     private int evaluateScore(int nutriScore) throws SQLException {
         int score;
         if (nutriScore<-2) score = 100;
+        else if(nutriScore>19) score = 0;
         else {
             score = (int) (0.00000281*Math.pow(nutriScore,7)-0.00017858*Math.pow(nutriScore,6) +0.00402463*Math.pow(nutriScore,5) -0.03479528*Math.pow(nutriScore,4) +0.02908120*Math.pow(nutriScore,3) +0.91405353*Math.pow(nutriScore,2) -7.98065470*nutriScore +81.31242712) * 3/5; //this is a plot function made by us which plots in 60ties.
             //logic for additives

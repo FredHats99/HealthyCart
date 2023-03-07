@@ -113,8 +113,7 @@ public class DoShoppingController {
         boundary.searchProductsBySupermarketLoadNewPage(bean2);
     }
 
-    public Subject registerObserver(Observer observer) {
+    public void registerObserver(Observer observer) {
         shoppingCart.registerObserver(observer);
-        return shoppingCart;
     }
 }

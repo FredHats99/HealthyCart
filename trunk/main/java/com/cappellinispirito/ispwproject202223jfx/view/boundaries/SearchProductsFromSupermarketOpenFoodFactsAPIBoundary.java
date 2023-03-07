@@ -73,9 +73,11 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
             }
         } catch (IndexOutOfBoundsException e){
             getJsonFromOpenFoodFacts(true);
-            int itemsPerApiPage = 24;
-            for(int i = itemsPerApiPage *apiPage; i< pageItems *(interfacePage+1); i++){
-                JsonObject product = products.get(i).getAsJsonObject();
+            System.out.println("Products size has been extended to: " + 24*(apiPage+1));
+            int oldIndex = 9-(24*(apiPage))%pageItems;
+            for(int i = 0; i< oldIndex; i++){
+                JsonObject product = products.get(i+24*apiPage).getAsJsonObject();
+                System.out.println("Picking item: " + product + "at index " + i+24*apiPage);
                 tryToGetName(product);
                 tryToGetImage(product);
                 sellableProductsBarcodes.add(product.get("code").getAsString());
@@ -98,7 +100,12 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
         }
     }
     private void getJsonFromOpenFoodFacts(boolean extend) throws IOException, FailedQueryToOpenFoodFacts {
-        URL url = new URL(String.format("https://it.openfoodfacts.org/store/%s?sort_by=popularity&page=%d&json=1", search, apiPage));
+        URL url;
+        if(extend){
+            url = new URL(String.format("https://it.openfoodfacts.org/store/%s?sort_by=popularity&page=%d&json=1", search, apiPage+1));
+        } else {
+            url = new URL(String.format("https://it.openfoodfacts.org/store/%s?sort_by=popularity&page=%d&json=1", search,1));
+        }
         URLConnection conn = url.openConnection();
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 

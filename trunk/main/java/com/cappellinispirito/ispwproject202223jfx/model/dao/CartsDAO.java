@@ -56,7 +56,7 @@ public class CartsDAO {
             stmt = conn.createStatement();
             Queries.getOldCartsDate(stmt, username);
             ResultSet rs = stmt.getResultSet();
-            rs.first();
+            rs.next();
             do{
                 dateList.add(rs.getDate("date"));
             } while(rs.next());
@@ -77,7 +77,7 @@ public class CartsDAO {
             stmt = conn.createStatement();
             Queries.getOldCartsScore(stmt, username);
             ResultSet rs = stmt.getResultSet();
-            rs.first();
+            rs.next();
             do{
                 scoreList.add(rs.getInt("avgScore"));
             } while(rs.next());
@@ -98,7 +98,7 @@ public class CartsDAO {
             stmt = conn.createStatement();
             Queries.getOldCartsId(stmt, username);
             ResultSet rs = stmt.getResultSet();
-            rs.first();
+            rs.next();
             do{
                 idList.add(rs.getInt("idCarts"));
             } while(rs.next());

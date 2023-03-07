@@ -23,6 +23,7 @@ public class ShoppingCart implements Subject{
 
     public void addItem(Item newItem){
         itemsList.add(newItem);
+        System.out.println("Added the item: " + itemsList.get(itemsList.size()-1).getName() + " with score: " + itemsList.get(itemsList.size()-1).getHealthScore());
         setAverageScore();
         notifyObservers();
     }
