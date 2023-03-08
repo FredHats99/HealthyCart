@@ -5,7 +5,7 @@ import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.CartHisto
 import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
 
 
-
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -36,5 +36,10 @@ public class ConsultCartHistoryController {
 
     public Integer getCartIdFromIndex(int index){
         return cartsId.get(index);
+    }
+
+    public void deleteHistory() throws SQLException {
+        CartsDAO cartsDAO = new CartsDAO();
+        cartsDAO.deleteHistory(username);
     }
 }

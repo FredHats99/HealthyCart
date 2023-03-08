@@ -53,6 +53,9 @@
                <image>
                   <Image url="@../icons/sheet.png" />
                </image>
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
             </ImageView>
             <StackPane fx:id="historyStackPane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="TOP_CENTER">
                <children>
@@ -93,7 +96,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="history_line1_button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
+                  <Button fx:id="historyLine1Button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
                </children>
                <StackPane.margin>
                   <Insets right="25.0" top="100.0" />
@@ -138,7 +141,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="history_line2_button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
+                  <Button fx:id="historyLine2Button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
                </children>
                <StackPane.margin>
                   <Insets right="25.0" top="160.0" />
@@ -183,7 +186,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="history_line3_button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
+                  <Button fx:id="historyLine3Button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
                </children>
                <StackPane.margin>
                   <Insets right="25.0" top="220.0" />
@@ -228,7 +231,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="history_line4_button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
+                  <Button fx:id="historyLine4Button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
                </children>
                <StackPane.margin>
                   <Insets right="25.0" top="280.0" />
@@ -273,7 +276,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="history_line5_button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
+                  <Button fx:id="historyLine5Button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
                </children>
                <StackPane.margin>
                   <Insets right="25.0" top="340.0" />
@@ -318,7 +321,7 @@
                         <Insets right="15.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="history_line6_button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
+                  <Button fx:id="historyLine6Button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
                </children>
                <StackPane.margin>
                   <Insets top="400.0" />
@@ -366,12 +369,16 @@
                         <Insets right="15.0" />
                      </padding>
                   </Label>
-                  <Button fx:id="history_line7_button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
+                  <Button fx:id="historyLine7Button" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="367.0" text="Button" />
                </children>
                <StackPane.margin>
                   <Insets right="25.0" top="460.0" />
                </StackPane.margin>
             </StackPane>
+            <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="41.0" prefWidth="89.0" text="Cancella">
+               <StackPane.margin>
+                  <Insets top="460.0" />
+               </StackPane.margin></Button>
          </children>
          <StackPane.margin>
             <Insets left="150.0" />

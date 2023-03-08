@@ -32,7 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class DoShoppingControllerG implements Initializable, Observer {
@@ -152,7 +153,8 @@ public class DoShoppingControllerG implements Initializable, Observer {
             view.displayShop();
             view.registerObserver(this);
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(DoShoppingControllerG.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         }
         int i;
         for(i=0; i<9; i++){
@@ -171,7 +173,8 @@ public class DoShoppingControllerG implements Initializable, Observer {
                 try {
                     view.addItemToCart(i+9*(pageNumber-1));
                 } catch (FailedQueryToOpenFoodFacts | SQLException | IOException | ParseException e) {
-                    e.printStackTrace();
+                    Logger logger = Logger.getLogger(DoShoppingControllerG.class.getName());
+                    logger.log(Level.INFO, e.getMessage());
                 }
                 displayUpdatedCart(i+9*(pageNumber-1));
                 updateAverageScore();
@@ -267,7 +270,8 @@ public class DoShoppingControllerG implements Initializable, Observer {
                     nutellaViews.get(i%9).setImage(tempImage);
                     nutellaNames.get(i%9).setText(view.getSellableProductName().get(i));
                 } catch(IndexOutOfBoundsException e){
-                    e.printStackTrace();
+                    Logger logger = Logger.getLogger(DoShoppingControllerG.class.getName());
+                    logger.log(Level.INFO, e.getMessage());
                 } catch(IllegalArgumentException e){
                     tempImage = new Image(String.valueOf(getClass().getResource(QUESTION_MARK)));
                     nutellaViews.get(i%9).setImage(tempImage);

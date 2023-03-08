@@ -4,6 +4,9 @@ import com.cappellinispirito.ispwproject202223jfx.controller.LogInController;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.LogInBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.LogInBeanClass;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class LogInCustomerView {
     private String username;
@@ -27,7 +30,8 @@ public class LogInCustomerView {
                 isPremium=bean.getIsPremium();
             }
         } catch (Exception e){
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(LogInCustomerView.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         }
     }
     public boolean getIsLoginDone(){

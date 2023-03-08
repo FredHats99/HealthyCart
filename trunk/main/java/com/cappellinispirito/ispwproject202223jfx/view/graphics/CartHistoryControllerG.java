@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -16,11 +17,11 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.jar.JarEntry;
 
 public class CartHistoryControllerG implements Initializable {
     @FXML
@@ -69,9 +70,10 @@ public class CartHistoryControllerG implements Initializable {
     private Rectangle historyRectangle6;
     @FXML
     private Rectangle historyRectangle7;
+    @FXML
+    private Button deleteButton;
     private final List<Rectangle> historyRectangles = new ArrayList<>();
 
-    private String username;
     private ConsultCartHistoryCustomerView view;
     private final List<Label> historyCartLabels = new ArrayList<>();
     private final List<Label> historyCartScoreLabels = new ArrayList<>();
@@ -81,7 +83,7 @@ public class CartHistoryControllerG implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        username = NamePremiumBean.getInstance().getName(); // getName() returns null
+        String username = NamePremiumBean.getInstance().getName(); // getName() returns null
         if(username != null) {
             userNameLabel.setText(username);
         }
@@ -128,6 +130,23 @@ public class CartHistoryControllerG implements Initializable {
             }
 
         }
+
+        deleteButton.setOnMouseClicked(mouseEvent -> {
+            try {
+                onDeleteButton();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                onBackButton();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void onDeleteButton() throws SQLException {
+        view.deleteHistory();
     }
 
     private void updateBackgroundColor(int i) {

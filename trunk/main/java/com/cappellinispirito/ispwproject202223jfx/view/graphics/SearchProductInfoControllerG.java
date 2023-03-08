@@ -24,6 +24,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SearchProductInfoControllerG implements Initializable {
     @FXML
@@ -58,7 +60,8 @@ public class SearchProductInfoControllerG implements Initializable {
         try {
             itemInfo = view.showProductInfo(itemName);
         } catch (IOException | ParseException | SQLException | FailedQueryToOpenFoodFacts e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(SearchProductControllerG.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         }
         userNameLabel.setText(NamePremiumBean.getInstance().getName());
 

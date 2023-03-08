@@ -1,6 +1,5 @@
 package com.cappellinispirito.ispwproject202223jfx.controller;
 
-import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.BarcodeToInformationBean;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.CartItemsBean;
 import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
@@ -20,7 +19,7 @@ public class ConsultCartController {
     private final List<String> cartItemsImage = new ArrayList<>();
 
 
-    public void getItemInfosFromId(CartItemsBean bean) throws SQLException, FailedQueryToOpenFoodFacts, IOException, ParseException {
+    public void getItemInfosFromId(CartItemsBean bean) throws SQLException, IOException, ParseException {
         int cartId = bean.getCartId();
         CartsDAO cartsDAO = new CartsDAO();
         List<String> cartBarcodes = cartsDAO.getOldCartItems(username, cartId);

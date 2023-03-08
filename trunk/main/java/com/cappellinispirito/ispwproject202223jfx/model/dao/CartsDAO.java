@@ -140,4 +140,24 @@ public class CartsDAO {
         }
         return barcodesInCart;
     }
+
+    public void deleteHistory(String username) throws SQLException {
+        Statement stmt = null;
+        Connection conn;
+        try{
+            List<Integer> cartsId = getOldCartId(username);
+            conn = DBConnector.getInstance().getConnection();
+            stmt = conn.createStatement();
+            for(Integer cartId : cartsId){
+                Queries.deleteHistory(stmt, cartId);
+            }
+
+        } catch (SQLException e) {
+            Logger logger = Logger.getLogger(CartsDAO.class.getName());
+            logger.log(Level.INFO, e.getMessage());
+        } finally {
+            assert stmt != null;
+            stmt.close();
+        }
+    }
 }

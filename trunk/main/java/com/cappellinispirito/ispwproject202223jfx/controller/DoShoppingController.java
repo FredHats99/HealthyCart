@@ -1,6 +1,5 @@
 package com.cappellinispirito.ispwproject202223jfx.controller;
 
-import com.cappellinispirito.ispwproject202223jfx.model.Subject;
 import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.model.Item;
 import com.cappellinispirito.ispwproject202223jfx.model.ShoppingCart;
@@ -22,7 +21,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoShoppingController {
+public class DoShoppingController implements DoShoppingInterface{
     private final ShoppingCart shoppingCart;
     private final String username;
     SearchProductsFromSupermarketOpenFoodFactsAPIBoundary boundary = new SearchProductsFromSupermarketOpenFoodFactsAPIBoundary();
@@ -40,7 +39,7 @@ public class DoShoppingController {
         shoppingCart = new ShoppingCart();
         username = LogInController.getInstance().getUserAccountInstance().getUsername();
     }
-
+    @Override
     public void setUpShop(ShopBean bean) throws IOException {
         Supermarket shopSupermarket = new Supermarket(SupermarketNameBean.getInstance().getSupermarketName());
         bean2.setSupermarket(shopSupermarket);
@@ -51,7 +50,7 @@ public class DoShoppingController {
         bean.setSellableProductName(sellableSupermarketNames);
         bean.setSellableProductImage(sellableSupermarketImages);
     }
-
+    @Override
     public void addItemToCart(ShopBean bean) throws FailedQueryToOpenFoodFacts, IOException, ParseException, SQLException {
         String itemBarcode = sellableSupermarketBarcodes.get(sellableSupermarketNames.indexOf(bean.getItemToAdd()));
 
@@ -90,12 +89,12 @@ public class DoShoppingController {
 
         bean.setItemToAdd("");
     }
-
+    @Override
     public void removeItemFromCart(ShopBean bean){
         shoppingCart.removeItem(shoppingCart.getItemsList().get(bean.getItemToRemove()));
         getCartHealthScore(bean);
     }
-
+    @Override
     public void saveCart() throws SQLException {
         CartsDAO cartsDAO = new CartsDAO();
         cartsDAO.addCart(username, shoppingCart.getAverageScore());
@@ -109,6 +108,7 @@ public class DoShoppingController {
         bean.setCartHealthScore(shoppingCart.getAverageScore());
     }
 
+    @Override
     public void loadNewPage() throws IOException, FailedQueryToOpenFoodFacts {
         boundary.searchProductsBySupermarketLoadNewPage(bean2);
     }

@@ -4,6 +4,7 @@ import com.cappellinispirito.ispwproject202223jfx.controller.ConsultCartHistoryC
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.CartHistoryBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.CartHistoryBeanClass;
 
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
@@ -27,5 +28,9 @@ public class ConsultCartHistoryCustomerView {
 
     public Integer getCartScoreAt(int i) {
         return cartsScores.get(i);
+    }
+
+    public void deleteHistory() throws SQLException {
+        controller.deleteHistory();
     }
 }

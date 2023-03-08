@@ -73,11 +73,9 @@ public class SearchProductsFromSupermarketOpenFoodFactsAPIBoundary {
             }
         } catch (IndexOutOfBoundsException e){
             getJsonFromOpenFoodFacts(true);
-            System.out.println("Products size has been extended to: " + 24*(apiPage+1));
             int oldIndex = 9-(24*(apiPage))%pageItems;
             for(int i = 0; i< oldIndex; i++){
                 JsonObject product = products.get(i+24*apiPage).getAsJsonObject();
-                System.out.println("Picking item: " + product + "at index " + i+24*apiPage);
                 tryToGetName(product);
                 tryToGetImage(product);
                 sellableProductsBarcodes.add(product.get("code").getAsString());

@@ -88,7 +88,7 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
             bean.setAdditives(additivesList);
             bean.setName(name);
             bean.setImage(image);
-        } catch (IOException e){
+        } catch (IOException | NumberFormatException e){
             Logger logger = Logger.getLogger(ShowProductInfoOpenFoodFactsAPIBoundary.class.getName());
             logger.log(Level.INFO, e.getMessage());
         } catch (NullPointerException e){
@@ -104,9 +104,7 @@ public class ShowProductInfoOpenFoodFactsAPIBoundary{
             bean.setFruitPercentage((float) -1);
             bean.setIsBiological(false);
             bean.setIsBeverage(false);
-        }catch(NumberFormatException e){
-            e.printStackTrace();
-        }finally {
+        } finally {
             assert httpClient != null;
             httpClient.close();
         }

@@ -77,4 +77,11 @@ public class Queries {
         String selectStatement = String.format("SELECT idCarts FROM Carts WHERE user = '%s'",username);
         stmt.execute(selectStatement);
     }
+
+    public static void deleteHistory(Statement stmt, Integer cartsId) throws SQLException {
+        String deleteStatement = String.format("DELETE FROM ItemsInCart WHERE cart = '%d'", cartsId);
+        stmt.execute(deleteStatement);
+        deleteStatement = String.format("DELETE FROM Carts WHERE idCarts = '%d'", cartsId);
+        stmt.execute(deleteStatement);
+    }
 }

@@ -1,6 +1,5 @@
 package com.cappellinispirito.ispwproject202223jfx.controller;
 
-import com.cappellinispirito.ispwproject202223jfx.model.exceptions.FailedQueryToOpenFoodFacts;
 import com.cappellinispirito.ispwproject202223jfx.model.Item;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.BarcodeToInformationBean;
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.NameToItemSearchBean;
@@ -74,7 +73,7 @@ public class ShowProductInfoController{
         newItem = new Item(itemInformation, nutritionalValues, additives, isBiological, isBeverage);
     }
 
-    public void findProductInfo(NameToItemSearchBean bean) throws IOException, ParseException, SQLException, FailedQueryToOpenFoodFacts {
+    public void findProductInfo(NameToItemSearchBean bean) throws IOException, ParseException, SQLException {
         String nameL = bean.getName();
         this.name = nameL;
         getBarcodeFromName(nameL);
