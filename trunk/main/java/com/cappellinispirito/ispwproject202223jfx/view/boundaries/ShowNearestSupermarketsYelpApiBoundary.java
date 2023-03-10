@@ -10,9 +10,11 @@ import java.io.IOException;
 
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
-public class ShowNearestSupermarketsNominatimApiBoundary implements APIProxyBoundary{
+public class ShowNearestSupermarketsYelpApiBoundary implements APIProxyBoundary{
 
     private static final String API_KEY = "j-Y-VmBNlz6n7MTIzEu9atdNZ_Pf9R_uusGEsLoPKAylr7P7miUMCf80tKFsHPq9ZcLaIDzzPq7ltneNGdeScc2bffMUpgeMbtmOXi4X2M0K7zVkVueW0sFUPb4BZHYx";
 
@@ -66,16 +68,22 @@ public class ShowNearestSupermarketsNominatimApiBoundary implements APIProxyBoun
         JsonNode businessesNode = rootNode.get("businesses");
 
         // Loop through the array of business objects and print the distance value for each supermarket
-        for (JsonNode businessNode : businessesNode) {
-            String name = businessNode.get("name").asText();
-            String marketAddress = businessNode.get("location").get("address1").asText();
-            double distance = (businessNode.get("distance").asDouble())/1000;
-            if(whiteListSupermarkets.contains(name)){
-                bean.appendToSupermarketsNames(name);
-                bean.appendToSupermarketsAddress(marketAddress);
-                bean.appendToSupermarketsDistance(Math.round(distance*100f)/100f);
+        try{
+            for (JsonNode businessNode : businessesNode) {
+                String name = businessNode.get("name").asText();
+                String marketAddress = businessNode.get("location").get("address1").asText();
+                double distance = (businessNode.get("distance").asDouble())/1000;
+                if(whiteListSupermarkets.contains(name)){
+                    bean.appendToSupermarketsNames(name);
+                    bean.appendToSupermarketsAddress(marketAddress);
+                    bean.appendToSupermarketsDistance(Math.round(distance*100f)/100f);
+                }
             }
+        } catch (NullPointerException e){
+            Logger logger = Logger.getLogger(ShowNearestSupermarketsYelpApiBoundary.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         }
+
     }
 }
 

@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CartHistoryControllerG implements Initializable {
     @FXML
@@ -135,12 +137,14 @@ public class CartHistoryControllerG implements Initializable {
             try {
                 onDeleteButton();
             } catch (SQLException e) {
-                e.printStackTrace();
+                Logger logger = Logger.getLogger(CartHistoryControllerG.class.getName());
+                logger.log(Level.INFO, e.getMessage());
             }
             try {
                 onBackButton();
             } catch (IOException e) {
-                e.printStackTrace();
+                Logger logger = Logger.getLogger(CartHistoryControllerG.class.getName());
+                logger.log(Level.INFO, e.getMessage());
             }
         });
     }

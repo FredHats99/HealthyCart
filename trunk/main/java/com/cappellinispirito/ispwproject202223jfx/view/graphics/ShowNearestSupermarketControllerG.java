@@ -1,5 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.graphics;
 
+import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
 import com.cappellinispirito.ispwproject202223jfx.view.ShowNearestSupermarketsCustomerView;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NamePremiumBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NewShopBean;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ShowNearestSupermarketControllerG implements Initializable {
     @FXML
@@ -87,8 +90,13 @@ public class ShowNearestSupermarketControllerG implements Initializable {
         List<Float> supermarketDistances = view.getSupermarketsDistances();
         int i;
         for(i=0; i<5; i++){
-            marketAddressesList.get(i).setText(String.format("%s - %s", supermarketNames.get(i), supermarketAddresses.get(i)));
-            marketDistancesList.get(i).setText(String.format("%s Km", supermarketDistances.get(i)));
+            try{
+                marketAddressesList.get(i).setText(String.format("%s - %s", supermarketNames.get(i), supermarketAddresses.get(i)));
+                marketDistancesList.get(i).setText(String.format("%s Km", supermarketDistances.get(i)));
+            } catch (IndexOutOfBoundsException e){
+                Logger logger = Logger.getLogger(ShowNearestSupermarketControllerG.class.getName());
+                logger.log(Level.INFO, e.getMessage());
+            }
         }
     }
 

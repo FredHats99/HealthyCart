@@ -5,7 +5,7 @@ import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.NearestSu
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.PositionBean;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.APIProxyBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.boundaries.CacheProxy;
-import com.cappellinispirito.ispwproject202223jfx.view.boundaries.ShowNearestSupermarketsNominatimApiBoundary;
+import com.cappellinispirito.ispwproject202223jfx.view.boundaries.ShowNearestSupermarketsYelpApiBoundary;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.PositionBeanClass;
 
 import java.io.IOException;
@@ -26,7 +26,7 @@ public class ShowNearestSupermarketsController {
             String address = bean.getSearch();
             PositionBean bean2 = new PositionBeanClass();
             bean2.setAddress(address);
-            APIProxyBoundary boundary = new ShowNearestSupermarketsNominatimApiBoundary();
+            APIProxyBoundary boundary = new ShowNearestSupermarketsYelpApiBoundary();
             APIProxyBoundary proxyBoundary = new CacheProxy(boundary);
 
             proxyBoundary.getNearestSupermarkets(bean2);

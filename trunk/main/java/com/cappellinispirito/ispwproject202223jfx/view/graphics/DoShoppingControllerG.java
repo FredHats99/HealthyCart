@@ -311,7 +311,8 @@ public class DoShoppingControllerG implements Initializable, Observer {
             view.saveCart();
             onBackButton();
         } catch (SQLException | IOException e){
-            e.printStackTrace();
+            Logger logger = Logger.getLogger(DoShoppingControllerG.class.getName());
+            logger.log(Level.INFO, e.getMessage());
         }
     }
 }
