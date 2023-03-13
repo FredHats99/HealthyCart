@@ -34,6 +34,7 @@ public class ShowNearestSupermarketsController {
             bean.setSupermarketsNamesList(bean2.getSupermarketsNames());
             bean.setSupermarketsNamesAddresses(bean2.getSupermarketsAddress());
             bean.setSupermarketsNamesDistances(bean2.getSupermarketsDistance());
+            //TODO: Should use supermarket classes instead of its values... Missing method createSupermarket()..
     }
 
 }
