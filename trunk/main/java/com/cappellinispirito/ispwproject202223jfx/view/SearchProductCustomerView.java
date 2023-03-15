@@ -20,7 +20,7 @@ public class SearchProductCustomerView {
         SearchProductController searchProductControllerInstance = SearchProductController.getInstance();
         ResultsFromSearchBean bean = new NameImageFromSearchBeanClass();
         bean.setNameToSearch(searchText);
-        searchProductControllerInstance.searchProduct(bean);
+        searchProductControllerInstance.searchProducts(bean);
         resultsNames = bean.getResultsNames();
         resultsImages = bean.getResultsImages();
         //Now the results should be displayed

@@ -18,7 +18,7 @@ class TestSearchProductController {
         ResultsFromSearchBean bean  = new NameImageBarcodeFromSearchBeanClass();
         bean.setNameToSearch(GIORDANO);
         try {
-            controlProducts.searchProduct(bean);
+            controlProducts.searchProducts(bean);
             result = true;
         } catch (Exception e) {
             result = false;

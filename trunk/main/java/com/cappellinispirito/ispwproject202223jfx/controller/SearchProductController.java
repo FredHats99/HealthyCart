@@ -29,7 +29,7 @@ public class SearchProductController{
         return instance;
     }
 
-    public void searchProduct(ResultsFromSearchBean bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
+    public void searchProducts(ResultsFromSearchBean bean) throws IOException, ParseException, FailedQueryToOpenFoodFacts {
         findProductByName(bean);
         //else error
     }
