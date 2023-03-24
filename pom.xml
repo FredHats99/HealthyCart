@@ -15,7 +15,6 @@
         <sonar.projectKey>fredhats99</sonar.projectKey>
         <sonar.organization>fredhats99</sonar.organization>
         <sonar.sources>trunk/main</sonar.sources>
-        <sonar.test.inclusion>reports</sonar.test.inclusion>
         <sonar.language>java</sonar.language>
         <sonar.java.source>1.19</sonar.java.source>
         <sonar.java.binaries>.</sonar.java.binaries>
