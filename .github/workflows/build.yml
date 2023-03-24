@@ -31,7 +31,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Get jacoco report
-        run: mvn sonar:sonar -Pcoverage
+        run: mvn sonar:sonar -Dsonar.projectKey=FredHats99_HealthyCart -Pcoverage
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
