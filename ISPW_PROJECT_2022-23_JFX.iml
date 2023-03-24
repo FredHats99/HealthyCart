@@ -28,6 +28,7 @@
     <orderEntry type="library" name="google.code.gson" level="project" />
     <orderEntry type="library" name="fasterxml.jackson.core.databind" level="project" />
     <orderEntry type="library" name="squareup.okhttp3.sample.crawler" level="project" />
+    <orderEntry type="library" name="apache.maven.surefire.common" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.14" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.16" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
