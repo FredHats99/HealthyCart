@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class ShowProductInfoCustomerView {
 
 
-    public Item showProductInfo(String name) throws IOException, ParseException, SQLException, FailedQueryToOpenFoodFacts {
+    public Item showProductInfo(String name) throws IOException, ParseException, SQLException {
         //This one should be obtained from user input, parsed via index
         ShowProductInfoController showProductInfoController = ShowProductInfoController.getInstance();
         NameToItemSearchBean bean = new NameToItemSearchBeanClass();

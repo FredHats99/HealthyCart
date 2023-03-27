@@ -1,8 +1,6 @@
 package com.cappellinispirito.ispwproject202223jfx.view.boundaries;
 
 import com.cappellinispirito.ispwproject202223jfx.model.beansinterface.PositionBean;
-import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;

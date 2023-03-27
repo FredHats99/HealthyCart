@@ -1,6 +1,5 @@
 package com.cappellinispirito.ispwproject202223jfx.view.graphics;
 
-import com.cappellinispirito.ispwproject202223jfx.model.dao.CartsDAO;
 import com.cappellinispirito.ispwproject202223jfx.view.ShowNearestSupermarketsCustomerView;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NamePremiumBean;
 import com.cappellinispirito.ispwproject202223jfx.view.beans.NewShopBean;
