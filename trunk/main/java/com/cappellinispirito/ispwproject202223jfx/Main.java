@@ -18,7 +18,7 @@ public class Main extends Application{
     @Override
     public void start(Stage myStage) throws IOException {
 
-        //nodeee
+        //node
         Parent rootNode = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/cappellinispirito/ispwproject202223jfx/fxml/Main_menu2.fxml")));
         //scene
         Scene myScene = new Scene(rootNode);
@@ -39,11 +39,6 @@ public class Main extends Application{
     }
 
     public static void main(String[] args){
-        //testing
-        //Coca-cola 1 lt: 5449000133328
-        //Nutella: 3017620422003
-        //String barcode = "3017620422003"; //it's the barcode of nutella
         launch(args);
-
     }
 }

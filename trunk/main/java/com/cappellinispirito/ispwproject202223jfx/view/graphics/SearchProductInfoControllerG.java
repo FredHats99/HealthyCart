@@ -59,7 +59,7 @@ public class SearchProductInfoControllerG implements Initializable {
         ShowProductInfoCustomerView view = new ShowProductInfoCustomerView();
         try {
             itemInfo = view.showProductInfo(itemName);
-        } catch (IOException | ParseException | SQLException | FailedQueryToOpenFoodFacts e) {
+        } catch (IOException | ParseException | SQLException e) {
             Logger logger = Logger.getLogger(SearchProductControllerG.class.getName());
             logger.log(Level.INFO, e.getMessage());
         }
